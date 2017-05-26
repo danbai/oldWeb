@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2217">Basic Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title {
+            margin-top: 10px;
+        }
+
+        #hardware_scan .check_div {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            line-height: 30px;
+            margin-right: 5px;
+        }
+        
+        .boxLabel {
+            position: relative;
+            top: -7px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4360"></div>
+    <form id="form">
+        <div class="section-body">
+            <!--<div class="section-title" locale="LANG4360"></div>-->
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5285" tooltip="@LANG5274"></div>
+                <div class="field-content">
+                    <input type='checkbox' name='haon' id="haon" noserialize="true" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5323" tooltip="@LANG5324"></div>
+                <div class="field-content">
+                    <input type='checkbox' name='hamaster' id="hamaster" noserialize="true" disabled/>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5290" tooltip="@LANG5291"></div>
+                <div class="field-content" id="hardware_scan">
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5287" tooltip="@LANG5276"></div>
+                <div class="field-content">
+                    <input type='text' name='hbip' id="hbip" value="10.10.11.66" disabled />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5288" tooltip="@LANG5277"></div>
+                <div class="field-content">
+                    <input type='text' name='hbpeerip' id="hbpeerip" value="10.10.11.88" disabled />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5325" tooltip="@LANG5325"></div>
+                <div class="field-content">
+                    <input type='text' name='hbport' id="hbport" value="9527" disabled />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5289" tooltip="@LANG5278"></div>
+                <div class="field-content">
+                    <input type='text' name='hbto' id="hbto" value="7" disabled />
+                </div>
+            </div>
+            <div class="field-cell">
+                <!--div class="field-label" glabel="@LANG5326" tooltip="@LANG5326" display='none'></div>
+                <div class="field-content">
+                    <input type='text' name='hbpeerport' id="hbpeerport" value="9527" display='none' />
+                </div-->
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ha-settings.js"></script>
+</body>
+</html>

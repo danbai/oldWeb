@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG667">General Preferences</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .btn-paging {
+            line-height: 14px;
+        }
+        #op_ringTimeOut_Voicemail {
+            width: 25px;
+        }
+        #div_out_limitime {
+            display: none;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG667"></div>
+    <form id="form">
+        <div class="section-body">
+            <div id="generalPrefSettingsDiv">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1589" tooltip="@LANG1592"></div>
+                    <div class="field-content">
+                        <input type="text" id="global_outboundcid" name="global_outboundcid" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1590" tooltip="@LANG1591"></div>
+                    <div class="field-content">
+                        <input type="text" id="global_outboundcidname" name="global_outboundcidname" maxlength="32" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1594" tooltip="@LANG1595"></div>
+                    <div class="field-content">
+                        <select id="operator" name="operator">
+                        </select>
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1598" tooltip="@LANG1599"></div>
+                    <div class="field-content">
+                        <input type="text" id="ringtime" name="ringtime" class="inputWidth50" maxlength="3" />
+                    </div>
+                </div>
+                <div id="out_limitime" class="field-cell">
+                    <div class="field-label" glabel="@LANG3025" tooltip="@LANG3026"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="enable_out_limitime" name="enable_out_limitime" noSerialize=true />
+                    </div>
+                </div>
+                <div id="div_out_limitime" class="field-cell">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3017" tooltip="@LANG3018"></div>
+                        <div class="field-content">
+                            <input type="text" id="limitime" name="limitime" maxlength="14" dfalt="" noSerialize=true/>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3019" tooltip="@LANG3020"></div>
+                        <div class="field-content">
+                            <input type="text" id="warningtime" name="warningtime" maxlength="14" dfalt="" noSerialize=true/>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3021" tooltip="@LANG3022"></div>
+                        <div class="field-content">
+                            <input type="text" id="repeattime" name="repeattime" maxlength="14" dfalt="" noSerialize=true/>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2528" tooltip="@LANG2529"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="record_prompt" dfalt="no" />
+                    </div>
+                </div>
+            </div>
+            <div class='section-title' locale="LANG668"></div>
+            <div id="extenPrefSettingsDiv">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2633" tooltip="@LANG2634"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="weak_password" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1587" tooltip="@LANG1588"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="rand_password" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4150" tooltip="@LANG4151"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="auto_email_to_user" name="auto_email_to_user" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1586"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="disable_extension_ranges" name="disable_extension_ranges" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG248"></div>
+                    <div class="field-content">
+                        <input type="text" id="ue_start" name="ue_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="ue_end" name="ue_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell zcuePkueRange">
+                    <div class="field-label" glabel="@LANG2919"></div>
+                    <div class="field-content">
+                        <input type="text" id="pkue_start" name="pkue_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="pkue_end" name="pkue_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell zcuePkueRange">
+                    <div class="field-label" glabel="@LANG2918"></div>
+                    <div class="field-content">
+                        <input type="text" id="zcue_start" name="zcue_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="zcue_end" name="zcue_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG1585"></div>
+                    <div class="field-content">
+                        <input type="text" id="mm_start" name="mm_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="mm_end" name="mm_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG1597"></div>
+                    <div class="field-content">
+                        <input type="text" id="rge_start" name="rge_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="rge_end" name="rge_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG1596"></div>
+                    <div class="field-content">
+                        <input type="text" id="qe_start" name="qe_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="qe_end" name="qe_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG1569"></div>
+                    <div class="field-content">
+                        <input type="text" id="vmg_start" name="vmg_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="vmg_end" name="vmg_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG1593"></div>
+                    <div class="field-content">
+                        <input type="text" id="vme_start" name="vme_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="vme_end" name="vme_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG2897"></div>
+                    <div class="field-content">
+                        <input type="text" id="directory_start" name="directory_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="directory_end" name="directory_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell extRange">
+                    <div class="field-label" glabel="@LANG2907"></div>
+                    <div class="field-content">
+                        <input type="text" id="fax_start" name="fax_start" class="inputWidth50" maxlength="6" />
+                        -
+                        <input type="text" id="fax_end" name="fax_end" class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="button" id="reset_ranges_button" class="btn btn-paging" onclick="resetRangesDefault();" locale="LANG773"></button>
+                    <button type="submit" id="save" class="btn btn-save" onclick="updatePageInfo()" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/preferences.js"></script>
+</body>
+</html>

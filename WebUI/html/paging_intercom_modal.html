@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Page/Intercom Group</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .link { 
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-left: 12px;
+            vertical-align: top;
+            position: relative;
+            top: -2px;
+        }
+        .field-cell {
+/*            display: inline-block;
+            *display: inline; 
+            zoom: 1; */
+            padding: 2px 0px;
+        }
+        .field-content {
+            height: 31px;
+        }
+        .field-cell .field-label {
+            width: 190px;
+        }
+        div.field-label .glab span.label {
+            width: 152px;
+        }
+        #leftSelect, #rightSelect {
+            width: 240px; 
+            height: 95px
+        }
+        .section-body {
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px; height: 350px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="paginggroup_name" name="paginggroup_name" maxlength=25 />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG85">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="extension" name="extension" maxlength=25 />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG84">
+                    </div>
+                    <div class="field-content">
+                        <select id="paginggroup_type" name="paginggroup_type" dfalt='2way' >
+                            <option value="2way" locale="LANG1162">2-Way Intercom</option>
+                            <option value="1way" locale="LANG1161">1-Way Page</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5071" tooltip="@LANG5074"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="replace_caller_id" name="replace_caller_id" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG28" tooltip="@LANG3490">
+                    </div>
+                    <div class="field-content">
+                        <select id="custom_prompt" name="custom_prompt">
+                        </select>
+                        <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                    </div>
+                </div>
+                <div class="field-cell" >
+                    <table cellpadding="2" cellspacing="2" border="0" width="100%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2701">Available Extensions/Extension Groups</b>
+                            </td>
+                            <td width="50" align="center">
+                            </td>
+                            <td align="center" valign="top">
+                                <b locale="LANG1159">Page/Intercom Group Members</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelect" multiple="multiple" noserialize="true" size="5" >
+                                </select>
+                            </td>
+                            <td width="50" align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRight"></span>
+                                <span class="selectIcon addRight" id="oneToRight"></span>
+                                <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="allToLeft"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select id="rightSelect" name="rightSelect" multiple="multiple" noserialize="true" size="5" >
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="submit"  locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/paging-intercom-modal.js"></script>
+</body>
+</html>

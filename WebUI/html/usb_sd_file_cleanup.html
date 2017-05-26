@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG5122">USB / SD Card Files Cleanups</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">    
+    .special {
+        margin-top: 12px;
+    }
+    
+    .table {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset,0px 0px 1px rgba(200, 200, 200, 0.5); */
+        border-spacing: 0px;
+        /* table-layout: fixed; */
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    .table,
+    table.tableWidget {
+        margin-top: 6px;
+    }
+    
+    table tbody td.noUser {
+        border-bottom: 0;
+        height: 30px;
+    }
+    
+    table tbody {
+        background-color: #fff;
+    }
+    
+    table.table tbody td span,
+    table.table thead th span {
+        cursor: pointer;
+        /* color: #225685; */
+        margin-left: 8px;
+    }
+    
+    .thead tr,
+    table.table tbody tr.frow {
+        background: #91C6E5;
+        height: 23px;
+        color: #3A3C3B;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .tbody tr {
+        height: 23px;
+    }
+    
+    table tbody tr.even {
+        background: #EFEFEF;
+    }
+    
+    table tbody tr.odd {
+        background: #FFFFFF;
+    }
+    
+    .tbody tr:hover,
+    table.table tbody tr.even:hover,
+    table.table tbody tr.odd:hover {
+        background: #CAECFF;
+    }
+
+    .ui-jqgrid {
+        clear: both;
+        margin-top: 10px;
+    }
+
+    .lite_desc {
+        padding-bottom: 0;
+    }
+
+    .second-title {
+        margin-top: 20px;
+    }
+
+    .top_buttons button {
+        margin-top: 0;
+    }
+
+    .field-content {
+        width: 60%;
+    }
+
+    .field-content .path {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .field-content .seperator {
+        margin: 0 10px;
+    }
+
+    #noSD,
+    #noUSB {
+        display: none;        
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG5122"></div>
+    <a href="#top" localeTitle="LANG3962" id="toTop"></a>
+    <form id="form">
+        <div class="section-body special">
+            <div id="externalBackupFileDiv">
+                <div class="section-title" locale="LANG2916"></div>
+                <table cellpadding="0" cellspacing="0" border="0" class="tableWidget" id="noUSB" style="width: 100%;">
+                    <tbody>
+                        <tr class="even">
+                            <td locale="LANG5090 LANG263"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="field-cell" id="USBPath">
+                    <div class="field-label" gLabel="@LANG5181" tooltip="@LANG5181"></div>
+                    <div class="field-content"></div>
+                </div>
+                <div class="field-cell" id="USBDirectory">
+                    <div class="field-label" gLabel="@LANG5146" tooltip="@LANG5146"></div>
+                    <div class="field-content"></div>
+                </div>
+                <div class="top_buttons">
+                    <button type="button" class="btn btn-update delete-select" locale="LANG3872 LANG3652"></button>
+                </div>
+            </div>
+            <div id="mmcblk1pBackupFileDiv">
+                <div class="section-title second-title" locale="LANG2920"></div>
+                <table cellpadding="0" cellspacing="0" border="0" class="tableWidget" id="noSD" style="width: 100%;">
+                    <tbody>
+                        <tr class="even">
+                            <td locale="LANG5090 LANG262"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="field-cell" id="SDPath">
+                    <div class="field-label" gLabel="@LANG5181" tooltip="@LANG5181"></div>
+                    <div class="field-content"></div>
+                </div>
+                <div class="field-cell" id="SDDirectory">
+                    <div class="field-label" gLabel="@LANG5146" tooltip="@LANG5146"></div>
+                    <div class="field-content"></div>
+                </div>
+                <div class="top_buttons">
+                    <button type="button" class="btn btn-update delete-select" locale="LANG3872 LANG3652"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/file-cleanup.js"></script>
+</body>
+
+</html>

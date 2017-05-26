@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG692">Sip Debug</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG692"></div>
+    <form id="form">
+        <div class='section-title' locale="LANG693">Sip Debugging</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1825" tooltip="@LANG1826">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id='sipdebug' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1829" tooltip="@LANG1830">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id='recordhistory' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1823" tooltip="@LANG1824">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id='dumphistory' />
+                </div>
+            </div>
+        </div>
+        <div class='section-title' locale="LANG694">Status Notifications (Subscriptions)</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1831" tooltip="@LANG1832">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="subscribecontext" name="subscribecontext" maxlength="20" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1821" tooltip="@LANG1822">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='y' id='allowsubscribe' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1827" tooltip="@LANG1828">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='y' id='notifyringing' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                    </button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/sip-debug.js"></script>
+</body>
+</html>

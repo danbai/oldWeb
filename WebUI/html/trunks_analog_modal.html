@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Analog Trunks</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #table_ATRUNKS_list {
+            border: 1px solid #666666;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 96%;
+            text-align: center;
+            padding: 1px;
+        }
+        #table_ATRUNKS_list tr.frow {
+            background: #6b79a5;
+            color: #CED7EF;
+        }
+        #table_ATRUNKS_list tr.frow td {
+            font-weight: bold;
+        }
+        #table_ATRUNKS_list tr td {
+            padding: 3px;
+        }
+        #table_ATRUNKS_list tr.even {
+            background: #DFDFDF;
+        }
+        #table_ATRUNKS_list tr.odd {
+            background: #FFFFFF;
+        }
+        #table_ATRUNKS_list tr.even:hover, #table_ATRUNKS_list tr.odd:hover {
+            background: #a8b6e5;
+            cursor: default;
+        }
+        #HIDE_OnNEW_3 .field-content {
+            width: 160px;
+        }
+        #busy, #congestion {
+            width: 350px;
+        }
+        #currentdisconnectthreshold {
+            width: 45px;
+            margin-left: 12px;
+            vertical-align: top;
+            position: relative;
+            top: 4px;
+        }
+        .special {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            margin-right: 8px;
+        }
+        .special label {
+            position: relative;
+            top: -6px;
+        }
+        .special_div {          
+            clear: both;            
+        }
+        #HIDE_OnNEW_3 .field-content-special {
+            width: 330px;
+        }
+        #slaOptions {
+            display: none;
+        }
+        #detect_div {
+            display: none;
+        }
+        .fax_add_hide {
+            display: none;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 800px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1329"></div>
+                    <div class="field-content">
+                        <span id='new_ATRNK_cls_container'></span>
+                    </div>
+                    <div class="field-label" glabel="@LANG1342" tooltip="@LANG1343" style="display: none;"></div>
+                    <div class="field-content" style="display: none;">
+                        <select id="trunkgroup" name="trunkgroup" size="5" multiple='multiple'></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1351" tooltip="@LANG1350"></div>
+                    <div class="field-content"> 
+                        <input type="text" id="trunk_name" name="trunk_name" class="inputWidth100" maxlength="16" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3218" tooltip="@LANG3219"></div>
+                    <div class="field-content"> 
+                        <input type="checkbox" id="trunkmode" name="trunkmode" dfalt='normal' noSerialize=true />
+                    </div>
+                </div>
+                <div id="slaOptions">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3220" tooltip="@LANG3221"></div>
+                        <div class="field-content"> 
+                            <input type="checkbox" id="bargeallowed" name="bargeallowed" checked dfalt='yes' noSerialize=true />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3222" tooltip="@LANG3223"></div>
+                        <div class="field-content"> 
+                            <select id="holdaccess" name="holdaccess" dfalt='open' noSerialize=true>
+                                <option value="open">Open</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id='HIDE_OnNEW_3'>
+                    <div class='section-title' locale="LANG229">Advanced Options</div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1340" tooltip="@LANG1341"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="polarityswitch" name="polarityswitch" />
+                            <!-- <option value="yes" locale="LANG136">Yes</option>
+                                <option value="no" locale="LANG137">No</option>
+                            </select> -->
+                        </div>
+                        <div id="polarityfield">
+                            <div class="field-label" glabel="@LANG1344" tooltip="@LANG1345"></div>
+                            <div class="field-content">
+                                <input type="text" id="polarityonanswerdelay" name="polarityonanswerdelay" class="inputWidth100" dfalt='600' />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1694" tooltip="@LANG1695"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="enablecurrentdisconnectthreshold" name="enablecurrentdisconnectthreshold" />
+                            <!-- <option value='yes' locale="LANG136">Yes</option>
+                                <option value='no' locale="LANG137">No</option>
+                            </select> -->
+                            <input type="text" class="inputWidth100" id="currentdisconnectthreshold" name="currentdisconnectthreshold" dfalt='200' />
+                        </div>
+                        <div class="field-label" glabel="@LANG1346" tooltip="@LANG1347"></div>
+                        <div class="field-content">
+                            <input type="text" class="inputWidth100" id="ringtimeout" name="ringtimeout" dfalt='8000' />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1397" tooltip="@LANG1398"></div>
+                        <div class="field-content">
+                            <input type="text" class="inputWidth50" id="rxgain" name="rxgain" dfalt="0" maxlength="6" />
+                        </div>
+                        <div class="field-label" glabel="@LANG1399" tooltip="@LANG1400"></div>
+                        <div class="field-content">
+                            <input type="text" class="inputWidth50" id="txgain" name="txgain" dfalt="0" maxlength="6" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1353" tooltip="@LANG1352"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="usecallerid" name="usecallerid" dfalt='yes' />
+                            <!-- <option value="yes" locale="LANG136">Yes</option>
+                                <option value="no" locale="LANG137">No</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="field-cell fax_add_hide">
+                        <div class="field-label" glabel="@LANG3871" tooltip="@LANG3555"></div>
+                        <div class="field-content">
+                            <select id='faxmode' name="faxmode" noSerialize='true' dfalt='no'>
+                                <option value='no' locale="LANG133"></option>
+                                <option value='detect' locale="LANG1135"></option>
+                                <option value='gateway' locale="LANG3554"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="detect_div" class="fax_add_hide">
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG4379" tooltip="@LANG4380"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id="fax_intelligent_route" name="fax_intelligent_route" />
+                            </div>
+                            <div class="field-label" glabel="@LANG4381" tooltip="@LANG4382"></div>
+                            <div class="field-content">
+                                <select id='fax_intelligent_route_destination' name="fax_intelligent_route_destination" dfalt='no'>
+                                    <option value='no' locale="LANG133"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-cell" style='display: none'>
+                    <!-- <div class="field-label" glabel="@FIELD_TRUNK_CALLERID" tooltip="@FIELD_TRUNK_CALLERID_TIP" >
+                        </div>
+                        <div class="field-content">
+                            <select id="dummy_callerid" name="dummy_callerid" dfalt='asreceived'>
+                                <option value="asreceived">As Received</option>
+                                <option value="custom">Custom</option>
+                            </select>&nbsp;<input type='text' id="dummy_customCid" name="dummy_customCid" class="inputWidth100" />
+                        </div> -->
+                        <!-- <div class="field-label" glabel="@FIELD_TRUNK_PULSE_DIAL" tooltip="@FIELD_TRUNK_PULSE_DIAL_TIP" >
+                        </div>
+                        <div class="field-content">
+                            <select id="pulsedial" name="pulsedial" dfalt='no'>
+                                <option value="yes" locale="LANG136">Yes</option>
+                                <option value="no" locale="LANG137">No</option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <div id="calleridSchemeField" class="field-cell">
+                        <div class="field-label" glabel="@LANG2275" tooltip="@LANG2254"></div>
+                        <div class="field-content field-content-special">
+                            <select id="cidmode" name="cidmode" dfalt='0' mSelect="true">
+                                <option value='0' locale="LANG2268"></option>
+                                <option value='1' locale="LANG2250"></option>
+                                <option value='2' locale="LANG2267"></option>
+                                <option value='3' locale="LANG2249"></option>
+                                <option value='4' locale="LANG2266"></option>
+                                <option value='5' locale="LANG2248"></option>
+                                <option value='6' locale="LANG2265"></option>
+                                <option value='7' locale="LANG2247"></option>
+                                <option value='8' locale="LANG2262"></option>
+                                <option value='9' locale="LANG2245"></option>
+                                <option value='10' locale="LANG5268"></option>
+                                <option value='11' locale="LANG2410"></option>
+                            </select>
+                        </div>
+                    </div>
+				    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3253" tooltip="@LANG3254" >
+                        </div>
+                        <div class="field-content">
+                            <input type="text" class="inputWidth50" id="fxooutbandcalldialdelay" name="fxooutbandcalldialdelay" value='0' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG2543" tooltip="@LANG5266"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id='auto_record' />
+                            <!-- <option value='no' locale="LANG137"></option>
+                                <option value='yes' locale="LANG136"></option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG2757" tooltip="@LANG3480"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id='out_of_service' />
+                        </div>
+                        <div class="field-label" glabel="@LANG3532" tooltip="@LANG3533"></div>
+                        <div class="field-content">
+                            <select id="dahdilineselectmode" name="dahdilineselectmode" dfalt='0'>
+                                <option value='ascend' locale="LANG3534"></option>
+                                <option value='poll' locale="LANG3535"></option>
+                                <option value='desend' locale="LANG3536"></option>
+                            </select>
+                        </div> 
+                    </div>
+                    <div class="field-cell" id="out_maxchans_div">
+                        <div class="field-label" glabel="@LANG3023" tooltip="@LANG3024"></div>
+                        <div class="field-content">
+                            <input type="text" id="out_maxchans" name="out_maxchans" class="inputWidth100" dfalt="0" />
+                        </div>
+                    </div>
+                </div>
+                    <div class='section-title' locale="LANG2387">tone settings</div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1323" tooltip="@LANG1324"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="busydetect" name="busydetect" dfalt='yes' />
+                            <!-- <option value="yes" locale="LANG136">Yes</option>
+                                <option value="no" locale="LANG137">No</option>
+                            </select> -->
+                        </div>
+                        <div id="busycountfield">
+                            <div class="field-label" glabel="@LANG1321" tooltip="@LANG1322"></div>
+                            <div class="field-content">
+                                <input type="text" id="busycount" name="busycount" class="inputWidth100" dfalt='2' />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1334" tooltip="@LANG1335"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="congestiondetect" name="congestiondetect" dfalt='yes' />
+                            <!-- <option value="yes" locale="LANG136">Yes</option>
+                                <option value="no" locale="LANG137">No</option>
+                            </select> -->
+                        </div>
+                        <div id="congestioncountfield">
+                            <div class="field-label" glabel="@LANG1332" tooltip="@LANG1333"></div>
+                            <div class="field-content">
+                                <input type="text" id="congestioncount" name="congestioncount" class="inputWidth100" dfalt='2' />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="toneCountryField" class="field-cell">
+                        <div class="field-label" glabel="@LANG1349" tooltip="@LANG1348"></div>
+                        <div class="field-content field-content-special">
+                            <select id="countrytone" name="countrytone" dfalt="us" mSelect="true"></select>
+                        </div>
+                    </div>
+                    <div id="busyToneField" class="field-cell">
+                        <div class="field-label" glabel="@LANG1325" tooltip="@LANG1326"></div>
+                        <div class="field-content">
+                            <input  id="busy" name="busy" type="text" class="inputWidth100 tone-setting" noSerialize=true />
+                        </div>
+                    </div>
+                    <div id="congestionToneField" class="field-cell">
+                        <div class="field-label" glabel="@LANG1336" tooltip="@LANG1337"></div>
+                        <div class="field-content">
+                            <input id="congestion" name="congestion" type="text" class="inputWidth100 tone-setting" noSerialize=true />
+                        </div>
+                    </div>
+                    <div>
+                        <input type="hidden" id="busypattern" name="busypattern" dfalt='500,500' />
+                        <input type="hidden" id="congestionpattern" name="congestionpattern" dfalt='250,250' />
+                        <input type="hidden" id="busyfrequencies" name="busyfrequencies" dfalt='480+620' />
+                        <input type="hidden" id="congestionfrequencies" name="congestionfrequencies" dfalt='450+450' />
+                        <input type="hidden" id="busylevels" name="busylevels" />
+                        <input type="hidden" id="congestionlevels" name="congestionlevels" />
+                        <input type="hidden" id="congestioncount" name="congestioncount" />
+                        <input type="hidden" id="cidstart" name="cidstart" />
+                        <input type="hidden" id="cidsignalling" name="cidsignalling" />
+                        <input type="hidden" id="echocancel" name="echocancel" dfalt='128' value="128" />
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2347" tooltip="@LANG2348"></div>
+                        <div class="field-content">
+                            <button type="button" disabled="disabled" id="detect" class="btn btn-paging disabled" locale="LANG2325"></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id='HIDE_OnNEW_1'>
+                    <div class="field_text">
+                            <b>Audio Tuning</b></div>
+                        The analog ports that you have chosen should be calibrated for optimum performance. Please ensure that your analog lines
+                        are plugged in and proceed with calibration.
+                        <div style='margin: 10px;'>
+                            <button type="button" class="btn" onclick="calibrate_ports();" locale="LANG763">
+                                Easy Calibrate</button>
+                            <button type="button" class="btn btn-cancel" onclick="reset_calibration();" locale="LANG764">
+                                Reset Calibrate</button>
+                    </div>
+                </div>
+                <div id='HIDE_OnNEW_2'>
+                    <table align="center" width="75%">
+                        <div class="field-cell">
+                            <td class="field_text" align="left" valign="top" locale="LANG1355">
+                            </td>
+                            <td align="center" valign="top" width="150">
+                                <table id="TABLE_PORTS_VOLUME" align="center">
+                                </table>
+                            </td>
+                        </div>
+                    </table>
+                </div> -->
+                <div class="field-cell modal-commands dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">Update</button>
+                </div>
+        </div>
+        <div id="pstn_div" style="display: none; width: 500px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2408" tooltip="@LANG2409"></div>
+                    <div class="field-content">
+                        <select id='detect_model' name="detect_model">
+                            <option value='0' locale="LANG2410"></option>
+                            <option value='1' locale="LANG2411"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2326" tooltip="@LANG2327"></div>
+                    <div class="field-content">
+                        <select id='src_channels' name="src_channels"></select>
+                    </div>
+                </div>
+                <div class="field-cell" style="display:none;">
+                    <div class="field-label" gLabel="@LANG2330" tooltip="@LANG2331"></div>
+                    <div class="field-content">
+                        <input type="text" id='src_number' name="src_number" class="inputWidth100" maxlength=32 />
+                    </div>
+                </div> 
+                <div class="field-cell" id="dev_deschannel">
+                    <div class="field-label" gLabel="@LANG2328" tooltip="@LANG2329"></div>
+                    <div class="field-content">
+                        <select id='des_channels' name="des_channels"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2332" tooltip="@LANG2333"></div>
+                    <div class="field-content">
+                        <input type="text" id='des_number' name="des_number" class="inputWidth100" maxlength=32 />
+                    </div>
+                </div>
+                <div class="field-cell" id="acim_record_div">
+                    <div class="field-label" glabel="@LANG5139" tooltip="@LANG5139"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="is_save_record" name="is_save_record">
+                    </div>
+                </div>
+                <div class="special_div"><span locale="LANG2414"></span></div> 
+                <div class="field-cell modal-commands" style="width: 500px; text-align:center;">
+                    <button type="button" id="pstn_cancel" class="btn btn-cancel" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-update" locale="LANG2325"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/trunks-analog-modal.js"></script>
+</body>
+</html>

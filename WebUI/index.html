@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title locale="LANG583">Device Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link href="stylesheet/cfgbasic.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="stylesheet/jquery.qtip.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="stylesheet/moduleMenuCrumbs.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="stylesheet/dialog.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        html {
+            overflow-y: hidden;
+        }
+        body {
+            -moz-user-select: none;
+        }
+        select {
+            font-size: 14px;
+        }
+        ul li {
+            line-height: 18px;
+        }
+    </style>
+</head>
+<body topmargin="1" leftmargin="2" style="overflow-y: hidden; min-width: 1280px;" onselectstart="return false;">
+    <iframe marginheight="0" marginwidth="0" id="frameContainer" name="frameContainer" frameborder="0" scrolling="auto" width="100%" height="100%" style="display:none;"></iframe>
+    <div id="noResponseFromServer" style="display: none; width: 100%; height: 100%;">
+        Could not connect to Server
+        <div style='margin-top: 20px'>
+            <span class='button_retry'>Retry </span>
+            <div></div>
+        </div>
+    </div>
+    <div id="customFormEleDes"></div>
+    <span id="spaceused1" style="display:none;">0%</span>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.watermark.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/prototype-extentsion.js"></script>
+    <script type="text/javascript" src="js/jquery.idle.js"></script>
+    <script type="text/javascript" src="js/chosen.jquery.js"></script>
+    <script type="text/javascript" src="js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="js/ucmgui.js"></script>
+    <script type="text/javascript">
+        UCMGUI.getBasicInfo();
+    </script>
+    <script type="text/javascript" src="js/gs.lang.js"></script>
+    <script type="text/javascript" src="js/subclass.js"></script>
+    <script type="text/javascript" src="js/ucm-zeroconfig.js"></script>
+    <script type="text/javascript" src="js/zc-library.js"></script>
+    <script type="text/javascript" src="js/handlebars-v2.0.0.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/jquery.ddslick.js"></script>
+    <script type="text/javascript" src="js/jquery.qtip.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="js/additional-methods.js"></script>
+    <script type="text/javascript" src="js/custom-form-elements.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

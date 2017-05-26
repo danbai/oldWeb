@@ -1,0 +1,693 @@
+/*
+ * Global
+ */
+body {
+    overflow-y: hidden;
+    display: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header_row table {
+    max-width: 600px;
+    position: relative;
+    top: 8px;
+    right: 35px;
+    float: right;
+    z-index: 2;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/*
+ * Head
+ */
+.header_row #langSelect {
+    padding: 0 25px;
+    height: 23px;
+    line-height: 18px;
+}
+
+#HomeBody.GSRTL .header_row #langSelect {
+    padding: 0;
+}
+
+/* menu */
+.header_row .menu {
+    position: relative;
+    display: inline-block;
+    /* width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; */
+}
+
+.header_row .menu .subnav {
+    border-top: none;
+    display: none;
+    position: absolute;
+    top: 22px;
+    left: 0px;
+    z-index: 2000;
+    width: 90px;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: auto;
+    max-height: 210px;
+    filter: alpha(Opacity=90);
+    -moz-opacity: 0.9;
+    opacity: 0.9;
+}
+
+.header_row .menu .subnav span {
+    /* padding: 0px 3px; */  
+    padding: 5px 0 5px 15px;
+    display: block;
+    border-bottom: solid 1px #ddd;
+    overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    font-size: 12px;
+}
+
+.header_row .menu .subnav span:hover {
+    background: #f3f3f3;
+    color: #000;
+}
+
+.header_row .menu span.dd-pointer {
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -4px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.header_row .menu span.dd-pointer-down {
+    top: 11px;
+    border: solid 5px transparent;
+    border-top: solid 5px #eee;
+}
+
+.header_row .menu span.dd-pointer-up {
+    top: 5px;
+    border: solid 5px transparent !important;
+    border-bottom: solid 5px #eee !important;
+}
+
+.header_row .menu #userInfo {
+    display: inline-block;
+    /* max-width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis; */
+    text-decoration: underline;
+}
+
+.header_row #sysTime {
+    text-align: right;
+    cursor: default;
+}
+
+.header_row .module {   
+    font-size: 22px;
+    color: white;
+    position: fixed;
+    top: 44px;
+    left: 292px;
+    width: 700px;
+    min-width: 600px;
+}
+
+.header_row .module li {
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+}
+
+.header_row .module li a {
+    color: white;
+    cursor: default;
+    line-height: 1.5em;
+    padding-bottom: 4px;
+    text-decoration: none;
+    blr:expression(this.Onfocus = this.blur());
+}
+
+
+/*
+ * Content
+ */
+#center-row {
+    background-color: #F0F1F1;
+}
+
+#center-row #form {
+    width: 990px;
+    height: 100%;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+}
+
+#form .component {
+    margin: 0;
+}
+
+#form .progress {
+    padding: 30px 0 15px 0;
+    height: 65px;
+}
+
+/* progressbar */
+.progress #progressbar {
+    width: 1050px;
+    margin-left: -30px;
+    list-style: none;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.progress #progressbar li {
+    float: left;
+    text-align: center;
+    list-style: none;
+}
+
+.progress .UCM61XX li {
+    width: 175px;
+}
+
+.progress .UCM65XX li {
+    width: 150px;
+}
+
+#progressbar .step-name {
+    padding: 0 0 15px 0;
+    color: #AAA;
+    font-size: 13px;
+    height: 14px;
+    line-height: 14px;
+}
+
+#progressbar .step-cur .step-name {
+    color: #009349;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#progressbar .step-no {
+    height: 36px;
+    line-height: 36px;
+    font-family: 'arial black';
+    color: #fff;
+    font-size: 16px;
+    background: url(../images/resource.png) no-repeat 50% -108px;
+}
+
+#progressbar .step-cur .step-no {
+    background-position: 50% 0;
+}
+
+#progressbar .step-last .step-no {
+    background-position: 50% -144px;
+}
+
+#progressbar .step-done .step-no {
+    background-position: 50% -180px;
+}
+
+#progressbar .step-first .step-done .step-no {
+    background-position: 50% -216px;
+}
+
+#progressbar .step-first .step-cur .step-no {
+    background-position: 50% -36px;
+}
+
+#progressbar .step-last .step-cur .step-no {
+    background-position: 50% -72px;
+}
+
+#form .content {
+    position: absolute;
+    top: 110px;
+    bottom: 30px;
+    overflow: auto;
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px 80px 30px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+.content .mCustomScrollBox .mCSB_scrollTools {
+    left: inherit;
+    right: 0;
+}
+
+.content .mCustomScrollBox .mCSB_container {
+    margin: 0 20px;
+}
+
+.content .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.content .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+    background: #444;
+    filter: "alpha(opacity=90)";
+    -ms-filter: "alpha(opacity=90)"; /* old ie */
+}
+
+.content fieldset {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    display: none;
+    position: absolute; 
+}
+
+/* headings */
+.content fieldset .fs-title {
+    font-size: 18px;
+    color: #2C3E50;
+    margin: 10px 0 20px 0;
+}
+
+.content fieldset .fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin: 0 200px 20px 200px;
+}
+
+.content fieldset .ui-tooltip {
+    text-align: left;
+}
+
+.content fieldset .section-body {
+    text-align: left;
+    padding: 0 100px;
+}
+
+.GSRTL .content fieldset .section-body {
+    text-align: right;
+}
+
+.content fieldset .section-body .section-title {
+    margin: 10px 0;
+}
+
+.content fieldset .section-body .field-content {
+    width: 450px;
+}
+
+.content fieldset .section-body div.glab span.tooltip {
+    margin-top: 3px;
+}
+
+.content fieldset .section-body .radio_wrap {
+    line-height: 32px;
+}
+
+.content fieldset .section-body #cap_warning {
+    display: none;
+    position: relative;
+    left: 220px;
+    color: red;
+}
+
+.content fieldset .section-body .radio_wrap span,
+.content fieldset .section-body .radio_wrap input[type=text] {
+    display: inline-block;
+    position: relative;
+    top: -6px;
+}
+
+.content fieldset .section-body .popover {
+    position: absolute;
+    top: -10px;
+    left: 200px;
+    z-index: 1060;
+    display: none;
+    width: 300px;
+    min-height: 50px;
+    padding: 1px;
+    text-align: left;
+    white-space: normal;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.GSRTL .content fieldset .section-body .popover {
+    left: auto;
+    right: 200px;
+    text-align: right;
+}
+
+.content fieldset .section-body .popover.right {
+    margin-left: 10px;
+}
+
+.GSRTL .content fieldset .section-body .popover.right {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.content fieldset .section-body .popover > .triangle {
+    border-width: 11px;
+}
+
+.content fieldset .section-body .popover :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.content fieldset .section-body .popover > .triangle,
+.content fieldset .section-body .popover > .triangle:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.content fieldset .section-body .popover > .triangle:after {
+    content: "";
+    border-width: 10px;
+}
+
+.content fieldset .section-body .popover.right > .triangle {
+    top: 23px;
+    left: -11px;
+    margin-top: -11px;
+    border-right-color: #999;
+    border-right-color: rgba(0,0,0,.25);
+    border-left-width: 0;
+}
+
+.GSRTL .content fieldset .section-body .popover.right > .triangle {
+    left: auto;
+    right: -11px;
+    border-left-color: #999;
+    border-left-color: rgba(0,0,0,.25);
+    border-left-width: 11px;
+    border-right-width: 0;
+}
+
+.content fieldset .section-body .popover.right > .triangle:after {
+    bottom: -10px;
+    left: 1px;
+    content: " ";
+    border-right-color: #fff;
+    border-left-width: 0;
+}
+
+.GSRTL .content fieldset .section-body .popover.right > .triangle:after {
+    left: -11px;
+    border-left-color: #fff;
+    border-left-width: 10px;
+    border-right-width: 0;
+}
+
+.content fieldset .section-body .popover-title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 5px 5px 0 0;
+}
+
+.content fieldset .section-body .popover-content {
+    padding: 9px 14px;
+}
+
+.content fieldset .section-body .trunk-button {
+    margin: 10px 0 20px 0;
+}
+
+.content fieldset .section-body .trunk-button #existedDataContainer {
+    display: inline-block;
+    position: relative;
+}
+
+.content fieldset .section-body .trunk-button #existedOutboundRules {
+    display: inline-block;
+    color: #4082a7;
+    cursor: pointer;
+}
+
+.content fieldset .section-body .trunk-button .popover {
+    width: 550px;
+    height: 320px;
+    top: -17px;
+}
+
+.content fieldset .section-body .trunk-button .ui-jqgrid {
+    margin: 10px 0;
+}
+
+.content fieldset .section-body .trunk-list .members {
+    line-height: 24px;
+}
+
+.content fieldset .section-body .trunk-list .ui-pg-table {
+    padding-right: 4px;
+}
+
+.content fieldset .section-body .trunk-list .pageDes {
+    left: 4px;
+}
+
+.content fieldset .section-body .trunk-content,
+.content fieldset .section-body .trunk-content .analog {
+    display: none;
+}
+
+.content fieldset .section-body .trunk-content .selectDiv {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+}
+
+.content fieldset .section-body .trunk-content .field-cell.last {
+    text-align: center;
+}
+
+.content fieldset .section-body .trunk-content .fxo-ports-container {
+    display: inline-block;
+    position: relative;
+}
+
+.content fieldset#summary .title {
+    clear: both;
+    color: #4082a7;
+    margin: 0 0 20px 0;
+    padding: 40px 5px 5px 20px;
+    border-bottom: solid 1px;
+    font: 15px "微软雅黑",tahoma,arial,"宋体";
+    font-weight: bold;
+}
+
+.content fieldset#summary .title.first {
+    padding: 5px 5px 5px 20px;
+}
+
+.trunk-content .up {
+    width: 36px;
+    height: 29px;
+    background: url(../images/FXO_disconnected.png) center center no-repeat;
+    float: left;
+    cursor: pointer;
+}
+
+.trunk-content .up.selected,
+.trunk-content .up:hover {
+    background: url(../images/FXO_connected.png) center center no-repeat;
+}
+
+.trunk-content .up.disabled {
+    cursor: default;
+    background: url(../images/FXO_unconfigured.png) center center no-repeat;
+}
+
+.trunk-content .up .upindex {
+    width: 36px;
+    height: 29px;
+    font-size: 9px;
+    color: #2a2a2a;
+    text-align: center;
+    float: left;
+    padding-top: 4px;
+}
+
+.trunk-content .down {
+    width: 36px;
+    height: 29px;
+    background: url(../images/FXO_disconnected_r.png) center center no-repeat;
+    float: left;
+    cursor: pointer;
+}
+
+.trunk-content .down.selected,
+.trunk-content .down:hover {
+    background: url(../images/FXO_connected_r.png) center center no-repeat;
+}
+
+.trunk-content .down.disabled {
+    cursor: default;
+    background: url(../images/FXO_unconfigured_r.png) center center no-repeat;
+}
+
+.trunk-content .down .downindex {
+    width: 36px;
+    height: 29px;
+    font-size: 9px;
+    color: #2a2a2a;
+    text-align: center;
+    padding-top: 1px;
+    float: left;
+}
+
+.popover.fxo-ports .up {
+    float: none;
+    cursor: default;
+    display: inline-block;
+}
+
+.popover.fxo-ports .up:hover {
+    background: url(../images/FXO_disconnected.png) center center no-repeat;
+}
+
+.popover.fxo-ports .up.selected:hover {
+    background: url(../images/FXO_connected.png) center center no-repeat;
+}
+
+.popover.fxo-ports .up.disabled:hover {
+    background: url(../images/FXO_unconfigured.png) center center no-repeat;
+}
+
+.popover.fxo-ports .popover-content > span {
+    position: relative;
+    top: -9px;
+}
+
+
+/* inputs
+.content input,
+.content textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 13px;
+} */
+
+#form .control-bottons {
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* buttons */
+.control-bottons .action-button {
+    width: 105px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 6px 5px;
+    margin: 10px 5px;
+}
+
+.control-bottons .next,
+.control-bottons .save,
+.control-bottons .prev {
+    background: #27AE60;
+}
+
+.control-bottons .prev,
+.control-bottons .save {
+    display: none;
+}
+
+.control-bottons .quit {
+    background: #ed9845;
+}
+
+.control-bottons .next:hover,
+.control-bottons .save:hover,
+.control-bottons .prev:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.control-bottons .quit:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ed9845;
+}
+
+
+/*
+ * Foot
+ */
+#footer-row,
+.copyrights {
+    width: 100%;
+}
+
+
+/*
+ * Bottom Shadow
+ */
+.right_bottom_shadow {
+    width: 100%;
+}
+
+.GSRTL select.styled {
+    right: 0;
+    left: auto;
+}

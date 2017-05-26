@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>VoIP Trunks DOD Mapping</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #codec_div div { 
+            float: left;
+            height: 85px;
+        }
+        #codec_div img {
+            top: 22px;
+            display: block;
+            position: relative;
+        }
+        #codec_div select {
+            width: 140px;
+            margin-right: 10px;
+            margin-left: 3px;
+            height: 75px;
+        }
+        #codec_div span {
+            display: block;
+            text-align: center;
+        }
+        .selectIcon {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .click {
+            padding-top: 33px;
+        }
+        .field-cell .field-content-special {
+            width: 300px;
+        }
+        #number{
+            margin-bottom: 12px;
+        }
+        .dod_flipbox {
+            background-color: white; 
+        }
+        #editForm {
+            min-height: 400px;
+        }
+        .flipbox-container {
+            min-height: 300px
+        }
+        #edit_includeCheckboxes_div table thead th, table tbody td {
+            border-bottom: 0;
+        }
+        .tfoot {
+            background: white;
+        }
+        .tfoot tr {
+            height: 48px;
+        }
+        .pageDes {
+            float: left;
+            color: #225685;
+            position: relative;
+            left: 4px;
+        }
+        .total, .current {
+            margin-right: 4px;
+        }
+        .jump {
+            width: 30px!important;
+            height: 16px;
+            background: white;
+            margin-right: 4px;
+            border: 1px solid gray;
+        }
+        .btn-paging {
+            line-height: 10px;
+            padding: 4px 6px;
+            font-size: 13px;
+        }
+        .btn-go {
+            width: auto;
+        }
+        .pageOptions {
+            position: relative;
+            right: 4px;
+            float: right;
+        }
+        div.pageOptions button {
+            margin-right: 2px;
+        }
+        .call {
+            text-align: left;
+        }
+        .ui-jqgrid {
+            margin-top: 0;
+            border-top: 0;
+        }
+        .ui-jqgrid .ui-jqgrid-bdiv {
+            overflow: hidden;
+        }
+        .ui-jqgrid .ui-jqgrid-pager {
+            height: 30px;
+        }
+        .ui-jqgrid .ui-pager-control {
+            padding-top: 0;
+        }
+        .ui-jqgrid .ui-pg-table {
+            padding-bottom:1px; 
+            padding-right: 2px;
+        }
+        .ui-jqgrid .pageDes {
+            left: 2px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" autocomplete="off">
+        <div id="editForm" style="width: 700px; overflow: hidden;">
+            <div class="section-body">
+                <div class="lite_desc">
+                    <span locale="LANG2679"></span>
+                </div>
+                <div class="flipbox-container" style='width:650px; margin: 0 auto;'>
+                    <div class="dod_flipbox">
+                        <div class='top_buttons'>
+                            <button type="button" id="btnAdd" class="btn btn-update" align='left' locale="LANG2676"></button>
+                            <button type="button" id="btnEdit" class="btn btn-update" align='left' locale="LANG2675"></button>
+                        </div>
+                        <table id='dod_list'></table>
+                        <div id='dod_list_pager'></div>
+                    </div>
+                </div>
+                <!--  ended of ldap fro trunk  -->
+                <div class="field-cell last" style="text-align: center;">
+                    <!-- <button type="button" id="edit_DOD_back" class="btn btn-cancel" locale="LANG2914" onclick="hide()"></button> -->
+                    <button type="button" id="edit_DOD_cancel" class="btn btn-cancel" locale="LANG726"></button>
+                    <button type="submit" id="edit_DOD_save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/object.customs.js"></script>
+    <script type="text/javascript" src="../js/excanvas.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.flippy.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/trunk-dod-modal.js"></script>
+</body>
+</html>

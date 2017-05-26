@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Custom Privilege Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #leftSelect,
+    #rightSelect {
+        width: 230px;
+        height: 95px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5168" tooltip="@LANG5168"></div>
+                    <div class="field-content">
+                        <input type="text" id="privilege_name" name="privilege_name" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell general-user">
+                    <div class="field-label" glabel="@LANG5228" tooltip="@LANG5228"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="en_rm_voice_recording" name="en_rm_voice_recording" checked />
+                    </div>
+                </div>
+                <div class="field-cell modules">
+                    <table cellpadding="2" cellspacing="2" border="0" width="90%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG5170 LANG5169"></b>
+                            </td>
+                            <td width="50" align="center"></td>
+                            <td align="center" valign="top">
+                                <b locale="LANG5171 LANG5169"></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRight"></span>
+                                <span class="selectIcon addRight" id="oneToRight"></span>
+                                <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="allToLeft"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select name="rightSelect" id="rightSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/custom-privilege-modal.js"></script>
+</body>
+
+</html>

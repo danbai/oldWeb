@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG704">SIP Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG704"></div>
+    <form id="form">
+        <div class='section-title' locale="LANG699">Outbound SIP Registrations</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1893" tooltip="@LANG1894">
+                </div>
+                <div class="field-content">
+                    <input type='text' dfalt='20' id="registertimeout" name="registertimeout" maxlength="8" class="inputWidth60" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1890" tooltip="@LANG1891">
+                </div>
+                <div class="field-content">
+                    <input type='text' dfalt='0' id="registerattempts" name="registerattempts" maxlength="4" class="inputWidth60" />
+                </div>
+            </div>
+        </div>
+        <div class='section-title' locale="LANG700">Video</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1886" tooltip="@LANG1887">
+                </div>
+                <div class="field-content">
+                    <input type='text' dfalt="384" id="maxcallbitrate" name="maxcallbitrate" maxlength="8" class="inputWidth60" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1898" tooltip="@LANG1899">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="videosupport" name="videosupport" />
+                </div>
+            </div>
+<!--             <div class="field-cell">
+                <div class="field-label" glabel="@LANG1884" tooltip="@LANG1885">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="callevents" name="callevents" />
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1896" tooltip="@LANG1897">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' checked id="alwaysauthreject" name="alwaysauthreject" />
+                </div>
+            </div>
+        </div>
+        <div class='section-title' locale="LANG4550">SDP Attrbute Passthrough</div>
+        <div calss="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4552" tooltip="@LANG4551">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' checked id="attr_passthrough" name="attr_passthrough" />
+                </div>
+            </div>
+        </div>
+        <div class='section-title' locale="LANG4774">Early Media</div>
+        <div calss="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4776" tooltip="@LANG4775">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' checked id="use_final_sdp" name="use_final_sdp" />
+                </div>
+            </div>
+        </div>
+       <!-- <div class='section-title' locale="LANG5036">NAT</div>
+        <div calss="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5038" tooltip="@LANG5037">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' checked id="use_any_udp_addr" name="use_any_udp_addr" />
+                </div>
+            </div>
+        </div>-->
+        <div class='section-title' style="display: none;" locale="LANG5041">RTP proxy</div>
+        <div calss="section-body" style="display: none;">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5043" tooltip="@LANG5042">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' checked id="rtp_proxy" name="rtp_proxy" />
+                </div>
+            </div>
+        </div>
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" glabel="@LANG1888" tooltip="@LANG1889">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="g726nonstandard" name="g726nonstandard" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                    </button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/sip-misc.js"></script>
+</body>
+</html>

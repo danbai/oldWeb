@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4067">Fax Sending</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-content-special {
+            left: 2px;
+        }
+        .field-cell .field-label {
+            width: 230px;
+        }
+        div.glab span.label {
+            width: 190px;
+        }
+        .section-title {
+            margin: 10px 0;
+        }
+        .ui-jqgrid {
+            margin-top: 0;
+        }
+        #progress .progressbar {
+            position: relative;
+            margin: 15px 100px;
+        }
+        #progress .progress-label {
+            position: absolute;
+            left: 50%;
+            top: 4px;
+            font-weight: bold;
+            color: #3A3C3B;
+        }
+        .progressbar.ui-widget-content {
+            border: 1px solid #5cb85c;
+        }
+        .progressbar .ui-widget-header {
+            background: #5cb85c;
+            background-image: none;
+        }
+        .progressbar .ui-progressbar-overlay {
+            background-color: #FFF;
+        }
+        .section-title-specail {
+            margin: 10px 0 0 0;
+        }
+        .table_fax_search tr {
+            padding: 5px;
+            background: #EFEFEF;
+        }
+        .table_fax_search tr td {
+            padding: 5px;
+        }
+        #btnSearch {
+            margin-left: 30px;
+        }
+        .GSRTL #btnSearch {
+            margin-left: 8px;
+            margin-right: 30px;
+        }
+        /* Interaction Cues */
+        .form .ui-state-highlight,
+        .form .ui-content .ui-state-highlight,
+        .form .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+        .form .ui-state-highlight a,
+        .form .ui-content .ui-state-highlight a,
+        .form .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4067"></div>
+    <div class="section-body">
+        <form id="form" class="form">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4065" tooltip="@LANG4065"></div>
+                <div class="field-content">
+                    <input type='text' id='faxNum' name="faxNum" maxlength="256" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4064" tooltip="@LANG4095"></div>
+                <div class="field-content">
+                    <input type="text" id="fileUrl" name="fileUrl" readonly="readonly"/>
+                    <button type="button" id="upload" class="selectBtn"></button>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG4068"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="section-title section-title-specail" locale="LANG4086"></div>
+    <form id="searchForm" class="form">
+        <table id='table_fax_search' class='table_fax_search'>
+            <tr>
+                <td>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG4065" tooltip="@LANG4065"></div>
+                        <div class="field-content">
+                            <input type='text' id='callee' name="callee">
+                            <button type="submit" id="btnSearch" class="btn btn-update" locale="LANG803">Search</button>
+                            <button type="button" id="search_all" class="btn btn-update" locale="LANG4142 LANG4146"></button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="padding: 6px;">
+            <button type="button" id="batchDeleteSelected" class="btn btn-update" locale="LANG3872 LANG4146">Delete Selected Records</button>
+            <button type="button" id="btnDeleteAll" class="btn btn-update" locale="LANG740">Delete All</button>
+        </div>
+    </form>
+    <table id="progress"></table>
+    <div id="progress-pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/fax-sending.js"></script>
+</body>
+</html>

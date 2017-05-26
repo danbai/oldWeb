@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4815">CTI Server</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell .field-label {
+            width: 230px;
+        }
+        div.glab span.label {
+            width: 190px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4815"></div>
+    <div class="section-body">
+        <form id="form">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG618" tooltip="@LANG4827"></div>
+                <div class="field-content">
+                    <input type='text' id='port' name="port" maxlength="5" class="inputWidth50 entry">
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ctiserver.js"></script>
+</body>
+</html>

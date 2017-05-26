@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG717">Email settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG717"></div>
+    <form id="form" autocomplete="off">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG2046" tooltip="@LANG2047"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='smtp_tls_enable' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG84" tooltip="@LANG2049"></div>
+                <div class="field-content">
+                    <select id="smtp_type" name="smtp_type" class="field" onchange="onTypeChange();">
+                        <option value="client" locale="LANG2044"></option>
+                        <option value="mta" locale="LANG2045"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5231" tooltip="@LANG5232"></div>
+                <div class="field-content">
+                    <select id='mail_context_mode' name='mail_context_mode'>
+                        <option value="html" locale="LANG5230"></option>
+                        <option value="txt" locale="LANG5229"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell smtp_mta">
+                <div class="field-label"  glabel="@LANG2050" tooltip="@LANG2051"></div>
+                <div class="field-content">
+                    <input type='text' id="smtp_domain" name='smtp_domain' class="inputWidth182 dis_static field" maxlength="60" maxlen="60" />
+                </div>
+            </div>
+            <div class="field-cell smtp_client" style="display: none;">
+                <div class="field-label"  glabel="@LANG2052" tooltip="@LANG2053"></div>
+                <div class="field-content">
+                    <input type='text' id="smtp_server" name='smtp_server' class="inputWidth182 dis_static field" maxlength="60" maxlen="60" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5444" tooltip="@LANG5445"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enable_auth' name="enable_auth" />
+                </div>
+            </div>
+            <div class="field-cell smtp_client" style="display: none;">
+                <div class="field-label"  glabel="@LANG72" tooltip="@LANG2054"></div>
+                <div class="field-content">
+                    <input type='text' name='smtp_username' style="display: none;" />
+                    <input type='text' id="smtp_username" name='smtp_username' class="inputWidth182 dis_static field" maxlength="60"  maxlen="60" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field-cell smtp_client" style="display: none;">
+                <div class="field-label"  glabel="@LANG73" tooltip="@LANG2055"></div>
+                <div class="field-content">
+                    <input type='password' name='smtp_password' style="display: none;" />
+                    <input type='password' id="smtp_password" name='smtp_password' class="inputWidth182 dis_static field" maxlength="60" maxlen="60" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG2271" tooltip="@LANG2255"></div>
+                <div class="field-content">
+                    <input type='text' id='fromstring' name='fromstring' class="inputWidth182 field" maxlength="64" maxlen="64" dfalt="UCM" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG2056" tooltip="@LANG2057"></div>
+                <div class="field-content">
+                    <input type='text' id='serveremail' name='serveremail' class="inputWidth182 dis_static field" maxlength="120" maxlen="120" />
+                </div>
+            </div>
+            <div id="error" class="error"></div>
+            <div class="field-cell last" id="options">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="button" class="btn btn-paging" onclick="showTestForm();" locale="LANG2273"></button>
+                    <button type="submit" id="save" class="btn btn-save"  locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/smtp-settings.js"></script>
+</body>
+</html>

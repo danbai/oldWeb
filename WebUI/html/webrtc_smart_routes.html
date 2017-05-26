@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG4496">WebRTC Smart Routes</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell .field-label {
+        width: auto;
+    }
+    
+    div.glab {
+        padding: 4px 6px;
+    }
+    
+    div.glab span.label {
+        width: 60px;
+    }
+    
+    div.members {
+        line-height: 24px;
+    }
+    
+    .blue {
+        color: blue;
+    }
+    
+    .green {
+        color: green;
+    }
+
+    .disabled {
+        cursor: default;
+    }
+
+    .section-title {
+        margin: 30px 0 5px 0;
+    }
+
+    .message_buttons {
+        margin: 10px 0;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class="lite_Heading" locale="LANG4496"></div>
+    <div class='top_buttons'>
+        <button type="button" id="btnHeaders" class="btn btn-update" locale="LANG4497"></button>
+        <button type="button" id="btnAdd" class="btn btn-update" locale="LANG4340 LANG4503">Create New WebRTC Smart Route</button>
+    </div>
+    <table id="smartRouterList"></table>
+    <div id="smartRouterList_pager"></div>
+    <div class='section-title' locale="LANG4814"></div>
+    <div class='message_buttons'>
+        <button type="button" id="btnAddMessage" class="btn btn-update" locale="LANG4340 LANG4814">Create New WebRTC Message Smart Route</button>
+    </div>
+    <table id="messageRouterList"></table>
+    <div id="messageRouterList_pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/webrtc-smart-routes.js"></script>
+</body>
+
+</html>

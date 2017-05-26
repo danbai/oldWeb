@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG633">Backup / Restore Configurations</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #outputBody {
+        height: 270px;
+        overflow: hidden;
+    }
+    
+    #bkpfilesTable_div {
+        max-height: 200px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0;
+    }
+    
+    .special {
+        margin-top: 12px;
+    }
+    
+    .table {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset,0px 0px 1px rgba(200, 200, 200, 0.5); */
+        
+        border-spacing: 0px;
+        /* table-layout: fixed; */
+        
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    .table,
+    table.tableWidget {
+        margin-top: 6px;
+    }
+    
+    #outputBody table thead th,
+    #outputBody table tbody td {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+    
+    table tbody td.noUser {
+        border-bottom: 0;
+        height: 30px;
+    }
+    
+    table tbody {
+        background-color: #fff;
+    }
+    
+    table.table tbody td span,
+    table.table thead th span {
+        cursor: pointer;
+        /* color: #225685; */
+        
+        margin-left: 8px;
+    }
+    
+    .thead tr,
+    table.table tbody tr.frow {
+        background: #91C6E5;
+        height: 23px;
+        color: #3A3C3B;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .tbody tr {
+        height: 23px;
+    }
+    
+    table tbody tr.even {
+        background: #EFEFEF;
+    }
+    
+    table tbody tr.odd {
+        background: #FFFFFF;
+    }
+    
+    .tbody tr:hover,
+    table.table tbody tr.even:hover,
+    table.table tbody tr.odd:hover {
+        background: #CAECFF;
+    }
+    
+    .top_buttons_special {
+        margin-top: 20px;
+    }
+    
+    #cleaner_log {
+        color: #000;
+        min-height: 200px;
+        margin-top: 15px;
+    }
+    
+    .log_title {
+        margin: 15px 0;
+    }
+    
+    #cleaner_log div {
+        color: #f00;
+    }
+    
+    #cleaner_log .success {
+        color: #008000;
+    }
+
+    .ui-jqgrid {
+        margin-top: 0;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG634"></div>
+    <a href="#top" localeTitle="LANG3962" id="toTop"></a>
+    <form id="form">
+        <div class='section-title' locale="LANG635">Backup Configuration</div>
+        <div class="top_buttons">
+            <button type="button" id="createBackupfile" class="btn btn-update" locale="LANG758"></button>
+            <button type="button" id="uploadBackupfile" class="btn btn-update" locale="LANG2256"></button>
+            <button type="button" id="RegularBackupfile" class="btn btn-update" locale="LANG4048"></button>
+        </div>
+        <div class="lite_desc" locale="LANG3431 LANG2256"></div>
+        <!-- <div class="section-body">
+            <div id='outputBody'></div>
+        </div> -->
+        <div class='section-title' locale="LANG636">List of Previous Configuration Backups</div>
+        <div class="section-body special">
+            <div id="localBackupFileDiv">
+                <div class="top_buttons">
+                    <button type="button" class="btn btn-update delete-select" locale="LANG3872 LANG2913"></button>
+                    <!-- <button type="button" class="btn btn-update delete-all" locale="LANG3873 LANG2913"></button> -->
+                </div>
+                <div class="lite_desc" locale="LANG2915"></div>
+                <table id="localBackupFile_list"></table>
+                <div id="localBackupFile_list_pager"></div>
+            </div>
+            <div id="externalBackupFileDiv">
+                <div class="top_buttons top_buttons_special">
+                    <button type="button" class="btn btn-update delete-select" locale="LANG3872 LANG2913"></button>
+                    <!-- <button type="button" class="btn btn-update delete-all" locale="LANG3873 LANG2913"></button> -->
+                </div>
+                <div class="lite_desc" locale="LANG2916"></div>
+                <!-- <table id="externalBackupFile_list"></table>
+                <div id="externalBackupFile_list_pager"></div> -->
+            </div>
+            <div id="mmcblk1pBackupFileDiv">
+                <div class="top_buttons top_buttons_special">
+                    <button type="button" class="btn btn-update delete-select" locale="LANG3872 LANG2913"></button>
+                    <!-- <button type="button" class="btn btn-update delete-all" locale="LANG3873 LANG2913"></button> -->
+                </div>
+                <div class="lite_desc" locale="LANG2920"></div>
+                <!-- <table id="mmcblk1pBackupFile_list"></table> 
+                <div id="mmcblk1pBackupFile_list_pager"></div> -->
+            </div>
+        </div>
+    </form>
+    <div class="section-title log_title" locale="LANG4076">Regular Backup Log</div>
+    <div class="field-content">
+        <button type="button" id="clean" class="btn btn-paging" locale="LANG743"></button>
+    </div>
+    <div id='cleaner_log'></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/backup.js"></script>
+</body>
+
+</html>

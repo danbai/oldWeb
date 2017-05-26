@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG632">Manage Zero Config</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="discoverDiv" style="width: 650px;">
+            <div class="lite_desc">
+                <span locale="LANG1316"></span>
+            </div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4816" tooltip="@LANG4817"></div>
+                    <div class="field-content">
+                        <div class="content" id="ucm_ip"></div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4818" tooltip="@LANG4819"></div>
+                    <div class="field-content">
+                        <div class="content" id="network_segment"></div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4820" tooltip="@LANG4821"></div>
+                    <div class="field-content">
+                        <div class="content" id="broadcast_ip"></div>
+                    </div>
+                </div>
+                <div class="field-cell" id="interface">
+                    <div class="field-label" gLabel="@LANG1577" tooltip="@LANG2225"></div>
+                    <div class="field-content">
+                        <select name="capture" id="select_mode" >
+                            <option value="wan" locale="LANG264"></option>
+                            <option value="lan" locale="LANG265"></option>
+                            <option value="lan1" locale="LANG266"></option>
+                            <option value="lan2" locale="LANG267"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1319" tooltip="@LANG1320"></div>
+                    <div class="field-content">
+                        <select id='method'>
+                            <option value='Ping'>Ping</option>
+                            <option value='ARP'>ARP</option>
+                            <option value='SipMsg'>SIP-Message</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1317" tooltip="@LANG1318"></div>
+                    <div class="field-content">
+                        <input type="text" id='ip1' name='ip1' class="inputWidth30" disabled="disable" />&nbsp;.
+                        <input type="text" id='ip2' name='ip2' class="inputWidth30" maxlength="3" disabled="disabled" />&nbsp;.
+                        <input type="text" id='ip3' name='ip3' class="inputWidth30" maxlength="3" disabled="disabled" />&nbsp;.
+                        <input type="text" id='ip4' name='ip4' class="inputWidth30" maxlength="3" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" id='cancel' class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id='save' class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/zc-autodiscover.js"></script>
+</body>
+</html>

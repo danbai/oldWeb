@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG737">Reboot</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    table thead th,
+    table tbody td {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+    
+    .table_record {
+        border: 1px solid #d6d6d6;
+        border-collapse: collapse;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        padding: 3px;
+        word-wrap: break-word;
+        word-break: break-all;
+        border-spacing: 0px;
+    }
+    
+    .table_record thead {
+        background: #91C6E5;
+        color: #3A3C3B;
+        font-size: 17px;
+    }
+    
+    .table_record thead th {
+        font-weight: bold;
+        height: 23px;
+        text-align: center;
+    }
+    
+    .table_record tr td {
+        padding: 3px;
+    }
+    
+    #IPList .checkbox {
+        left: 100px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form>
+        <div id="IPContainer" style="width: 600px;" align="center">
+            <div id="ipList"></div>
+            <div class="field-cell modal-commands" style="width: 300px; text-align:center;">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button id="rebootSubmit" type="button" class="btn btn-update" locale="LANG737"></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/extension-reboot.js"></script>
+</body>
+
+</html>

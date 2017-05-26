@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG685">DAHDI Hardware Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #errmsg {
+            border: 1px solid #666666;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding: 20px 10px 20px 10px;
+            font-size: 125%;
+            text-align: center;
+            background-color: #FFFFFF;
+        }
+        .advanced {
+            text-align: left;
+        }
+        .advanced > div > span {
+            float: left;
+            margin-right: 5px;
+            text-align: right;
+            width: 50%;
+        }
+        .advanced > div > input, .advanced > div > select {
+            margin: 2px 0 3px 0;
+            text-align: left;
+        }
+        #analog_settings {
+            margin-top: 12px;
+        }
+        #vpmsettings, #brihardware, #digital_settings {
+            display: none;
+        }
+        .pageheading {
+            padding: 10px 10px 4px 10px;
+            font-size: 135%;
+            text-align: center;
+            font-weight: bold;
+        }
+        #loadZone {
+            top: 0px;
+        }
+        .field-cell div.field-label-special {
+            width: 234px;
+        }
+        .field-cell button {
+            position: relative;
+            top: 3px;
+            float: left;
+        }
+        .field-content-tissOverride {
+            margin-right: 12px;
+        }
+        .divSelect {
+            top: 4px;
+        }
+        .section-body {
+            margin-top: 5px;
+        }
+        #digital_settings {
+            margin-top: 10px;
+        }
+        .room_noselect, .room_select {
+            position: relative;
+            left: 30px;
+            float: left;
+        }
+        .spanType {
+            position: relative;
+            left: -11px;
+        }
+        .tableWidget  .noPadding {
+            padding: 0;
+        }
+        span.groupTh {
+            color: #747474;
+            cursor: "default";
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG686"></div>
+    <div id='digital_settings'>
+        <!-- <div class="section-title" locale="LANG686">Digital Hardware</div> -->
+        <div class="section-body">
+            <div style="overflow: auto;">
+                <table id="digitalcardstable" cellpadding="0" cellspacing="0" border="0" class="tableWidget" style="width: 100%;"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/hardware-dahdi-digital.js"></script>
+</body>
+</html>

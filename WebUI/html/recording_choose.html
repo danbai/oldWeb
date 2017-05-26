@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG3378">Recordings Storage</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+       .field-cell{
+            display: inline-block;
+            width: 100%;
+        }
+        .field-cell .field-label {
+            width: 240px;
+        }
+        div.glab span.label {
+            width: 200px;
+        }
+    </style>
+</head>
+<body class="page">
+    <form id="form">
+        <div class='lite_Heading' locale="LANG3378"></div>
+        <div class="lite_desc" locale="LANG3379">Choose the device for store the recording files.</div>
+        <div class="section-body">
+            <div class="field-cell" >
+                <div class="field-label" glabel="@LANG3986" tooltip="@LANG3987">
+                </div>
+                <div class="field-content">
+                    <input type="checkbox" id="auto_device" name="auto_device" dfalt="yes" />
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="field-cell" id="usb_cell" style="display: none;">
+                <div class="field-label" glabel="@LANG263" tooltip="@LANG2916">
+                </div>
+                <div class="field-content">
+                    <input type="radio" id="usb" name="device" value="5" field_name='Rule Name' style="width: 80px;" />
+                </div>
+            </div>
+            <div class="field-cell" id="sd_cell" style="display: none;">
+                <div class="field-label" glabel="@LANG262" tooltip="@LANG2920">
+                </div>
+                <div class="field-content">
+                    <input type="radio" id="sd" name="device" value="2" field_name='Rule Name' style="width: 30px;" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1072" tooltip="@LANG2915">
+                </div>
+                <div class="field-content">
+                    <input type="radio" id="local" name="device" value="0" field_name='Rule Name' style="width: 30px;" checked="true" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" name="cancel" style="display: none;"></button>
+                    <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG727"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/recording-choose.js"></script>
+</body>
+</html>

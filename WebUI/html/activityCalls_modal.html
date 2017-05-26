@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Groups</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            display: block;
+            *display: inline; 
+            zoom: 1;
+        }
+        .field-cell .field-label {
+            width: 205px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        .field-label div.glab span.label {
+            width: 165px;
+        }
+        .field-content input[type=checkbox] {
+            position: relative;
+            top: 4px;
+        }
+        .modal-commands {
+            display: block;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="addUserForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3819">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="create_user_id" name="invite_name" maxlength="20" /> 
+                    </div>
+                </div>
+                <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG3820"></div>
+                    <div class="field-content">
+                        <select id="edit_extension" name="edit_extension" dfalt="default"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3838" tooltip="@LANG3839">
+                    </div>
+                    <div class="field-content">
+                        <select id="edit_mode" name="edit_mode" dfalt="default"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2351" tooltip="@LANG2352">
+                    </div>
+                    <div class="field-content">
+                        <input type="checkbox" id="need_confirm" name="need_confirm" checked="checked"/>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-update" id="addUser" locale="LANG769"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/activityCalls-modal.js"></script>
+</body>
+</html>

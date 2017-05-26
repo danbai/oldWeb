@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ *
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ * This project extends Asterisk GUI project and contains Grandstream Network's
+ * implementation which uses Asterisk GUI.
+ *
+ * Asterisk and Asterisk GUI are registered trademarks of Digium, Inc. 
+ * Please see http://www.asterisk.org for more information about the Asterisk 
+ * project.
+ *
+ * This program is free software, distributed under the terms of
+ * the GNU General Public License Version 2. See the LICENSE file
+ * at the top of the source tree.
+ *
+-->
+<html>
+
+<head>
+    <title>Backup / Restore Configurations</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell .field-label {
+        width: 250px;
+    }
+
+    div.glab span.label {
+        width: 210px;
+    }
+
+    .field-cell .special {
+        display: inline-block;
+    }
+    
+    .field-cell .special span {
+        position: relative;
+        margin-right: 8px;
+        top: -6px;
+    }
+    
+    #ModulesBody {
+        width: 390px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 650px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4804" tooltip="@LANG4804"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='mod_reset_enable' name="mod_reset_enable" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4805" tooltip="@LANG4805"></div>
+                    <div class="field-content" id="ModulesBody">
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="record" name="record"></input>
+                            <span locale="LANG2640"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="vfax" name="vfax"></input>
+                            <span locale="LANG4773 LANG95"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="voicemail_file" name="voicemail_file"></input>
+                            <span locale="LANG20"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="hom_file" name="hom_file"></input>
+                            <span locale="LANG27"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="prompt_tone" name="prompt_tone"></input>
+                            <span locale="LANG4752"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="cdr_log" name="cdr_log"></input>
+                            <span locale="LANG4053"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="zeroconfig" name="zeroconfig"></input>
+                            <span locale="LANG4773 LANG16"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="operation_log" name="operation_log"></input>
+                            <span locale="LANG3908"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="backup_file" name="backup_file"></input>
+                            <span locale="LANG4773 LANG62"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="corefile" name="corefile"></input>
+                            <span locale="LANG4807"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="troubleshooting" name="troubleshooting"></input>
+                            <span locale="LANG4773 LANG68"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" class="module-type" id="qmail" name="qmail"></input>
+                            <span locale="LANG4773 LANG4770"></span>
+                        </div>
+                        <div class="special">
+                            <input type="checkbox" id="select_all" name="select_all"></input>
+                            <span locale="LANG104"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/maintenance-modal.js"></script>
+</body>
+
+</html>

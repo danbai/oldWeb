@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG586">System Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+        .elist {
+            float: left;
+            width: 50%;
+        }
+        .first_li {
+            color: #225783;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body class="page">
+    <!--<div class='lite_Heading' locale="LANG5"></div>-->
+    <div class="section-body"> 
+        <ul id="pielist_disk" class="elist">
+            <li class="first_li" locale="LANG5190"></li>
+        </ul>
+        <ul id="pielist_node" class="elist">
+            <li class="first_li" locale="LANG5191"></li>
+        </ul> 
+    </div>
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="../js/excanvas.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="../js/sysinfo-disk.js"></script>
+</body>
+</html>

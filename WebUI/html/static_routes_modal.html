@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Static Routes</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #codec_div div { 
+            float: left;
+            height: 85px;
+        }
+        #codec_div img {
+            top: 22px;
+            display: block;
+            position: relative;
+        }
+        #codec_div select {
+            width: 140px;
+            margin-right: 10px;
+            margin-left: 3px;
+            height: 75px;
+        }
+        #codec_div span {
+            display: block;
+            text-align: center;
+        }
+        .selectIcon {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .click {
+            padding-top: 33px;
+        }
+        .field-cell .field-content-special {
+            width: 300px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" autocomplete="off">
+        <div id="editForm" style="width: 700px; overflow: hidden;">
+            <div class="section-body">
+                <div id="div_enabled" class="field-cell">
+                    <div class="field-label" glabel="@LANG2772" tooltip="@LANG3189"></div>
+                    <div align="left" class="field-content field-content-special">
+                        <input type='checkbox' id='route_enabled' />
+                    </div>
+                </div>
+                <div id="div_dest" class="field-cell">
+                    <div class="field-label" glabel="@LANG3049" tooltip="@LANG3050"></div>
+                    <div class="field-content">
+                        <input type="text" id="route_dest" name="route_dest" maxlength="32" />
+                    </div>
+                </div>
+                <div id="div_dest_ipv6" class="field-cell">
+                    <div class="field-label" glabel="@LANG3049" tooltip="@LANG5262"></div>
+                    <div class="field-content">
+                        <input type="text" id="route_dest_ipv6" name="route_dest_ipv6" maxlength="64" />
+                    </div>
+                </div>
+                <div id="div_netmask" class="field-cell">
+                    <div class="field-label" glabel="@LANG3051" tooltip="@LANG3052"></div>
+                    <div class="field-content">
+                        <input type="text" id="route_netmask" name="route_netmask" maxlength="32" value="255.255.255.0" />
+                    </div>
+                </div>
+                <div id="div_gateway" class="field-cell">
+                    <div class="field-label" glabel="@LANG3053" tooltip="@LANG3054"></div>
+                    <div class="field-content">
+                        <input type="text" id="route_gateway" name="route_gateway" maxlength="64" />
+                    </div>
+                </div>
+                <div id="div_iface" class="field-cell">
+                    <div class="field-label" glabel="@LANG3055" tooltip="@LANG3056"></div>
+                    <div align="left" class="field-content field-content-special">
+                        <select id="route_iface" name="route_iface" mSelect="true"></select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands">
+                    <button type="button" id="edit_static_routes_cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="edit_static_routes_save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/static-routes-modal.js"></script>
+</body>
+</html>

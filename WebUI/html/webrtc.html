@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<!--
+* Copyright (C) 2012-2015 Doubango Telecom <http://www.doubango.org>
+* License: BSD
+* This file is part of Open Source sipML5 solution <http://www.sipml5.org>
+-->
+<html>
+<!-- head -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>WebRTC</title>
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/bootstrap.css" rel="stylesheet" />
+    <style type="text/css">
+    input[type="text"],
+    input[type="password"] {
+        width: 185px;
+        padding: 1px 1px 2px 2px;
+        font-size: 12px;
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+    
+    .btn-group,
+    .call-options {
+        display: inline-block;
+    }
+    
+    .call-options {
+        padding: 5px;
+        background-color: #f0f0f0;
+        border: 1px solid #eee;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        -webkit-transition-duration: 2s;
+        -moz-transition-duration: 2s;
+        -o-transition-duration: 2s;
+    }
+    
+    .tab-video,
+    .div-video {
+        width: 100%;
+        height: 340px;
+        /* -webkit-transition-property: height;
+        -moz-transition-property: height;
+        -o-transition-property: height;
+        -webkit-transition-duration: 2s;
+        -moz-transition-duration: 2s;
+        -o-transition-duration: 2s; */
+    }
+    
+    .glass-panel {
+        z-index: 99;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+        background-color: Gray;
+    }
+    
+    .div-keypad {
+        z-index: 100;
+        position: fixed;
+        /* -moz-transition-property: left top;
+        -o-transition-property: left top;
+        -webkit-transition-duration: 2s;
+        -moz-transition-duration: 2s;
+        -o-transition-duration: 2s; */
+    }
+    
+    .previewvideo {
+        position: absolute;
+        width: 88px;
+        height: 72px;
+        margin-top: -72px;
+    }
+    
+    #divKeyPad {
+        width: 220px;
+    }
+    
+    #divKeyPad table tr td {
+        overflow: hidden;
+    }
+    
+    #divKeyPad button {
+        float: left;
+        height: 38px;
+    }
+    
+    .mt10 {
+        margin-top: 20px;
+    }
+    
+    #divCallCtrl {
+        clear: both;
+        display: none;
+        margin-top: 20px;
+        height: 340px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG4263">WebRTC</div>
+    <div class="top_buttons">
+        <button type="button" id="expert_mode" class="btn btn-update" locale="LANG229"></button>
+    </div>
+    <div class="section-body">
+        <form id="form" autocomplete="off">
+            <!--是否注册-->
+            <div class="section-title" locale="LANG3015"></div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <label align="center" id="txtRegStatus"></label>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4230" tooltip="@LANG4231">
+                </div>
+                <div class="field-content">
+                    <input type="text" id="txtDisplayName" name="txtDisplayName" value="" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG85" tooltip="@LANG1064">
+                </div>
+                <div class="field-content">
+                    <input type="text" id="txtPrivateIdentity" name="txtPrivateIdentity" value="" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4232" tooltip="@LANG4233">
+                </div>
+                <div class="field-content">
+                    <input type="text" name="txtPublicIdentity" style="display: none;" />
+                    <input type="text" id="txtPublicIdentity" name="txtPublicIdentity" value="" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG73" tooltip="@LANG1076">
+                </div>
+                <div class="field-content">
+                    <input type="password" name="txtPassword" style="display: none;" />
+                    <input type="password" id="txtPassword" name="txtPassword" value="" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4243" tooltip="@LANG4244">
+                </div>
+                <div class="field-content">
+                    <input type="text" id="txtWebsocketServerUrl" name="txtWebsocketServerUrl" value="" />
+                </div>
+            </div>
+            <!--<div class="field-cell">
+                <div class="field-label" glabel="@LANG4234" tooltip="@LANG4235">
+                </div>
+                <div class="field-content">
+                    <input type="text"  id="txtRealm" name="txtRealm" value="" />
+                </div>
+            </div>-->
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" class="btn btn-cancel" id="btnUnRegister" locale="LANG4451" disabled onclick='sipUnRegister();'></button>
+                    &nbsp;
+                    <button type="submit" class="btn btn-save" id="btnRegister" locale="LANG1892" disabled></button>
+                </div>
+            </div>
+            <!--/是否注册-->
+            <!--呼叫控制-->
+            <div class="section-title mt10" locale="LANG4228"></div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <label align="center" id="txtCallStatus"></label>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4236" tooltip="@LANG4237"></div>
+                <div class="field-content">
+                    <input type="text" id="txtPhoneNumber" name="txtPhoneNumber" value="" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <div class="btn-group">
+                        <button type="button" id="btnHangUp" class="btn btn-primary" locale="LANG97" onclick='sipHangUp();' disabled></button>
+                    </div>&nbsp;&nbsp;
+                    <div id="divBtnCallGroup" class="btn-group">
+                        <button id="btnCall" disabled class="btn btn-primary" data-toggle="dropdown">Call</button>
+                    </div>
+                </div>
+            </div>
+            <!--/呼叫控制-->
+            <!--四个按钮-->
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <div id='divCallOptions' class='call-options' style='display: none; margin-top: 0px; z-index: 10; position: relative; '>
+                        <!-- <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled onclick='toggleFullScreen();' /> &nbsp; -->
+                        <input type="button" class="btn" style="" id="btnMute" value="Mute" onclick='sipToggleMute();' /> &nbsp;
+                        <input type="button" class="btn" style="" id="btnHoldResume" value="Hold" onclick='sipToggleHoldResume();' /> &nbsp;
+                        <input type="button" class="btn" style="" id="btnTransfer" value="Transfer" onclick='sipTransfer();' /> &nbsp;
+                        <input type="button" class="btn" style="" id="btnKeyPad" value="KeyPad" onclick='openKeyPad();' />
+                    </div>
+                </div>
+            </div>
+            <!--/四个按钮-->
+            <div id="divCallCtrl">
+                <table style='width: 100%;'>
+                    <tr>
+                        <td id="tdVideo" class='tab-video'>
+                            <div id="divVideo" class='div-video'>
+                                <div id="divVideoRemote" style='position:relative; border:0px solid #009; height:100%; width:100%; z-index: auto;'>
+                                    <video class="video" width="100%" height="100%" id="video_remote" autoplay="autoplay" style="opacity: 0; background-color: #000000; -webkit-transition-property: opacity; -webkit-transition-duration: 2s;">
+                                    </video>
+                                </div>
+                                <div id="divVideoLocalWrapper" style="margin-left: 0px; border:0px solid #009; z-index: 1000">
+                                    <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                                    <div id="divVideoLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
+                                        <video class="video" width="100%" height="100%" id="video_local" autoplay="autoplay" muted="true" style="opacity: 0; background-color: #000000; -webkit-transition-property: opacity;
+                                            -webkit-transition-duration: 2s;">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div id="divScreencastLocalWrapper" style="margin-left: 90px; border:0px solid #009; z-index: 1000">
+                                    <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                                    <div id="divScreencastLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    <!-- Glass Panel -->
+    <div id='divGlassPanel' class='glass-panel' style='visibility:hidden'></div>
+    <!-- KeyPad Div -->
+    <div id='divKeyPad' class='span2 well div-keypad' style="left:0px; top:0px; width:250; height:240; visibility:hidden">
+        <table style="width: 100%; height: 100%">
+            <tr>
+                <td>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('1');">1</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('2');">2
+                        <br/>ABC</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('3');">3
+                        <br/>DEF</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('4');">4
+                        <br/>GHI</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('5');">5
+                        <br/>JKL</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('6');">6
+                        <br/>MNO</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('7');">7
+                        <br/>PQRS</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('8');">8
+                        <br/>TUV</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('9');">9
+                        <br/>WXYZ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('*');">*</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('0');">0
+                        <br/>OPER</button>
+                    <button type="button" style="width: 33%" class="btn" onclick="sipSendDTMF('#');">#</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3>
+                    <button type="button" style="width: 100%" class="btn btn-medium btn-danger" onclick="closeKeyPad();">close</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- Call button options -->
+    <ul id="ulCallOptions" class="dropdown-menu" style="visibility:hidden">
+        <li><a href="#" onclick='sipCall("call-audio");'>Audio</a></li>
+        <li><a href="#" onclick='sipCall("call-audiovideo");'>Video</a></li>
+        <li id='liScreenShare'><a href="#" onclick='sipShareScreen();'>Screen Share</a></li>
+        <!-- <li class="divider"></li>
+        <li><a href="#" onclick='uiDisableCallOptions();'><b>Disable these options</b></a></li> -->
+    </ul>
+    <!-- Audios -->
+    <audio id="audio_remote" autoplay="autoplay" />
+    <audio id="ringtone" loop src="../sounds/ringtone.wav" />
+    <audio id="ringbacktone" loop src="../sounds/ringbacktone.wav" />
+    <audio id="dtmfTone" src="../sounds/dtmf.wav" />
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../js/bootstrap/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-scrollspy.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-button.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-collapse.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-carousel.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="../js/SIPml-api.js"></script>
+    <script type="text/javascript" src="../js/webrtc.js"></script>
+</body>
+
+</html>

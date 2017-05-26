@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            padding:2px 0px;
+        }
+        .field-content{
+            width:210px;
+        }
+        .field-content select {
+            width:155px;
+        }
+        .field-content-special {
+            line-height: 28px
+        }
+        .field-content input[type=checkbox] {
+            position: relative;
+            top: 5px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="edit_callback_div" style="width: 650px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG3744"></div>
+                    <div class="field-content">
+                        <input type="text" id='name' name='name' maxlength="32" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3745" tooltip="@LANG3746"></div>
+                    <div class="field-content">
+                        <input type="text" id="number" name="number" maxlength="18" />
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2748" tooltip="@LANG3823"></div>
+                    <div class="field-content">
+                        <textarea id="callerid_pattern" name="callerid_pattern" cols="19" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3824" tooltip="@LANG3821"></div>
+                    <div class="field-content">
+                        <input type="text" id="outside_pre" name="outside_pre" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3747" tooltip="@LANG3748"></div>
+                    <div class="field-content">
+                        <input type="text" id="sleep_time" name="sleep_time" dfalt="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG168" tooltip="@LANG3749"></div>
+                    <div class="field-content">
+                        <select class="destination" id="destination_type" name="destination_type"></select>
+                    </div>
+                    <div class="field-content">
+                        <select id="destinationEventSelect" name="destinationEventSelect"></select>
+                        <input type="text" id='destinationEventText' name="destinationEventText" class="external_number" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell" style="visibility: hidden;">
+                    <div class="field-label"></div>
+                    <div class="field-content">
+                        <input type="text" id="" name="" dfalt="0" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/callback-modal.js"></script>
+</body>
+</html>

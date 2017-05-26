@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .btn-paging {
+            line-height: 14px;
+        }
+        .link, .linkPrompt {
+            cursor: pointer; 
+            color: blue;
+            text-decoration: underline;
+        }
+        .linkPrompt { 
+            margin-left: 12px;
+            vertical-align: top;
+            position: relative;
+            top: -2px;
+        }
+        .jumpDiv {
+            margin-left: 20px;
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/paging-intercom-settings.js"></script>
+</head>
+<body class="modal">
+    <form id="form">
+		<div id="editForm" style="width: 600px;">
+			<div class='section-title' locale="LANG1167">Settings for Paging & Intercom</div>
+			<div class="section-body">
+				<div class="field-cell">
+					<div class="field-label" glabel="@LANG1164" tooltip="@LANG1165">
+					</div>
+					<div class="field-content">
+						<input type="text" id="paging_header" name="paging_header" maxlength=64 />
+					</div>
+				</div>
+			</div>
+			<div class='section-title' locale="LANG1166">
+				Settings for Paging Feature Code
+			</div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG28" tooltip="@LANG3490">
+                </div>
+                <div class="field-content">
+                    <select id="custom_prompt" name="custom_prompt">
+                    </select>
+                    <span onclick="link_prompt();" class="linkPrompt" locale="LANG1484"></span>
+                </div>
+            </div>
+			<div class="section-body">
+                <div class="field-cell">
+                    <div class="jumpDiv">
+                        <span locale="LANG130">Please go to</span>
+                        <span onclick="link();" class="link" localeTitle="LANG131" locale="LANG610">Call Features</span>
+                        <span locale="LANG1168">for seting paging individual extensions.</span>
+                    </div>
+                </div>
+                <div class="field-cell last">
+                    <div style="text-align: center;">
+                        <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">
+                        </button>
+                        <button type="submit" class="btn btn-save" locale="LANG728">
+                        </button>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</form>
+</body>
+</html>

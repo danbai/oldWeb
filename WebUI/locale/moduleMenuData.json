@@ -1,0 +1,344 @@
+[{
+    "name": "LANG0",
+    "url": "#",
+    "submenu": [{
+            "name": "LANG1",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG1", "url": "welcome.html", "submenu": []},
+                {"name": "LANG3006", "url": "activityCalls.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG2",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3", "url": "sysinfo.html", "submenu": []},
+                {"name": "LANG4", "url": "sysinfo_network.html", "submenu": []},
+                {"name": "LANG5", "url": "sysinfo_disk.html", "submenu": []},
+                {"name": "LANG6", "url": "sysinfo_memory.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG2580",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2581", "url": "warning.html", "submenu": []},
+                {"name": "LANG2582", "url": "warning_events_list.html", "submenu": []},
+                {"name": "LANG2546", "url": "warning_contact.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG7",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG7", "url": "cdr.html", "submenu": []},
+                {"name": "LANG8", "url": "statistics.html", "submenu": []},
+                {"name": "LANG2640", "url": "recording_file.html", "submenu": []},
+                {"name": "LANG3003", "url": "cdr_api.html", "submenu": []}
+            ]
+        }
+    ]
+}, {
+    "name": "LANG9",
+    "url": "#",
+    "submenu": [{
+            "name":"LANG10",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG87", "url": "extension.html", "submenu": []},
+                {"name": "LANG12", "url": "trunks_analog.html", "submenu": []},
+                {"name": "LANG3141", "url": "trunks_digital.html", "submenu": []},
+                {"name": "LANG3573", "url": "trunks_data.html", "submenu": []},
+                {"name": "LANG2834", "url": "trunks_bri.html", "submenu": []},
+                {"name": "LANG13", "url": "trunks_voip.html", "submenu": []},
+                {"name": "LANG3225", "url": "sla_station.html", "submenu": []},
+                {"name": "LANG14", "url": "callingrules.html", "submenu": []},
+                {"name": "LANG15", "url": "incoming.html", "submenu": []},
+                {"name": "LANG4496", "url": "webrtc_smart_routes.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG17",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG18", "url": "meetroomuser.html", "submenu": []},
+                {"name": "LANG3775", "url": "premeet.html", "submenu": []},
+                {"name": "LANG19", "url": "ivr.html", "submenu": []},
+                {"name": "LANG2800", "url": "groups.html", "submenu": []},
+                {"name": "LANG20", "url": "voicemail.html", "submenu": []},
+                {"name": "LANG21", "url": "vmgroup.html", "submenu": []},
+                {"name": "LANG22", "url": "ringgroup.html", "submenu": []},
+                {"name": "LANG568", "url": "followme.html", "submenu": []},
+                {"name": "LANG23", "url": "paging_intercom.html", "submenu": []},
+                {"name": "LANG24", "url": "queue.html", "submenu": []},
+                {"name": "LANG2510", "url": "pickupgroup.html", "submenu": []},
+                {"name": "LANG2884", "url": "directory.html", "submenu": []},
+                {"name": "LANG3501", "url": "onekeydial.html", "submenu": []},
+                {"name": "LANG2353", "url": "disa.html", "submenu": []},
+                {"name": "LANG3741", "url": "callback.html", "submenu": []},
+                {"name": "LANG2474", "url": "eventlist.html", "submenu": []},
+                {"name": "LANG4858", "url": "wakeup.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG25",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3", "url": "preferences.html", "submenu": []},
+                {"name": "LANG26", "url": "features.html", "submenu": []},
+                {"name": "LANG27", "url": "mohfiles.html", "submenu": []},
+                {"name": "LANG28", "url": "menuprompts_record.html", "submenu": []},
+                {"name": "LANG29", "url": "fax.html", "submenu": []},
+                {"name": "LANG40", "url": "jitter_buffer.html", "submenu": []},
+                {"name": "LANG30", "url": "rtp_settings.html", "submenu": []},
+                {"name": "LANG31", "url": "language.html", "submenu": []},
+                {"name": "LANG2898", "url": "payload.html", "submenu": []},
+                {"name": "LANG3525", "url": "ami.html", "submenu": []},
+                {"name": "LANG4553", "url": "pin_sets.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG34",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3", "url": "iax_general.html", "submenu": []},
+                {"name": "LANG37", "url": "iax_registration.html", "submenu": []},
+                {"name": "LANG38", "url": "iax_security.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG39",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3", "url": "sip_general.html", "submenu": []},
+                {"name": "LANG41", "url": "sip_misc.html", "submenu": []},
+                {"name": "LANG42", "url": "sip_session_timer.html", "submenu": []},
+                {"name": "LANG43", "url": "sip_tls.html", "submenu": []},
+                {"name": "LANG44", "url": "sip_nat.html", "submenu": []},
+                {"name": "LANG45", "url": "sip_tos.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG32",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG686", "url": "hardware_dahdi_digital.html", "submenu": []},
+                {"name": "LANG687", "url": "hardware_dahdi_analog.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG16",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG16", "url": "zc_devices.html", "submenu": []},
+                {"name": "LANG3169", "url": "zc_globalpolicy.html", "submenu": []},
+                {"name": "LANG3444", "url": "zc_globaltemplates.html", "submenu": []},
+                {"name": "LANG3445", "url": "zc_modeltemplates.html", "submenu": [ ] },
+                {"name": "LANG3980", "url": "zc_template_management.html", "submenu": []},
+                {"name": "LANG3904", "url": "zc_autoprovision.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG4066",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG4067", "url": "fax_sending.html", "submenu": []},
+                {"name": "LANG4338", "url": "codeblue.html", "submenu": []},
+                {"name": "LANG4396", "url": "sip_webrtc.html", "submenu": []},
+                {"name": "LANG4505", "url": "webrtc_cloud_service.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG4855",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2217", "url": "pms_settings.html", "submenu": []},
+                {"name": "LANG4857", "url": "pms_rooms.html", "submenu": []},
+                {"name": "LANG4858", "url": "pms_wakeup.html", "submenu": []},
+                {"name": "LANG5056", "url": "pms_minibar.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG5110",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2217", "url": "crm_settings.html", "submenu": []}
+            ]
+        }
+    ]
+}, {
+    "name": "LANG47",
+    "url": "#",
+    "submenu": [{
+            "name":"LANG3859",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2802", "url": "user_list.html", "submenu": []},
+                {"name": "LANG5167", "url": "custom_privilege.html", "submenu": []},
+                {"name": "LANG3908", "url": "operationLog.html", "submenu": []},
+                {"name": "LANG55", "url": "password.html", "submenu": []},
+                {"name": "LANG4203", "url": "bind_email.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG48",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2217", "url": "network_lan.html", "submenu": []},
+                {"name": "LANG4586", "url": "dhcp_client.html", "submenu": []},
+                {"name": "LANG51", "url": "network_802_1x.html", "submenu": []},
+                {"name": "LANG3047", "url": "static_routes.html", "submenu": []},
+                {"name": "LANG54", "url": "nat_route.html", "submenu": []},
+                {"name": "LANG3990", "url": "openvpn.html", "submenu": []},
+                {"name": "LANG4040", "url": "ddns_settings.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG2314",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG38", "url": "security.html", "submenu": []},
+                {"name": "LANG2303", "url": "dynamic_defense.html", "submenu": []},
+                {"name": "LANG2600", "url": "fail2ban.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG56",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG56", "url": "ldapserver.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG57",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG57", "url": "webserver.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG4815",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG4815", "url": "ctiserver.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG58",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG58", "url": "smtp_settings.html", "submenu": []},
+                {"name": "LANG4572", "url": "email_template.html", "submenu": []},
+                {"name": "LANG5382", "url": "email_send_log.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG718",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG59", "url": "datetime.html", "submenu": []},
+                {"name": "LANG2502", "url": "changetime.html", "submenu": []},
+                {"name": "LANG3271", "url": "officetime.html", "submenu": []},
+                {"name": "LANG3266", "url": "holidaytime.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG2491",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2491", "url": "ntpserver.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG3378",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3378", "url": "recording_choose.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG3965",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3965", "url": "session_timer_settings.html", "submenu": []}
+            ]
+        } ,{
+            "name": "LANG3513",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG3513", "url": "googleserver.html", "submenu": []}
+            ]
+        }
+    ]
+}, {
+    "name": "LANG60",
+    "url": "#",
+    "submenu": [{
+            "name": "LANG61",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG61", "url": "upgrade.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG62",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG63", "url": "backup.html", "submenu": []},
+                {"name": "LANG64", "url": "backup_network.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG65",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG65", "url": "auto_cleaner.html", "submenu": []},
+                {"name": "LANG5122", "url": "usb_sd_file_cleanup.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG66",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG66", "url": "maintenance.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG67",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG67", "url": "syslog.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG68",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG69", "url": "troubleshooting_capture.html", "submenu": []},
+                {"name": "LANG70", "url": "troubleshooting_ipping.html", "submenu": []},
+                {"name": "LANG71", "url": "troubleshooting_tracert.html", "submenu": []},
+                {"name": "LANG2788", "url": "troubleshooting_pri.html", "submenu": []},
+                {"name": "LANG3264", "url": "troubleshooting_ss7.html", "submenu": []},
+                {"name": "LANG3252", "url": "troubleshooting_mfc.html", "submenu": []},
+                {"name": "LANG3238", "url": "troubleshooting_analog.html", "submenu": []},
+                {"name": "LANG4023", "url": "troubleshooting_em_record.html", "submenu": []},
+                {"name": "LANG3437", "url": "service_check.html", "submenu": []},
+                {"name": "LANG4010", "url": "net_state.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG4178",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG4179", "url": "ssh_access.html", "submenu": []}
+            ]
+        }
+    ]
+}, {
+    "name": "LANG2801",
+    "url": "#",
+    "privilege": "consumer",
+    "submenu": [{
+            "name": "LANG4101",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG2802", "url": "user_list.html", "submenu": []},
+                {"name": "LANG87", "url": "extension.html", "submenu": []},
+                {"name": "LANG7", "url": "cdr.html", "submenu": []},
+                {"name": "LANG55", "url": "password.html", "submenu": []},
+                {"name": "LANG4203", "url": "bind_email.html", "submenu": []}
+            ]
+        }, {
+            "name": "LANG4102",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG20", "url": "voicemail.html", "submenu": []},
+                {"name": "LANG2640", "url": "recording_file.html", "submenu": []},
+                {"name": "LANG4722", "url": "voicemail_prompt.html", "submenu": []},
+                {"name": "LANG2988", "url": "fax.html", "submenu": []}
+           ]
+        }, {
+            "name": "LANG4066",
+            "url": "#",
+            "submenu": [
+                {"name": "LANG4263", "url": "webrtc.html", "submenu": []},
+                {"name": "LANG4067", "url": "fax_sending.html", "submenu": []},
+                {"name": "LANG4858", "url": "wakeup.html", "submenu": []},
+                {"name": "LANG5225", "url": "crm_user_settings.html", "submenu": []}
+            ]
+        }
+    ]
+}]

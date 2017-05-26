@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+<title locale="LANG4190"></title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF8"/>
+<link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css"/>
+<style>
+    .des {
+        margin: 10px 10px 10px 30px;
+    }
+</style>
+</head>
+<body>
+<form id="form">
+    <div id="login_modal" style="width: 600px;">
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG992">
+            </div>
+            <div class="field-content">
+                <input type="text" id="user_name" name="user_name"></input>
+            </div>
+        </div>
+        <div class="des">
+            <p locale="LANG4191"></p>
+        </div>
+        <div class="field-cell modal-commands" align="center">
+            <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+            <button type="submit" class="btn btn-save" locale="LANG4068"></button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+<script type="text/javascript" src="../js/login-modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG585">System Status</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-tabs.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    /* list class for tables */
+    table.list {
+        /*border-spacing: 1px;*/
+        width: 100%;
+    }
+
+    table.list tbody tr td,
+    .agents {
+        color: #3b3b3b;
+    }
+
+    .agents {
+        position: relative;
+        top: 3px;
+    }
+
+    table.list thead {
+        background-color: #91C6E4;
+        /* color: black; */
+        color: #4e5962;
+        font-weight: bold;
+        height: 25px;
+    }
+
+    tr.list_titles {
+        background-color: #91C6E4;
+        /* color: black; */
+        color: #4e5962;
+        font-weight: bold;
+        height: 25px;
+    }
+
+    /* table tr {
+        text-align: center;
+    } */
+
+    table.list thead tr th {
+        background-repeat: no-repeat;
+        background-position: center right;
+        font-size: 14px;
+        font-weight: bold;
+        /* color: #4e5962; */
+    }
+
+    table.list > tbody > tr:hover th[scope=row],
+    table.list > tbody > tr:hover td {
+        background-color: #caecff;
+    }
+
+    table.list tbody tr.even {
+        background: #EFEFEF;
+    }
+
+    table.list tbody tr.odd {
+        background: #FFFFFF;
+    }
+
+    /* Tablesorter Styling */
+    th.header {
+        cursor: pointer;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .notinuse {
+        color: red;
+    }
+
+    .inuse {
+        color: #ef8700;
+    }
+
+    .template {
+        display: none;
+    }
+
+    img.loadTrunks,
+    img.loadQueues,
+    img.loadExtensions,
+    img.loadParkingLot,
+    img.loadConferenceRooms,
+    img.loadInterfaceStatues {
+        cursor: pointer;
+        position: relative;
+        top: 9px;
+        left: 8px;
+    }
+
+    img.title_img {
+        float: left;
+    }
+
+    div.column {
+        display: block;
+    }
+
+    div.left {
+        float: left;
+        width: 54%;
+        margin-top: 12px;
+    }
+
+    div.right {
+        float: right;
+        width: 45%;
+        margin-top: 12px;
+    }
+
+    .GSRTL div.left {
+        float: right;
+        width: 54%;
+        margin-top: 12px;
+    }
+
+    .GSRTL div.right {
+        float: left;
+        width: 45%;
+        margin-top: 12px;
+    }
+
+    div.content_container {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background-color: #F0F1F1;
+    }
+
+    #sysstat_left_container {
+        min-width: 425px;
+        padding: 0 0 5em;
+    }
+
+    #sysstat_right_container {
+        min-width: 386px;
+        padding: 0 0 5em;
+    }
+
+    div.content_container,
+    div.info_container {
+        padding: 1px;
+    }
+
+    div.content_container .title,
+    div.info_container .title {
+        background: #225783;
+        font-weight: bold;
+        font-size: 16px;
+        color: white;
+        height: 36px;
+    }
+
+    div.content_container .title span,
+    div.info_container .title img {
+        position: relative;
+        top: 6px;
+    }
+
+    #sysstat_left_container {
+        margin-right: 4px;
+    }
+
+    .GSRTL #sysstat_left_container {
+        margin-left: 4px;
+        margin-right: 0;
+    }
+
+    div.handle {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        -moz-border-radius-topright: 4px;
+        -moz-border-radius-topleft: 4px;
+        -webkit-border-top-right-radius: 4px;
+        -webkit-border-top-left-radius: 4px;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+        cursor: move;
+        padding-left: 10px;
+    }
+
+    .GSRTL div.handle {
+        padding-left: 0;
+        padding-right: 10px;
+    }
+
+    div.title span.minimaxi {
+        color: white;
+        cursor: pointer;
+        display: block;
+        float: right;
+        font-size: 12px;
+        margin-right: 20px;
+    }
+
+    .GSRTL div.title span.minimaxi {
+        float: left;
+        margin-left: 20px;
+        margin-right: 0;
+    }
+
+    #legend {
+        float: right;
+        margin: 0px 20px 0px 30px;
+        padding: 0px;
+        font-weight: normal;
+        color: #000000;
+        position: relative;
+        /* top: 5px; */
+    }
+
+    .GSRTL #legend {
+        float: left;
+    }
+
+    #legend div div {
+        float: left;
+        min-width: 60px;
+    }
+
+    table.tableWidget {
+        border: 0;
+        border-top: 1px solid #d6d6d6;
+    }
+
+    #queue_div,
+    #meetme_div,
+    #trunks_div,
+    #extension_div,
+    #parking_lot_div,
+    #bridge_channel_div,
+    #unbridge_channel_div {
+        border: 1px solid #d6d6d6;
+        border-top: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+    }
+
+    #extensions_list {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        border: 1px solid #EBEAEA;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+    }
+
+    div.content {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        /* background-color: #fff; */
+        margin-bottom: 15px;
+    }
+
+    #extensions_sections_div {
+        background-color: #fff;
+        line-height: 35px;
+        padding: 5px 0 5px 5px;
+    }
+
+    .GSRTL #extensions_sections_div {
+        padding: 5px 5px 5px 0;
+    }
+
+    .interface_ul,
+    .PRIStatusList_table {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+        width: 100%;
+    }
+
+    div#sys_status_meetme div.body {
+        /* border: 1px solid #d6d6d6; */
+        border-top: 0;
+    }
+
+    div#sys_status_trunks div.body,
+    div#sys_status_plot div.body {
+        /* border: 1px solid #d6d6d6; */
+        border-top: 0;
+    }
+
+    div#sys_status_queues div.body {
+        background-color: #fff;
+        border: 0;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+    }
+
+    div.placeholder {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background-color: #dddddd;
+        /* border: 1px dotted #6b79a5; */
+        margin: 4px;
+        height: 50px;
+    }
+
+    #sys_status_queues div.column {
+        display: block;
+        margin: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        border: 1px solid #d6d6d6;
+        border-top: 0;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+    }
+
+    #sys_status_queues div.left {
+        float: left;
+        width: 50%;
+    }
+
+    #sys_status_queues div.right {
+        float: right;
+        width: 49%;
+    }
+
+    div.queue div.title,
+    div.conf_room div.title {
+        -moz-border-radius-topleft: 4px;
+        -moz-border-radius-topright: 4px;
+        -webkit-border-radius-topleft: 4px;
+        -webkit-border-radius-topright: 4px;
+        background-color: #91C6E4;
+        color: #4E5962;
+        font-size: 12px;
+        font-weight: bold;
+        height: 20px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        vertical-align: center;
+    }
+
+    .GSRTL div.queue div.title,
+    .GSRTL div.conf_room div.title {
+        padding-left: 0;
+        padding-right: 10px;
+    }
+
+    div.queue div.title span,
+    div.queue div.title .minimaxi {
+        position: relative;
+        top: 3px;
+    }
+
+    div.queue div.title .minimaxi {
+        top: 1px;
+    }
+
+    div.queue div.body,
+    div.conf_room div.body {
+        -moz-border-radius-topleft: 0px;
+        -moz-border-radius-topright: 0px;
+        -webkit-border-radius-topleft: 0px;
+        -webkit-border-radius-topright: 0px;
+        border-top: 0px;
+    }
+
+    div.queue div.body div.calls {
+        display: block;
+        float: left;
+        background: #FFFFFF;
+    }
+
+    .GSRTL div.queue div.body div.calls {
+        float: right;
+    }
+
+    div.queue div.body div.calls table {
+        width: auto;
+    }
+
+    div.queue div.body div.calls table tbody tr.new td {
+        /* color: green; */
+    }
+
+    div.queue div.body div.calls table tbody tr.average td {
+        color: orange;
+    }
+
+    div.queue div.body div.calls table tbody tr.old td {
+        color: red;
+    }
+
+    div.queue div.body div.agents div.agent {
+        -moz-border-radius: 4px;
+        -moz-border-radius: 4px;
+        background-color: #EFEFEF;
+        display: block;
+        float: left;
+        margin: 2px;
+        padding: 1px;
+        text-align: center;
+    }
+
+    .GSRTL div.queue div.body div.agents div.agent {
+        float: right;
+    }
+
+    div.queue div.body div.agents div.template {
+        display: none;
+    }
+
+    div.queue div.body div.stats {
+        -moz-border-radius-bottomleft: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -webkit-border-radius-bottomleft: 4px;
+        -webkit-border-radius-bottomright: 4px;
+        background-color: #FFFFFF;
+        color: #3B3B3B;
+        font-weight: bold;
+        padding: 2px;
+    }
+
+    div.queue div.body div.stats span {
+        font-weight: normal;
+    }
+
+    div.conf_room div.actions {
+        display: block;
+        float: left;
+        width: 67px;
+        text-align: center;
+    }
+
+    div.conf_room div.actions > ul {
+        background-color: #6b79a5;
+        /* border: 1px solid #ffffff; */
+        color: #ffffff;
+        font-weight: bold;
+        list-style: none;
+        margin: 4px;
+        padding: 4px;
+    }
+
+    div.conf_room div.actions > ul li {
+        background-color: #ffffff;
+        /* border: 1px solid #efefef; */
+        color: #000000;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    div.conf_room div.actions .action {
+        cursor: pointer;
+    }
+
+    div.conf_room div.actions a,
+    div.conf_room div.actions a:visited {
+        text-decoration: none;
+        color: #000000;
+    }
+
+    div.conf_room div.actions a:hover {
+        color: #ef8700;
+    }
+
+    div.conf_room div.members {
+        display: relative;
+        right: 67px;
+        max-height: 105px;
+        overflow: auto;
+    }
+
+    div.conf_room div.members > table.list {
+        -moz-border-radius-bottomright: 4px;
+        -webkit-border-radius-bottomright: 4px;
+    }
+
+    div.conf_room div.members > table.list tbody td {
+        padding-left: 5px;
+    }
+
+    div.conf_room div.members .checkbox {
+        width: 20px;
+    }
+
+    div.conf_room div.members .person {
+        width: 1px;
+    }
+
+    #parking_lot_list > tbody {
+        text-align: center;
+    }
+
+    #extensions_sections {
+        float: left;
+        width: 75%;
+    }
+
+    .GSRTL #extensions_sections {
+        float: right;
+    }
+
+    #extensions_list .refreshIcon {
+        background: url(../images/iframeRefresh.png) no-repeat;
+        border: none;
+    }
+
+    #extensions_sections span {
+        margin-right: 2px;
+    }
+
+    .extension {
+        color: #999999;
+    }
+
+    .updiv {
+        width: 36px;
+        height: 29px;
+        background: url(../images/FXO_disconnected.png) center center no-repeat;
+        float: left;
+        padding-top: 5px;
+        position: relative;
+        top: -2px;
+    }
+
+    .upindex {
+        width: 36px;
+        height: 29px;
+        font-size: 9px;
+        color: #2a2a2a;
+        text-align: center;
+        float: left;
+        padding-top: 6px;
+    }
+
+    .downdiv {
+        width: 36px;
+        height: 29px;
+        background: url(../images/FXO_disconnected_r.png) center center no-repeat;
+        float: left;
+        padding-top: 5px;
+    }
+
+    .downindex {
+        width: 36px;
+        height: 29px;
+        font-size: 9px;
+        color: #2a2a2a;
+        text-align: center;
+        padding-top: 3px;
+        float: left;
+    }
+
+    .dashboard .titleSpan:hover {
+        color: #91C6E4;
+        cursor: pointer;
+    }
+
+    .tfoot {
+        background: white;
+    }
+
+    .tfoot tr {
+        height: 48px;
+    }
+
+    .pageDes {
+        float: left;
+        color: #225685;
+        position: relative;
+        left: 4px;
+    }
+
+    .total,
+    .current {
+        margin-right: 4px;
+    }
+
+    .jump {
+        width: 30px!important;
+        height: 16px;
+        background: white;
+        margin-right: 4px;
+        border: 1px solid gray;
+    }
+
+    .btn {
+        line-height: 10px;
+        padding: 4px 6px;
+        font-size: 13px;
+    }
+
+    .btn-go {
+        width: auto;
+    }
+
+    .pageOptions {
+        position: relative;
+        right: 4px;
+        float: right;
+    }
+
+    div.pageOptions button {
+        margin-right: 2px;
+    }
+
+    .call {
+        text-align: left;
+    }
+
+    .options {
+        position: relative;
+        top: 9px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable th {
+        height: 30px;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        height: 23px;
+    }
+
+    .ui-jqgrid {
+        margin-top: 0;
+        border-top: 0;
+    }
+
+    .ui-jqgrid .ui-jqgrid-bdiv {
+        overflow: hidden;
+    }
+
+    .ui-jqgrid .ui-jqgrid-pager {
+        height: 30px;
+    }
+
+    .ui-jqgrid .ui-pager-control {
+        padding-top: 0;
+    }
+
+    .ui-jqgrid .ui-pg-table {
+        padding-bottom: 1px;
+        padding-right: 2px;
+    }
+
+    .GSRTL .ui-jqgrid .ui-pg-table {
+        padding-left: 2px;
+        padding-right: 0;
+    }
+
+    .ui-jqgrid .pageDes {
+        left: 2px;
+    }
+
+    .GSRTL .ui-jqgrid .pageDes {
+        right: 2px;
+    }
+
+    span.join-time {
+        left: 10px;
+    }
+
+    #sys_interface_status,
+    #sys_digital_slot_status {
+        background-color: #F0F1F1;
+    }
+
+    ul#interfaces_list li.interface_li span.interface_label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ui-jqgrid {
+        border: 0;
+    }
+
+    .answered {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/answered.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+
+    .PRIStatusList_table {
+        border-spacing: 0;
+    }
+
+    table.PRIStatusList_table tr {
+        line-height: 30px;
+        height: 30px;
+        text-align: center;
+    }
+
+    .PRIStatusList_table_div {
+        border-bottom-style: solid;
+        border-bottom-color: #e1e1e1;
+        border-bottom-width: 1px;
+        border-left-style: solid;
+        border-left-color: #e1e1e1;
+        border-left-width: 1px;
+        text-align: left;
+        padding-left: 60px;
+    }
+
+    .PRIStatusList_table_div_last {
+        border-left-style: solid;
+        border-left-color: #e1e1e1;
+        border-left-width: 1px;
+        border-bottom: 0px;
+    }
+
+    .PRIStatusList_table_div_bottom {
+        border-bottom-style: solid;
+        border-bottom-color: #e1e1e1;
+        border-bottom-width: 1px;
+    }
+
+    .PRIStatusList_table_div span,
+    .PRIStatusList_table_div_last span {
+        margin: 7px;
+        z-index: 5;
+    }
+
+    .PRIStatusList_table_div div,
+    .PRIStatusList_table_div_last div {
+        position: relative;
+        top: 6px;
+        left: -20px;
+        display: inline-block;
+        width: 15px;
+        height: 14px;
+        text-align: center;
+    }
+
+    .DChannel {
+        color: blue;
+    }
+
+    .connected {
+        display: inline-block;
+        width: 132px;
+        height: 20px;
+        background: url(../images/progressbox.gif) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    </style>
+</head>
+
+<body class="page dashboard" onselectstart="return false;">
+    <div id="sysstat_hdr_container">
+        <div id="ast_uptime"></div>
+        <div id="sys_uptime"></div>
+    </div>
+    <div class="left column">
+        <div id="sysstat_left_container" class="content_container">
+            <div id="sys_status_trunks" class="content">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="trunk_title" class="titleSpan" locale="LANG83">Trunks</span>
+                    <button type="button" class="options refresh" id="loadTrunks" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="clear"></div>
+                <div class="body">
+                    <div id="trunks_div">
+                        <table id="trunks_list"></table>
+                    </div>
+                </div>
+            </div>
+            <div id="sys_status_extensions" class="content">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="extension_title" class="titleSpan" locale="LANG87">Extensions</span>
+                    <button type="button" class="options refresh" id="loadExtensions" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="clear"></div>
+                <div class="body">
+                    <div id="extensions_sections_div" class="clearfix">
+                        <div id="extensions_sections">
+                            <button type="button" class="btn section active" localeTitle="LANG104" locale="LANG104" value="All">All</button>
+                            <button type="button" class="btn section" localeTitle="LANG105" locale="LANG105" value="Analog">Analog </button>
+                            <!-- <button type="button" class="btn section" localeTitle="LANG106" locale="LANG106" value="Features">Features </button> -->
+                            <button type="button" class="btn section" localeTitle="LANG107" locale="LANG107" value="IAX">IAX </button>
+                            <button type="button" class="btn section" localeTitle="LANG108" locale="LANG108" value="SIP">SIP </button>
+                            <button type="button" class="btn section" localeTitle="LANG108" locale="LANG4263" value="WebRTC">WebRTC </button>
+                            <button type="button" class="btn section" localeTitle="LANG108" locale="LANG22" value="ringgroup">ringgroup </button>
+                            <button type="button" class="btn section" localeTitle="LANG108" locale="LANG21" value="vmgroup">vmgroup </button>
+                        </div>
+                        <span id="legend">
+                            <div>
+                                <span class="LANG2232" localeTitle="LANG2232"></span>
+                                <span class="LANG111" localeTitle="LANG111"></span>
+                                <span class="LANG112" localeTitle="LANG112"></span>
+                                <span class="LANG113" localeTitle="LANG113"></span>
+                            </div>
+                        </span>
+                    </div>
+                    <div id="extension_div">
+                        <!-- <table id="extensions_list"></table>
+                        <div id="extensions_list_pager"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div id="sys_status_queues" class="content">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="queue_title" class="titleSpan" locale="LANG91">Queues</span>
+                    <button type="button" class="options refresh" id="loadQueues" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="clear"></div>
+                <div class="body">
+                    <div id="queue_div">
+                        <div class="left column">
+                            <div class="container" id="queue_left_container">
+                                <div class="queue template">
+                                    <div class="title">
+                                        <span class="minimaxi">[ - ]</span><span class="name"></span> <span>(</span><span class="strategy"></span> <span>) -</span>
+                                        <span class="users_agents"></span>
+                                    </div>
+                                    <div class="body">
+                                        <div class="calls">
+                                            <table class="list">
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                        <div class="agents">
+                                            <div id="agent_template" class="template agent">
+                                                <img class="status_icon" src="" border="0" />
+                                                <span class="extension"></span>
+                                            </div>
+                                        </div>
+                                        <div class="clear">
+                                        </div>
+                                        <div class="stats">
+                                            <!-- <span locale="LANG1009">Service Level: </span><span class="service_level"></span> <br /> -->
+                                            <span locale="LANG1010">Calls Completed: </span><span class="calls_complete"></span>
+                                            <br />
+                                            <span locale="LANG1011">Calls Abandoned: </span><span class="calls_abandoned"></span>
+                                            <br />
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right column">
+                            <div class="container" id="queue_right_container"></div>
+                        </div>
+                        <table cellpadding="0" cellspacing="0" border="0" class="tableWidget" id="noqueue" style="width: 100%;">
+                            <tbody>
+                                <tr class="even">
+                                    <td locale="LANG129 LANG91"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right column">
+        <div id="sysstat_right_container" class="content_container">
+            <div id="sys_status_meetme" class="content">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="conference_title" class="titleSpan" locale="LANG98">Conference Rooms</span>
+                    <button type="button" class="options refresh" id="loadConferenceRooms" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="clear"></div>
+                <div class="body">
+                    <div id="meetme_div">
+                        <div class="conf_room template">
+                            <div class="title">
+                                <span class="minimaxi">[ - ]</span>
+                                <span class="name" style="margin-right:2px;"></span>
+                                <span class="inuse status"></span>
+                                <span class="join-time"></span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="body">
+                                <div class="members">
+                                    <table class="list">
+                                        <tbody>
+                                            <tr class="template">
+                                                <td class="person">
+                                                    <img src="../images/agent_loggedin.png" />
+                                                </td>
+                                                <td class="extension"></td>
+                                                <td class="duration"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <table cellpadding="0" cellspacing="0" border="0" class="tableWidget" id="noconference" style="width: 100%;">
+                            <tbody>
+                                <tr class="even">
+                                    <td locale="LANG129 LANG98"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="sys_interface_status" class="content">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="interface_title" class="titleSpan" locale="LANG100">Interfaces Status</span>
+                    <button type="button" class="options refresh" id="loadInterfaceStatues" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="body" class="list">
+                    <ul id="interfaces_list" class="interface_ul" style="height: 160px; display: none;">
+                        <li class="interface_li">
+                            <span class="interface_label">USB</span>
+                            <span id="usb_status" localeTitle="LANG995" class="usb_disconnected" container="interface-usbdisk"></span>
+                        </li>
+                        <li class="interface_li">
+                            <span locale="LANG262" class="interface_label"></span>
+                            <span id="sdcard_status" localeTitle="LANG995" class="sdcard_disconnected" container="interface-sdcard"></span>
+                        </li>
+                        <li id="lan" class="interface_li">
+                            <span locale="LANG265" class="interface_label"></span>
+                            <span id="lan_status" localeTitle="LANG996" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="wan" class="interface_li">
+                            <span locale="LANG264" class="interface_label"></span>
+                            <span id="wan_status" localeTitle="LANG996" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="lan1" class="interface_li">
+                            <span locale="LANG266" class="interface_label"></span>
+                            <span id="lan1_status" localeTitle="LANG996" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="lan2" class="interface_li">
+                            <span locale="LANG267" class="interface_label"></span>
+                            <span id="lan2_status" localeTitle="LANG996" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="poe" class="interface_li">
+                            <span locale="LANG3074" class="interface_label"></span>
+                            <span id="poe_status" localeTitle="LANG3076" class="power_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="hbt" class="interface_li">
+                            <span locale="LANG3071" class="interface_label"></span>
+                            <span id="hbt_status" localeTitle="LANG3073" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="power1" class="interface_li">
+                            <span id="power1_label" locale="LANG3077" class="interface_label"></span>
+                            <span id="power1_status" localeTitle="LANG3080" class="power_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="power2" class="interface_li">
+                            <span id="power2_label" locale="LANG3078" class="interface_label"></span>
+                            <span id="power2_status" localeTitle="LANG3080" class="power_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="digital1" class="interface_li">
+                            <span id="digital1_label" locale="LANG3082" class="interface_label"></span>
+                            <span id="digital1_status" localeTitle="LANG3090" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="digital2" class="interface_li">
+                            <span id="digital2_label" locale="LANG3083" class="interface_label"></span>
+                            <span id="digital2_status" localeTitle="LANG3090" class="net_disconnected" container="interface-network"></span>
+                        </li>
+                        <li id="fxs" class="interface_li_big">
+                            <span class="interface_label" style="width:20%; position: relative; top: -6px;">FXS</span>
+                            <span id="fxs_status" class="interface_big_div"></span>
+                        </li>
+                        <li id="fxo" class="interface_li_big_last">
+                            <span class="interface_label" style="width:20%; position: relative; top: -10px;">FXO</span>
+                            <span id="fxo_status" class="interface_big_div"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="sys_digital_slot_status" class="content template">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="digital_slot_title" class="titleSpan" locale="LANG3151">Digital Channels Status</span>
+                    <button type="button" class="options refresh" id="loadDigitalSlotStatues" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="body" class="list">
+                    <table id="PRIStatusList" class="PRIStatusList_table"></table>
+                </div>
+            </div>
+            <div id="sys_status_plot" class="content">
+                <div class="handle title">
+                    <span class="minimaxi">[ - ]</span>
+                    <span id="park_title" class="titleSpan" locale="LANG99">Parking Lot</span>
+                    <button type="button" class="options refresh" id="loadParkingLot" localetitle="LANG109" title="Refresh"></button>
+                </div>
+                <div class="clear"></div>
+                <div class="body">
+                    <div id="parking_lot_div"></div>
+                    <table id="parking_lot_list"></table>
+                    <div id="parking_lot_list_pager"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="sysstat_ftr_container">
+        <div id="sysstat_sys_events"></div>
+    </div>
+    <!-- Initial Javascript -->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="../js/jquery.tablesorter.pager.js"></script>
+    <script type="text/javascript" src="../js/welcome.js"></script>
+</body>
+
+</html>

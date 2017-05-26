@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG712">LDAP Server configurations</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #form input {
+            margin-bottom: 10px;
+            margin-top: 8px !important;
+        }
+        #form input[type="text"],input[type="password"],#form_client input[type="text"] {
+            font-size: 12px;
+            width: 200px;
+        }
+        div.labels {
+            color: #555555;
+            display: block;
+            float: left;
+            margin-bottom: 10px;
+            margin-top: 8px !important;
+            padding: 0px 20px 0px 20px;
+            text-align: left;
+            width: 150px;
+        }
+        div.ldapConfig {
+            background-color: #ffdead;
+            width: 400px;
+            border: 1px solid;
+            border-radius: 8px;
+        }
+        a.button {
+            background-color: #DDDDEE;
+            border-color: #999999 #555555 #555555 #999999;
+            border-style: solid;
+            border-width: 1px 2px 2px 1px;
+            color: #295373;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 5px 10px;
+            text-decoration: none;
+        }
+        a.submitBtn {
+            background-color: #DDDDEE;
+            border-color: #999999 #555555 #555555 #999999;
+            border-style: solid;
+            border-width: 1px 2px 2px 1px;
+            color: #295373;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            padding: 3px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        a.button:hover, a.submitBtn:hover {
+            background-color: #AAAAEE;
+        }
+        .right {
+            width: 200px;
+            text-align: right;
+        }
+        .left {
+            text-align: left;
+            padding-left: 12px;
+        }
+        .lite_desc{
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG712">LDAP Server Configurations</div>
+    <form id="form" autocomplete="off">
+        <div class="section-body">
+            <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1992">
+                </div>
+                <div class="field-content">
+                    <input type="text" class="read" id="basedn" name="basedn" />
+                </div>
+            </div>
+            <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2016">
+                </div>
+                <div class="field-content">
+                    <input type="text" class="read" id="pbxdn" name="pbxdn" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1993">
+                </div>
+                <div class="field-content">
+                    <input type="text" class="read" id="rootdn" name="rootdn" />
+                </div>
+            </div>
+            <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1994">
+                </div>
+                <div class="field-content">
+                    <input type="password" class="read" name="rootpw" style="display: none;" />
+                    <span id="pwSpan">
+                        <input type="password" class="read" id="rootpw" name="rootpw" autocomplete="off" />
+                    </span>
+                    <button type="button" id="show_pwd" class="lightOffBtn" localeTitle="LANG799"></button>
+                </div>
+            </div>
+            <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1995">
+                </div>
+                <div class="field-content">
+                    <input type="password" class="read" name="rootpwCfm" style="display: none;" />
+                    <input type="password" class="read" id="rootpwCfm" name="rootpwCfm" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">
+                    &nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                    </button>
+                    <button type="submit" id="save" class="btn btn-save" onclick="confUpdate();" locale="LANG728">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr />
+    <div class='lite_Heading' locale="LANG714">LDAP Phonebook</div>
+    <div class="field-cell">
+        <div class="field-content">
+            <button type="button" id="add_phonebook" class="btn btn-update" locale="LANG769"></button>
+            <button type="button" id="lead_phonebook" class="btn btn-update" locale="LANG3914"></button>
+            <button type="button" id="export_phonebook" class="btn btn-update" locale="LANG3915"></button>
+        </div>
+    </div>
+    <div class="lite_desc" locale="LANG1997">
+        Note: The first phone book is for extensions in this PBX. The contacts cannot be added or deleted directly. To add or delete the contacts, please modify the accounts in 'Extensions' page first. To modify the read-only attributes, please edit the corresponding items in 'Extension' page and the phone book will be automatically updated when the change is saved and applied. Users can add other phone books for external accounts. For those phone books, users can edit LDAP attributes, add or delete contacts directly.
+    </div>
+    <table id="pb-list"></table> 
+    <div id="pb-pager"></div>
+    <br />
+    <div>
+        <hr />
+        <div class='lite_Heading' locale="LANG713">LDAP Client Configurations</div>
+        <form id="form_client" autocomplete="off">
+            <div class="section-body">
+                <div class="field-cell">
+                        <div class="field-label" glabel="@LANG56">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="ldap_server_name" name="ldap_server_name" autocomplete="off" placeholder="LdapClient" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2444">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="ldap_server_address" name="ldap_server_address" autocomplete="off" placeholder="192.168.1.1" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1999">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="ldap_base" name="ldap_base"  autocomplete="off" placeholder="dc=pbx,dc=com" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2446">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" name="ldap_user" style="display: none;" />
+                        <input type="text" id="ldap_user" name="ldap_user"  autocomplete="off" placeholder="cn=admin,dc=pbx,dc=com" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1424">
+                    </div>
+                    <div class="field-content">
+                        <input type="password" name="ldap_passwd" style="display: none;" />
+                        <input type="password" id="ldap_passwd" name="ldap_passwd" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2006">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="ldap_number_filter" name="ldap_number_filter" autocomplete="off" placeholder="(objectClass=*)" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2008">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="ldap_port" name="ldap_port" autocomplete="off" placeholder="389" />
+                    </div>
+                </div>
+                <div class="field-cell last">
+                    <div class="field-label">
+                        &nbsp;</div>
+                    <div class="field-content">
+                        <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                        </button>
+                        <button type="submit" id="save" class="btn btn-save" locale="LANG728">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class='section-title' locale="LANG715">1. Client Configurations examples</div>
+        <div class="lite_desc" locale="LANG2434">
+            Assuming the server base dn is 'dc=Grandstream', then you can configure the LDAP client as follows(these configurations are case insensitive.):
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG1999">Base DN:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2000">dc=Grandstream (the same as or subtree of server base dn)</font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2438">Login DN:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2435">Please leave this field blank! </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG1424">Password:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2435">Please leave this field blank! </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2437">Anonymous:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2436">Please enable this option! </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2006">Filter:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2007">(&(CallerIDName=*)(AccountNumber=*))</font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2008">Port:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2009">389</font>
+            </div>
+        </div>
+        <br />
+        <div class='section-title' locale="LANG2455">2. LDAP Configurations examples on Grandstream IP Phones</div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2444">Server Address:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2445">The ip address of this IP-PBX device.</font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG1999">Base DN:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2000">dc=GrandStream (the same as or subtree of server base dn)</font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2446">User Name:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2435">Please leave this field blank! </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG1424">Password:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2435">Please leave this field blank! </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2456">LDAP Name Attributes:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2457">CallerIDName Email Department FirstName LastName </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2458">LDAP Number Attributes:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2459">AccountNumber MobileNumber HomeNumber Fax </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2447">LDAP Number Filter:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2448">(AccountNumber=%) </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2449">LDAP Name Filter:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2450">(CallerIDName=%) </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2451">LDAP Display Name:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2452">AccountNumber CallerIDName </font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2453">LDAP Version:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2454">If there is this option, choose "version 3".</font>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">
+               <b locale="LANG2008">Port:</b>
+            </div>
+            <div class="field-content">
+               <font locale="LANG2009">389</font>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ldapserver.js"></script>
+</body>
+</html>

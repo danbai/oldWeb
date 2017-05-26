@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>User Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            display: inline-block;
+            *display: inline; 
+            zoom: 1; 
+            padding: 2px 0px;
+            line-height: 30px;
+            width: 385px;
+        }
+        .field-content {
+            height: 31px;
+        }
+        .field-cell .field-label {
+            width: 190px;
+        }
+        div.field-label .glab span.label {
+            width: 152px;
+        }
+        div.selected-list {
+            width: 153px;
+            height: 14px;
+            margin: 5px 0;
+            padding: 1px 1px 2px 2px;
+            border: 1px solid #d4d2ce;
+            overflow: hidden;
+        }
+        .btn_add {
+            width: 13px;
+            height: 13px;
+            margin: 9px 0 0 10px;
+            float: left;
+            background: url(../images/add.png) no-repeat;
+            position: relative;
+            border: none;
+        }
+        .link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            vertical-align: top;
+            position: relative;
+            top: -2px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" autocomplete="off">
+        <div id="user_list_modal" style="width: 800px;">
+          <div class="section-body">
+              <!-- <div class='section-title' locale="LANG625"></div> -->
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2809" tooltip="@LANG2844"></div>
+                  <div class="field-content">
+                      <input type="text" id="user_name" name="user_name" maxlength="32" autocomplete="off" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2810" tooltip="@LANG2845"></div>
+                  <div class="field-content">
+                      <input type="text" id="user_password" name="user_password" autocomplete="off" />
+                      <span id="jumpPwd" class="link" locale="LANG55" data-url="password">Change Password</span>
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2811" tooltip="@LANG2846"></div>
+                  <div class="field-content">
+                      <select id='privilege'></select>
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2812" tooltip="@LANG2847"></div>
+                  <div class="field-content">
+                      <!-- <select id='department'></select> -->
+                      <input type="text" id='department' name='department' maxlength="64" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG95" tooltip="@LANG2852"></div>
+                  <div class="field-content">
+                      <input type="text" id="fax" name="fax" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1081" tooltip="@LANG1082"></div>
+                  <div class="field-content">
+                      <input type="text" id="email" name="email" maxlength="256" />
+                      <span id="jumpEmail" class="link" locale="LANG4203" data-url="bind_email"></span>
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2817" tooltip="@LANG2849"></div>
+                  <div class="field-content">
+                      <input type="text" id='first_name' name='first_name' maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2813" tooltip="@LANG2848"></div>
+                  <div class="field-content">
+                      <input type="text" id="last_name" name="last_name" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2814" tooltip="@LANG2850"></div>
+                  <div class="field-content">
+                      <input type="text" id='family_number' name='family_number' maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2815" tooltip="@LANG2851"></div>
+                  <div class="field-content">
+                      <input type="text" id='phone_number' name='phone_number' maxlength="32" />
+                  </div>
+              </div>
+              <!-- <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG31" tooltip="@LANG2545"></div>
+                  <div class="field-content">
+                       <select id='language'></select>
+                  </div>
+              </div> -->
+              <!-- <div class="section-title" locale="LANG629"></div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1067" tooltip="@LANG1068"></div>
+                  <div class="field-content">
+                      <input type="text" id='cidnumber' name='cidnumber' maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1075" tooltip="@LANG1076"></div>
+                  <div class="field-content">
+                      <input type="text" id="secret" name="secret" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1077" tooltip="@LANG1078"></div>
+                  <div class="field-content">
+                     <input type='checkbox' id='hasvoicemail' class="change_show" checked="checked" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1079" tooltip="@LANG1080"></div>
+                  <div class="field-content">
+                      <input type="text" id="vmsecret" name="vmsecret" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1083" tooltip="@LANG1084"></div>
+                  <div class="field-content">
+                      <input type="text" id="cfuext" name="cfuext" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1085" tooltip="@LANG1086"></div>
+                  <div class="field-content">
+                      <input type="text" id="cfnext" name="cfnext" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG1087" tooltip="@LANG1088"></div>
+                  <div class="field-content">
+                      <input type="text" id="cfbext" name="cfbext" maxlength="32" />
+                  </div>
+              </div>
+              <div class="field-cell">
+                  <div class="field-label" gLabel="@LANG2856" tooltip="@LANG2857"></div>
+                  <div class="field-content">
+                      <div class="selected-list">
+                          
+                      </div>
+                  </div>
+                  <button type="button" class="btn_add" id="addExtension"></button>
+              </div> -->
+              <div class="field-cell modal-commands dialogContainer-commands" style="width: 750px; display: none;">
+                  <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                  <button type="submit" class="btn btn-save" id="submit" locale="LANG728"></button>
+              </div>
+          </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/user-list-modal.js"></script>
+</body>
+</html>

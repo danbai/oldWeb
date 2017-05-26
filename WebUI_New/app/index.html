@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <!-- 为移动设备添加 viewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <!-- 添加到主屏后的标题（iOS 6 新增） -->
+    <meta name="apple-mobile-web-app-title" content="">
+    <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） -->
+    <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!--下面三个是清除缓存 微信浏览器缓存严重又无刷新；这个方法调试的时候很方便-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link href="/zc/css/ui-lightness/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="/zc/css/ui.multiselect.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/zc/css/chosen.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="/zc/css/ui.zero-config.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/main.css" media="all" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="/shim/requestAnimationFrame.js" charset="utf-8"></script>
+    <!-- Polyfills -->
+    <!--[if lt IE 10]>
+    <script type="text/javascript" src="/shim/es5-shim.js" charset="utf-8"></script>
+    <script src="/shim/media.match.min.js"></script>
+    <![endif]-->
+    <!--[if lte IE 11]>
+    <script type="text/javascript" src="/shim/es6-shim.js" charset="utf-8"></script>
+    <![endif]-->
+    <title></title>
+</head>
+<body>
+    <div id="app-root"></div>
+    <script type="text/javascript" src="/vendor.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/main.js" charset="utf-8"></script>
+    <!-- Need to Load Zero Config JS Files First -->
+    <script type="text/javascript" src="/SIPml-api.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/jquery.watermark.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/subClass.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/ucm-zeroconfig.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/zc-library.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/chosen.jquery.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/gs.lang.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/jquery-ui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/jquery.qtip.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/jquery.slide.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/ajaxupload.3.5.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/ucm-widgets.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/date.format.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/magnificpopup.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/zc/js/handlebars-v2.0.0.js" charset="utf-8"></script>
+    <script id="invalidModelWarning" type="text/x-handlebars-template">
+        <p style="line-height:1.5;margin-bottom: 0;">{{warning_msg}}</p>
+        <div>
+            {{#each models}}
+            <div>
+                {{name}} ({{xml_version}})
+            </div>
+            {{/each}}
+        </div>
+        <p style="line-height:1.5;margin-bottom: 0;">{{{go_restore}}}</p>
+    </script>
+</body>
+</html>

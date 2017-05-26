@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">    
+    .des {
+        margin: 10px;
+        margin-left: 30px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div style="width: 600px;">
+            <div class="section-body">
+                <div class='section-title' locale="LANG1607"></div>
+                <div class="des" locale="LANG911 'html' LANG4576"></div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG84"></div>
+                    <div class="field-content">
+                        <select id='type' name='type'>
+                            <option value='account_template' locale='LANG85' selected>Extension</option>
+                            <option value='sip_account_template' locale='LANG2927' selected>SIP Extension</option>
+                            <option value='iax_account_template' locale='LANG2928' selected>IAX Extension</option>
+                            <option value='fxs_account_template' locale='LANG2929' selected>FXS Extension</option>
+                            <option value='auto_cdr2email' locale='LANG7'>CDR</option>
+                            <option value='conference_template' locale='LANG3775'>Conference Schedule</option>
+                            <option value='sendAlertMail' locale='LANG2553'>Alert Events</option>
+                            <option value='fax2email' locale='LANG95'>Fax</option>
+                            <option value='sendPasswordMail' locale='LANG2810'>User Password</option>
+                            <option value='voicemail_template' locale='LANG20'>Voicemail</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" style="display: inline-block;">
+                    <div class="field-label" gLabel="@LANG1607"></div>
+                    <div class="field-content">
+                        <div id="uploadDiv">
+                            <input type="text" id="fileUrl" name="fileUrl" readonly="readonly" />
+                            <button type="button" id="upload" class="selectBtn"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/email-template-upload.js"></script>
+</body>
+
+</html>

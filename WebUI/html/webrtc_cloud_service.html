@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+
+<head>
+    <title locale="LANG4505">WebRTC Cloud Service</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/hightlight.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .lite_desc {
+            margin-top: 10px;
+        }
+
+        #snippet {
+            margin: 0;
+            direction: ltr;
+        }
+
+        #snippet pre {
+            margin: -15px 0 0;
+            margin: -5px 0 0\9;
+        }
+
+        .btn-paging:disabled,
+        .btn-paging.disabled,
+        .btn-create:disabled,
+        .btn-create.disabled {
+            cursor: default;
+        }
+
+        .btn-create:disabled,
+        .btn-create.disabled {
+            color: #ffffff;
+            background-color: #9CD88B;
+        }
+    </style>
+    <script type="text/javascript" src="../js/hightlight.js"></script>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG4505"></div>
+    <div class='top_buttons'>
+        <button id="btnModify" type="button" class="btn btn-create" locale="LANG4651" onclick="changePasswordEmail();">Change Cloud Password</button>
+        <button id="btnReset" type="button" class="btn btn-create" locale="LANG4732" onclick="resetPassword();">Reset Cloud Password</button>
+        <button id="btnDelete" type="button" class="btn btn-create" locale="LANG4730 LANG4506" onclick="deleteAccount();">Delete Cloud Account</button>
+    </div>
+    <form id="form" autocomplete="off">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4506" tooltip="@LANG4507"></div>
+                <div class="field-content">
+                    <input type="text" name='cloud_account' style="display: none;" />
+                    <input type='text' name='cloud_account' id="cloud_account" autocomplete="off" maxlength="64" class="field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4508" tooltip="@LANG4509"></div>
+                <div class="field-content">
+                    <span id="cloud_password_span">
+                        <input type="text" name='cloud_password' style="display: none;" />
+                        <input type='password' name='cloud_password' id="cloud_password" autocomplete="off" minlength="6" maxlength="64" class="field" />
+                    </span>
+                    <button type="button" class="lightOffBtn" onclick="top.UCMGUI.show_password(this, 'cloud_password_span', 0, 'cloud_password', document);" localeTitle="LANG799"></button>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4524" tooltip="@LANG4525"></div>
+                <div class="field-content">
+                    <span type='text' name='cloud_endtime' id="cloud_endtime" maxlength="127" class="field" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="sync" class="btn btn-save" locale="LANG4510"></button>
+                    <button type="button" id="trial" class="btn btn-paging" onclick="freeTrial();" locale="LANG4526"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class='section-title' locale="LANG4529">WebRTC Cloud Service Configuration Example</div>
+    <div class="lite_desc" locale="LANG4530"></div>
+    <div id="snippet">
+        <pre>
+            <code class="xml">
+&lt;script type=&quot;application/javascript&quot;&gt;
+    window.GSWebRTCSettings = {
+        custom: {
+            position: {
+                bottom: 0,
+                right: 0
+                // top: "20%",
+                // left: "30%"
+            },
+            language: "en-US" // zh-CN 
+        },
+        server: {
+            url: "https://ucmwebrtc.ipvideotalk.com",
+            path: "GSWebRTC",
+            version: "1.1"
+        },
+        SIP: {
+            realm: "Grandstream",
+            impi: "Anonymous",
+            impu: "sip:webrtc_anonymous@anonymous.invalid",
+            display_name: "Anonymous",
+            phone_number: "WebRTC",
+            cloud_account: "Your Cloud Account"
+        }
+    };
+    var server = GSWebRTCSettings.server,
+        url = server.url,
+        path = server.path,
+        version = server.version;
+
+    var myScript = document.createElement("script");
+        myScript.type = "text/javascript";
+        myScript.src = (url + "/" +
+                        path + "/" +
+                        version + "/" +
+                        "webRTC.js");
+
+    if(typeof jQuery == "undefined") {
+        var jQueryScript = document.createElement("script");
+            jQueryScript.type = "text/javascript";
+            jQueryScript.src = (url + "/" +
+                                path + "/" +
+                                version + "/" +
+                                "jquery.js");
+        document.body.appendChild(jQueryScript);
+
+        jQueryScript.onload = function () {
+            document.body.appendChild(myScript);
+        }
+
+        jQueryScript.onerror = function() {
+            document.body.appendChild(jQueryScript);
+        }
+    } else {
+        document.body.appendChild(myScript);
+
+        myScript.onerror = function() {
+            document.body.appendChild(myScript);
+        }
+    }
+&lt;/script&gt;
+            </code>
+        </pre>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/webrtc-cloud-service.js"></script>
+</body>
+
+</html>

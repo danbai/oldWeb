@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+<head>
+    <title locale="LANG4857">Room Status</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG4857">Room Status</div>
+    <div class='top_buttons'>
+        <button id="btnAdd" type="button" class="btn btn-update" locale="LANG4340 LANG4856"></button>
+        <button id="btnBatchDelete" type="button" class="btn btn-update" locale="LANG3872 LANG4969"></button>
+        <button id="btnBatchAdd" type="button" class="btn btn-update" locale="LANG4965 LANG4969"></button>
+    </div>
+    <div id="rooms_div">
+        <table id="rooms-list"></table> 
+        <div id="rooms-pager"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/pms-rooms.js"></script>
+</body>
+</html>

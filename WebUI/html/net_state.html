@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4010">Net State</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+    .section-body span {
+        width: 100px;
+        display: inline-block;
+        overflow: hidden;
+    }
+    .section-body .row3, .section-body .row4 {
+        width: 300px;
+    }
+    .section-body .special_row span {
+        font-weight: bold;
+        font-size: 14px;
+    }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4010"></div>
+    <a href="#top" localetitle="LANG3962" id="toTop" title="回到顶部" style="display: inline;"></a>
+    <div class="section-body">
+        <div class="section-title">Active Internet Connections (Servers And Established)</div>
+        <div id="section_content"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/net-state.js"></script>
+</body>
+</html>

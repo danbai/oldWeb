@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4203"></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4203"></div>
+    <form id="form" autocomplete="off">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1425" tooltip="@LANG1425"></div>
+                <div class="field-content">
+                    <input type="password" name="oldpass" style="display: none;" />
+                    <input type="hidden" id="hidepass" name="hidepass" field_name='Password' />
+                    <input type="password" id="oldpass" name="oldpass" field_name='Password' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1081" tooltip="@LANG4192"></div>
+                <div class="field-content">
+                    <input type="text" id="email" name="email" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="btn_update" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <!-- <script type="text/javascript" src="../js/gibberish-aes.min.js"></script>
+    <script type="text/javascript" src="../js/md5.js"></script> -->
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/bind-email.js"></script>
+</body>
+</html>

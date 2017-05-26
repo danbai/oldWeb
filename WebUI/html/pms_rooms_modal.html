@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Room Status Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #batch {
+        display: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4893" tooltip="@LANG4893"></div>
+                        <div class="field-content">
+                            <input type="text" id="address" name="address" maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4854" tooltip="@LANG4854"></div>
+                        <div class="field-content">
+                            <input type="text" id="pms_room" name="pms_room" maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG85" tooltip="@LANG85"></div>
+                        <div class="field-content">
+                            <select id='extension' name="extension"></select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4872" tooltip="@LANG4872"></div>
+                        <div class="field-content">
+                            <input type="text" id="account" name="account" disabled maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4873" tooltip="@LANG4873"></div>
+                        <div class="field-content">
+                            <input type="text" id="vipcode" name="vipcode" disabled maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4876" tooltip="@LANG4876"></div>
+                        <div class="field-content">
+                            <input type="text" id="credit" name="credit" disabled maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4963" tooltip="@LANG5002"></div>
+                        <div class="field-content">
+                            <input type="text" id="maid" name="maid" disabled maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4874" tooltip="@LANG4874"></div>
+                        <div class="field-content">
+                            <input type="text" id="datein" name="datein" disabled maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4875" tooltip="@LANG4875"></div>
+                        <div class="field-content">
+                            <input type="text" id="dateout" name="dateout" disabled maxlength="128" />
+                        </div>
+                    </div>
+                </div>
+                <div id="batch">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG5040" tooltip="@LANG5040"></div>
+                        <div class="field-content">
+                            <input type="text" id="batch_address" name="batch_address" noserialize="true" maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4988" tooltip="@LANG4988"></div>
+                        <div class="field-content">
+                            <input type="text" id="batch_room" name="batch_room" noserialize="true" maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1155" tooltip="@LANG1155"></div>
+                        <div class="field-content">
+                            <select id='batch_extension' name="batch_extension"></select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1157" tooltip="@LANG1157"></div>
+                        <div class="field-content">
+                            <input type="text" id="batch_number" name="batch_number" value="5" noserialize="true" maxlength="128" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/pms-rooms-modal.js"></script>
+</body>
+
+</html>

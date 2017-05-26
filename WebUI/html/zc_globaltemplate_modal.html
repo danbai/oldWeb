@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+<head>
+    <title locale="LANG632">Manage Zero Config</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/jquery.qtip.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.zero-config.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .selectPosition
+        {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+    <div id="editForm" style="width: 720px; ">
+        <div id="preparePad" style="width: 500px; height: 160px;">
+            <div style="margin-top: 60px;">
+                <img src="../images/ani_loading.gif" />
+            </div>
+            <div id="loadingMsg" locale="LANG805" style="text-align: center;"></div>
+        </div>
+        <div id="contentPad" style="display:none;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3449" tooltip="@LANG3449"></div>
+                    <div class="field-content">
+                        <input id="templateName" name='templateName' type="text" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3450" tooltip="@LANG3450"></div>
+                    <div class="field-content">
+                        <input id="templateDesc" name='templateDesc' type="text" />
+                    </div>
+                </div>
+                <div class="field-cell no-border">
+                    <div class="field-label" glabel="@LANG3061" tooltip="@LANG3061"></div>
+                    <div class="field-content">
+                        <input id="templateEnabled" name="templateEnabled" type="checkbox" checked="checked" />
+                    </div>
+                </div>
+                <div id="optionPad" style="display: none; margin-top: 10px; min-height:300px;">
+                    <div id="navBar">
+                        <div id="navBar-inner">
+                            <div class="cell label" locale="LANG74">Options</div>
+                            <div class="cell combo"></div>
+                            <div class="cell sideControl">
+                                <a id="navTop" href="#" title="Back to top" style="display:none;"><img src="../images/arrow_back_top.png" /></a>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div id="itemContainer" style="background-color: #efefef;"></div>
+                </div>
+
+            </div>
+            <div class="field-cell modal-commands dialogContainer-commands" style="width: 96%; display: none;">
+                <hr style="width: 96%;"/>
+                <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog('*');" locale="LANG726"></button>
+                <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+            </div>
+        </div>
+
+    </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.qtip.js"></script>
+    <script type="text/javascript" src="../js/zc-global-template-modal.js"></script>
+    <script type="text/javascript" src="../js/subclass.js"></script>
+    <script type="text/javascript" src="../js/ucm-widgets.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 12px;
+        vertical-align: top;
+        position: relative;
+        top: -2px;
+    }
+    
+    .field-cell {
+        display: block;
+        *display: block;
+        zoom: 1;
+        padding: 2px 0px;
+    }
+    
+    .field-content {
+        height: 31px;
+    }
+    
+    #group .field-cell .field-label {
+        width: 190px;
+    }
+    
+    div.field-label .glab span.label {
+        width: 152px;
+    }
+    
+    #leftSelect,
+    #rightSelect {
+        width: 240px;
+        height: 95px;
+    }
+    
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form" style="overflow: hidden;">
+        <div id="editForm" style="width: 650px; min-height: 250px;">
+            <div class="section-body">
+                <div id="code">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG135"></div>
+                        <div class="field-content">
+                            <input type="text" id="code_name" name="code_name" maxlength="64" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4341" tooltip="@LANG4344"></div>
+                        <div class="field-content">
+                            <input type="text" id="codeblue_code" name="codeblue_code" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG28" tooltip="@LANG4343"></div>
+                        <div class="field-content">
+                            <select id="code_prompt" name="code_prompt"></select>
+                            <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" id="div_ringtime" glabel="@LANG1598"></div>
+                        <div class="field-content">
+                            <input type="text" name="code_timeout" id="code_timeout" dfalt='30' maxlength="3" class="inputWidth30" />
+                        </div>
+                    </div>
+                </div>
+                <div id="group">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG135"></div>
+                        <div class="field-content">
+                            <input type="text" id="group_name" name="group_name" maxlength="64" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4342" tooltip="@LANG4345"></div>
+                        <div class="field-content">
+                            <input type="text" id="codeblue_group" name="codeblue_group" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <table cellpadding="2" cellspacing="2" border="0" width="90%" align="center">
+                            <tr>
+                                <td align="center" valign="top">
+                                    <b locale="LANG2484">Available Extensions</b>
+                                </td>
+                                <td width="50" align="center"></td>
+                                <td align="center" valign="top">
+                                    <b locale="LANG2483">Selected Extensions</b>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="right" valign="top">
+                                    <select id="leftSelect" noserialize="true" multiple size="8"></select>
+                                </td>
+                                <td width="80" align="center" valign="center">
+                                    <span class="selectIcon addAll" id="allToRight"></span>
+                                    <span class="selectIcon addRight" id="oneToRight"></span>
+                                    <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                    <span class="selectIcon removeAll" id="allToLeft"></span>
+                                </td>
+                                <td align="left" valign="top">
+                                    <select name="rightSelect" id="rightSelect" noserialize="true" multiple size="8"></select>
+                                </td>
+                                <td width="80" align="center" valign="center">
+                                    <span class="selectIcon clickTop" id="button_top"></span>
+                                    <span class="selectIcon clickUp" id="button_up"></span>
+                                    <span class="selectIcon clickDown" id="button_down"></span>
+                                    <span class="selectIcon clickBottom" id="button_bottom"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/codeblue-modal.js"></script>
+</body>
+
+</html>

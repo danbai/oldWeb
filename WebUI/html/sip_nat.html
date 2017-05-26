@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG695">Sip Nat</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG695"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1837" tooltip="@LANG1836">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="externhost" name="externhost"  maxlength="60" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4484" tooltip="@LANG4485">
+                </div>
+                <div class="field-content">
+                    <input type="checkbox" id="ip_in_sdp_connection" noSerialize=true /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4777" tooltip="@LANG4778">
+                </div>
+                <div class="field-content">
+                    <input type='text' value='5060' id="externudpport" name="externudpport"  maxlength="6" class="inputWidth60" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1841" tooltip="@LANG1842">
+                </div>
+                <div class="field-content">
+                    <input type='text' value='5060' id="externtcpport" name="externtcpport"  maxlength="6" class="inputWidth60" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1843" tooltip="@LANG1844">
+                </div>
+                <div class="field-content">
+                    <input type='text' value='5061' id="externtlsport" name="externtlsport" maxlength="6" class="inputWidth60" /> 
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class='top_buttons'>
+        <button type="button" id="btnAdd" class="btn btn-update" locale="LANG5244"></button>
+    </div>
+    <table id="sip_list"></table> 
+    <div id="sip-pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/sip-nat.js"></script>
+</body>
+</html>

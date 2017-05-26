@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2898">Payload</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell{
+            display: inline-block;
+            width: 550px;
+        }
+        .section_btns {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        input[type="text"]{
+            width: 50px;
+        }
+        .field-cell .field-content {
+            top: 2px;
+        }
+        #other, .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2899"></div>
+    <form id="form">
+        <table style="width:100%">
+            <div class="section-body" id="audio">
+                <div class='section-title' locale="LANG2900">Audio Coding</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="audio" locale="LANG751">Reset All</button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="audio" locale="LANG749" >Default All</button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2716" tooltip="@LANG2717"></div>
+                    <div class="field-content audio">
+                        <input type="text" id="ast_format_g726_aal2" name="ast_format_g726_aal2" dfalt="112" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2718" tooltip="@LANG2719"></div>
+                    <div class="field-content audio">
+                        <input type="text" id="ast_rtp_dtmf" name="ast_rtp_dtmf" dfalt="101" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2781" tooltip="@LANG2781"></div>
+                    <div class="field-content audio">
+                        <input type="checkbox" id="option_g726_compatible_g721" name="option_g726_compatible_g721" dfalt="yes" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2720" tooltip="@LANG2721"></div>
+                    <div class="field-content audio">
+                        <input type="text" id="ast_format_g726" name="ast_format_g726" dfalt="2" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2722" tooltip="@LANG2723"></div>
+                    <div class="field-content audio">
+                        <input type="text" id="ast_format_ilbc" name="ast_format_ilbc" dfalt="97" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5242" tooltip="@LANG5243"></div>
+                    <div class="field-content audio">
+                        <input type="text" id="ast_format_opus" name="ast_format_opus" dfalt="123" maxlength="5" />
+                    </div>
+                </div>
+            </div>
+            <div class="section-body" id="video">
+                <div class='section-title' locale="LANG2715">Video Coding</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="video" locale="LANG751">Reset All</button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="video" locale="LANG749" >Default All</button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2724" tooltip="@LANG2725"></div>
+                    <div class="field-content video">
+                        <input type="text" id="ast_format_h264" name="ast_format_h264" dfalt="99" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2726" tooltip="@LANG2727"></div>
+                    <div class="field-content video">
+                        <input type="text" id="h263p_1" name="h263p_1" dfalt="100" noserialize="true" maxlength="8" />
+                        <input type="text" id="h263p_2" name="h263p_2" dfalt="103" noserialize="true" maxlength="8" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4448" tooltip="@LANG4449"></div>
+                    <div class="field-content video">
+                        <input type="text" id="ast_format_vp8" name="ast_format_vp8" dfalt="108" maxlength="8" />
+                    </div>
+                </div>
+            </div>
+            <div class="section-body" id="fec">
+                <div class='section-title' locale="LANG4176">RTP FEC</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="fec" locale="LANG751">Reset All</button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="fec" locale="LANG749" >Default All</button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4167" tooltip="@LANG4168"></div>
+                    <div class="field-content fec">
+                        <input type="text" class="fec" id="ast_format_main_video_fec" name="ast_format_main_video_fec" dfalt="120" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell hide">
+                    <div class="field-label" glabel="@LANG4177" tooltip="@LANG4173"></div>
+                    <div class="field-content fec">
+                        <input type="text" class="fec" id="ast_format_slides_video_fec" name="ast_format_slides_video_fec" dfalt="120" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell hide">
+                    <div class="field-label" glabel="@LANG4174" tooltip="@LANG4175"></div>
+                    <div class="field-content fec">
+                        <input type="text" class="fec"id="ast_format_audio_fec" name="ast_format_audio_fec" dfalt="120" maxlength="5" />
+                    </div>
+                </div>
+            </div>
+            <div class="section-body hide" id="rtp_redundant_encoding">
+                <div class='section-title' locale="LANG4204">RTP Redundant Encoding</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="rtp_redundant_encoding" locale="LANG751">Reset All</button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="rtp_redundant_encoding" locale="LANG749" >Default All</button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4205" tooltip="@LANG4205"></div>
+                    <div class="field-content rtp_redundant_encoding">
+                        <input type="text" class="rtp_redundant_encoding" id="ast_format_main_video_red" name="ast_format_main_video_red" dfalt="122" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell hide">
+                    <div class="field-label" glabel="@LANG4177" tooltip="@LANG4173"></div>
+                    <div class="field-content rtp_redundant_encoding">
+                        <input type="text" class="rtp_redundant_encoding" id="ast_format_slides_video_red" name="ast_format_slides_video_red" dfalt="122" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell hide">
+                    <div class="field-label" glabel="@LANG4174" tooltip="@LANG4175"></div>
+                    <div class="field-content rtp_redundant_encoding">
+                        <input type="text" class="rtp_redundant_encoding" id="ast_format_audio_red" name="ast_format_audio_red" dfalt="122" maxlength="5" />
+                    </div>
+                </div>
+            </div>
+            <div class="section-body" id="rtp_fecc_encoding">
+                <div class='section-title' locale="LANG4211">RTP FECC Encoding</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="rtp_fecc_encoding" locale="LANG751">Reset All</button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="rtp_fecc_encoding" locale="LANG749" >Default All</button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4212" tooltip="@LANG4213"></div>
+                    <div class="field-content rtp_fecc_encoding">
+                        <input type="text" class="rtp_fecc_encoding" id="ast_format_fecc" name="ast_format_fecc" dfalt="125" maxlength="5" />
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="submit" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </table>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/payload.js"></script>
+</body>
+</html>

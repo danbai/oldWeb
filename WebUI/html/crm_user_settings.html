@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG5225">CRM User Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .login {
+        color: green;
+    }
+
+    .logout {
+        color: gray;
+    }
+
+    .salesforce {
+        display: none;
+    }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG5225"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5226" tooltip="@LANG5226"></div>
+                <div class="field-content">
+                    <input type='checkbox' name='enable_crm' id="enable_crm" />
+                </div>
+            </div>
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG72" tooltip="@LANG72"></div>
+                <div class="field-content">
+                    <input type='text' name='crm_username' id="crm_username" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG73" tooltip="@LANG73"></div>
+                <div class="field-content">
+                    <input type='text' name='crm_password' id="crm_password" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell salesforce">
+                <div class="field-label" glabel="@LANG5113" tooltip="@LANG5227"></div>
+                <div class="field-content">
+                    <input type='text' name='security_token' id="security_token" maxlength="128" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5233" tooltip="@LANG5233"></div>
+                <div class="field-content">
+                    <span id="crmstatus"></span>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/crm-user-settings.js"></script>
+</body>
+</html>

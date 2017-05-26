@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG691">SIP ToS</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-content {
+        width: 180px;
+    }
+    
+    .field-content-specia {
+        width: 220px;
+    }
+    
+    .field-cell .field-label {
+        width: 210px;
+    }
+    
+    div.glab span.label {
+        width: 170px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG691"></div>
+    <div class="section-body">
+        <form id="form">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1818" tooltip="@LANG1817"></div>
+                <div class="field-content">
+                    <select dfalt='none' id="tos_sip">
+                        <option value='none' locale="LANG133">None</option>
+                        <option value='ef'>EF</option>
+                        <option value='CS0'>CS0</option>
+                        <option value='CS1'>CS1</option>
+                        <option value='CS2'>CS2</option>
+                        <option value='CS3'>CS3</option>
+                        <option value='CS4'>CS4</option>
+                        <option value='CS5'>CS5</option>
+                        <option value='CS6'>CS6</option>
+                        <option value='CS7'>CS7</option>
+                        <option value='AF11'>AF11</option>
+                        <option value='AF12'>AF12</option>
+                        <option value='AF13'>AF13</option>
+                        <option value='AF21'>AF21</option>
+                        <option value='AF22'>AF22</option>
+                        <option value='AF23'>AF23</option>
+                        <option value='AF31'>AF31</option>
+                        <option value='AF32'>AF32</option>
+                        <option value='AF33'>AF33</option>
+                        <option value='AF41'>AF41</option>
+                        <option value='AF42'>AF42</option>
+                        <option value='AF43'>AF43</option>
+                    </select>
+                </div>
+                <div class="field-label" glabel="@LANG1814" tooltip="@LANG1813"></div>
+                <div class="field-content">
+                    <select dfalt='none' id="tos_audio">
+                        <option value='none' locale="LANG133">None</option>
+                        <option value='ef'>EF</option>
+                        <option value='CS0'>CS0</option>
+                        <option value='CS1'>CS1</option>
+                        <option value='CS2'>CS2</option>
+                        <option value='CS3'>CS3</option>
+                        <option value='CS4'>CS4</option>
+                        <option value='CS5'>CS5</option>
+                        <option value='CS6'>CS6</option>
+                        <option value='CS7'>CS7</option>
+                        <option value='AF11'>AF11</option>
+                        <option value='AF12'>AF12</option>
+                        <option value='AF13'>AF13</option>
+                        <option value='AF21'>AF21</option>
+                        <option value='AF22'>AF22</option>
+                        <option value='AF23'>AF23</option>
+                        <option value='AF31'>AF31</option>
+                        <option value='AF32'>AF32</option>
+                        <option value='AF33'>AF33</option>
+                        <option value='AF41'>AF41</option>
+                        <option value='AF42'>AF42</option>
+                        <option value='AF43'>AF43</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1816" tooltip="@LANG1815"></div>
+                <div class="field-content">
+                    <select dfalt='none' id="tos_video">
+                        <option value='none' locale="LANG133">None</option>
+                        <option value='ef'>EF</option>
+                        <option value='CS0'>CS0</option>
+                        <option value='CS1'>CS1</option>
+                        <option value='CS2'>CS2</option>
+                        <option value='CS3'>CS3</option>
+                        <option value='CS4'>CS4</option>
+                        <option value='CS5'>CS5</option>
+                        <option value='CS6'>CS6</option>
+                        <option value='CS7'>CS7</option>
+                        <option value='AF11'>AF11</option>
+                        <option value='AF12'>AF12</option>
+                        <option value='AF13'>AF13</option>
+                        <option value='AF21'>AF21</option>
+                        <option value='AF22'>AF22</option>
+                        <option value='AF23'>AF23</option>
+                        <option value='AF31'>AF31</option>
+                        <option value='AF32'>AF32</option>
+                        <option value='AF33'>AF33</option>
+                        <option value='AF41'>AF41</option>
+                        <option value='AF42'>AF42</option>
+                        <option value='AF43'>AF43</option>
+                    </select>
+                </div>
+                <div class="field-label" glabel="@LANG1783" tooltip="@LANG1784"></div>
+                <div class="field-content">
+                    <input type='text' dfalt='120' id="defaultexpiry" name="defaultexpiry" class="inputWidth50" maxlength="4" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1791" tooltip="@LANG1792"></div>
+                <div class="field-content">
+                    <input type='text' id="maxexpiry" name="maxexpiry" dfalt="3600" class="inputWidth50" maxlength="4" />
+                </div>
+                <div class="field-label" glabel="@LANG1793" tooltip="@LANG1794" maxlength="4"></div>
+                <div class="field-content">
+                    <input type='text' dfalt="60" id="minexpiry" name="minexpiry" class="inputWidth50" maxlength="4" />
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG1797" tooltip="@LANG1798">
+                </div>
+                <div class="field-content">
+                    <select id="mohinterpret" name="mohinterpret" dfalt="default"></select>
+                </div>
+                <div class="field-label" glabel="@LANG1799" tooltip="@LANG1800">
+                </div>
+                <div class="field-content">
+                    <select id="mohsuggest" name="mohsuggest" dfalt="default"></select>
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1787" tooltip="@LANG1788"></div>
+                <div class="field-content">
+                    <input type='checkbox' id="relaxdtmf" name="relaxdtmf" />
+                </div>
+                <div class="field-label" glabel="@LANG1097" tooltip="@LANG1098"></div>
+                <div class="field-content">
+                    <select id="dtmfmode" name="dtmfmode" class="input8" dfalt="rfc2833">
+                        <option value='rfc2833'>RFC2833</option>
+                        <option value='info' locale="LANG1099">Info</option>
+                        <option value='inband' locale="LANG1100">Inband</option>
+                        <option value='auto' locale="LANG138">Auto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1803" tooltip="@LANG1804"></div>
+                <div class="field-content">
+                    <input type='text' dfalt="60" id="rtptimeout" name="rtptimeout" class="inputWidth50" maxlength="4" />
+                </div>
+                <div class="field-label" glabel="@LANG1801" tooltip="@LANG1802"></div>
+                <div class="field-content">
+                    <input type='text' dfalt="300" id="rtpholdtimeout" name="rtpholdtimeout" class="inputWidth50" maxlength="4" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5264" tooltip="@LANG5265"></div>
+                <div class="field-content">
+                    <input type='text' dfalt="300" id="rtpkeepalive" name="rtpkeepalive" class="inputWidth50" maxlength="4" />
+                </div>
+                <div class="field-label" glabel="@LANG4215" tooltip="@LANG4216"></div>
+                <div class="field-content">
+                    <select id="p100rel" name="p100rel" dfalt='never'>
+                        <option value='no' locale="LANG137">No</option>
+                        <option value='yes' locale="LANG136">Yes</option>
+                        <option value='required' locale="LANG4214">Required</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1820" tooltip="@LANG1819"></div>
+                <div class="field-content">
+                    <input type='checkbox' id="trustrpid" name="trustrpid" />
+                </div>
+                <div class="field-label" glabel="@LANG1807" tooltip="@LANG1808"></div>
+                <div class="field-content">
+                    <input type='checkbox' id="sendrpid" name="sendrpid" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1789" tooltip="@LANG1790"></div>
+                <div class="field-content">
+                    <select id="progressinband" name="progressinband" dfalt='never'>
+                        <option value='never' locale="LANG546">Never</option>
+                        <option value='no' locale="LANG137">No</option>
+                        <option value='yes' locale="LANG136">Yes</option>
+                    </select>
+                </div>
+                <div class="field-label" glabel="@LANG1809" tooltip="@LANG1810"></div>
+                <div class="field-content">
+                    <input type='text' dfalt='' id="useragent" name="useragent" maxlength="120" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1805" tooltip="@LANG1806"></div>
+                <div class="field-content">
+                    <input type='checkbox' id="compactheaders" name="compactheaders" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content field-content-specia">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/sip-tos.js"></script>
+</body>
+
+</html>

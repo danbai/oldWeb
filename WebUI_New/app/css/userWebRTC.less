@@ -1,0 +1,79 @@
+#btnRegister {
+    float: right;
+    position: relative;
+    left: 4px;
+}
+#divCallCtrl {
+    position: relative; 
+    top: 0; 
+    width: 100%; 
+    height:90%;
+}
+#divVideo {
+    width: 100%;
+    height:100%;
+}    
+.div-video {
+    width: 100%;
+    height: 0px;
+    -webkit-transition-property: height;
+    -moz-transition-property: height;
+    -o-transition-property: height;
+    -webkit-transition-duration: 2s;
+    -moz-transition-duration: 2s;
+    -o-transition-duration: 2s;
+}
+.remote_wrapper {
+    position: relative;
+    top: 0;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+.local-stream.room-preview {
+    height: 30%;
+    width: 30%;
+    bottom: -6px;
+}
+.local-stream {
+    position: absolute;
+    left: 41%;
+    top: 5px;
+    /* next two lines are workaround for lack of object-fit; see bug 1020445 */
+    max-width: 140px;
+    width: 30%;
+    height: 28%;
+    max-height: 105px;
+    box-shadow: none;
+}
+.div-keypad {
+    width: 250px;
+    height: 240px;
+    visibility: "display-block";
+    position: absolute;
+    top: 0px;
+    left: 20%;
+    z-index: 1; 
+}
+.btnKey {
+    width: 31%;
+    background: #303440;
+    color: white; 
+    font-size: 14px; 
+    border: 0;
+}
+.btnKey-top {
+    padding-top: 18px;
+}
+.btnKey-bottom {
+    padding-bottom: 18px;
+}
+.div-keypad table {
+    border: 0;
+    border-collapse: collapse;
+    tr td {
+        text-align: center;
+        border: 1px solid #666666;
+        border-left: 0;
+    }
+}

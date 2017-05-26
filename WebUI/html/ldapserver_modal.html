@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Edit phonebook</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #edit_phonebook_div {
+        display: block;
+        width: 700px; 
+        border: 1px solid #ccc;
+        margin-left: 10px;
+    }
+
+    #edit_phonebook_div, div.save-button {
+        /*margin:10px; */
+        overflow: hidden;
+    }
+    div.top-buttons {
+        display: block;
+        margin: 10px 0 0 10px;
+    }
+
+    div.add-button, div.edit-button {
+        display:block;
+    }
+
+    #left,#right {
+        padding-bottom:32767px; 
+        margin-bottom:-32767px;
+    }
+
+    #left {
+        width:387px;
+        float:left;
+    }
+
+    #right {
+        float:right;
+        width: 309px;
+        background: #eee;
+        border-left:1px #ccc solid;
+    }
+
+    #right .section-title {
+        border-bottom:1px solid #b5b5b5;
+    }
+
+    #input_attr_div {
+        max-height:435px;
+    }
+
+    #input_attr_div input {
+        width:140px;
+    }
+
+    #add_phonebookname input {
+        width:200px;
+    }
+
+    #phonebookdn {
+        background:#e5e5e5;
+    }
+
+    #div_container {
+        position:static;
+        width:309px;
+        max-height:400px;
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+
+    #contact_list tbody tr, #contact_list tbody tr:hover {
+        background:#d3d3d3;
+        cursor:pointer;
+    }
+
+    #contact_list tbody tr.selected {
+        background:#caecff;
+    }
+
+    #contact_list tbody tr.colorchange {
+        background:#ebdaa6;
+    }
+
+    table {
+        table-layout:fixed;
+        width:309px;
+    }
+
+    #contact_list thead td, #contact_list tbody td
+    {
+        border:none;
+    } 
+
+    tr td {
+        overflow:hidden;
+        white-space:nowrap;
+    }
+    .modal {
+        overflow: hidden;
+    }
+    .field-cell.modal-commands {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 10px;
+        margin-top: 12px;
+        text-align: center;
+    }
+    .special {
+        margin-bottom: 0px;
+    }
+    .des{
+        margin:10px 10px 10px 30px;
+    }
+    #phonebook_wrap {
+        word-wrap: break-word;
+        overflow: hidden;
+        width: 330px;
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" autocomplete="off">
+        <div id="contact_loading" style="position: absolute; display: none"><img src="../images/loading.gif"></div>
+        <div id='main' style="width: 700px; height: 560px;">
+            <div id="edit_phonebook_div">
+                <div id="left">
+                    <div class="section-body">
+                        <div class='section-title' locale="LANG719">LDAP Attributes</div>
+                        <div class="top-buttons">
+                            <button id="create_contact" type="button" class="btn btn-update" locale="LANG722"></button>
+                        </div>
+                        <div id="input_attr_div">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2222" tooltip="@LANG2227"></div>
+                                <div class="field-content">
+                                    <input type="text" id="accountnumber" name="accountnumber" maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1361" tooltip="@LANG2025"></div>
+                                <div class="field-content">
+                                    <input type="text" id="calleridname" name="calleridname" maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2032" tooltip="@LANG2033"></div>
+                                <div class="field-content">
+                                   <input type="text" id='email' name='email' maxlength=64 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2026" tooltip="@LANG2027"></div>
+                                <div class="field-content">
+                                    <input type="text" id="firstname" name="firstname" maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2028" tooltip="@LANG2029"></div>
+                                <div class="field-content">
+                                    <input type="text" id='lastname' name='lastname' maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2030" tooltip="@LANG2031"></div>
+                                <div class="field-content">
+                                    <input type="text" id="department" name="department" maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2034" tooltip="@LANG2035"></div>
+                                <div class="field-content">
+                                   <input type="text" id='mobilenumber' name='mobilenumber' maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2036" tooltip="@LANG2037"></div>
+                                <div class="field-content">
+                                   <input type="text" id='homenumber' name='homenumber' maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG95" tooltip="@LANG2039"></div>
+                                <div class="field-content">
+                                   <input type="text" id='fax' name='fax' maxlength=32 />
+                                </div>
+                            </div>
+                            <div class="field-cell add-button modal-commands" align="center">
+                                <button type="button" class="clear btn btn-cancel" locale="LANG743"></button>
+                                <button id="add_contact" type="submit" class="add btn btn-update" locale="LANG769"></button>
+                            </div>
+                            <div class="field-cell edit-button modal-commands" align="center">
+                                <button type="button" class="clear btn btn-cancel" locale="LANG743"></button>
+                                <button id="update_contact" type="submit" class="btn btn-update" locale="LANG769"></button>
+                            </div>
+                        </div>        
+                    </div>
+                </div>        
+                <div id="right">
+                    <div class='section-title' locale="LANG720">Contact List</div>
+                    <div id="div_container">
+                        <table class="tableWidget" id="contact_list"></table>
+                    </div>        
+                </div>        
+            </div>        
+            <div class="field-cell save-button modal-commands special" align="center">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button id="save_contacts" type="submit" class="btn btn-save" locale="LANG801"></button>
+            </div>
+        </div>
+    </form>
+    <form id='form_phonebook' autocomplete="off">
+        <div id='add_phonebookname' style="width: 600px; height: 150px;">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2040" tooltip="@LANG2041"></div>
+                <div class="field-content">
+                    <input type="text" id='phonebookname' name='phonebookname' style="-ms-ime-mode: disabled;" maxlength=32 />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2042" tooltip="@LANG2043"></div>
+                <div class="field-content">
+                    <input type="text" id='phonebookdn' name='phonebookdn' maxlength=96 readonly="readonly" />
+                </div>
+            </div>
+            <div class="field-cell save-button modal-commands" align="center">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button id='add_phonebook' type="submit" class="btn btn-save" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <form id="lead_phonebook" autocomplete="off">
+        <div id="lead_phonebook_div" style="width: 600px;">
+            <div class="section-title" locale="LANG2735">Import Options</div>
+            <div class="des">
+                <p locale="LANG3201"></p>
+                <p locale="LANG3918"></p>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG573"></div>
+                <div class="field-content">
+                    <select id='lead_type'>
+                        <option value='csv'>CSV</option>
+                        <option value='vcf'>VCF</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3652"></div>
+                <div class="field-content">
+                    <input type="text" id="fileUrl" name="fileUrl" readonly="readonly"/>
+                    <button type="button" id="upload" class="selectBtn"></button>
+                </div>
+            </div>
+            <div class="field-cell" id="failed">
+                <div style="padding-left: 210px;">
+                    <span class="levelTip" style="display: inline; margin-left: 0;"></span>
+                </div>
+            </div>
+            <div class="field-cell save-button modal-commands" align="center">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button type="submit" class="btn btn-save" id="lead_btn" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <form id="export_phonebook" autocomplete="off">
+        <div id="export_phonebook_div" style="width: 600px;">
+            <div class="section-title" locale="LANG2741"></div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG573"></div>
+                <div class="field-content">
+                    <select id='export_type'>
+                        <option value='csv'>CSV</option>
+                        <option value='vcf'>VCF</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG576"></div>
+                <div class="field-content" id="phonebook_wrap">
+                    
+                </div>
+            </div>
+            <div class="field-cell save-button modal-commands" align="center">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button type="submit" class="btn btn-save" id="export_btn" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+<script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+<script type="text/javascript" src="../js/ldapserver_modal.js"></script>
+</html>

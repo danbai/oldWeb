@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4359">System Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+        .section-title {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4359"></div>
+    <form id="form">
+        <div class="section-title">HA状态</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label">ha工作状态</div>
+                <div class="field-content">
+                    <div class="content" id="haOL"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">ha备份状态</div>
+                <div class="field-content">
+                    <div class="content" id="bkpSt"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">ha单机工作原因</div>
+                <div class="field-content">
+                    <div class="content" id="haERR"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">主设备的mac地址</div>
+                <div class="field-content">
+                    <div class="content" id="mac"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section-title">ha故障倒换日志</div>
+        <div class="field-content">
+            <button type="button" id="clean_rearrange" class="btn btn-paging" locale="LANG743"></button>
+        </div>
+        <div id="rearrange_log"></div>
+        <div class="section-title">ha备份日志</div>
+        <div class="field-content">
+            <button type="button" id="clean_backup" class="btn btn-paging" locale="LANG743"></button>
+        </div>
+        <div id="backup_log"></div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ha-status.js"></script>
+</body>
+</html>

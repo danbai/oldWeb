@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG716">HTTP Server</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell .field-label {
+            width: 230px;
+        }
+        div.glab span.label {
+            width: 190px;
+        }
+        .deleteFileBtn {
+            top: -1px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG716"></div>
+    <div class="section-body">
+        <form id="form">
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG571"></div>
+            <div class="field-content">
+                <select id="web_redirect" name="web_redirect" class="entry"  >
+                    <option value="1" locale="LANG274">Enable</option>
+                    <option value="0" locale="LANG273">Disable</option>
+                </select>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG617"></div>
+            <div class="field-content">
+                <select id="web_https" name="web_https" class="entry"  >
+                    <option value="disable" locale="LANG217">HTTP</option>
+                    <option value="enable" locale="LANG218">HTTPS</option>
+                </select>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG618"></div>
+            <div class="field-content">
+                <input type='text' id='web_port' name="web_port" maxlength="5" class="inputWidth50 entry">
+            </div>
+        </div>
+        <!-- <div class="field-cell">
+            <div class="field-label" gLabel="@LANG4149"></div>
+            <div class="field-content">
+                <input type='text' id='web_public_port' name="web_public_port" maxlength="5" class="inputWidth50 entry">
+            </div>
+        </div> -->
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG3000" tooltip="@LANG2999"></div>
+            <div class="field-content">
+                <div class="field-content" style="display: inline-block;">
+                    <input type="text" id="tlsprivatekey" noSerialize=true readonly="readonly" />
+                    <button type="button" id="http_tls_key_select" class="selectBtn"></button> 
+                </div>
+                <div class="field-content" style="display: inline-block;">
+                    <button type="button" id="http_tls_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                    <!-- <button type="button" id="http_tls_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG3002" tooltip="@LANG3001"></div>
+            <div class="field-content">
+                <div class="field-content" style="display: inline-block;">
+                    <input type="text" id="tlscertfile" noSerialize=true readonly="readonly" />
+                    <button type="button" id="http_tls_cert_select" class="selectBtn"></button>
+                </div>
+                <div class="field-content" style="display: inline-block;">
+                    <button type="button" id="http_tls_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                    <!-- <button type="button" id="http_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="field-cell last">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                <button type="button" id="reset" class="btn btn-paging" locale="LANG4229" onclick="resetCert();"></button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/webserver.js"></script>
+</body>
+</html>

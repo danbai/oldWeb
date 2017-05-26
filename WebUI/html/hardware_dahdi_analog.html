@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG32">Ports Config</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #errmsg {
+            border: 1px solid #666666;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding: 20px 10px 20px 10px;
+            font-size: 125%;
+            text-align: center;
+            background-color: #FFFFFF;
+        }
+        .advanced {
+            text-align: left;
+        }
+        .advanced > div > span {
+            float: left;
+            margin-right: 5px;
+            text-align: right;
+            width: 50%;
+        }
+        .advanced > div > input, .advanced > div > select {
+            margin: 2px 0 3px 0;
+            text-align: left;
+        }
+        #vpmsettings, #brihardware {
+            display: none;
+        }
+        .pageheading {
+            padding: 10px 10px 4px 10px;
+            font-size: 135%;
+            text-align: center;
+            font-weight: bold;
+        }
+        #loadZone {
+            top: 0px;
+        }
+        .field-cell div.field-label-special {
+            width: 234px;
+        }
+        .field-cell button {
+            position: relative;
+            top: 3px;
+            float: left;
+        }
+        .GSRTL .field-cell button {
+            float: right;
+        }
+        .field-content-tissOverride {
+            margin-right: 12px;
+        }
+        .GSRTL .field-content-tissOverride {
+            margin-left: 12px;
+            margin-right: 0;
+        }
+        .divSelect {
+            top: 4px;
+        }
+    </style>
+</head>
+<body class="page">
+    <!-- <div class='lite_Heading' locale="LANG685"></div>
+    <div id='digital_settings' style='display: none;'>
+        <div class="section-title" locale="LANG686">Digital Hardware</div>
+        <div class="section-body">
+            <div style="overflow: auto; max-height: 300px;">
+                <table id="digitalcardstable" cellpadding="0" cellspacing="0" border="0" class="taglist tableWidget" style="width: 100%;"></table>
+            </div>
+        </div>
+    </div> -->
+    <div class='lite_Heading' locale="LANG32"></div>
+    <div id='digital_settings'>
+        <div class="section-title" locale="LANG687">Analog Hardware</div>
+        <div class="section-body">
+            <div style="overflow: auto; max-height: 300px;">
+                <table id="digitalcardstable" cellpadding="0" cellspacing="0" border="0" class="taglist tableWidget" style="width: 100%;"></table>
+            </div>
+        </div>
+        <div id="brihardware" style="margin-top: 10px;">
+            <div class="section-title" locale="LANG2877">BRI Hardware</div>
+            <div class="section-body">
+                <div style="overflow: auto; max-height: 300px;">
+                    <table id="bricardstable" cellpadding="0" cellspacing="0" border="0" class="taglist tableWidget" style="width: 100%;"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-body">
+        <form id='form'>
+            <div class="field-cell">
+                <div class="field-label  field-label-special" glabel="@LANG1723" tooltip="@LANG1722"></div>
+                <div class="field-content">
+                    <select id="fxs_tonezone" name="fxs_tonezone"></select>
+                </div>
+            </div>
+            <div class="section-title" locale="LANG542">Advanced Settings</div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1704" tooltip="@LANG1705">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fxo_opermode')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="fxo_opermode" name="fxo_opermode" dfalt='USA'></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1708" tooltip="@LANG1705">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fxs_opermode')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="fxs_opermode" name="fxs_opermode" dfalt='USA'></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1721" tooltip="@LANG1720">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fxs_override_tiss')" locale="LANG257">Default</button>
+                    <div class="field-content field-content-tissOverride">
+                        <input type='checkbox' id='fxs_override_tiss' dfalt="no" />
+                    </div>
+                    <div class="field-content">
+                        <select id="fxs_tiss" name="fxs_tiss" dfalt="0" style="display: none;">
+                            <option value="0">600 &Omega;</option>
+                            <option value="1">900 &Omega;</option>
+                            <option value="2">600 &Omega; + 1 μF</option>
+                            <option value="3">900 &Omega; + 2.16 μF</option>
+                            <option value="4">270 &Omega; + (750 &Omega; || 150 nF)</option>
+                            <option value="5">220 &Omega; + (820 &Omega; || 120 nF)</option>
+                            <option value="6">220 &Omega; + (820 &Omega; || 115 nF)</option>
+                            <option value="7">200 &Omega; + (680 &Omega; || 100 nF)</option>
+                            <option value="8">370 &Omega; + (620 &Omega; || 310 nF)</option>
+                            <option value="9">120 &Omega; + (820 &Omega; || 110 nF)</option>
+                            <option value="10">350 &Omega; + (1000 &Omega; || 210 nF)</option>
+                            <option value="11">275 &Omega; + (780 &Omega; || 115 nF)</option>
+                            <option value="12">320 &Omega; + (1050 &Omega; || 230 nF)</option>
+                            <option value="13">370 &Omega; + (820 &Omega; || 110 nF)</option>
+                            <option value="14">600 &Omega; + 2.16μF</option>
+                            <option value="15">900 &Omega; + 1μF</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1716" tooltip="@LANG1717">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('alawoverride')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="alawoverride" name="alawoverride" dfalt='0'>
+                            <option value="0">PCMU</option>
+                            <option value="1">PCMA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" style="display:none">
+                    <div class="field-label" glabel="@LANG1706" tooltip="@LANG1707">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fxshonormode')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="fxshonormode" name="fxshonormode" dfalt='0'>
+                            <option value="0" locale="LANG1730">Apply Opermode to FXS Modules Only </option>
+                            <option value="1" locale="LANG1731">Apply Opermode to FXS and FXO Modules</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1692" tooltip="@LANG1693">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('boostringer')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="boostringer" name="boostringer" dfalt='0'>
+                            <option value="0" locale="LANG544">Normal</option>
+                            <option value="1" locale="LANG1733">Peak(89V)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1702" tooltip="@LANG1703">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fastringer')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="fastringer" name="fastringer" dfalt='0'>
+                            <option value="0" locale="LANG544">Normal</option>
+                            <option value="1" locale="LANG1734">Fast Ringer (25hz)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1710" tooltip="@LANG1711">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('lowpower')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="lowpower" name="lowpower" dfalt='0'>
+                            <option value="0" locale="LANG544">Normal</option>
+                            <option value="1" locale="LANG1735">Fast Ringer to 50V Peak</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1718" tooltip="@LANG1719">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fwringdetect')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="fwringdetect" name="fwringdetect" dfalt='0'>
+                            <option value='0' locale="LANG545">Standard</option>
+                            <option value='1' locale="LANG1736">Full Wave</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" style="display: none;">
+                    <div class="field-label" glabel="@LANG1712" tooltip="@LANG1713">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('mwimode')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="mwimode" name="mwimode" dfalt='none'>
+                            <option value='none' locale="LANG133">None</option>
+                            <option value='fsk' locale="LANG1737">FSK</option>
+                            <option value='neno' locale="LANG1738">NEON</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2621" tooltip="@LANG2622">
+                    </div>
+                    <button type="button" class="btn btn-paging" onclick="setDefaultVal('fxs_mwisendtype')" locale="LANG257">Default</button>
+                    <div class="field-content">
+                        <select id="fxs_mwisendtype" name="fxs_mwisendtype" dfalt='fsk'>
+                            <option value='fsk' locale="LANG1737">FSK</option>
+                            <option value='neon' locale="LANG1738">NEON</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell neon_settings" style="display: none;">
+                    <div class="field-label" glabel="@LANG1715">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="neonmwi_level" name="neonmwi_level" class="inputWidth50" />
+                    </div>
+                </div>
+                <div class="field-cell neon_settings" style="display: none;">
+                    <div class="field-label" glabel="@LANG1714">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="neonmwi_offlimit" name="neonmwi_offlimit" class="inputWidth50" />
+                    </div>
+                </div>
+            </div>
+            <div id='vpmsettings'>
+                <div class="section-title" locale="LANG688">VPM Settings</div>
+                <div class="section-body">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1700" tooltip="@LANG1701">
+                        </div>
+                        <div class="field-content">
+                            <select id="vpmnlptype" name="vpmnlptype">
+                                <option value="0">None</option>
+                                <option value="1">Mute</option>
+                                <option value="2">Random Noise</option>
+                                <option value="3">Hoth Noise</option>
+                                <option value="4">Suppression NLP (default)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1698" tooltip="@LANG1699">
+                        </div>
+                        <div class="field-content">
+                            <select id="vpmnlpthresh" name="vpmnlpthresh">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1696" tooltip="@LANG1697">
+                        </div>
+                        <div class="field-content">
+                            <select id="vpmnlpmaxsupp" name="vpmnlpmaxsupp" class="specialSelect">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                    </button>
+                    <button type="button" id="save" class="btn btn-save" locale="LANG728">
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/hardware-dahdi-analog.js"></script>
+</body>
+</html>

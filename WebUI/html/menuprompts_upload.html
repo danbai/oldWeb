@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #nocf {
+        font-size: 13pt;
+        padding: 10;
+        margin-left: 15;
+        margin-right: 15;
+        margin-top: 25;
+        text-align: center;
+    }
+    
+    #thispageContent {
+        font-size: 10pt;
+        padding: 5;
+        margin-left: 15;
+        margin-top: 15;
+    }
+    
+    #uploadForm_container {
+        font-size: 13px;
+        border: 0px;
+    }
+    
+    .des {
+        margin: 10px;
+        margin-left: 30px;
+    }
+
+    .consumer-data {
+        display: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="menupromptsDiv">
+        <div style="width: 600px;">
+            <div style='display: none;' id='nocf' locale="LANG1604"></div>
+            <div id='uploadForm_container'>
+                <div class='section-title' locale="LANG1613"></div>
+                <div class="des" locale="LANG566 LANG867 LANG4227"></div>
+                <div class="field-cell consumer-data">
+                    <div class="field-label" glabel="@LANG1950" tooltip="@LANG4826"></div>
+                    <div class="field-content">
+                        <select id='consumerData' name="consumerData">
+                            <option value='busy'>Busy</option>
+                            <option value='greet'>Greet</option>
+                            <option value='temp'>Temp</option>
+                            <option value='unavail'>Unavail</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" style="display: inline-block;">
+                    <div id="fileTip" class="field-label" gLabel="@LANG1607"></div>
+                    <div class="field-content">
+                        <div id="uploadDiv">
+                            <input type="text" id="fileUrl" name="fileUrl" readonly="readonly" />
+                            <button type="button" id="upload" class="selectBtn"></button>
+                        </div>
+                    </div>
+                    <div class="field-content" style="display: inline-block;">
+                        <button type="submit" id="udo" class="uploadFileBtn" locale="LANG782"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/menuprompts-upload.js"></script>
+</body>
+
+</html>

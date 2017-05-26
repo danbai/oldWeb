@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG667">Blacklist</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #select_blacklist {
+            min-width: 155px;
+            max-width: 250px;
+        }
+        .countryAdd {
+            background:url(../images/add.png) no-repeat;
+            display: inline-block;
+            height: 13px;
+            width: 13px;
+            margin: 0 0 0 15px;
+            margin-right: 6px;
+            padding: 0px;
+            cursor: pointer;
+            border: 0px;
+        }
+        .countryAdd:hover, .countryDel:hover {
+            filter: alpha(opacity=70); /* IE 5-7 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; /* IE 8 */
+            -moz-opacity: 0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        }
+        .countryDel {
+            background: url(../images/delete_circle.png);
+            display: inline-block;
+            height: 13px;
+            width: 13px;
+            margin: 0 0 0 15px;
+            margin-right: 6px;
+            padding: 0px;
+            cursor: pointer;
+            border: 0px;
+        }
+        #div_total {
+            display: block;
+            float: right;
+            margin-right: 10px;
+        }
+        #del_btn {
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            margin: 0 0 0 10px;
+            padding: 0px;
+            cursor:pointer;
+            border: 0px;
+            background: url(../images/delete_unpressed.png) no-repeat scroll 0 0 transparent;
+        }
+        #del_btn:hover {
+            background: url(../images/delete_hover.png) no-repeat scroll 0 0 transparent;
+        }
+        .center {
+            text-align: center;
+        }
+        #blacklist_list_div .btn {
+            line-height: 10px;
+            padding: 4px 6px;
+            font-size: 13px;
+        }
+
+        #blacklist_list_div .btn-go {
+            width: auto;
+        }
+        .countries {
+            display: none;
+            padding-left: 50px;
+        }
+
+        .countries li {
+            height: 28px;
+        }
+
+        .states li .checkbox {
+            top: 9px;
+        }
+
+        .states li > .close,
+        .states li > .open {
+            color: #2E83FF;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 10px;
+            display: inline-block;
+            cursor: pointer;
+            width: 20px;
+            text-align: center;
+        }
+
+        .states li > .state-name {
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .countries li > .country-name {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" name="editForm" style="width: 650px; height: 600px;">
+            <div class="section-body">
+                <div class="lite_desc">
+                    <span locale="LANG5390"></span>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG5337" tooltip="@LANG5337"></div>
+                    <div class="field-content" id="countryContainer"></div>
+                </div>
+            </div>
+            <div class='section-title' locale="LANG2277"></div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5338" tooltip="@LANG5344"></div>
+                    <div class="field-content">
+                        <input type="text" id="new_number" name="new_number" maxlength="20" />
+                        <button type="submit" id="blacklist_add" class="countryAdd" name="blacklist_add" localeTitle="LANG769"></button>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2280" tooltip="@LANG5345"></div>
+                </div>
+                <div id="blacklist_list_div">
+                    <table id="blacklist_list"></table>
+                    <div id="blacklist_listpager"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/countryCode.js"></script>
+</body>
+</html>

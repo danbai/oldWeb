@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG696">Sip Tls</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .deleteFileBtn {
+            top: -1px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG696"></div>
+    <div class="section-body">
+        <form id="form">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1853" tooltip="@LANG1854"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='tcpenable' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1851" tooltip="@LANG1852"></div>
+                <div class="field-content">
+                    <input type='text' id="tcpbindaddr" name='tcpbindaddr' maxlength="127"  class="dis_static field" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5125" tooltip="@LANG5126"></div>
+                <div class="field-content">
+                    <input type='text' id="tcpbindaddr6" name='tcpbindaddr6' maxlength="127"  class="dis_static field IPv6Input" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1868" tooltip="@LANG1867"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='tlsenable' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5204" tooltip="@LANG1855"></div>
+                <div class="field-content">
+                    <input type='text' name='tlsbindaddr' id="tlsbindaddr" maxlength="127" class="dis_static field IPv6Input" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5127" tooltip="@LANG5128"></div>
+                <div class="field-content">
+                    <input type='text' name='tlsbindaddr6' id="tlsbindaddr6" maxlength="127" class="dis_static field IPv6Input" />
+                </div>
+            </div>
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" glabel="@LANG1866" tooltip="@LANG1865"></div>
+                <div class="field-content">
+                    <select id="tlsclientmethod" name="tlsclientmethod">
+                        <option value="tlsv1">TLSv1</option>
+                        <option value="sslv3">SSLv3</option>
+                        <option value="sslv2">SSLv2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1870" tooltip="@LANG1869"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='tlsdontverifyserver' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1862" tooltip="@LANG1861"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display: inline-block;">
+                        <input type="text" id="tlscafile" noSerialize=true readonly="readonly" />
+                        <button type="button" id="tls_ca_file_select" class="selectBtn"></button> 
+                    </div>
+                    <div class="field-content" style="display: inline-block;">
+                        <button type="button" id="tls_ca_file_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="tls_ca_file_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1864" tooltip="@LANG1863"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display: inline-block;">
+                        <input type="text" id="tlscrtfile" noSerialize=true readonly="readonly" />
+                        <button type="button" id="tls_crt_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display: inline-block;">
+                        <button type="button" id="tls_crt_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="tls_crt_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4166" tooltip="@LANG4165"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display: inline-block;">
+                        <input type="text" id="tlskeyfile" noSerialize=true readonly="readonly" />
+                        <button type="button" id="tls_key_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display: inline-block;">
+                        <button type="button" id="tls_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="tls_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1860" tooltip="@LANG1859"></div>
+                <div class="field-content">
+                    <div class="field-content" id="tls_ca_dir_upload_div" style="display: inline-block;">
+                        <input type="text" id="tlscadir" noSerialize=true readonly="readonly" />
+                        <button type="button" id="tls_ca_dir_select" class="selectBtn"></button> 
+                    </div>
+                    <div class="field-content" style="display: inline-block;">
+                        <button type="button" id="tls_ca_dir_upload" class="uploadFileBtn" locale="LANG782" disabled>Upload</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1858" tooltip="@LANG1857"></div>
+                <div class="field-content">    
+                    <div id='cafiles_div' class="dis_static field"></div> 
+                </div> 
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/sip-tls.js"></script>
+</body>
+</html>

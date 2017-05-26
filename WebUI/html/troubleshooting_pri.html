@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2788">PRI Signaling Trace</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/styles.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title {
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2788"></div>
+    <div class="section-body">
+        <form id="form1">
+            <div class="field-cell">
+                <div class="field-content">
+                    <button type="button" id="btnStart" onclick="javascript:btnStart_click();">
+                        <font locale="LANG724">Start</font>
+                    </button>
+                    <button type="button" id="btnStop" onclick="javascript:btnStop_click();">
+                        <font locale="LANG725">Stop</font>
+                    </button>
+                    <button type="button" id="btnDownload" onclick="javascript:btnDownload_click();">
+                        <font locale="LANG759">Download</font>
+                    </button>
+                    <button type="button" id="btnDelete" onclick="javascript:btnDelete_click();">
+                        <font locale="LANG739">Delete</font>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG666"></div>
+    <div class="section-body" style="font-size: 13px; height: 320px; padding: 5px;">
+        <div id='outputBody' style="height: 300px; overflow: auto;"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/troubleshooting-pri.js"></script>
+</body>
+</html>

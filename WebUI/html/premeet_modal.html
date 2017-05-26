@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG3776"></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF8" />
+    <link href="../stylesheet/ui-lightness/styles.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style>
+    .center {
+        text-align: center;
+    }
+    
+    #add_people {
+        text-align: center;
+        width: 460px;
+    }
+    
+    #add_people label {
+        position: relative;
+        top: -6px;
+    }
+    
+    .btn_add {
+        border: none;
+        width: 13px;
+        height: 13px;
+        background: url(../images/add.png) no-repeat;
+        margin-bottom: 8px;
+    }
+    
+    .btn_del {
+        border: none;
+        width: 13px;
+        height: 13px;
+        background: url(../images/delete_circle.png) no-repeat;
+        margin-bottom: 8px;
+    }
+    
+    #form .member_name {
+        width: 60px;
+    }
+    
+    #form .member_tel,
+    #form .member_mail {
+        width: 100px;
+    }
+    
+    #form .mail_check_td {
+        width: 125px;
+    }
+    
+    #form .mail_check_td input {
+        vertical-align: middle;
+    }
+    
+    .select_div div {
+        float: left;
+        height: 110px;
+    }
+    
+    .click {
+        position: relative;
+        top: 45px;
+    }
+    
+    .select_div img {
+        margin-top: 5px;
+        top: 18px;
+        display: block;
+        position: relative;
+    }
+    
+    .select_div select {
+        width: 200px;
+        margin-right: 15px;
+        margin-left: 15px;
+        height: 95px;
+    }
+    
+    .select_div b {
+        display: block;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    
+    .specail {
+        margin-left: 190px;
+    }
+    
+    .special_table {
+        margin-left: 200px;
+    }
+    
+    #form .field_send_email {
+        top: -5px;
+    }
+    
+    #form .field_send_email .checkbox {
+        top: 10px;
+    }
+    
+    .clearfix:after {
+        clear: both;
+        display: block;
+        visibility: hidden;
+        height: 0;
+        content: '.';
+    }
+    
+    .field_phone {
+        margin-top: 20px;
+    }
+    
+    #ui-datepicker-div {
+        z-index: 9999!important;
+    }
+    
+    #starttime {
+        margin: 0 20px 0 5px;
+    }
+    
+    #endtime {
+        margin-left: 5px;
+    }
+    
+    .settings_parent {
+        padding-top: 25px;
+    }
+    
+    .prioptions {
+        position: relative;
+    }
+    
+    .prioptions .field-cell {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+    
+    .prioptions .field-cell .field-label {
+        width: 205px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        vertical-align: middle;
+    }
+    
+    .prioptions .field-label div.glab span.label {
+        width: 165px;
+    }
+    
+    .prioptions .field-cell.two .field-content {
+        width: 160px;
+    }
+    
+    #extension,
+    #pincode,
+    #admin_pincode {
+        width: 71px;
+    }
+    
+    .prioptions .field-content input[type=checkbox] {
+        position: relative;
+        top: 4px;
+    }
+    
+    #tr_musicclass {
+        display: none;
+    }
+    
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .link1 {
+        left: 10px;
+        top: -7px;
+    }
+    
+    #form .remote_special {
+        margin-left: 175px;
+    }
+    
+    #form .remote_special .field-label {
+        width: 245px;
+    }
+    
+    #form .remote_special div.glab span.label {
+        width: 200px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- conference settings -->
+    <form id="form" autocomplete="off">
+        <div id="pre_meet_div" class="section-body" style="width: 750px;">
+            <div id="conference_settings">
+                <div class="nav_wrap">
+                    <div class="settings_hr"></div>
+                    <ul id="nav_settings" class="clearfix">
+                        <li class="current">
+                            <a href="javascript:;" locale="LANG4275"></a>
+                        </li>
+                        <li id="li_last">
+                            <a href="javascript:;" locale="LANG599" id="slide_novalidate"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="settings_parent item_parent">
+                    <!-- basic -->
+                    <div class="basic settings current_position">
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3783" tooltip="@LANG4455"></div>
+                            <div class="field-content">
+                                <input type="text" id="confname" name="confname" maxlength="64">
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3777" tooltip="@LANG4456"></div>
+                            <div class="field-content">
+                                <select id="confno" name="confno"></select>
+                            </div>
+                        </div>
+                        <!-- <div class="field-cell">
+                            <div class="field-label" glabel="@LANG4274" tooltip="@LANG4274"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="closed" name="closed">
+                            </div>
+                        </div> -->
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG4281" tooltip="@LANG4457"></div>
+                            <div class="field-content">
+                                <input type="text" id="kickall_time" name="kickall_time" value="10">
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3799" tooltip="@LANG4458"></div>
+                            <div class="field-content">
+                                <textarea id="description" name="description" cols="63" rows="6"></textarea>
+                            </div>
+                        </div>
+                        <div class="field-cell edit_hide">
+                            <div class="field-label" glabel="@LANG3803" tooltip="@LANG4459"></div>
+                            <div class="field-content">
+                                <select id="recurringevent" name="recurringevent">
+                                    <option checked value="COMMON" locale="LANG3806">COMMON</option>
+                                    <option value="DAILY" locale="LANG3804">DAILY</option>
+                                    <option value="WEEKLY" locale="LANG3805">WEEKLY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3807" tooltip="@LANG3808"></div>
+                            <div class="field-content">
+                                <span locale="LANG2229" id="start_locale"></span>
+                                <input type="text" id="starttime" name="starttime" class="inputWidth130 special" schedule="schedule" readonly>
+                                <span locale="LANG2230"></span>
+                                <input type="text" id="endtime" name="endtime" class="inputWidth30 special" maxlength="4">
+                            </div>
+                        </div>
+                        <div class="field-cell edit_hide">
+                            <div class="field-label" glabel="@LANG3791" tooltip="@LANG3801"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="open_calendar" name="open_calendar" disabled>
+                                <span id="jumpGoogleService" class="link link1" locale="LANG3513" data-lang="LANG3513" data-url="googleserver"></span>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG4309" tooltip="@LANG4460"></div>
+                            <div class="field-content">
+                                <input type="text" id="con_admin" name="con_admin" class="inputWidth87">
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2479" tooltip="@LANG4462"></div>
+                            <div class="field-content field_send_email">
+                                <label locale="LANG3782"></label>
+                                <input type="checkbox" id="locale_send_email" name="locale_send_email" checked>
+                                <span id="emailTemplate" class="link" locale="LANG4576" data-lang="LANG4572" data-url="email_template"></span>
+                            </div>
+                        </div>
+                        <div class="field-cell specail clearfix">
+                            <div class="field-content select_div">
+                                <div>
+                                    <b locale="LANG2484"></b>
+                                    <select id="localeLeftSelect" size="5" noserialize="true" multiple="multiple"></select>
+                                </div>
+                                <div class="click">
+                                    <span class="selectIcon addAll" id="localeAllToRight"></span>
+                                    <span class="selectIcon addRight" id="localeOneToRight"></span>
+                                    <span class="selectIcon addLeft" id="localeOneToLeft"></span>
+                                    <span class="selectIcon removeAll" id="localeAllToLeft"></span>
+                                </div>
+                                <div>
+                                    <b locale="LANG2483"></b>
+                                    <select name="localeRightSelect" size="5" id="localeRightSelect" noserialize="true" multiple="multiple"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-cell field_phone">
+                            <div class="field-label" glabel="@LANG2480" tooltip="@LANG2531"></div>
+                            <div class="field-content field_send_email">
+                                <label locale="LANG3782"></label>
+                                <input type="checkbox" id="remote_send_email" name="remote_send_email" checked>
+                            </div>
+                        </div>
+                        <div class="field-cell specail clearfix">
+                            <div class="field-content select_div">
+                                <div>
+                                    <b locale="LANG2484"></b>
+                                    <select id="remoteLeftSelect" size="5" noserialize="true" multiple="multiple"></select>
+                                </div>
+                                <div class="click">
+                                    <span class="selectIcon addAll" id="remoteAllToRight"></span>
+                                    <span class="selectIcon addRight" id="remoteOneToRight"></span>
+                                    <span class="selectIcon addLeft" id="remoteOneToLeft"></span>
+                                    <span class="selectIcon removeAll" id="remoteAllToLeft"></span>
+                                </div>
+                                <div>
+                                    <b locale="LANG2483"></b>
+                                    <select name="remoteRightSelect" size="5" id="remoteRightSelect" noserialize="true" multiple="multiple"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-cell field_phone">
+                            <div class="field-label" glabel="@LANG3778" tooltip="@LANG4461"></div>
+                        </div>
+                        <div class="field-cell special_table">
+                            <div class="field-content">
+                                <table id="add_people">
+                                    <thead>
+                                        <tr>
+                                            <th locale="LANG2026"></th>
+                                            <th locale="LANG3781"></th>
+                                            <th locale="LANG2032"></th>
+                                            <th locale="LANG74"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="member_name" name="member_name" maxlength="64">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="member_tel" name="member_tel">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="member_mail" name="member_mail">
+                                            </td>
+                                            <td class="mail_check_td">
+                                                <label locale="LANG3782"></label>
+                                                <input type="checkbox" class="mail_check" checked>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn_add" id="btn_add"></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG4478" tooltip="@LANG4479"></div>
+                        </div>
+                        <div class="field-cell remote_special">
+                            <div class="field-label" glabel="@LANG2693">
+                            </div>
+                            <div class="field-content">
+                                <input type="text" id="create_remote_room" name="create_remote_room" maxlength="20" />
+                            </div>
+                        </div>
+                        <div class="field-cell remote_special">
+                            <div class="field-label" glabel="@LANG2694">
+                            </div>
+                            <div class="field-content">
+                                <input type="text" id="create_remote_pass" name="create_remote_pass" maxlength="20" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /basic -->
+                    <!-- advanced -->
+                    <div class="prioptions settings" id="prioptions">
+                        <div class="field-cell two">
+                            <div class="field-label" glabel="@LANG1032" tooltip="@LANG1033">
+                            </div>
+                            <div class="field-content">
+                                <input type="text" id="pincode" name="pincode" maxlength="10" />
+                            </div>
+                            <div class="field-label" glabel="@LANG1020" tooltip="@LANG1021">
+                            </div>
+                            <div class="field-content">
+                                <input type="text" id="admin_pincode" name="admin_pincode" maxlength="10" />
+                            </div>
+                        </div>
+                        <div class="field-cell two">
+                            <div class="field-label" glabel="@LANG1025" tooltip="@LANG1026">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="call_menu" name="call_menu" />
+                            </div>
+                            <div class="field-label" glabel="@LANG1038" tooltip="@LANG1039">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="recording" name="recording" />
+                            </div>
+                        </div>
+                        <div class="field-cell two">
+                            <div class="field-label" glabel="@LANG1036" tooltip="@LANG1037">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="quiet_mode" name="quiet_mode" />
+                                <input type='hidden' id="quiet_mode_unchecked" name="quiet_mode" value="no" readonly="readonly" noSerialize="true" />
+                            </div>
+                            <div class="field-label" glabel="@LANG1041" tooltip="@LANG1040">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="wait_admin" name="wait_admin" />
+                                <input type='hidden' id="wait_admin_unchecked" name="wait_admin" value="no" readonly="readonly" noSerialize="true" />
+                            </div>
+                        </div>
+                        <div class="field-cell two">
+                            <div class="field-label" glabel="@LANG1027" tooltip="@LANG1028">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="user_invite" name="user_invite" />
+                            </div>
+                            <div class="field-label" glabel="@LANG1022" tooltip="@LANG1023">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="announce_callers" name="announce_callers" />
+                                <input type='hidden' id="announce_callers_unchecked" name="announce_callers" value="no" readonly="readonly" noSerialize="true" />
+                            </div>
+                        </div>
+                        <div class="field-cell two">
+                            <div class="field-label" glabel="@LANG2431" tooltip="@LANG2432">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="public" name="public" checked/>
+                                <input type='hidden' id="public_unchecked" name="public" value="no" readonly="readonly" noSerialize="true" />
+                            </div>
+                            <div class="field-label" glabel="@LANG1034" tooltip="@LANG1035">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="moh_firstcaller" name="moh_firstcaller" />
+                            </div>
+                        </div>
+                        <div class="field-cell two">
+                            <div class="field-label" glabel="@LANG1043" tooltip="@LANG1044">
+                            </div>
+                            <div class="field-content">
+                                <input type='checkbox' id="skipauth" name="skipauth" />
+                            </div>
+                            <div class="field-label" glabel="@LANG1024" style="display: none;">
+                            </div>
+                            <div class="field-content" style="display: none;">
+                                <input type='checkbox' id="closeLastAdmin" name="closeLastAdmin" />
+                            </div>
+                            <div class="field-cell two" id="tr_musicclass">
+                                <div class="field-label" glabel="@LANG1178">
+                                </div>
+                                <div class="field-content">
+                                    <select id="musicclass" name="musicclass"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /advanced -->
+                </div>
+            </div>
+            <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog('', '', '.drag-chip-wrapper');" locale="LANG726"></button>
+                <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <!-- conference settings -->
+    <!-- clear settings -->
+    <form id="form_cleaner" autocomplete="off">
+        <div id="clear_settings" style="width: 600px;">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4278" tooltip="@LANG4280"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='Pen_auto_clean_scheduleconf' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4279" tooltip="@LANG1434"></div>
+                <div class="field-content">
+                    <input type="text" id='Phour_clean_scheduleconf' name="Phour_clean_scheduleconf" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1435" tooltip="@LANG1436"></div>
+                <div class="field-content">
+                    <input type="text" id='Pclean_scheduleconf_interval' name="Pclean_scheduleconf_interval" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button type="submit" class="btn btn-save" id="cleaner" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <!-- clear settings -->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.slide.js"></script>
+    <script type="text/javascript" src="../js/premeet-modal.js"></script>
+</body>
+
+</html>

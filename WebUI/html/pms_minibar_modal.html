@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Mini Bar Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .params {
+        display: none;
+    }
+
+    .link { 
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 12px;
+        vertical-align: top;
+        position: relative;
+        top: -2px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px; height: 220px;">
+            <div class="section-body">
+                <div id="minibar" class="params">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4341" tooltip="@LANG5055"></div>
+                        <div class="field-content">
+                            <input type="text" id="extension" name="extension" maxlength="18" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG135" tooltip="@LANG135"></div>
+                        <div class="field-content">
+                            <input type="text" id="minibar_name" name="minibar_name" maxlength="64" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1484" tooltip="@LANG1484"></div>
+                        <div class="field-content">
+                            <select id='prompt' name="prompt"></select>
+                            <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG5052" tooltip="@LANG5221"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="verify_skip" name="verify_skip" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG5051" tooltip="@LANG5222"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="enable_list_goods" name="enable_list_goods" />
+                        </div>
+                    </div>
+                </div>
+                <div id="maid" class="params">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4963" tooltip="@LANG4963"></div>
+                        <div class="field-content">
+                            <input type="text" id="waiter_id" name="waiter_id" maxlength="18" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG127" tooltip="@LANG127"></div>
+                        <div class="field-content">
+                            <input type="text" id="secret" name="secret" maxlength="64" />
+                        </div>
+                    </div>
+                </div>
+                <div id="goods" class="params">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4341" tooltip="@LANG4341"></div>
+                        <div class="field-content">
+                            <input type="text" id="extension" name="extension" maxlength="18" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG135" tooltip="@LANG135"></div>
+                        <div class="field-content">
+                            <input type="text" id="goods_name" name="goods_name" maxlength="64" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG5053" tooltip="@LANG5053"></div>
+                        <div class="field-content">
+                            <select id='prompt_success' name="prompt_success"></select>
+                            <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG5054" tooltip="@LANG5054"></div>
+                        <div class="field-content">
+                            <select id='prompt_error' name="prompt_error"></select>
+                            <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/pms-minibar-modal.js"></script>
+</body>
+
+</html>

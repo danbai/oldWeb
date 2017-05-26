@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG3238">FXS/FXO Record Trace</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/styles.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title {
+            margin-top: 12px;
+        }
+        .special {
+            display: inline-block;
+            zoom: 1;
+            margin-right: 8px;
+        }
+        .special label {
+            position: relative;
+            top: -6px;
+        }
+        .all_text {
+            position: relative;
+            top: -7px;
+        }
+        .fontSize {
+            font-size: 14px;
+        }
+                /* Interaction Cues */
+        #form1 .ui-state-highlight,
+        #form1 .ui-content .ui-state-highlight,
+        #form1 .ui-widget-header .ui-state-highlight,
+        #form2 .ui-state-highlight,
+        #form2 .ui-content .ui-state-highlight,
+        #form2 .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+
+        #form1 .ui-state-highlight a,
+        #form1 .ui-content .ui-state-highlight a,
+        #form1 .ui-widget-header .ui-state-highlight a,
+        #form2 .ui-state-highlight a,
+        #form2 .ui-content .ui-state-highlight a,
+        #form2 .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG3238"></div>
+    <div class='section-title fontSize' locale="LANG3238"></div>
+    <div class="section-body">
+        <form id="form1">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG3239"></div>
+                <div class="field-content">
+                    <div id="ports"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG3240"></div>
+                <div class="field-content">
+                    <select id="direction">
+                        <option value="rs" selected locale="LANG1959"></option>
+                        <option value="r" locale="LANG3241"></option>
+                        <option value="s" locale="LANG3242"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell" id="modeDiv">
+                <div class="field-label" gLabel="@LANG3244"></div>
+                <div class="field-content">
+                    <select id="mode">
+                        <option value="sep" selected locale="LANG3246"></option>
+                        <option value="mix" locale="LANG3245"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="btnStart" class="btnStart" onclick="javascript:btnStart_click();">
+                        <font locale="LANG724">Start</font>
+                    </button>
+                    <button type="button" id="btnStop" class="btnStop" onclick="javascript:btnStop_click();">
+                        <font locale="LANG725">Stop</font>
+                    </button>
+                    <button type="button" id="btnDownload" class="btnDownload" onclick="javascript:btnDownload_click();">
+                        <font locale="LANG759">Download</font>
+                    </button>
+                    <button type="button" id="btnDelete" class="btnDelete" onclick="javascript:btnDelete_click();">
+                        <font locale="LANG739">Delete</font>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG666"></div>
+    <div class="section-body" style="font-size: 13px; padding: 5px;">
+        <div id='outputBody' style="height: 60px; overflow: auto;"></div>
+    </div>
+    <div class='section-title fontSize' locale="LANG5082"></div>
+    <div class="section-body">
+        <form id="form2">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5084"></div>
+                <div class="field-content">
+                    <input type="text" id="ext_extension" name="ext_extension" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="btnFXOStart" class="btnStart" onclick="javascript:btnFXOStart_click();">
+                        <font locale="LANG724">Start</font>
+                    </button>
+                    <button type="button" id="btnFXOStop" class="btnStop" onclick="javascript:btnFXOStop_click();">
+                        <font locale="LANG725">Stop</font>
+                    </button>
+                    <button type="button" id="btnFXODownload" class="btnDownload" onclick="javascript:btnFXODownload_click();">
+                        <font locale="LANG759">Download</font>
+                    </button>
+                    <button type="button" id="btnFXODelete" class="btnDownload"onclick="javascript:btnFXODelete_click();">
+                        <font locale="LANG739">Delete</font>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG666"></div>
+    <div class="section-body" style="font-size: 13px; padding: 5px;">
+        <div id='outputFXOBody' style="height: 60px; overflow: auto;"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/troubleshooting-analog.js"></script>
+</body>
+</html>

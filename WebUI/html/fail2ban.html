@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2601">Fail2ban</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .btn_add {
+            background: url(../images/add.png) no-repeat;
+            position:relative;
+            border:none;
+            width: 13px;
+            height: 13px;
+        }
+        .btn_del {
+            background: url(../images/delete_circle.png) no-repeat;
+            position:relative;
+            border:none;
+            width: 13px;
+            height: 13px;
+        }
+        #tcpDiv, #tcpMaxRetryDiv {
+            display: none;
+        }
+        #localDiv {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG2600">fail2ban</div>
+    <form id="form" autocomplete="off">
+        <div id="globalDiv">
+            <div class="section-title" id="title-global" locale="LANG2601">Global</div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2604" tooltip="@LANG2605"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='fail2ban_enable' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2610" tooltip="@LANG2611">banTime</div>
+                <div class="field-content">
+                    <input type="text" id="bantime" name="bantime" class="isDisabled"/>&nbsp;<span locale="LANG570"></span>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2612" tooltip="@LANG2613">findtime</div>
+                <div class="field-content">
+                    <input type="text" id="findtime" name="findtime" class="isDisabled" />&nbsp;<span locale="LANG570"></span>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2614" tooltip="@LANG2615">maxRetry</div>
+                <div class="field-content">
+                    <input type="text" id="maxretry" name="maxretry" class="isDisabled" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2616" tooltip="@LANG2617">ignoreIp</div>
+                <div class="field-content">
+                    <table id="ignoreipTable" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input type="text" id="ignoreip0" name="ignoreip0" class="ignoreip isDisabled"/></td>
+                            <td><button type="button" class="btn_add isDisabled" id="btnignoreip0" onclick="addRow(this, 'ignoreipTable');"></button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="localDiv">
+            <div class='section-title' locale="LANG2618" id="locale">Local</div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2619"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enabled' class="isDisabled" onclick="isDisplay()" />
+                </div>
+            </div>
+            <div class="field-cell isDisplay">
+                <div class="field-label" gLabel="@LANG5292" tooltip="@LANG2620">Listening port number</div>
+                <div class="field-content">
+                    <div id="udpDiv" class="isDisabled">
+                        <input type="text" id="udpPort" name="udpPort" disabled=true value="" />&nbsp;(<span locale="LANG2672">UDP Port</span>)
+                    </div>
+                    <div id="tcpDiv" class="isDisabled">
+                        <input type="text" id="tcpPort" name="tcpPort" disabled=true value="" />&nbsp;(<span locale="LANG2673">TCP Port</span>)
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell isDisplay isDisabled">
+                <div class="field-label" gLabel="@LANG2614" tooltip="@LANG2615">maxRetry</div>
+                <div class="field-content">
+                    <div id="maxRetryDiv" class="isDisabled">
+                        <input type="text" id="asterisk_maxretry" name="asterisk_maxretry" class="isDisabled" value="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='section-title' locale="LANG2316"></div>
+        <table id='dynamic_blacklist' cellpadding="0" cellspacing="0" border="0" class="tableWidget" style="width: 100%;"></table>
+        <div id="div_save_btns" class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <p>
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" type="button" locale="LANG726">Cancel</button>
+                    <button type="submit" id="apply" class="btn btn-save" locale="LANG728">Apply</button>
+                </p>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/astman.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/fail2ban.js"></script>
+</body>
+</html>

@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>DAHDI Hardware Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .taglist {
+            border: 1px solid #666666;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        .taglist tr.frow {
+            background-color: #6b79a5;
+            color: #CED7EF;
+        }
+        .taglist tr.even {
+            background-color: #DFDFDF;
+        }
+        .taglist tr.odd {
+            background-color: #FFFFFF;
+        }
+        .taglist tr.even:hover, .taglist tr.odd:hover {
+            background-color: #a8b6e5;
+        }
+        #errmsg {
+            border: 1px solid #666666;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding: 20px 10px 20px 10px;
+            font-size: 125%;
+            text-align: center;
+            background-color: #FFFFFF;
+        }
+        .advanced {
+            text-align: left;
+        }
+        .advanced div span {
+            float: left;
+            margin-right: 5px;
+            text-align: right;
+            width: 50%;
+        }
+        .advanced div input, .advanced div select {
+            margin: 2px 0 3px 0;
+            text-align: left;
+        }
+        #vpmsettings, #edit_digitals_container, #digital_group_container, #edit_group_container, #otherR2Advanced{
+            display: none;
+        }
+        #edit_digitals_container {
+            width: 100%;
+            padding-top:25px;
+        }
+        #digital_group_container, #edit_group_container{
+            height: 90px;
+            width: 100%;
+        }
+        .pageheading {
+            padding: 10px 10px 4px 10px;
+            font-size: 135%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .field-content {
+            margin-right: 10px;
+        }
+        #channelDes, #digital_channelDes {
+            margin-left: 12px;
+        }
+        .divSelect {
+            top: 4px;
+        }
+        .hidden {
+            display: none;
+        }
+        .prioptions {
+            position: relative;
+        }
+        #advanced_btn, #otherAdvanced_btn {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+        }
+        #otherAdvanced_btn {
+            top: 8px;
+            right:0;
+            float:right;
+        }
+        #otherR2Advanced .field-cell {
+            display: inline-block;
+            *display: inline; 
+            zoom: 1; 
+            padding: 2px 0px;
+            line-height: 30px;
+            width: 340px;
+        }
+        #otherR2Advanced .field-cell .field-label {
+            width: 200px;
+        }
+        #otherR2Advanced div.field-label .glab span.label {
+            width: 160px; 
+        }
+        #otherR2Advanced input {
+            width: 50px;
+        }
+        #advanced_default_wrap {
+            margin-bottom: 6px;
+            float: right;
+        }
+        #advanced_default_wrap span {
+            display: inline-block;
+        }
+        #advanced_area {
+            margin-right: 5px;
+        }
+        #otherR2Advanced .mcr2_default span{
+            color: #008000;
+        }
+        .des {
+            margin: 0 10px 10px 30px;
+        }
+        .des p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px; height:520px;">
+            <div class="section-body">
+                <!--settings-->
+                <div id="edit_digitals_container">
+                    <div class="nav_wrap">
+                        <div class="settings_hr"></div>
+                        <ul id="nav_settings" class="clearfix">
+                          <li class="current">
+                            <a href="javascript:;" locale="LANG2217"></a>
+                          </li>
+                          <li id="li_last">
+                            <a href="javascript:;" locale="LANG542"></a>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="settings_parent item_parent">
+                        <!--basic-->
+                        <div class="basic settings current_position">
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG3129" tooltip="@LANG3130"></div>
+                                <div class="field-content">
+                                    <select id="span_type" name="span_type">
+                                        <option value="E1">E1</option>
+                                        <option value="T1">T1</option>
+                                        <option value="J1">J1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG3125" tooltip="@LANG3126"></div>
+                                <div class="field-content">
+                                    <select id="clock" name="clock">
+                                        <option value="0" locale="LANG3127">Master</option>
+                                        <option value="1" locale="LANG3128">Slave</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG3107" tooltip="@LANG3108"></div>
+                                <div class="field-content">
+                                    <select id="signalling" name="signalling">
+                                        <!-- <option value="pri_cpe">CPE</option>
+                                        <option value="pri_net">NET</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="ss7Options">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3255" tooltip="@LANG3256"></div>
+                                    <div class="field-content">
+                                        <select id="ss7type" name="ss7type">
+                                            <option value="itu">ITU</option>
+                                            <option value="ansi">ANSI</option>
+                                            <option value="china">CHINA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3257" tooltip="@LANG3258"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="pointcode" name="pointcode" />
+                                    </div>
+                                </div> 
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3259" tooltip="@LANG3260"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="defaultdpc" name="defaultdpc" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG4070" tooltip="@LANG4088"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="cicbeginswith" name="cicbeginswith" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG4110" tooltip="@LANG4111"></div>
+                                    <div class="field-content">
+                                        <select id="sigchan_assign_cic" name="sigchan_assign_cic">
+                                            <option value="0" locale="LANG137"></option>
+                                            <option value="1" locale="LANG136"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <div class="field-cell">
+                                    <div class="field-label" glabel="@LANGSS74" tooltip="@LANGSS74Tip"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="adjpointcode" name="adjpointcode" />
+                                    </div>
+                                </div>  -->
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3261" tooltip="@LANG3262"></div>
+                                    <div class="field-content">
+                                        <select id="networkindicator" name="networkindicator">
+                                            <option value="national">National</option>
+                                            <option value="national_spare">National Spare</option>
+                                            <option value="international">International</option>
+                                            <option value="international_spare">International Spare</option>
+                                        </select>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div id="mfcR2Div">
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG3290" tooltip="@LANG3291"></div>
+                                    <div class="field-content">
+                                        <select id="mfcr2_variant" name="mfcr2_variant">
+                                            <option locale="LANG284" value="ar">Argentina</option>
+                                            <option locale="LANG307" value="br">Brazil</option>
+                                            <option locale="LANG324" value="cn">China</option>
+                                            <option locale="LANG332" value="cz">Czech Republic</option>
+                                            <option locale="LANG325" value="co">Colombia</option>
+                                            <option locale="LANG341" value="ec">Ecuador</option>
+                                            <option locale="LANG379" value="id">Indonesia</option>
+                                            <option selected="selected" value="itu">ITU</option>
+                                            <option locale="LANG437" value="mx">Mexico</option>
+                                            <option locale="LANG458" value="ph">Philippines</option>
+                                            <option locale="LANG528" value="ve">Venezuela</option>
+                                        </select>          
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3292" tooltip="@LANG3293"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_get_ani_first" name="mfcr2_get_ani_first" />
+                                    </div>
+                                </div>
+                                <!-- <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3294" tooltip="@LANG3295"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="mfcr2_max_ani" name="requiredAndDigits" />
+                                    </div>
+                                </div> -->
+                                <!-- <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3296" tooltip="@LANG3297"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="mfcr2_max_dnis" name="requiredAndDigits" />
+                                    </div>
+                                </div> -->
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3298" tooltip="@LANG3299"></div>
+                                    <div class="field-content">
+                                        <select id="mfcr2_category" name="mfcr2_category" mSelect="true">
+                                            <option locale="LANG3300" value="national_subscriber">National Subscriber</option>
+                                            <option locale="LANG3301" value="national_priority_subscriber">National Priority Subscriber</option>
+                                            <option locale="LANG3302" value="international_subscriber">International Subscriber</option>
+                                            <option locale="LANG3303" value="international_priority_subscriber">International Priority Subscriber</option>
+                                            <option locale="LANG3304" value="collect_call">Collect Call</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="lboDiv">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3103" tooltip="@LANG3104"></div>
+                                    <div class="field-content">
+                                        <select id="lbo" name="lbo" mSelect="true">
+                                            <option value=0 locale="LANG3154">0 db (CSU) / 0-133 feet (DSX-1)</option>
+                                            <option value=1 locale="LANG3155">133-266 feet (DSX-1)</option>
+                                            <option value=2 locale="LANG3156">266-399 feet (DSX-1)</option>
+                                            <option value=3 locale="LANG3157">399-533 feet (DSX-1)</option>
+                                            <option value=4 locale="LANG3158">533-655 feet (DSX-1)</option>
+                                            <option value=5 locale="LANG3159">-7.5db (CSU)</option>
+                                            <option value=6 locale="LANG3160">-15db (CSU)</option>
+                                            <option value=7 locale="LANG3161">-22.5db (CSU)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="rtxDiv">
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG1113" tooltip="@LANG3163"></div>
+                                    <div class="field-content">
+                                        <select id="rxgain" name="rxgain">
+                                            <option value=12 >12</option>
+                                            <option value=11 >11</option>
+                                            <option value=10 >10</option>
+                                            <option value=9  >9</option>
+                                            <option value=8  >8</option>
+                                            <option value=7  >7</option>
+                                            <option value=6  >6</option>
+                                            <option value=5  >5</option>
+                                            <option value=4  >4</option>
+                                            <option value=3  >3</option>
+                                            <option value=2  >2</option>
+                                            <option value=1  >1</option>
+                                            <option value=0  >0</option>
+                                            <option value=-1 >-1</option>
+                                            <option value=-2 >-2</option>
+                                            <option value=-3 >-3</option>
+                                            <option value=-4 >-4</option>
+                                            <option value=-5 >-5</option>
+                                            <option value=-6 >-6</option>
+                                            <option value=-7 >-7</option>
+                                            <option value=-8 >-8</option>
+                                            <option value=-9 >-9</option>
+                                            <option value=-10>-10</option>
+                                            <option value=-11>-11</option>
+                                            <option value=-12>-12</option>
+                                            <option value=-13>-13</option>
+                                            <option value=-14>-14</option>
+                                            <option value=-15>-15</option>
+                                            <option value=-16>-16</option>
+                                            <option value=-17>-17</option>
+                                            <option value=-18>-18</option>
+                                            <option value=-19>-19</option>
+                                            <option value=-20>-20</option>
+                                            <option value=-21>-21</option>
+                                            <option value=-22>-22</option>
+                                            <option value=-23>-23</option>
+                                            <option value=-24>-24</option>
+                                        </select>          
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG1115" tooltip="@LANG3164"></div>
+                                    <div class="field-content">
+                                        <select id="txgain" name="txgain">
+                                            <option value=12 >12</option>
+                                            <option value=11 >11</option>
+                                            <option value=10 >10</option>
+                                            <option value=9  >9</option>
+                                            <option value=8  >8</option>
+                                            <option value=7  >7</option>
+                                            <option value=6  >6</option>
+                                            <option value=5  >5</option>
+                                            <option value=4  >4</option>
+                                            <option value=3  >3</option>
+                                            <option value=2  >2</option>
+                                            <option value=1  >1</option>
+                                            <option value=0  >0</option>
+                                            <option value=-1 >-1</option>
+                                            <option value=-2 >-2</option>
+                                            <option value=-3 >-3</option>
+                                            <option value=-4 >-4</option>
+                                            <option value=-5 >-5</option>
+                                            <option value=-6 >-6</option>
+                                            <option value=-7 >-7</option>
+                                            <option value=-8 >-8</option>
+                                            <option value=-9 >-9</option>
+                                            <option value=-10>-10</option>
+                                            <option value=-11>-11</option>
+                                            <option value=-12>-12</option>
+                                            <option value=-13>-13</option>
+                                            <option value=-14>-14</option>
+                                            <option value=-15>-15</option>
+                                            <option value=-16>-16</option>
+                                            <option value=-17>-17</option>
+                                            <option value=-18>-18</option>
+                                            <option value=-19>-19</option>
+                                            <option value=-20>-20</option>
+                                            <option value=-21>-21</option>
+                                            <option value=-22>-22</option>
+                                            <option value=-23>-23</option>
+                                            <option value=-24>-24</option>
+                                        </select>          
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="codecDiv" class="field-cell">
+                                <div class="field-label" glabel="@LANG3105" tooltip="@LANG3106"></div>
+                                <div class="field-content">
+                                    <select id="codec" name="codec">
+                                        <option value="default" locale="LANG257">default</option>
+                                        <option value="alaw">alaw</option>
+                                        <option value="ulaw">ulaw</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="priPlayLocalRbtDiv" class="field-cell">
+                                <div class="field-label" glabel="@LANG3491" tooltip="@LANG3492"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id="priplaylocalrbt" name="priplaylocalrbt" />
+                                </div>
+                            </div>
+                            <div id="mfcr2PlayLocaRbtDiv" class="field-cell">
+                                <div class="field-label" glabel="@LANG3491" tooltip="@LANG3492"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id="mfcr2_play_local_rbt" name="mfcr2_play_local_rbt" />
+                                </div>
+                            </div>
+                            <div class="field-cell hidden">
+                                <div class="field-label" glabel="@LANG3131" tooltip="@LANG3132"></div>
+                                <div class="field-content">
+                                    <span id="bchan" name="bchan"></span>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG3097" tooltip="@LANG3098"></div>
+                                <div class="field-content">
+                                    <select id="framing" name="framing">
+                                        <!-- <option value="ccs">ccs</option>
+                                        <option value="cas">cas</option>
+                                        <option value="esf">esf</option>
+                                        <option value="d4">d4</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/basic-->
+                        <!--advanced-->
+                        <div class="prioptions settings">
+                            <button type="button" id="otherAdvanced_btn" class="btn btn-paging" locale="LANG3367"></button>
+                            <div id="switchtypeDiv" class="field-cell">
+                                <div class="field-label"  glabel="@LANG3109" tooltip="@LANG3110"></div>
+                                <div class="field-content">
+                                    <select id="switchtype" name="switchtype">
+                                        <option value="euroisdn">EuroISDN</option>
+                                        <option value="national">NI2</option>
+                                        <option value="dms100">DMS100</option>
+                                        <option value="4ess">4ESS</option>
+                                        <option value="5ess">5ESS</option>
+                                        <option value="ni1">NI1</option>
+                                        <option value="qsig">Q.SIG</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG3099" tooltip="@LANG3100"></div>
+                                <div class="field-content">
+                                    <select id="coding" name="coding">
+                                        <!-- <option value="hdb3">hdb3</option>
+                                        <option value="b8zs">b8zs</option>
+                                        <option value="ami">ami</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell" id="em_w_outgoing">
+                                <div class="field-label" glabel="@LANG4138" tooltip="@LANG4139"></div>
+                                <div class="field-content">
+                                    <input type="text" id="emoutbandcalldialdelay" name="emoutbandcalldialdelay" dfalt="200"/>
+                                </div>
+                            </div>
+                            <div id="em_immediate_div">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG4131" tooltip="@LANG4132"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="em_rxwink" name="em_rxwink" dfalt="300"/>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div id="crcDiv" class="field-cell">
+                                <div class="field-label" glabel="@LANG3101" tooltip="@LANG3102"></div>
+                                <div class="field-content">
+                                    <select id="crc" name="crc">
+                                        <!-- <option value="none">none</option>
+                                        <option value="crc4">crc4</option>
+                                        <option value="crc6">crc6</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="pridialplanDIV">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3440" tooltip="@LANG3441"></div>
+                                    <div class="field-content">
+                                        <select id="pridialplan" name="pridialplan">
+                                            <option value="unknown">Unknown</option>
+                                            <option value="private">Private</option>
+                                            <option value="local">Local</option>
+                                            <option value="national">National</option>
+                                            <option value="international">International</option>
+                                            <option value="dynamic">Dynamic</option>
+                                            <option value="redundant">Redundant</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-cell" id="prilocaldialplanDIV">
+                                    <div class="field-label"  glabel="@LANG3442" tooltip="@LANG3443"></div>
+                                    <div class="field-content">
+                                        <select id="prilocaldialplan" name="prilocaldialplan">
+                                            <option value="unknown">Unknown</option>
+                                            <option value="private">Private</option>
+                                            <option value="local">Local</option>
+                                            <option value="national">National</option>
+                                            <option value="international">International</option>
+                                            <option value="dynamic">Dynamic</option>
+                                            <option value="redundant">Redundant</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="SS7dialplanDIV">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3111" tooltip="@LANG3112"></div>
+                                    <div class="field-content">
+                                        <select id="ss7_called_nai" name="ss7_called_nai">
+                                            <option value="unknown">Unknown</option>
+                                            <option value="subscriber">Subscriber</option>
+                                            <option value="national">National</option>
+                                            <option value="international">International</option>
+                                            <option value="dynamic">Dynamic</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG3113" tooltip="@LANG3114"></div>
+                                    <div class="field-content">
+                                        <select id="ss7_calling_nai" name="ss7_calling_nai">
+                                            <option value="unknown">Unknown</option>
+                                            <option value="subscriber">Subscriber</option>
+                                            <option value="national">National</option>
+                                            <option value="international">International</option>
+                                            <option value="dynamic">Dynamic</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="hardhdlcDiv" class="field-cell">
+                                <div class="field-label" glabel="@LANG3133" tooltip="@LANG3134"></div>
+                                <div class="field-content">
+                                    <select id="hardhdlc" name="hardhdlc"></select>
+                                </div>
+                            </div>
+                            <div id="callerIdPrefix">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3191" tooltip=""></div>
+                                    <div class="field-content">
+                                        <input type="text" id="internationalprefix" name="internationalprefix" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3192" tooltip=""></div>
+                                    <div class="field-content">
+                                        <input type="text" id="nationalprefix" name="nationalprefix" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div id="subscriberprefixDiv" class="field-cell">
+                                    <div class="field-label" glabel="@LANG3380" tooltip=""></div>
+                                    <div class="field-content">
+                                        <input type="text" id="subscriberprefix" name="subscriberprefix" maxlength="20" />
+                                    </div>
+                                </div>
+                                <div id="localprefixDiv" class="field-cell">
+                                    <div class="field-label" glabel="@LANG3193" tooltip=""></div>
+                                    <div class="field-content">
+                                        <input type="text" id="localprefix" name="localprefix" maxlength="20" />
+                                    </div>
+                                </div>
+                                <div id="privateprefixDiv" class="field-cell">
+                                    <div class="field-label" glabel="@LANG3194" tooltip=""></div>
+                                    <div class="field-content">
+                                        <input type="text" id="privateprefix" name="privateprefix" maxlength="20" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3195" tooltip=""></div>
+                                    <div class="field-content">
+                                        <input type="text" id="unknownprefix" name="unknownprefix" maxlength="20" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="priT310Div" class="field-cell">
+                                <div class="field-label" glabel="@LANG4368" tooltip="@LANG4369"></div>
+                                <div class="field-content">
+                                    <input type="text" id="pri_timer_t310" name="pri_timer_t310" maxlength="2" dfalt="10" />
+                                </div>
+                            </div>
+                            <div id="specialDiv">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3115" tooltip="@LANG3116"></div>
+                                    <div class="field-content">
+                                        <select id="priindication" name="priindication">
+                                            <option value="inband">inband</option>
+                                            <option value="outofband">outofband</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG2841" tooltip="@LANG2785"></div>
+                                    <div class="field-content">
+                                        <select id="resetinterval" name="resetinterval">
+                                            <option value="never" locale="LANG546">Never</option>
+                                            <option value="300">300</option>
+                                            <option value="1800">1800</option>
+                                            <option value="3600">3600</option>
+                                            <option value="7200">7200</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3117" tooltip="@LANG3118"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="priexclusive" name="priexclusive" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG3121" tooltip="@LANG3122"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="facilityenable" name="facilityenable" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3119" tooltip="@LANG3120"></div>
+                                    <div class="field-content">
+                                        <select id="overlapdial" name="overlapdial">
+                                            <option value="no">No</option>
+                                            <option value="incoming">Incoming</option>
+                                            <option value="outgoing">Outgoing</option>
+                                            <option value="both">Both</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label"  glabel="@LANG3123" tooltip="@LANG3124"></div>
+                                    <div class="field-content">
+                                        <select id="nsf" name="nsf">
+                                            <option value="none">none</option>
+                                            <option value="sdn">sdn</option>
+                                            <option value="megacom">megacom</option>
+                                            <option value="tollfreemegacom">tollfreemegacom</option>
+                                            <option value="accunet">accunet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="R2Advanced">
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3307" tooltip="@LANG3308"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="mfcr2_mfback_timeout" name="mfcr2_mfback_timeout" dfalt="-1" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3309" tooltip="@LANG3310"></div>
+                                    <div class="field-content">
+                                        <input type="text" id="mfcr2_metering_pulse_timeout" name="mfcr2_metering_pulse_timeout" dfalt="-1" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3305" tooltip="@LANG3306"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_allow_collect_calls" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3321" tooltip="@LANG3322"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_double_answer" dfalt="no" />
+                                    </div>
+                                </div>
+                                <div id="mfcr2DoubleSnswerTimeoutDiv" class="field-cell">
+                                    <div class="field-label" glabel="@LANG3368" tooltip="@LANG3369" >
+                                    </div>
+                                    <div class="field-content">
+                                        <input type="text" id="mfcr2_double_answer_timeout" name="mfcr2_double_answer_timeout" dfalt='-1' />
+                                    </div>
+                                </div>
+                                <!-- <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3311" tooltip="@LANG3312"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_immediate_accept" dfalt="no" />
+                                    </div>
+                                </div> -->
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3313" tooltip="@LANG3314"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_accept_on_offer" dfalt="yes" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3315" tooltip="@LANG3316"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_skip_category" name="mfcr2_skip_category" dfalt="no" />
+                                    </div>
+                                </div>
+                                <div id="mfcr2ForcedReleaseDiv" class="field-cell">
+                                    <div class="field-label" glabel="@LANG3317" tooltip="@LANG3318"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_forced_release" dfalt="no" />
+                                    </div>
+                                </div>
+                                <div class="field-cell">
+                                    <div class="field-label" glabel="@LANG3319" tooltip="@LANG3320"></div>
+                                    <div class="field-content">
+                                        <input type="checkbox" id="mfcr2_charge_calls" dfalt="yes" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/advance-->
+                    </div>
+                </div>
+                <!--/settings-->
+                <div id="digital_group_container">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2887" tooltip="@LANG3137"></div>
+                        <div class="field-content">
+                            <input type="text" id="digital_group_name" name="digital_group_name" maxlength="32" />
+                        </div>
+                    </div>
+                    <!-- <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1751" tooltip="@LANGPRI20TIP"></div>
+                        <div class="field-content">
+                            <input type="text" id="digital_context" name="digital_context" />
+                        </div>
+                    </div> -->
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3138" tooltip="@LANG3139"></div>
+                        <div class="field-content">
+                            <select id="digital_channel" name="digital_channel" noSerialize=true></select>
+                            <span id="digital_channelDes"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="edit_group_container">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2887" tooltip="@LANG3137"></div>
+                        <div class="field-content">
+                            <input type="text" id="group_name" name="group_name" maxlength="32" />
+                        </div>
+                    </div>
+                    <!-- <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1751" tooltip="@LANGPRI20TIP"></div>
+                        <div class="field-content">
+                            <input type="text" id="context" name="context" />
+                        </div>
+                    </div> -->
+                    <div id="channelDiv" class="field-cell">
+                        <div class="field-label" glabel="@LANG3138" tooltip="@LANG3139"></div>
+                        <div class="field-content">
+                            <select id="channel" name="channel" noSerialize=true></select>
+                            <span id="channelDes"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--custom-->
+                <div id="otherR2Advanced"> 
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3323" tooltip=""></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="mf_advanced_settings" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label"></div>
+                        <div class="field-content" id="advanced_default_wrap">
+                            <span locale="LANG3290"></span>
+                            <span id="advanced_area">:ITU</span>
+                            <button type="button" id="advanced_default" class="btn btn-paging" locale="LANG749"></button>
+                        </div>
+                    </div>
+                    <div id="otherR2AdvancedContent">
+                        <div class="des">
+                            <p locale="LANG4090"></p>
+                        </div>
+                        <div class="section-title" locale="LANG3361">Ga Tones Options</div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3324" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_next_dnis_digit" name="mf_ga_tones__request_next_dnis_digit">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3325" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_dnis_minus_1" name="mf_ga_tones__request_dnis_minus_1">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3326" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_dnis_minus_2" name="mf_ga_tones__request_dnis_minus_2">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3327" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_dnis_minus_3" name="mf_ga_tones__request_dnis_minus_3">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3328" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_all_dnis_again" name="mf_ga_tones__request_all_dnis_again">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3329" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_next_ani_digit" name="mf_ga_tones__request_next_ani_digit">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3330" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_category" name="mf_ga_tones__request_category">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3331" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_category_and_change_to_gc" name="mf_ga_tones__request_category_and_change_to_gc">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3332" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__request_change_to_g2" name="mf_ga_tones__request_change_to_g2">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3333" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__address_complete_charge_setup" name="mf_ga_tones__address_complete_charge_setup">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3334" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_ga_tones__network_congestion" name="mf_ga_tones__network_congestion">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="section-title" locale="LANG3362">Gb Tones Options</div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3335" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__accept_call_with_charge" name="mf_gb_tones__accept_call_with_charge">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3336" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__accept_call_no_charge" name="mf_gb_tones__accept_call_no_charge">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3337" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__busy_number" name="mf_gb_tones__busy_number">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3338" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__network_congestion" name="mf_gb_tones__network_congestion">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3339" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__unallocated_number" name="mf_gb_tones__unallocated_number">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3340" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__line_out_of_order" name="mf_gb_tones__line_out_of_order">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3341" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__special_info_tone" name="mf_gb_tones__special_info_tone">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3342" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__reject_collect_call" name="mf_gb_tones__reject_collect_call">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3343" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gb_tones__number_changed" name="mf_gb_tones__number_changed">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="section-title" locale="LANG3363">Gc Tones Options</div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3344" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gc_tones__request_next_ani_digit" name="mf_gc_tones__request_next_ani_digit">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3345" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gc_tones__request_change_to_g2" name="mf_gc_tones__request_change_to_g2">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3346" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_gc_tones__request_next_dnis_digit_and_change_to_ga" name="mf_gc_tones__request_next_dnis_digit_and_change_to_ga">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="section-title" locale="LANG3364">G1 Tones Options</div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3347" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g1_tones__no_more_dnis_available" name="mf_g1_tones__no_more_dnis_available">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3348" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g1_tones__no_more_ani_available" name="mf_g1_tones__no_more_ani_available">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3349" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g1_tones__caller_ani_is_restricted" name="mf_g1_tones__caller_ani_is_restricted">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="section-title" locale="LANG3365">G2 Tones Options</div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3300" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g2_tones__national_subscriber" name="mf_g2_tones__national_subscriber">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3301" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g2_tones__national_priority_subscriber" name="mf_g2_tones__national_priority_subscriber">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3302" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g2_tones__international_subscriber" name="mf_g2_tones__international_subscriber">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3303" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g2_tones__international_priority_subscriber" name="mf_g2_tones__international_priority_subscriber">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label"  glabel="@LANG3304" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="mf_g2_tones__collect_call" name="mf_g2_tones__collect_call">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="0">0</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="X">X</option>
+                                </select>          
+                            </div>
+                        </div>
+                        <div class="section-title" locale="LANG3366">Timers Options</div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3350" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__mf_back_cycle" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3351" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__mf_back_resume_cycle" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3352" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__mf_fwd_safety" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3353" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__r2_seize" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3354" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__r2_answer" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3355" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__r2_metering_pulse" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3356" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__r2_double_answer" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3357" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__r2_answer_delay" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3358" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__cas_persistence_check" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3359" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="timers__dtmf_start_dial" name="digits" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3360" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="text" id="mf_threshold" name="digits" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/custom-->
+                <div class="field-cell last dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-update" locale="LANG770">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.slide.js"></script>
+    <script type="text/javascript" src="../js/hardware-dahdi-digital-modal.js"></script>
+</body>
+</html>

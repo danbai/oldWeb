@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG2217">Static Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .label {
+        font-weight: normal;
+    }
+    .section-body-top {
+        padding-top: 10px;
+    }
+    .nav_wrap {
+        position: relative;
+        background: #d3d3d3;
+    }
+    #nav_settings {
+        background: #d3d3d3;
+    }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2217"></div>
+    <form id="form" autocomplete="off">
+        <div class="field-cell" id="mode_div">
+            <div class="field-label" glabel="@LANG2233" tooltip="@LANG1914"></div>
+            <div class="field-content">
+                <select id="method" name="method" onchange="NetworkMethodSwitch();"></select>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG5046" tooltip="@LANG5047"></div>
+            <div class="field-content">
+                <input type='text' id='mtu' name='mtu' />
+            </div>
+        </div>
+        <div class="field-cell" id="default_lan" style="display: none;">
+            <div class="field-label" gLabel="@LANG2220" tooltip="@LANG2226"></div>
+            <div class="field-content">
+                <select id="default_interface" name="default_interface" onchange="check_interface();">
+                    <option value="LAN1" locale="LANG266"></option>
+                    <option value="LAN2" locale="LANG267"></option>
+                </select>
+            </div>
+        </div>
+        <div class="section-body section-body-top">
+            <div class="nav_wrap">
+                <div class="settings_hr"></div>
+                <ul id="nav_settings" class="clearfix">
+                    <li class="current">
+                        <a href="javascript:;" locale="LANG5195"></a>
+                    </li>
+                    <li id="li_last">
+                        <a href="javascript:;" locale="LANG5130"></a>
+                    </li>
+                </ul>
+            </div>
+            <!--2 items-->
+            <div class="item_parent">
+                <!--basic-->
+                <div class="settings_floor1 settings current_position">
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1912" tooltip="@LANG1913"></div>
+                        <div class="field-content">
+                            <input type='text' id='altdns' name='altdns' />
+                        </div>
+                    </div>
+                    <div id="lan1" style="display: none;">
+                        <div class='section-title' locale="LANG266"></div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG549" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="lan2_ip_method" name="lan2_ip_method" onchange="ipMethodSwitch();">
+                                    <option value="0" locale="LANG219"></option>
+                                    <option value="1" locale="LANG220"></option>
+                                    <option value="2" locale="LANG221"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="divStatic2" style="display: none;">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_ip' name='lan2_ip' class='dis_static' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1902" tooltip="@LANG1903"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_mask' name='lan2_mask' class='dis_static' />
+                                </div>
+                            </div>
+                            <div class="field-cell LAN1">
+                                <div class="field-label" gLabel="@LANG1900" tooltip="@LANG1901"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_gateway' name='lan2_gateway' class='dis_static' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1904" tooltip="@LANG1905"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_dns1' name='lan2_dns1' class='dis_static' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1906" tooltip="@LANG1907"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_dns2' name='lan2_dns2' class='dis_static' />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divPPPoE2" style="display: none;">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1908" tooltip="@LANG1909"></div>
+                                <div class="field-content">
+                                    <input type="text" name='lan2_username' style="display: none;" />
+                                    <input type="text" id='lan2_username' name='lan2_username' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1910" tooltip="@LANG1911"></div>
+                                <div class="field-content">
+                                    <input type="password" name='lan1_password' style="display: none;" />
+                                    <input type="password" id='lan2_password' name='lan1_password' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lan2Qos">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2520" tooltip="@LANG2521"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_vid' name='lan2_vid' maxlength='4' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2522" tooltip="@LANG2523"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_priority' name='lan2_priority' maxlength='1' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='section-title' locale="LANG264" id="title-wan" style="display: none;"></div>
+                    <div class='section-title' locale="LANG265" id="title-lan"></div>
+                    <div class='section-title' locale="LANG267" id="title-lan2" style="display: none;"></div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG549" tooltip=""></div>
+                        <div class="field-content">
+                            <select id="lan1_ip_method" name="lan1_ip_method" onchange="ipMethodSwitch();">
+                                <option value="0" locale="LANG219"></option>
+                                <option value="1" locale="LANG220"></option>
+                                <option value="2" locale="LANG221"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="divStatic" style="display: none;">
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_ipaddr' name='lan1_ipaddr' class='dis_static' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1902" tooltip="@LANG1903"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_submask' name='lan1_submask' class='dis_static' />
+                            </div>
+                        </div>
+                        <div class="field-cell LAN2">
+                            <div class="field-label" gLabel="@LANG1900" tooltip="@LANG1901"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_gateway' name='lan1_gateway' class='dis_static' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1904" tooltip="@LANG1905"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_dns1' name='dns1' class='dis_static' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1906" tooltip="@LANG1907"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_dns2' name='dns2' class='dis_static' />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divPPPoE" style="display: none;">
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1908" tooltip="@LANG1909"></div>
+                            <div class="field-content">
+                                <input type="text" name='lan1_username' style="display: none;" />
+                                <input type="text" id='lan1_username' name='lan1_username' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1910" tooltip="@LANG1911"></div>
+                            <div class="field-content">
+                                <input type="password" name='lan1_password' style="display: none;" />
+                                <input type="password" id='lan1_password' name='lan1_password' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="lan1Qos">
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG2520" tooltip="@LANG2521"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_vid' name='lan1_vid' maxlength='4' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG2522" tooltip="@LANG2523"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_priority' name='lan1_priority' maxlength='1' />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="route" style="display: none;">
+                        <div class='section-title' locale="LANG265"></div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1915" tooltip="@LANG1916"></div>
+                            <div class="field-content">
+                                <input type='text' id='dhcp_ipaddr' name='dhcp_ipaddr' class='dis' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1902" tooltip="@LANG1903"></div>
+                            <div class="field-content">
+                                <input type='text' id='dhcp_submask' name='dhcp_submask' class='dis' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1917" tooltip="@LANG1918"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id='dhcp_enable' name='dhcp_enable' class='dis'>
+                            </div>
+                        </div>
+                        <div id="dhcpSetting">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1904" tooltip="@LANG1905"></div>
+                                <div class="field-content">
+                                    <input type='text' id='dhcp_dns1' name='dns1' class='dis2' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1906" tooltip="@LANG1907"></div>
+                                <div class="field-content">
+                                    <input type='text' id='dhcp_dns2' name='dns2' class='dis2' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1919" tooltip="@LANG1920"></div>
+                                <div class="field-content">
+                                    <input type='text' id='ipfrom' name='ipfrom' class='dis2' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1921" tooltip="@LANG1922"></div>
+                                <div class="field-content">
+                                    <input type='text' id='ipto' name='ipto' class='dis2' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4443" tooltip="@LANG4444"></div>
+                                <div class="field-content">
+                                    <input type='text' id='dhcp_gateway' name='dhcp_gateway' class='dis2' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1923" tooltip="@LANG1924"></div>
+                                <div class="field-content">
+                                    <input type="text" id='ipleasetime' name='ipleasetime' maxlength="6" class='dis2' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--basic-->
+                <!--floor2-->
+                <div class="settings_floor2 settings">
+                    <div id="lan1Ip6" style="display: none;">
+                        <div class='section-title' locale="LANG266"></div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG549" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="lan2_ip6_method" name="lan2_ip6_method" onchange="ipv6MethodSwitch();">
+                                    <option value="0" locale="LANG138"></option>
+                                    <option value="1" locale="LANG220"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="div6Static2" style="display: none;">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_ipaddr6' name='ipaddr6' class='dis_static IPv6Input' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG5158" tooltip="@LANG5159"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_ip6_prefixlen' name='lan2_ip6_prefixlen' class='dis_static' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1904" tooltip="@LANG5192"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_ip6_dns1' name='lan2_ip6_dns1' class='dis_static IPv6Input' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1906" tooltip="@LANG5193"></div>
+                                <div class="field-content">
+                                    <input type='text' id='lan2_ip6_dns2' name='lan2_ip6_dns2' class='dis_static IPv6Input' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='section-title' locale="LANG264" id="titleIp6-wan" style="display: none;"></div>
+                    <div class='section-title' locale="LANG265" id="titleIp6-lan"></div>
+                    <div class='section-title' locale="LANG267" id="titleIp6-lan2" style="display: none;"></div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG549" tooltip=""></div>
+                        <div class="field-content">
+                            <select id="lan1_ip6_method" name="lan1_ip6_method" onchange="ipv6MethodSwitch();">
+                                <option value="0" locale="LANG138"></option>
+                                <option value="1" locale="LANG220"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="divIp6Static" style="display: none;">
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_ipaddr6' name='ipaddr6' class='dis_static IPv6Input' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG5158" tooltip="@LANG5159"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_ip6_prefixlen' name='lan1_ip6_prefixlen' class='dis_static' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1904" tooltip="@LANG5192"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_ip6_dns1' name='ipv6Dns1' class='dis_static IPv6Input' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1906" tooltip="@LANG5193"></div>
+                            <div class="field-content">
+                                <input type='text' id='lan1_ip6_dns2' name='ipv6Dns2' class='dis_static IPv6Input' />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="routeIp6" style="display: none;">
+                        <div class='section-title' locale="LANG265"></div>
+                        <div id="dhcp6_enable_div" class="field-cell">
+                            <div class="field-label" gLabel="@LANG5207" tooltip="@LANG5208"></div>
+                            <div class="field-content">
+                                <select id='dhcp6_enable' name='dhcp6_enable'>
+                                    <option value="0" locale="LANG273"></option>
+                                    <option value="1" locale="LANG138"></option>
+                                    <option value="2" locale="LANG5209"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG5160" tooltip="@LANG5161"></div>
+                            <div class="field-content">
+                                <input type='text' id='dhcp6_prefix' name='dhcp6_prefix' class='dis IPv6Input'>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG5162" tooltip="@LANG5163"></div>
+                            <div class="field-content">
+                                <input type='text' id='dhcp6_prefixlen' name='ip6_prefixlen' class='dis'>
+                            </div>
+                        </div>
+                        <div id="dhcp6Setting">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1904" tooltip="@LANG5192"></div>
+                                <div class="field-content">
+                                    <input type='text' id='dhcp6_dns1' name='ipv6Dns1' class='dis2 IPv6Input' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1906" tooltip="@LANG5193"></div>
+                                <div class="field-content">
+                                    <input type='text' id='dhcp6_dns2' name='ipv6Dns2' class='dis2 IPv6Input' />
+                                </div>
+                            </div>
+                            <div class="field-cell" id="ip6from_div">
+                                <div class="field-label" gLabel="@LANG1919" tooltip="@LANG5223"></div>
+                                <div class="field-content">
+                                    <input type='text' id='ip6from' name='ip6from' class='dis2 IPv6Input' />
+                                </div>
+                            </div>
+                            <div class="field-cell" id="ip6to_div">
+                                <div class="field-label" gLabel="@LANG1921" tooltip="@LANG5224"></div>
+                                <div class="field-content">
+                                    <input type='text' id='ip6to' name='ip6to' class='dis2 IPv6Input' />
+                                </div>
+                            </div>
+                            <div id="ip6leasetime_div" class="field-cell">
+                                <div class="field-label" gLabel="@LANG1923" tooltip="@LANG1924"></div>
+                                <div class="field-content">
+                                    <input type="text" id='ip6leasetime' name='ip6leasetime' maxlength="6" class='dis2' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--\2 items-->
+            <!--cancel submit-->
+            <div id="buttons" class="field-cell last command">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                    </button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">
+                    </button>
+                </div>
+            </div>
+            <!--cancel submit-->
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.slide.js"></script>
+    <script type="text/javascript" src="../js/network-lan.js"></script>
+</body>
+
+</html>

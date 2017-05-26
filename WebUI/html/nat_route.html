@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG709">Port Forwarding</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG709"></div>
+    <div class="lite_desc" locale="LANG1972"></div>
+    <div class="lite_desc" locale="LANG4106"></div>
+    <!-- <form id="form">
+        <div class="section-body">
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" glabel="Route Switch:"></div>
+                <div class="field-content field-content-special">
+                    <div class="radioDiv">
+                        <input class="route_switch" type="radio" name="P231" value="0" />
+                        <span>On</span>
+                    </div>
+                    <div class="radioDiv">
+                        <input class="route_switch" type="radio" name="P231" value="1" />
+                        <span>OFF</span>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell" style="display:none">
+                <div class="field-label" glabel="Status:"></div>
+                <div class="field-content">
+                    <input type='text' id='route_mode_status' disabled="disabled" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="section-body">
+            <div class="general-table">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td id="row-title" locale="LANG1973">Port Forwarding:</td>
+                        <td id="containerPortForwarding"></td>
+                        <tr>
+                </table>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" type="button" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form> -->
+    <div class="top_buttons">
+        <button type="button" id="btnAdd" class="btn btn-update" locale="LANG4340 LANG709"></button>
+    </div>
+    <table id="portforwarding_list"></table>
+    <div id="portforwarding_pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/nat-route.js"></script>
+</body>
+
+</html>

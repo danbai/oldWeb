@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2015 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG4283">Settings Guide</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/cfgbasic.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/settings-guide.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+
+<body topmargin="1" leftmargin="2" onselectstart="return false;" id="HomeBody">
+    <div id="main-container">
+        <div class="header_row">
+            <div class="main_logo" id="main_logo">
+                <img alt="" align="left" id="logo" />
+            </div>
+            <table id="settings_table">
+                <tr>
+                    <td id="langSelect">
+                        <div id="language"></div>
+                    </td>
+                    <td>
+                        <span class="line" id="">|</span>
+                    </td>
+                    <td>
+                        <div id="navbox" class="menu">
+                            <span id="userInfo" class="button_t1">admin</span>
+                            <span class="dd-pointer dd-pointer-down"></span>
+                            <ul class="subnav">
+                                <li>
+                                    <span id="reboot_Button" onclick="top.UCMGUI.loginFunction.confirmReboot('confirm')" localeTitle="LANG737" locale="LANG737">Reboot</span>
+                                </li>
+                                <li>
+                                    <span id="logout_Button" onclick="top.UCMGUI.logoutFunction.confirmlogout()" localeTitle="LANG259" locale="LANG259">Logout</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" id="sysTime">
+                        <span class="sysTime"></span>
+                    </td>
+                </tr>
+            </table>
+            <div id="moduleList">
+                <ul class="module">
+                    <li class=""><a href="#" locale="LANG4283">Settings Guide</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="center-row">
+            <!-- multistep form -->
+            <form id="form">
+                <div class="component progress">
+                    <!-- progressbar -->
+                    <ul id="progressbar" class="UCM61XX"></ul>
+                </div>
+                <div class="component content" id="settingsContainer">
+                    <div style="position: relative; height: 100%; max-width: 100%; overflow: auto; overflow-x: hidden; ">
+                        <div style="position: relative; width: auto; height: 100%; margin: 0 20px;">
+                            <fieldset>
+                                <h2 class="fs-title" locale="LANG55"></h2>
+                                <h3 class="fs-subtitle" locale=""></h3>
+                                <div class="section-body">
+                                    <div id="cap_warning" locale="LANG935"></div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1989" tooltip="@LANG1989"></div>
+                                        <div class="field-content">
+                                            <input type="password" name="oldpass" style="display: none;" />
+                                            <input type="password" id="oldpass" name="oldpass" field_name='Password' />
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1990" tooltip="@LANG1990"></div>
+                                        <div class="field-content">
+                                            <input type="password" name="newpass" style="display: none;" />
+                                            <input type="password" id="newpass" name="newpass" field_name='Password' />
+                                            <div class="popover right">
+                                                <div class="triangle"></div>
+                                                <h3 class="popover-title" style="display: none;"></h3>
+                                                <div class="popover-content">
+                                                    <span locale="LANG1539"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1991" tooltip="@LANG1991"></div>
+                                        <div class="field-content">
+                                            <input type="password" name="newpass_rep" style="display: none;" />
+                                            <input type="password" id="newpass_rep" name="newpass_rep" field_name='Password' />
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1081" tooltip="@LANG4192"></div>
+                                        <div class="field-content">
+                                            <input type="text" id="email" name="email" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="networkField">
+                                <h2 class="fs-title" locale="LANG48"></h2>
+                                <h3 class="fs-subtitle" locale=""></h3>
+                                <div class="section-body">
+                                    <div id="networkContainer">
+                                        <div class="field-cell" id="mode_div">
+                                            <div class="field-label" glabel="@LANG2233" tooltip="@LANG1914"></div>
+                                            <div class="field-content">
+                                                <select id="method" name="method" onchange="NetworkMethodSwitch();"></select>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell">
+                                            <div class="field-label" gLabel="@LANG1912" tooltip="@LANG1913"></div>
+                                            <div class="field-content">
+                                                <input type='text' id='altdns' name='altdns' />
+                                            </div>
+                                        </div>
+                                        <div class="field-cell" id="default_lan" style="display: none;">
+                                            <div class="field-label" gLabel="@LANG2220" tooltip="@LANG2226"></div>
+                                            <div class="field-content">
+                                                <select id="default_interface" name="default_interface" onchange="checkInterface();">
+                                                    <option value="LAN1" locale="LANG266"></option>
+                                                    <option value="LAN2" locale="LANG267"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="lan1" style="display: none;">
+                                            <div class='section-title' locale="LANG266"></div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG549" tooltip=""></div>
+                                                <div class="field-content">
+                                                    <select id="lan2_ip_method" name="lan2_ip_method" onchange="ipMethodSwitch();">
+                                                        <option value="0" locale="LANG219"></option>
+                                                        <option value="1" locale="LANG220"></option>
+                                                        <option value="2" locale="LANG221"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="divStatic2" style="display: none;">
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_ip' name='lan2_ip' class='dis_static' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1902" tooltip="@LANG1903"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_mask' name='lan2_mask' class='dis_static' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell LAN1">
+                                                    <div class="field-label" gLabel="@LANG1900" tooltip="@LANG1901"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_gateway' name='lan2_gateway' class='dis_static' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1904" tooltip="@LANG1905"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_dns1' name='lan2_dns1' class='dis_static' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1906" tooltip="@LANG1907"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_dns2' name='lan2_dns2' class='dis_static' />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="divPPPoE2" style="display: none;">
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1908" tooltip="@LANG1909"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" name='lan2_username' style="display: none;" />
+                                                        <input type="text" id='lan2_username' name='lan2_username' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1910" tooltip="@LANG1911"></div>
+                                                    <div class="field-content">
+                                                        <input type="password" name='lan1_password' style="display: none;" />
+                                                        <input type="password" id='lan2_password' name='lan1_password' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div id="lan2Qos">
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG2520" tooltip="@LANG2521"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_vid' name='lan2_vid' maxlength='4' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG2522" tooltip="@LANG2523"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='lan2_priority' name='lan2_priority' maxlength='1' />
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class='section-title' locale="LANG264" id="title-wan" style="display: none;"></div>
+                                        <div class='section-title' locale="LANG265" id="title-lan"></div>
+                                        <div class='section-title' locale="LANG267" id="title-lan2" style="display: none;"></div>
+                                        <div class="field-cell">
+                                            <div class="field-label" gLabel="@LANG549" tooltip=""></div>
+                                            <div class="field-content">
+                                                <select id="lan1_ip_method" name="lan1_ip_method" onchange="ipMethodSwitch();">
+                                                    <option value="0" locale="LANG219"></option>
+                                                    <option value="1" locale="LANG220"></option>
+                                                    <option value="2" locale="LANG221"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="divStatic" style="display: none;">
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_ipaddr' name='lan1_ipaddr' class='dis_static' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1902" tooltip="@LANG1903"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_submask' name='lan1_submask' class='dis_static' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell LAN2">
+                                                <div class="field-label" gLabel="@LANG1900" tooltip="@LANG1901"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_gateway' name='lan1_gateway' class='dis_static' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1904" tooltip="@LANG1905"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_dns1' name='dns1' class='dis_static' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1906" tooltip="@LANG1907"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_dns2' name='dns2' class='dis_static' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="divPPPoE" style="display: none;">
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1908" tooltip="@LANG1909"></div>
+                                                <div class="field-content">
+                                                    <input type="text" name='lan1_username' style="display: none;" />
+                                                    <input type="text" id='lan1_username' name='lan1_username' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1910" tooltip="@LANG1911"></div>
+                                                <div class="field-content">
+                                                    <input type="password" name='lan1_password' style="display: none;" />
+                                                    <input type="password" id='lan1_password' name='lan1_password' maxlength="64" class='dis_pppoe' autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div id="lan1Qos">
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG2520" tooltip="@LANG2521"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_vid' name='lan1_vid' maxlength='4' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG2522" tooltip="@LANG2523"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='lan1_priority' name='lan1_priority' maxlength='1' />
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div id="route" style="display: none;">
+                                            <div class='section-title' locale="LANG265"></div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1915" tooltip="@LANG1916"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='dhcp_ipaddr' name='dhcp_ipaddr' class='dis' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1902" tooltip="@LANG1903"></div>
+                                                <div class="field-content">
+                                                    <input type='text' id='dhcp_submask' name='dhcp_submask' class='dis' />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG1917" tooltip="@LANG1918"></div>
+                                                <div class="field-content">
+                                                    <input type='checkbox' id='dhcp_enable' name='dhcp_enable' class='dis'>
+                                                </div>
+                                            </div>
+                                            <div id="dhcpSetting">
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1904" tooltip="@LANG1905"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='dhcp_dns1' name='dns1' class='dis2' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1906" tooltip="@LANG1907"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='dhcp_dns2' name='dns2' class='dis2' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1919" tooltip="@LANG1920"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='ipfrom' name='ipfrom' class='dis2' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1921" tooltip="@LANG1922"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='ipto' name='ipto' class='dis2' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG4443" tooltip="@LANG4444"></div>
+                                                    <div class="field-content">
+                                                        <input type='text' id='dhcp_gateway' name='dhcp_gateway' class='dis2' />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" gLabel="@LANG1923" tooltip="@LANG1924"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id='ipleasetime' name='ipleasetime' maxlength="6" class='dis2' />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="timeField">
+                                <h2 class="fs-title" locale="LANG4314"></h2>
+                                <h3 class="fs-subtitle" locale=""></h3>
+                                <div class="section-body">
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG2058"></div>
+                                        <div class="field-content">
+                                            <select type="select" id="time_zone" name="time_zone">
+                                                <!-- <option value="auto" locale="LANG2066">Automatic</option> -->
+                                                <option value="TZA+12" locale="LANG2067">GMT-12:00 (International Date Line West)</option>
+                                                <option value="TZB+11" locale="LANG2068">GMT-11:00 (Midway Island, Samoa)</option>
+                                                <option value="HAW10" locale="LANG2069">GMT-10:00 (US Hawaiian Time)</option>
+                                                <option value="AKST9AKDT" locale="LANG2070">GMT-09:00 (US Alaska Time)</option>
+                                                <option value="PST8PDT" locale="LANG2071">GMT-08:00 (US Pacific Time, Los Angeles)</option>
+                                                <option value="PST8PDT,M4.1.0,M10.5.0" locale="LANG2072">GMT-08:00 (Baja California)</option>
+                                                <option value="MST7MDT" locale="LANG2073">GMT-07:00 (US Mountain Time, Denver)</option>
+                                                <option value="MST7" locale="LANG2074">GMT-07:00 (Mountain Time (Arizona, no DST))</option>
+                                                <option value="MST7MDT,M4.1.0,M10.5.0" locale="LANG2075">GMT-07:00 (Chihuahua, La Paz, Mazatlan)</option>
+                                                <option value="CST6CDT" locale="LANG2076">GMT-06:00 (Central Time)</option>
+                                                <option value="CST+6" locale="LANG2077">GMT-06:00 (Central America)</option>
+                                                <option value="CST6CDT,M4.1.0,M10.5.0" locale="LANG2078">GMT-06:00 (Guadalajara, Mexico City, Monterrey)</option>
+                                                <option value="EST5EDT" locale="LANG2079">GMT-05:00 (Eastern Time)</option>
+                                                <option value="TZf+4:30" locale="LANG2080">GMT-04:30 (Caracas)</option>
+                                                <option value="AST4ADT" locale="LANG2081">GMT-04:00 (Atlantic Time)</option>
+                                                <option value="AST4ADT,M4.1.0/00:01:00,M10.5.0/00:01:00" locale="LANG2082">GMT-04:00 (Atlantic Time (New Brunswick))</option>
+                                                <option value="NST+3:30NDT+2:30,M4.1.0/00:01:00,M10.5.0/00:01:00" locale="LANG2083">GMT-03:30 (Newfoundland Time)</option>
+                                                <option value="TZK+3" locale="LANG2084">GMT-03:00 (Greenland)</option>
+                                                <option value="BRST+3BRDT+2,M10.3.0,M2.3.0" locale="LANG2085">GMT-03:00 (Brazil, Sao Paulo)</option>
+                                                <option value="UTC+3" locale="LANG2086">GMT-02:00 (Argentina)</option>
+                                                <option value="TZL+2" locale="LANG2087">GMT-02:00 (Mid-Atlantic)</option>
+                                                <option value="TZM+1" locale="LANG2088">GMT-01:00 (Azores, Cape Verde Is.)</option>
+                                                <option value="TZN+0" locale="LANG2089">GMT (Edinburgh, Casablanca, Monrovia)</option>
+                                                <option value="GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00" locale="LANG2090">GMT (London, Great Britain)</option>
+                                                <option value="WET-0WEST-1,M3.5.0/01:00:00,M10.5.0/02:00:00" locale="LANG2091">GMT (Lisbon, Portugal)</option>
+                                                <option value="GMT+0IST-1,M3.5.0/01:00:00,M10.5.0/02:00:00" locale="LANG2092">GMT (Dublin, Ireland)</option>
+                                                <option value="CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00" locale="LANG2094">GMT+01:00 (Roma, Paris, Madrid, Prague, Berlin, Budapest, Amsterdam, Barcelona)</option>
+                                                <option value="CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00" locale="LANG2095">GMT+01:00 (Brussels, Vienna, Warsaw)</option>
+                                                <option value="TZP-2" locale="LANG2096">GMT+02:00 (Israel, Cairo, Athens, Istanbul, Bucharest)</option>
+                                                <option value="EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00" locale="LANG2097">GMT+02:00 (Helsinki, Athens, Tallinn)</option>
+                                                <option value="EET-2EEST,M3.5.0/3,M10.5.0/4" locale="LANG2098">GMT+02:00 (Kyiv, Ukraine)</option>
+                                                <option value="TZQ-3" locale="LANG2099">GMT+03:00 (Kuwait, Baghdad, Tehran, Nairobi)</option>
+                                                <option value="MSK-3" locale="LANG2100">GMT+03:00 (Moscow, Russia)</option>
+                                                <option value="MST-3" locale="LANG2101">GMT+03:00 (St.Petersburg, Russia)</option>
+                                                <option value="TZR-4" locale="LANG2102">GMT+04:00 (Abu Dhabi, Baku)</option>
+                                                <option value="TZS-5" locale="LANG2103">GMT+05:00 (Islamabad, Ekaterinburg, Karachi, Tashkent)</option>
+                                                <option value="TZT-5:30" locale="LANG2104">GMT+05:30 (Chennai, New Delhi, Mumbai)</option>
+                                                <option value="TZU-5:45" locale="LANG2105">GMT+05:45 (Kathmandu)</option>
+                                                <option value="TZV-6" locale="LANG2106">GMT+06:00 (Almaty, Astana, Dhaka, Novosibirsk)</option>
+                                                <option value="TZW-6:30" locale="LANG2107">GMT+06:30 (Rangoon)</option>
+                                                <option value="TZX-7" locale="LANG2108">GMT+07:00 (Bankok, Hanoi, Krasnoyarsk)</option>
+                                                <option value="WIB-7" locale="LANG2109">GMT+07:00 (Jakarta)</option>
+                                                <option value="TZY-8" locale="LANG2110">GMT+08:00 (Beijing, Taipei, Kuala Lumpur, Irkutsk)</option>
+                                                <option value="SGT-8" locale="LANG2111">GMT+08:00 (Singapore)</option>
+                                                <option value="ULAT-8" locale="LANG2112">GMT+08:00 (Ulaanbaatar, Mongolia)</option>
+                                                <option value="WST-8" locale="LANG2113">GMT+08:00 (Perth)</option>
+                                                <option value="TZZ-9" locale="LANG2114">GMT+09:00 (Japan, Korea, Yakutsk)</option>
+                                                <option value="CST-9:30CDT-10:30,M10.5.0/02:00:00,M3.5.0/03:00:00" locale="LANG2115">GMT+09:30 (Adelaide)</option>
+                                                <option value="CST-9:30" locale="LANG2116">GMT+09:30 (Darwin)</option>
+                                                <option value="TZb-10" locale="LANG2117">GMT+10:00 (Guam)</option>
+                                                <option value="EST-10EDT-11,M10.1.0/02:00:00,M3.5.0/03:00:00" locale="LANG2118">GMT+10:00 (Hobart)</option>
+                                                <option value="EST-10EDT-11,M10.5.0/02:00:00,M3.5.0/03:00:00" locale="LANG2119">GMT+10:00 (Sydney, Melbourne, Canberra)</option>
+                                                <option value="EST-10" locale="LANG2120">GMT+10:00 (Brisbane)</option>
+                                                <option value="TZc-11" locale="LANG2121">GMT+11:00 (Magadan, Solomon Is., New Caledonia)</option>
+                                                <option value="NZST-12NZDT-13,M9.5.0/02:00:00,M4.1.0/03:00:00" locale="LANG2122">GMT+12:00 (Auckland, Wellington)</option>
+                                                <option value="TZd-12" locale="LANG2123">GMT+12:00 (Fiji)</option>
+                                                <option value="TZe-13" locale="LANG2124">GMT+13:00 (Nuku'alofa)</option>
+                                                <option value="customize" locale="LANG2125">Self-Defined Time Zone</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG2061"></div>
+                                        <div class="field-content">
+                                            <input type="text" id="self_defined_time_zone" name="self_defined_time_zone" class="inputWidth182" />
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1739" tooltip="@LANG1740"></div>
+                                        <div class="field-content">
+                                            <div id='languagediv' class="dis_static field"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="digitalHardwareField">
+                                <h2 class="fs-title" locale="LANG686"></h2>
+                                <h3 class="fs-subtitle" locale=""></h3>
+                                <div class="section-body">
+                                    <div class="field-cell">
+                                        <div class="field-label" glabel="@LANG3129" tooltip="@LANG3130"></div>
+                                        <div class="field-content">
+                                            <select id="span_type" name="span_type">
+                                                <option value="E1">E1</option>
+                                                <option value="T1">T1</option>
+                                                <option value="J1">J1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" glabel="@LANG3125" tooltip="@LANG3126"></div>
+                                        <div class="field-content">
+                                            <select id="clock" name="clock">
+                                                <option value="0" locale="LANG3127">Master</option>
+                                                <option value="1" locale="LANG3128">Slave</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" glabel="@LANG3099" tooltip="@LANG3100"></div>
+                                        <div class="field-content">
+                                            <select id="coding" name="coding"></select>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" glabel="@LANG3107" tooltip="@LANG3108"></div>
+                                        <div class="field-content">
+                                            <select id="signalling" name="signalling"></select>
+                                        </div>
+                                    </div>
+                                    <div id="ss7Options">
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG3255" tooltip="@LANG3256"></div>
+                                            <div class="field-content">
+                                                <select id="ss7type" name="ss7type">
+                                                    <option value="itu">ITU</option>
+                                                    <option value="ansi">ANSI</option>
+                                                    <option value="china">CHINA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG3257" tooltip="@LANG3258"></div>
+                                            <div class="field-content">
+                                                <input type="text" id="pointcode" name="pointcode" />
+                                            </div>
+                                        </div>
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG3259" tooltip="@LANG3260"></div>
+                                            <div class="field-content">
+                                                <input type="text" id="defaultdpc" name="defaultdpc" />
+                                            </div>
+                                        </div>
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG4070" tooltip="@LANG4088"></div>
+                                            <div class="field-content">
+                                                <input type="text" id="cicbeginswith" name="cicbeginswith" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="mfcR2Div">
+                                        <div class="field-cell">
+                                            <div class="field-label"  glabel="@LANG3290" tooltip="@LANG3291"></div>
+                                            <div class="field-content">
+                                                <select id="mfcr2_variant" name="mfcr2_variant">
+                                                    <option locale="LANG284" value="ar">Argentina</option>
+                                                    <option locale="LANG307" value="br">Brazil</option>
+                                                    <option locale="LANG324" value="cn">China</option>
+                                                    <option locale="LANG332" value="cz">Czech Republic</option>
+                                                    <option locale="LANG325" value="co">Colombia</option>
+                                                    <option locale="LANG341" value="ec">Ecuador</option>
+                                                    <option locale="LANG379" value="id">Indonesia</option>
+                                                    <option selected="selected" value="itu">ITU</option>
+                                                    <option locale="LANG437" value="mx">Mexico</option>
+                                                    <option locale="LANG458" value="ph">Philippines</option>
+                                                    <option locale="LANG528" value="ve">Venezuela</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="extensionField">
+                                <h2 class="fs-title" locale="LANG87"></h2>
+                                <h3 class="fs-subtitle" locale="LANG4322"></h3>
+                                <div class="section-body">
+                                    <div class="field-cell">
+                                        <div class="field-label" glabel="@LANG1586"></div>
+                                        <div class="field-content">
+                                            <input type='checkbox' id="disable_extension_ranges" name="disable_extension_ranges" />
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1155" tooltip="@LANG1156"></div>
+                                        <div class="field-content">
+                                            <input type="text" id='batch_extension' name="edit_extension" maxlength="18" />
+                                            <div class="popover right" id="extensionList">
+                                                <div class="triangle"></div>
+                                                <h3 class="popover-title" style="display: none;"></h3>
+                                                <div class="popover-content"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG1157" tooltip="@LANG1158"></div>
+                                        <div class="field-content">
+                                            <input type="text" id='batch_number' name="batch_number" maxlength="3" class="inputWidth30" />
+                                        </div>
+                                    </div>
+                                    <div class="field-cell">
+                                        <div class="field-label" gLabel="@LANG4320" tooltip="@LANG4321"></div>
+                                        <div class="field-content">
+                                            <div class="radio_wrap">
+                                                <input type="radio" checked id='batch_rand_secret' name='batch_password' class="password_change" />
+                                                <span locale="LANG1151"></span>
+                                            </div>
+                                            <div class="radio_wrap">
+                                                <input type="radio" id='batch_same_secret' name='batch_password' class="password_change" />
+                                                <span locale="LANG1153"></span>
+                                                <input type="text" id="batch_secret" name="batch_secret" maxlength="32" class="inputWidth50" disabled=true />
+                                                <span locale="LANG1154"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="trunkField">
+                                <h2 class="fs-title" locale="LANG4315"></h2>
+                                <h3 class="fs-subtitle" locale=""></h3>
+                                <div class="section-body">
+                                    <div id="trunkContainer">
+                                        <div class='trunk-button'>
+                                            <button type="button" id="addTrunk" class="btn btn-update" locale="LANG769"></button>
+                                            <div id="existedDataContainer">
+                                                <div id="existedOutboundRules" locale="LANG4371"></div>
+                                                <div class="popover right">
+                                                    <div class="triangle"></div>
+                                                    <h3 class="popover-title" style="display: none;"></h3>
+                                                    <div class="popover-content">
+                                                        <table id="outboundRulesList"></table>
+                                                        <div id="outboundRulesPager"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='trunk-list'>
+                                            <table id="trunkList"></table>
+                                            <div id="trunkListPager"></div>
+                                        </div>
+                                        <div class='trunk-content'>
+                                            <div class="field-cell">
+                                                <div class="field-label" gLabel="@LANG4324"></div>
+                                                <div class="field-content">
+                                                    <select id="trunkType" name="trunkType">
+                                                        <option value="SIP" locale="LANG4323 LANG108"></option>
+                                                        <option value="IAX" locale="LANG4323 LANG107"></option>
+                                                        <option value="Analog" locale="LANG639"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="field-cell">
+                                                <div class="field-label" glabel="@LANG1351" tooltip="@LANG1350"></div>
+                                                <div class="field-content"> 
+                                                    <input type="text" id="trunk_name" name="trunk_name" maxlength="16" />
+                                                </div>
+                                            </div>
+                                            <div class="analog">
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1349" tooltip="@LANG1348"></div>
+                                                    <div class="field-content">
+                                                        <select id="countrytone" name="countrytone"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1329"></div>
+                                                    <div class="field-content">
+                                                        <span id="FXOPorts" class="fxo-ports-container"></span>
+                                                        <div class="popover right fxo-ports">
+                                                            <div class="triangle"></div>
+                                                            <h3 class="popover-title" style="display: none;"></h3>
+                                                            <div class="popover-content">
+                                                                <div class="up">
+                                                                    <span class="upindex">X</span>
+                                                                </div>
+                                                                <span locale="LANG4335"></span>
+                                                                <div class="up disabled">
+                                                                    <span class="upindex">X</span>
+                                                                </div>
+                                                                <span locale="LANG4332"></span>
+                                                                <div class="up selected">
+                                                                    <span class="upindex">X</span>
+                                                                </div>
+                                                                <span locale="LANG4333"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="voip">
+                                                <div id="div_hostname" class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1373" tooltip="@LANG1374"></div>
+                                                    <div class="field-content">
+                                                        <input id="host" name="host" type="text" maxlength="40" />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG72" tooltip="@LANG1393"></div>
+                                                    <div class="field-content">
+                                                        <input name="username" type="text" style="display: none;" />
+                                                        <input id="username" name="username" type="text" maxlength="64" autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG73"></div>
+                                                    <div class="field-content">
+                                                        <input name="secret" type='password' style="display: none;" />
+                                                        <input id="secret" name="secret" type='password' maxlength='64' autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell" id="authid_field">
+                                                    <div class="field-label" glabel="@LANG2487" tooltip="@LANG2488"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id="authid" name="authid" maxlength="64" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='section-title' locale="LANG4325"></div>
+                                            <div class="outbound">
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1533" tooltip="@LANG1534"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id="outbound_rt_name" name="outbound_rt_name" field_name='Calling Rule Name' maxlength="25" />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG4327" tooltip="@LANG4329"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id="number_head" name="number_head" maxlength="20" />
+                                                        <div class="popover right">
+                                                            <div class="triangle"></div>
+                                                            <h3 class="popover-title" style="display: none;"></h3>
+                                                            <div class="popover-content">
+                                                                <span locale="LANG4329"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG4328" tooltip="@LANG4329"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id="number_length" name="number_length" maxlength="2" />
+                                                        <div class="popover right">
+                                                            <div class="triangle"></div>
+                                                            <h3 class="popover-title" style="display: none;"></h3>
+                                                            <div class="popover-content">
+                                                                <span locale="LANG4329"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1543" tooltip="@LANG1544"></div>
+                                                    <div class="field-content field-content-special">
+                                                        <select id="permission" name="permission">
+                                                            <option locale="LANG273" value="none" selected>None</option>
+                                                            <option locale="LANG1071" value="internal">Internal</option>
+                                                            <option locale="LANG1072" value="local">Local</option>
+                                                            <option locale="LANG1073" value="national">National</option>
+                                                            <option locale="LANG1074" value="international">International</option>
+                                                        </select>
+                                                        <div class="popover right">
+                                                            <div class="triangle"></div>
+                                                            <h3 class="popover-title" style="display: none;"></h3>
+                                                            <div class="popover-content">
+                                                                <span class="red"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG245" tooltip="@LANG1548"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id="strip" name="stripx" maxlength="2" />
+                                                    </div>
+                                                </div>
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1541" tooltip="@LANG1542"></div>
+                                                    <div class="field-content">
+                                                        <input type="text" id="prepend" name="prepend" maxlength="20" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='section-title' locale="LANG4326"></div>
+                                            <div class="inbound">
+                                                <div class="field-cell">
+                                                    <div class="field-label" glabel="@LANG1558" tooltip="@LANG2389"></div>
+                                                    <div class="field-content">
+                                                        <div class="selectDiv">
+                                                            <select id="destination_type" name="destination_type">
+                                                                <option value="byDID" locale="LANG1563"></option>
+                                                                <option value="account" locale="LANG85"></option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="selectDiv selectDivValue" style='display: none'>
+                                                            <select id="destination_value" name="destination_value" class='dest_val'></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field-cell last">
+                                                <button type="button" id="cancelTrunk" class="btn btn-cancel" locale="LANG726"></button>
+                                                <button type="button" id="saveTrunk" class="btn btn-save" locale="LANG728"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset id="summary">
+                                <h2 class="fs-title" locale="LANG4316"></h2>
+                                <div class="section-body">
+                                    <div class='title first' locale="LANG48"></div>
+                                    <div id="summaryNetwork"></div>
+                                    <div class='title' locale="LANG2058"></div>
+                                    <div id="summaryTimezone"></div>
+                                    <div class='title' locale="LANG686"></div>
+                                    <div id="summaryDigital"></div>
+                                    <div class='title' locale="LANG87"></div>
+                                    <div id="summaryExtension">
+                                        <div class="field-cell">
+                                            <div class="field-label" gLabel="@LANG736"></div>
+                                            <div class="field-content"></div>
+                                        </div>
+                                    </div>
+                                    <div class='title' locale="LANG4315"></div>
+                                    <div id="summaryTrunks" class="trunk-list">
+                                        <table id="summaryTrunkList"></table>
+                                        <div id="summaryTrunkListPager"></div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="component control-bottons">
+                    <button type="button" id="prev" class="prev action-button" locale="LANG4311" />
+                    <button type="button" id="next" class="next action-button" locale="LANG3386" />
+                    <button type="button" id="save" class="save action-button" locale="LANG728" />
+                    <button type="button" id="quit" class="quit action-button" locale="LANG4312" />
+                </div>
+            </form>
+        </div>
+        <div class="right_bottom_shadow"></div>
+        <div id="footer-row">
+            <div class="copyrights">
+                <span id="copyright"></span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/settings-guide.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>Manage WebRTC Smart Routes</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #editForm {
+        width: 650px;
+        overflow: hidden;
+    }
+
+    .field-cell {
+        display: block;
+        *display: block;
+        zoom: 1;
+        padding: 2px 0px;
+    }
+    
+    .field-content {
+        min-height: 31px;
+    }
+    
+    .field-cell .field-label {
+        width: 230px;
+    }
+    
+    div.field-label .glab span.label {
+        width: 190px;
+    }
+    
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .btn_add {
+        background: url(../images/add.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+
+    .btn_del {
+        background: url(../images/delete_circle.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+
+    .divSelect {
+        top: 3px;
+    }
+
+    .special_number {
+        top: -2px;
+        position: relative;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG4562"></div>
+                    <div class="field-content">
+                        <input type="text" id="route_name" name="route_name" maxlength="32" />
+                    </div>
+                </div>
+                <div class='section-title' locale="LANG168"></div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG168" tooltip="@LANG4563"></div>
+                    <div class="field-content">
+                        <div class="selectDiv">
+                            <select id="destination_type" name="destination_type"></select>
+                        </div>
+                        <div class="selectDiv">
+                            <select id="destination_value" name="destination_value" class='dest_val' noserialize="true"></select>
+                        </div>
+                        <input type="text" id='special_number' class='special_number' name='special_number' maxlength="32" style='display: none;' />
+                    </div>
+                </div>
+                <div id="configure">
+                    <div class='section-title' locale="LANG4497"></div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4500" tooltip="@LANG4564"></div>
+                        <div class="field-content">
+                            <select id="header_operation">
+                                <option value="AND">AND</option>
+                                <option value="OR">OR</option>
+                                <!-- <option value="NON">NON</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4501" tooltip="@LANG4565"></div>
+                        <div class="field-content">
+                            <table id="HeadersTable" border="0" style="margin-left: -2px;">
+                                <tr>
+                                    <td><div style="position: relative;"><select id="webrtc_header0" name="webrtc_header0" position="left"></select></div></td>
+                                    <td><label>&nbsp;/&nbsp;</label></td>
+                                    <td><input position="right" type="text" id="webrtc_header_value0" name="webrtc_header_value0" maxlength="100" /></td>
+                                    <td><button type="button" class="btn_add" id="btn0" onclick="addRow(this, 'HeadersTable');"></button></td>
+                                </TR>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="defaultDestination">
+                        <div class='section-title' locale="LANG1558"></div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2990"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="default_destination" name="default_destination" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1558" tooltip="@LANG4566"></div>
+                            <div class="field-content">
+                                <div class="selectDiv">
+                                    <select id="default_destination_type" name="default_destination_type"></select>
+                                </div>
+                                <div class="selectDiv">
+                                    <select id="default_destination_value" name="default_destination_value" class='dest_val' noserialize="true"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/webrtc-smart-routes-modal.js"></script>
+</body>
+
+</html>

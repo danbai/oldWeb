@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG661">Syslog Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .tableWidget {
+        width: 700px;
+    }
+    
+    table.tableWidget tbody td span {
+        margin-left: 28px;
+    }
+    
+    .ui-jqgrid .ui-jqgrid-hdiv {
+        background: #91C6E5;
+    }
+    
+    .ui-jqgrid .ui-jqgrid-htable th {
+        height: 25px;
+    }
+    
+    .ui-jqgrid .ui-jqgrid-bdiv {
+        overflow: auto;
+    }
+    
+    .ui-jqgrid {
+        margin-top: 10px;
+    }
+    
+    .section-title-special {
+        margin-top: 12px;
+    }
+    
+    .field-content-special {
+        margin-bottom: 12px;
+    }
+
+    .ui-jqgrid {
+        display: block;
+    }
+
+    #log_switch_process_list tbody tr:hover {
+        background: #CAECFF;
+        color: #363636;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <form id="form">
+        <div class='lite_Heading' locale="LANG661"></div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1556" tooltip="@LANG1556"></div>
+                <div class="field-content">
+                    <input id="syslog-server" name="P207" type='text' maxlength="256" class="inputWidth232 dis_static" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5249" tooltip="@LANG5250">
+                </div>
+                <div class="field-content">
+                    <input type="checkbox" id="syslogbk_enabled" name="syslogbk_enabled" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5251" tooltip="@LANG5252">
+                </div>
+                <div class="field-content">
+                    <input type="text" id="syslogbk_interval" name="syslogbk_interval" value="30" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="section-title section-title-special" locale="LANG67">System Log</div>
+        <div class="field-label">&nbsp;</div>
+        <div class="field-content field-content-special">
+            <button type="button" id="download" class="btn btn-paging" locale="LANG759">
+            </button>
+            <button type="button" id="clean" class="btn btn-paging" locale="LANG743">
+            </button>
+        </div>
+        <div class='section-title' locale="LANG662"></div>
+        <div class="section-body" style="font-size: 13px; padding: 5px 0;">
+            <table id="log_switch_static_list"></table>
+            <div id="log_switch_static_pager"></div>
+            <br />
+            <table id="log_switch_dynamic_list"></table>
+            <div id="log_switch_dynamic_pager"></div>
+            <br />
+            <table id="log_switch_process_list" class="ui-jqgrid ui-widget-content ui-jqgrid-btable" style="width: 450px; table-layout: fixed;" cellspacing="0" cellpadding="0" border="0">
+                <thead>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr ui-jqgrid-htable">
+                        <th class="ui-state-default ui-th-column ui-th-ltr" style="width: 221px;">
+                            <span locale="LANG5141" localetitle="LANG5141">Process Log</span>
+                        </th>
+                        <th class="ui-state-default ui-th-column ui-th-ltr" style="width: 221px;">
+                            <span locale="LANG4162" localetitle="LANG4162">ON / OFF</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr ui-row-even">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG4160" localetitle="LANG4160">All Modules</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" id="all_processes" name="all_processes" />
+                        </td>
+                    </tr>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG5142" localetitle="LANG5142">CDR API Log</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" class="process" id="cdrapi" name="cdrapi" />
+                        </td>
+                    </tr>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr ui-row-even">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG5143" localetitle="LANG5143">Middleware log</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" class="process" id="pbxmid" name="pbxmid" />
+                        </td>
+                    </tr>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG5144" localetitle="LANG5144">Configuration Export Log</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" class="process" id="apply_python" name="apply_python" />
+                        </td>
+                    </tr>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr ui-row-even">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG5145" localetitle="LANG5145">CGI Log</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" class="process" id="cgi" name="cgi" />
+                        </td>
+                    </tr>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG2581" localetitle="LANG2581">Alert Log</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" class="process" id="warning" name="warning" />
+                        </td>
+                    </tr>
+                    <tr class="ui-widget-content jqgrow ui-row-ltr">
+                        <td class="wordBreak" style="text-align: center;">
+                            <span locale="LANG5189" localetitle="LANG5189">ZeroConfig Log</span>
+                        </td>
+                        <td class="wordBreak" style="text-align: center;">
+                            <input type="checkbox" class="process" id="zeroconfig" name="zeroconfig" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/syslog.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/mohfiles-modal.js"></script>
+    <style type="text/css"></style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px; display: none;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG1602">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="moh_name" name="moh_name" noSerialize=true maxlength="20" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2507" tooltip="@LANG2507">
+                    </div>
+                    <div class="field-content">
+                        <select id="sort" name="sort">
+                            <option value="random" locale="LANG1201">Random</option>
+                            <option value="alpha" locale="LANG2506">Alpha</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+        <div id="recordnew_content" style="width: 600px; display: none; ">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG572"></div>
+                    <div class="field-content">
+                        <input type="text" id="newvmenu_name" name="newvmenu_name" maxlength="40" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG272"></div>
+                    <div class="field-content">
+                        <select id="newvmenu_format" name="newvmenu_format">
+                            <option value='.gsm'>GSM</option>
+                            <option value='.wav'>WAV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG85" tooltip="@LANG1608"></div>
+                    <div class="field-content">
+                        <select id="newvmenu_ext" name="newvmenu_ext"></select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" locale="LANG778"></button>
+                </div>
+            </div>
+        </div>
+        <div id="playFile_content" style="width: 600px; height: 150px; display: none;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1609"></div>
+                    <div class="field-content" id="playVmenu_name" style="width: 380px; word-wrap: break-word;"></div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label">
+                        <div class="glab">
+                            <span class="tooltip"></span>
+                            <span id="playVmenu_ext_0" class="label"></span>
+                        </div>
+                    </div>
+                    <div class="field-content">
+                        <select id="playVmenu_ext" name="playVmenu_ext"></select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="button" id="play_record_button" class="btn btn-update" onclick="play_record_file();" locale="LANG777"></button>
+                </div>
+            </div>
+            <div id="play_record"></div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG643">Cleaner Log</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell {
+        background-color: #EFEFEF;
+    }
+    
+    #Pen_auto_clean div {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    
+    .boxLabel {
+        position: relative;
+        top: -7px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG643"></div>
+    <form id="form">
+        <div class="lite_desc" locale="LANG1430">Clean your Call Detail Report / Voice Records / Voice Mails / FAX automatically.</div>
+        <div class="section-body">
+            <div class="section-title" locale="LANG644">CDR Cleaner</div>
+            <a href="#top" localeTitle="LANG3962" id="toTop"></a>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1431" tooltip="@LANG1432"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='Pen_auto_clean_cdr' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1433" tooltip="@LANG1434"></div>
+                <div class="field-content">
+                    <input type="text" id='Phour_clean_cdr' name="Phour_clean_cdr" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1435" tooltip="@LANG1436"></div>
+                <div class="field-content">
+                    <input type="text" id='Pclean_cdr_interval' name="Pclean_cdr_interval" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div class="field-label">&nbsp;</div>
+            <div class="section-title" locale="LANG645">File Cleaner</div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1437" tooltip="@LANG1438"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='Pen_auto_clean_vr' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG3486" tooltip="@LANG3487"></div>
+                <div class="field-content" id="Pen_auto_clean">
+                    <div>
+                        <input type='checkbox' id='Pen_auto_clean_monitor' class="file-type" data-clean="basic" />
+                        <span locale="LANG4772 LANG4771" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='Pen_auto_clean_meetme' class="file-type" data-clean="conference" />
+                        <span locale="LANG4772 LANG18" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='Pen_auto_clean_queue' class="file-type" data-clean="queue" />
+                        <span locale="LANG4772 LANG24" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='Pen_auto_clean_vm' class="file-type" data-clean="voicemail" />
+                        <span locale="LANG4773 LANG20" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='Pen_auto_clean_fax' class="file-type" data-clean="fax" />
+                        <span locale="LANG2375" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='Pen_auto_clean_backup' class="file-type" data-clean="backup" />
+                        <span locale="LANG4773 LANG62" class="boxLabel"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1439" tooltip="@LANG1440"></div>
+                <div class="field-content">
+                    <input type="text" id='Pclean_record_threshold' name="Pclean_record_threshold" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1441" tooltip="@LANG1442"></div>
+                <div class="field-content">
+                    <input type="text" id='Phour_clean_vr' name="Phour_clean_vr" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1443" tooltip="@LANG1444"></div>
+                <div class="field-content">
+                    <input type="text" id='Pclean_record_interval' name="Pclean_record_interval" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div id="buttons" class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" onclick="save_changes();" locale="LANG728"></button>
+                </div>
+            </div>
+            <div class="section-title" locale="LANG646">Cleaner Log</div>
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="clean" class="btn btn-paging" onclick="clean_log();" locale="LANG743"></button>
+            </div>
+            <div class="field-label">&nbsp;</div>
+            <div class="section-body" style="font-size: 13px; padding: 5px;">
+                <div id='cleaner_log'></div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/auto-cleaner.js"></script>
+</body>
+
+</html>

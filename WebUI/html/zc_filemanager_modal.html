@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+<head>
+    <title locale="LANG671">Manage Music On Hold</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        fieldset {
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            width: 100%;
+            border: 0;
+        }
+
+        #label_selectedClass {
+            margin-top: 10px;
+            font-size: 13px;
+            width: 800px;
+        }
+        #new-container,
+        #main-container {
+            /*width: 99%;*/
+            margin-top: 12px;
+        }
+
+        #directory-contents {
+            height: 340px;
+            /*width: 100%;
+            overflow: auto; */
+            padding: 0px 0px 0px 0px;
+            margin-top: 33px;
+        }
+
+        .field-cell .field-label {
+            width: 230px;
+        }
+
+        div.glab span.label {
+            width: 190px;
+        }
+
+        .section-title {
+            margin-bottom: 10px;
+        }
+
+        .deleteFileBtn {
+            top: 4px;
+        }
+
+        #selDirectory option.item {
+            background: #eee;
+        }
+    </style>
+</head>
+<body class="modal">
+    <div id="editForm" style="width: 720px;">
+        <div class="top_content">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3543"></div>
+                <div class="field-content">
+                    <select id="selDirectory"></select>
+                </div>
+            </div>
+        </div>
+        <!-- <div id='nocf' locale="LANG1604"></div> -->
+        <div id="main-container">
+            <fieldset id='uploadForm_container'>
+                <div class='section-title' locale="LANG3851"></div>
+                <div class="section-body">
+                    <form id="form">
+                        <div class="field-cell" style="display:inline-block;">
+                            <div class="field-label" glabel="@LANG1607"></div>
+                            <div class="field-content">
+                                <div id="uploadDiv">
+                                    <input type="text" id="fileUrl" name="fileUrl" readonly="readonly" />
+                                    <button type="button" id="upload" class="selectBtn"></button>
+                                </div>
+                            </div>
+                            <div class="field-content" style="display:inline-block;">
+                                <button type="submit" id="udo" class="uploadFileBtn" locale="LANG782"></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+            <div class='section-title' locale="LANG3848"></div>
+            <button type="button" id="batchDelete" class="btn btn-update" onclick="batchDelete();" locale="LANG3849"></button>
+            <div id="directory-contents"></div>
+        </div>
+        <div id="new-container" style="display: none;">
+            <div class='section-title' locale="LANG3861"></div>
+            <div class="section-body">
+                <div id="rowNewDirectory" class="field-cell">
+                    <form id="newForm">
+                        <div class="field-label" glabel="@LANG3858"></div>
+                        <div class="field-content">
+                            <input id="iptFolderName" name="folderName" type="text" />
+                            <button id="btnCreateFolder" type="button" class="addFolderBtn" locale="LANG3857"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/date.format.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/zc-filemanager-modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ *
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ * This project extends Asterisk GUI project and contains Grandstream Network's
+ * implementation which uses Asterisk GUI.
+ *
+ * Asterisk and Asterisk GUI are registered trademarks of Digium, Inc. 
+ * Please see http://www.asterisk.org for more information about the Asterisk 
+ * project.
+ *
+ * This program is free software, distributed under the terms of
+ * the GNU General Public License Version 2. See the LICENSE file
+ * at the top of the source tree.
+ *
+-->
+<html>
+
+<head>
+    <title>Backup / Restore Configurations</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    input[type="text"] {
+        width: 200px;
+    }
+    
+    .des {
+        margin: 10px;
+        margin-left: 30px;
+    }
+    
+    #uploadDiv {
+        min-height: 130px;
+    }
+    
+    .field-cell .special {
+        display: inline-block;
+    }
+    
+    .field-cell .special span {
+        position: relative;
+        margin-right: 8px;
+        top: -6px;
+    }
+    
+    .commands {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    #sftp_show {
+        display: none;
+    }
+    
+    #sftp_show input {
+        width: 153px;
+    }
+    
+    #test {
+        display: none;
+    }
+    
+    #backup_location {
+        top: 3px;
+    }
+    
+    #outputBody,
+    #RegularoutputBody {
+        width: 390px;
+    }
+    
+    .height100 {
+        height: 60px;
+    }
+
+    .dialogConfirm-content {
+        text-align: center;
+    }
+    .field_text {
+        width: 325px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div id="backupDiv">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4055" tooltip="@LANG4055"></div>
+                    <div class="field-content" id="outputBody"></div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4073" tooltip="@LANG4073"></div>
+                    <div class="field-content" id="backup_location"></div>
+                </div>
+                <div class="field-cell height100">
+                    <div class="field-label" gLabel="@LANG572"></div>
+                    <div class="field-content">
+                        <input type="text" id='newbkp_name' name="newbkp_name" maxlength="32" />
+                        <div class="field_text" locale="LANG1417"></div>
+                    </div>
+                </div>
+                <div class="commands">
+                    <button type="button" id="cancel_a" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="getbackup" class="btn btn-update" locale="LANG730"></button>
+                </div>
+            </div>
+            <div id="uploadDiv">
+                <div class="section-title" locale="LANG1607">Choose file to upload</div>
+                <div class="des" locale="LANG850">Backup file must be in tar format and cannot contain any of the following characters: *,!,#,@,&amp;,$,%,^,(,),/,\,space. File size must be under 10M.</div>
+                <div class="field-cell" style="display: inline-block;">
+                    <div class="field-label" gLabel="@LANG1607"></div>
+                    <div class="field-content">
+                        <input type="text" id="fileUrl" name="fileUrl" readonly="readonly" />
+                        <button type="button" id="upload" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display: inline-block;">
+                        <button type="submit" id="udo" class="uploadFileBtn" locale="LANG782"></button>
+                    </div>
+                </div>
+            </div>
+            <div id="regularDiv">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4049" tooltip="@LANG4049"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='enable_regular' name="enable_regular" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4055" tooltip="@LANG4055"></div>
+                    <div class="field-content" id="RegularoutputBody"></div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4073" tooltip="@LANG4073"></div>
+                    <div class="field-content" id="regular_location"></div>
+                </div>
+                <div id="sftp_show">
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1422" tooltip="@LANG1423"></div>
+                        <div class="field-content">
+                            <input type="text" name="username" style="display: none;" />
+                            <input type="text" id='username' name="username" maxlength="32" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1424" tooltip="@LANG1425"></div>
+                        <div class="field-content">
+                            <input type="password" name="password" style="display: none;" /> 
+                            <span id="pwSpan">
+                                <input type="password" id='password' name="password" maxlength="32"  autocomplete="off" /> 
+                            </span>
+                            <button type="button" id="show_pwd" class="lightOffBtn" localeTitle="LANG799"></button>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1426" tooltip="@LANG1427"></div>
+                        <div class="field-content">
+                            <input type="text" id='server' name="server" maxlength="256" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG4535" tooltip="@LANG4536"></div>
+                        <div class="field-content">
+                            <input type="text" id='backup_dir' name="backup_dir" maxlength="256" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1428" tooltip="@LANG1429"></div>
+                    <div class="field-content">
+                        <input type="text" id='time' name="time" class="inputWidth30" maxlength="2" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4050" tooltip="@LANG4051"></div>
+                    <div class="field-content">
+                        <input type="text" id='interval' name="interval" class="inputWidth30" maxlength="2" />
+                    </div>
+                </div>
+                <div class="commands">
+                    <button type="button" id="cancel_a" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="button" id="test" class="btn btn-paging" locale="LANG761"></button>
+                    <button type="submit" id="getbackup" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/backup-modal.js"></script>
+</body>
+
+</html>

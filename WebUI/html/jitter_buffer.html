@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG40">Sip buffer</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell{
+            display: inline-block;
+            width: 100%;
+        }
+        input[type="text"] {
+            width: 50px;
+        }
+        .field-cell .field-label {
+            width: 240px;
+        }
+        div.glab span.label {
+            width: 200px;
+        }
+    </style>
+</head>
+<body class="page">
+    <form id="form">
+        <div class='lite_Heading' locale="LANG705"></div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1645" tooltip="@LANG1770">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="gs_jbenable" name="gs_jbenable" dfalt="no" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" id="label_gs_jblen" glabel="@LANG2460" tooltip="@LANG2461">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="gs_jblen" name="gs_jblen" maxlength="8" dfalt="100"/>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" id="label_gs_jbmax" glabel="@LANG1655" tooltip="@LANG1656">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="gs_jbmax" name="gs_jbmax" maxlength="8" dfalt="100"/>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1772" tooltip="@LANG1773">
+                </div>
+                <div class="field-content">
+                    <select id="gs_jbmpl" name="gs_jbmpl" dfalt="fixed"   >
+                        <option value='fixed' locale="LANG1777"></option>
+                        <option value='adaptive' locale="LANG1778"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="field-cell last">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                <button type="submit" id="save" type="button" class="btn btn-save" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jitter-buffer.js"></script>
+</body>
+</html>

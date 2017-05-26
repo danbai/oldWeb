@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Analog Trunks</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #table_ATRUNKS_list
+        {
+            border: 1px solid #666666;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 96%;
+            text-align: center;
+            padding: 1px;
+        }
+        #table_ATRUNKS_list tr.frow
+        {
+            background: #6b79a5;
+            color: #CED7EF;
+        }
+        #table_ATRUNKS_list tr.frow td
+        {
+            font-weight: bold;
+        }
+        #table_ATRUNKS_list tr td
+        {
+            padding: 3px;
+        }
+        #table_ATRUNKS_list tr.even
+        {
+            background: #DFDFDF;
+        }
+        #table_ATRUNKS_list tr.odd
+        {
+            background: #FFFFFF;
+        }
+        #table_ATRUNKS_list tr.even:hover, #table_ATRUNKS_list tr.odd:hover
+        {
+            background: #a8b6e5;
+            cursor: default;
+        }
+
+        #HIDE_OnNEW_3 .field-content
+        {
+            width: 160px;
+        }
+        #busy, #congestion
+        {
+            width: 350px;
+        }
+        #currentdisconnectthreshold
+        {
+            width: 45px;
+            margin-left: 12px;
+            vertical-align: top;
+            position: relative;
+            top: 4px;
+        }
+        .special {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            margin-right: 8px;
+        }
+        .special label {
+            position: relative;
+            top: -6px;
+        }
+        .special_div {          
+            clear: both;            
+        }
+        #HIDE_OnNEW_3 .field-content-special {
+            width: 330px;
+        }
+        #polarityfield {
+            display: none;
+        }
+        #pulsedialDiv {
+            display: none;
+        }   
+        #detect_div {
+            display: none;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1351" tooltip="@LANG3144"></div>
+                    <div class="field-content">
+                        <input type="text" id="trunk_name" name="trunk_name" class="inputWidth100" maxlength="16">
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3162" tooltip="@LANG3145"></div>
+                    <div class="field-content">
+                        <select id="group_index" name="group_index">
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell hide_callee">
+                    <div class="field-label" glabel="@LANG3146" tooltip="@LANG3147"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="hidecallerid" name="hidecallerid" />
+                    </div>
+                </div>
+                <div class="field-cell hide_callee">
+                    <div class="field-label" glabel="@LANG2318" tooltip="@LANG2319"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="keepcid" name="keepcid" />
+                    </div>
+                </div>
+                <div class="field-cell hide_callee">
+                    <div class="field-label" glabel="@LANG1359" tooltip="@LANG3389"></div>
+                    <div class="field-content">
+                        <input type="text" id="callerid" name="callerid" maxlength="32" class="inputWidth100"/>
+                    </div>
+                </div>
+                <div class="field-cell hide_callee">
+                    <div class="field-label" glabel="@LANG1361" tooltip="@LANG3390"></div>
+                    <div class="field-content">
+                        <input id="cidname" name="cidname" type="text" class="inputWidth100" maxlength="64" />
+                    </div>
+                </div>
+<!--                 <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2757" tooltip="@LANG3480"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id='out_of_service' />
+                    </div>
+				</div> -->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2543" tooltip="@LANG2544"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="auto_recording" name="auto_recording" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1135" tooltip="@LANG1136"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="faxdetect" name="faxdetect" />
+                    </div>
+                </div>
+                <div id="detect_div">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4379" tooltip="@LANG4380"></div>
+                        <div class="field-content">
+                            <input type='checkbox' id="fax_intelligent_route" name="fax_intelligent_route" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4381" tooltip="@LANG4382"></div>
+                        <div class="field-content">
+                            <select id='fax_intelligent_route_destination' name="fax_intelligent_route_destination" dfalt=''>
+                                <option value='' locale="LANG133"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell" id="pulsedialDiv">
+                    <div class="field-label" glabel="@LANG3148" tooltip="@LANG3149"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="pulsedial" name="pulsedial" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">
+                        Cancel</button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">
+                        Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/trunks-digital-modal.js"></script>
+</body>
+</html>

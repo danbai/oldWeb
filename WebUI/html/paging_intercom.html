@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+<head>
+    <title locale="LANG604">Page/Intercom Group</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG604">Paging/Intercom Group</div>
+    <div class="top_buttons">
+        <button type="button" id="btnAdd" class="btn btn-create" locale="LANG745">Create New Paging/Intercom Group</button>
+        <button type="button" id="batchDelete" class="btn btn-create" locale="LANG2923">Delete Selected Paging/Intercom Groups</button>
+        <button type="button" id="btnSettings" class="btn btn-update" locale="LANG746">Paging/Intercom Group Settings</button>
+    </div>
+    <div class="lite_desc" locale="LANG1163"></div>
+    <div id="pageInter_div">
+        <table id="pageInter-list"></table> 
+        <div id="pageInter-pager"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/paging-intercom.js"></script>
+</body>
+</html>

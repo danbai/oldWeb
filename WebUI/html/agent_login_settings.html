@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Queues</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .W350 {
+        width: 350px;
+    }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div style="width: 600px;">
+            <div class='section-title' locale="LANG748">Agent Login Settings</div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1192" tooltip="@LANG1193"></div>
+                    <div class="field-content">
+                        <input type="text" id="queuelogin" name="queuelogin" class="inputWidth60" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1194" tooltip="@LANG1195"></div>
+                    <div class="field-content">
+                        <input type="text" id="queuelogout" name="queuelogout" class="inputWidth60" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell lite_desc" style="margin-top: 10px; border-top: 1px dashed #808080;">
+                    <div class="field-label" glabel="@LANG261"></div>
+                    <div class="field-content W350" locale="LANG1196"></div>
+                </div>
+                <div class="field-cell modal-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript">
+        var $P = top.$,
+            doc = document,
+            UCMGUI = top.UCMGUI,
+            gup = UCMGUI.gup,
+            mWindow = top.frames["frameContainer"].frames["mainScreen"],
+            baseServerURl = UCMGUI.config.paths.baseServerURl,
+            numberList = mWindow.numberList,
+            queueSettings = mWindow.queueSettings,
+            queueObj = mWindow.destinationTypeValue['queue'],
+            queueList = [],
+            pureNumberList = [];
+
+        $(function() {
+            $P.lang(doc, true);
+
+            // Pengcheng Zou Added. Get only number.
+            pureNumberList = $.grep(numberList, function(n, i) {
+                return !isNaN(Number(n));
+            });
+
+            // Pengcheng Zou Added. Get all queue number.
+            $.each(queueObj, function(index, data) {
+                queueList.push(data['extension']);
+            });
+
+            // Pengcheng Zou Added. Set Value.
+            UCMGUI.domFunction.updateDocument(queueSettings, document);
+
+            initValidator();
+
+            top.Custom.init(doc);
+        });
+
+        // Pengcheng Zou Added. Check if queue + agent number is in pureNumberList?
+        function checkNumber(val, ele) {
+            var notExist = true;
+
+            if (val !== queueSettings[ele.id]) {
+                $.each(queueList, function(index, data) {
+                    if (($.inArray((data + val), pureNumberList) > -1) && val) {
+                        notExist = false;
+                        return true;
+                    }
+                });
+            }
+
+            return notExist;
+        }
+
+        function initValidator() {
+            if ($("#form").tooltip) {
+                $("#form").tooltip();
+            }
+
+            $P("#form", document).validate({
+                rules:{
+                    "queuelogin": {
+                        required: function(element) {
+                            return $('#queuelogout').val() ? true : false;
+                        },
+                        maxlength: 10,
+                        numeric_pound_star: true,
+                        notEqualTo: [ $P.lang('LANG1194'), $('#queuelogout')],
+                        customCallback: [$P.lang("LANG2126"), checkNumber]
+                    },
+                    "queuelogout": {
+                        required: function(element) {
+                            return $('#queuelogin').val() ? true : false;
+                        },
+                        maxlength: 10,
+                        numeric_pound_star: true,
+                        notEqualTo: [ $P.lang('LANG1192'), $('#queuelogin')],
+                        customCallback: [$P.lang("LANG2126"), checkNumber]
+                    }
+                },
+                submitHandler: function() {
+                    saveChanges();
+                }
+            });
+        }
+
+        function saveChanges() {
+            var action = {};
+
+            action = UCMGUI.formSerializeVal(document);
+
+            action["action"] = "updateQueueSettings";
+
+            $.ajax({
+                type: "post",
+                url: baseServerURl,
+                data: action,
+                error: function(jqXHR, textStatus, errorThrown) {
+                    top.dialog.clearDialog();
+
+                    // top.dialog.dialogMessage({
+                    //     type: 'error',
+                    //     content: errorThrown
+                    // });
+                },
+                success: function(data) {
+                    var bool = UCMGUI.errorHandler(data);
+
+                    if (bool) {
+
+                        /*
+                         * Pengcheng Zou Added. For Bug 35499.
+                         */
+                        // var deleteNumbers = [],
+                        //     updateNumbers = [],
+                        //     currentLogin = $('#queuelogin').val(),
+                        //     currentLogout = $('#queuelogout').val(),
+                        //     lastLogin = queueSettings.queuelogin,
+                        //     lastLogout = queueSettings.queuelogout,
+                        //     loginChange = (currentLogin !== lastLogin),
+                        //     logoutChange = (currentLogout !== lastLogout);
+
+                        // $.each(queueList, function(index, data) {
+                        //     if (loginChange) {
+                        //         if (lastLogin) {
+                        //             deleteNumbers.push("'" + data + lastLogin + "'");
+                        //         }
+
+                        //         if (currentLogin) {
+                        //             updateNumbers.push("('" + data + currentLogin + "')");
+                        //         }
+                        //     }
+
+                        //     if (logoutChange) {
+                        //         if (lastLogout) {
+                        //             deleteNumbers.push("'" + data + lastLogout + "'");
+                        //         }
+
+                        //         if (currentLogout) {
+                        //             updateNumbers.push("('" + data + currentLogout + "')");
+                        //         }
+                        //     }
+                        // });
+
+                        // if (deleteNumbers.length) {
+                        //     $.ajax({
+                        //         type: "post",
+                        //         url: baseServerURl,
+                        //         async: false,
+                        //         data: {
+                        //             'action': 'deleteQueueAgentNumbers',
+                        //             'numbers': deleteNumbers.toString()
+                        //         },
+                        //         error: function(jqXHR, textStatus, errorThrown) {},
+                        //         success: function(data) {
+                        //             // var bool = UCMGUI.errorHandler(data);
+
+                        //             // if (bool) {}
+                        //         }
+                        //     });
+                        // }
+
+                        // if (updateNumbers.length) {
+                        //     $.ajax({
+                        //         type: "post",
+                        //         url: baseServerURl,
+                        //         async: false,
+                        //         data: {
+                        //             'action': 'updateQueueAgentNumbers',
+                        //             'numbers': updateNumbers.toString()
+                        //         },
+                        //         error: function(jqXHR, textStatus, errorThrown) {},
+                        //         success: function(data) {
+                        //             // var bool = UCMGUI.errorHandler(data);
+
+                        //             // if (bool) {}
+                        //         }
+                        //     });
+                        // }
+                        /* ------ End ------ */
+
+                        top.dialog.dialogMessage({
+                            type: 'success',
+                            content: $P.lang("LANG815"),
+                            callback: function() {
+                                mWindow.getQueueSettings();
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

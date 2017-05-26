@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Nat Route Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell wan_lan_wrap">
+                    <div class="field-label" glabel="@LANG552" tooltip="@LANG552"></div>
+                    <div class="field-content">
+                        <input type="text" id="wan_port" name="wan_port" maxlength="12" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG553" tooltip="@LANG5194"></div>
+                    <div class="field-content">
+                        <input type="text" id="lan_ip" name="lan_ip" maxlength="128" />
+                    </div>
+                </div>
+                <div class="field-cell wan_lan_wrap">
+                    <div class="field-label" glabel="@LANG554" tooltip="@LANG554"></div>
+                    <div class="field-content">
+                        <input type="text" id="lan_port" name="lan_port" maxlength="12" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG555" tooltip="@LANG555"></div>
+                    <div class="field-content">
+                        <select id='protocol' name="protocol">
+                            <option value="0" locale="LANG556"></option>
+                            <option value="1" locale="LANG557"></option>
+                            <option value="2" locale="LANG558"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/nat-route-modal.js"></script>
+</body>
+
+</html>

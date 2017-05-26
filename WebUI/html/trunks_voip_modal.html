@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>VoIP Trunks</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #codec_div div {
+            float: left;
+            height: 85px;
+        }
+        #codec_div img {
+            top: 22px;
+            display: block;
+            position: relative;
+        }
+        #codec_div select {
+            width: 140px;
+            margin-right: 10px;
+            margin-left: 3px;
+            height: 75px;
+        }
+        #codec_div span {
+            display: block;
+            text-align: center;
+        }
+        .selectIcon {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .click {
+            padding-top: 33px;
+        }
+        .field-cell .field-content-special {
+            width: 300px;
+        }
+        .cc-max-agents, .cc-max-monitors {
+            display: none;
+        }
+        #detect_div {
+            display: none;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" autocomplete="off">
+        <div id="editForm" style="width: 700px; overflow: hidden;">
+            <div class="section-body section-body-top">
+                <div class="nav_wrap" id="nav_wrap">
+                    <div class="settings_hr"></div>
+                    <ul id="nav_settings" class="clearfix">
+                        <li class="current">
+                            <a href="javascript:;" locale="LANG2217"></a>
+                        </li>
+                        <li id="li_last">
+                            <a href="javascript:;" locale="LANG542"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <span id="more_details" name="more_details" locale="LANG1396"></span>
+                </div>
+                <!--basic-->
+                <div class="settings_parent item_parent">
+                    <div class="basic settings current_position">
+                        <div id="div_trunktype" class="field-cell">
+                            <div class="field-label" glabel="@LANG84"></div>
+                            <div class="field-content field-content-special">
+                                <select id="trunk_type" name="trunk_type" mSelect="true" ></select>
+                            </div>
+                        </div>
+                        <div id="div_providername" class="field-cell" >
+                            <div class="field-label" glabel="@LANG1382" tooltip="@LANG1383"></div>
+                            <div class="field-content">
+                                <input type="text" id="trunk_name" name="trunk_name" maxlength="16" />
+                            </div>
+                        </div>
+                        <div id="div_hostname" class="field-cell">
+                            <div class="field-label" glabel="@LANG1373" tooltip="@LANG1374"></div>
+                            <div class="field-content">
+                                <input id="host" name="host" type="text" maxlength="60" />
+                            </div>
+                        </div>
+                        <div id="div_transport" class="field-cell">
+                            <div class="field-label" glabel="@LANG1392" tooltip="@LANG1391"></div>
+                            <div align="left" class="field-content field-content-special">
+                                 <select id="transport" name="transport" dfalt="udp,tcp,tls" mSelect="true">
+                                     <option value="udp" selected locale="LANG1401">UDP</option>
+                                     <option value="tcp" locale="LANG1402">TCP</option>
+                                     <option value="tls" locale="LANG1403">TLS</option>
+                                     <!-- <option value="udp,tcp,tls" locale="LANG1404">All - UDP Primary</option>
+                                     <option value="tcp,udp,tls" locale="LANG1405">All - TCP Primary</option>
+                                     <option value="tls,udp,tcp" locale="LANG1406">All - TLS Primary</option> -->
+                                 </select>
+                            </div>
+                        </div>        
+                        <div id="div_keep_org_cid" class="field-cell">
+                            <div class="field-label" glabel="@LANG4108" tooltip="@LANG4109"></div>
+                            <div class="field-content">
+                                <input id="keeporgcid" name="keeporgcid" type="checkbox" />
+                            </div>
+                        </div>
+                        <div id="div_keep_cid" class="field-cell">
+                            <div class="field-label" glabel="@LANG2318" tooltip="@LANG2319"></div>
+                            <div class="field-content">
+                                <input id="keepcid" name="keepcid" type="checkbox" />
+                            </div>
+                        </div>
+                        <div id="div_nat" class="field-cell">
+                            <div class="field-label" gLabel="NAT:" tooltip="@LANG1093"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id='nat'/>
+                            </div>
+                        </div>
+                        <div id="div_out_of_service" class="field-cell">
+                            <div class="field-label" gLabel="@LANG2757" tooltip="@LANG3480"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id='out_of_service' />
+                            </div>
+                        </div>
+                        <div id="div_tel_uri" class="field-cell">
+                            <div class="field-label" gLabel="@LANG2768" tooltip="@LANG2769"></div>
+                            <div class="field-content">
+                                <select id="tel_uri" dfalt='disabled'>
+                                    <option value='disabled' locale="LANG2770"></option>
+                                    <option value='user_phone' locale="LANG2771"></option>
+                                    <option value='enabled' locale="LANG2772"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="need_register_div" class="field-cell">
+                            <div class="field-label" glabel="@LANG3015" tooltip="@LANG3016"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="need_register" name="need_register" />
+                            </div>
+                        </div>
+                        <div id="allow_outgoing_calls_if_reg_failed_div" class="field-cell">
+                            <div class="field-label" glabel="@LANG5069" tooltip="@LANG5070"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="allow_outgoing_calls_if_reg_failed" name="allow_outgoing_calls_if_reg_failed"  checked=true />
+                            </div>
+                        </div>
+                        <div id="div_callerid" class="field-cell">
+                            <div class="field-label" glabel="@LANG1359" tooltip="@LANG1360"></div>
+                            <div class="field-content">
+                                <input id="cidnumber" name="cidnumber" type="text" maxlength="64" />
+                            </div>
+                        </div>
+                        <div id="div_callername" class="field-cell">
+                            <div class="field-label" glabel="@LANG1361" tooltip="@LANG1362"></div>
+                            <div class="field-content">
+                                <input id="cidname" name="cidname" type="text" maxlength="64" />
+                            </div>
+                        </div>
+                        <div id="div_fromdomain" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG1369" tooltip="@LANG1370"></div>
+                            <div class="field-content">
+                                <input id="fromdomain" name="fromdomain" type="text" maxlength="60" />
+                            </div>
+                        </div>
+                        <div id="div_fromuser" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG1371" tooltip="@LANG1372"></div>
+                            <div class="field-content">
+                                <input type="text" id="fromuser" name="fromuser" type="text" maxlength="64" />
+                            </div>
+                        </div>
+                        <div id="div_username" class="field-cell">
+                            <div class="field-label" glabel="@LANG72" tooltip="@LANG1393"></div>
+                            <div class="field-content">
+                                <input type="text" name="user_name" style="display: none;" />
+                                <input id="user_name" name="user_name" type="text" maxlength="64" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div id="div_password" class="field-cell">
+                            <div class="field-label" glabel="@LANG73"></div>
+                            <div class="field-content">
+                                <input type="password" name="password" style="display: none;" />
+                                <input id="password" name="password" type='password' maxlength='64' autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="field-cell" id="authid_field">
+                            <div class="field-label" glabel="@LANG2487" tooltip="@LANG2488"></div>
+                            <div class="field-content">
+                                <input type="text" id="authid" name="authid" maxlength="64" />
+                            </div>
+                        </div>
+                        <div class="field-cell" id="auth_trunk_field">
+                            <div class="field-label" glabel="@LANG4261" tooltip="@LANG4262"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="auth_trunk" name="auth_trunk"  />
+                            </div>
+                        </div>
+                        <div class="field-cell" id="auto_record_field">
+                            <div class="field-label" gLabel="@LANG2543" tooltip="@LANG5266"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id='auto_recording' />
+                            </div>
+                        </div>
+                        <!--/basic-->
+                    </div>
+                    <div class="prioptions settings">
+                        <!--advance-->
+                        <div id="div_codecs" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG230" tooltip="@LANG1363"></div>
+                            <div class="field-content">
+                                <div id="codec_div">
+                                    <div>
+                                        <span locale="LANG631">Available Codec</span>
+                                        <select id="leftSelect" multiple="multiple" noSerialize="true" size="3">
+                                        </select>
+                                    </div>
+                                    <div class="click">
+                                        <span class="selectIcon addAll" id="allToRight"></span>
+                                        <span class="selectIcon addRight" id="oneToRight"></span>
+                                        <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                        <span class="selectIcon removeAll" id="allToLeft"></span>
+                                    </div>
+                                    <div>
+                                        <span locale="LANG630">Selected Codecs</span>
+                                        <select id="rightSelect" name="rightSelect" noSerialize="true"  multiple="multiple" size="3">
+                                        </select>
+                                    </div>
+                                    <div class="click">
+                                        <span class="selectIcon clickTop" id="top"></span>
+                                        <span class="selectIcon clickUp" id="up"></span>
+                                        <span class="selectIcon clickDown" id="down"></span>
+                                        <span class="selectIcon clickBottom" id="bottom"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div_send_ppi" class="field-cell">
+                            <div class="field-label" glabel="@LANG3900" tooltip="@LANG3901"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="send_ppi" name="send_ppi" noSerialize="true" />
+                            </div>
+                        </div>
+                        <div id="div_use_dod_in_ppi" class="field-cell">
+                            <div class="field-label" glabel="@LANG5321" tooltip="@LANG5322"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="use_dod_in_ppi" name="use_dod_in_ppi" />
+                            </div>
+                        </div>
+                        <div id="div_send_pai" class="field-cell">
+                            <div class="field-label" glabel="@LANG3988" tooltip="@LANG3989"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="send_pai" name="send_pai" noSerialize="true" />
+                            </div>
+                        </div>
+                        <div id="div_send_pai_number" class="field-cell">
+                            <div class="field-label" glabel="@LANG5319" tooltip="@LANG5320"></div>
+                            <div class="field-content">
+                                <input type="text" id="pai_number" name="pai_number" />
+                            </div>
+                        </div>
+ <!--                        <div id="div_insecure" style="display: none;">
+                            <div class="field-label" glabel="@LANG1375" tooltip="@LANG1376"></div>
+                            <div class="field-content">
+                                <select id="insecure" name="insecure" dfalt='no' >
+                                    <option value='port' locale="LANG237">Port</option>
+                                    <option value='port,invite' locale="LANG1407">Very</option>
+                                    <option value='no' locale="LANG137">No</option>
+                                </select>
+                            </div>
+                        </div> -->
+                        <div id="is_outboundproxy_field" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG1380" tooltip="@LANG1381"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="chkOutboundproxy" name="chkOutboundproxy" noSerialize="true" />
+                            </div>
+                        </div>
+                        <div id="outboundproxy_field" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG1378" tooltip="@LANG1379"></div>
+                            <div class="field-content">
+                                <input type="text" id="outboundproxy" name="outboundproxy" type="text" maxlength="60" />
+                            </div>
+                        </div>
+                        <div id="rmvObpFromRoute_field" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG5029" tooltip="@LANG5030"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="rmv_obp_from_route" name="rmv_obp_from_route" />
+                            </div>
+                        </div>
+                        <div class="field-cell" id="didmode_field" style="display: none">
+                            <div class="field-label" glabel="@LANG2648" tooltip="@LANG2649"></div>
+                            <div class="field-content">
+                                <select id='did_mode' >
+                                    <option value='request-line' selected='request-line' locale="LANG2650"></option>
+                                    <option value='to-header' locale="LANG2651"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="div_dtmfmode" class="field-cell">
+                            <div class="field-label" gLabel="@LANG1097" tooltip="@LANG1786"></div>
+                            <div class="field-content">
+                                <select id="dtmfmode" dfalt=''>
+                                    <option value='' locale="LANG257"></option>
+                                    <option value='rfc2833'>RFC2833</option>
+                                    <option value='info' locale="LANG1099">Info</option>
+                                    <option value='inband' locale="LANG1100">Inband</option>
+                                    <option value='auto' locale="LANG138">Auto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="editTrunk_Field_qualify" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG1366" tooltip="@LANG1367"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id="enable_qualify" name="enable_qualify" />
+                            </div>
+                        </div>
+                        <div id="div_qualifyfreq" class="editTrunk_Field">
+<!--                             <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1386" tooltip="@LANG1387"></div>
+                                <div class="field-content">
+                                    <input type="text" id="qualify" name="qualify" maxlength="4" dfalt="1000" />
+                                </div>
+                            </div> -->
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1384" tooltip="@LANG1385"></div>
+                                <div class="field-content">
+                                    <input type="text" id="qualifyfreq" name="qualifyfreq" maxlength="4" dfalt="60" />
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div_out_maxchans" class="field-cell">
+                            <div class="field-label" glabel="@LANG3023" tooltip="@LANG3024"></div>
+                            <div class="field-content">
+                                <input type="text" id="out_maxchans" name="out_maxchans" dfalt="0" />
+                            </div>
+                        </div>
+                        <div id="editTrunk_Field_faxmode" class="field-cell editTrunk_Field">
+                            <div class="field-label" glabel="@LANG3871" tooltip="@LANG4199"></div>
+                            <div class="field-content">
+                                <select id='faxmode' name="faxmode" noSerialize='true' dfalt='no'>
+                                    <option value='no' locale="LANG133"></option>
+                                    <option value='detect' locale="LANG1135"></option>
+                                    <!-- <option value='gateway' locale="LANG3554"></option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div id="detect_div">
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG4379" tooltip="@LANG4380"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id="fax_intelligent_route" name="fax_intelligent_route" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG4381" tooltip="@LANG4382"></div>
+                                <div class="field-content">
+                                    <select id='fax_intelligent_route_destination' name="fax_intelligent_route_destination" dfalt=''>
+                                        <option value='' locale="LANG133"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div_srtp" class="field-cell">
+                            <div class="field-label" glabel="@LANG1389" tooltip="@LANG1390"></div>
+                            <div align=left class="field-content">
+                                <select name="encryption" id="encryption">
+                                    <option value="no" locale="LANG4377"></option>
+                                    <option value="support" locale="LANG4376"></option>
+                                    <option value="yes" locale="LANG4375"></option>
+                                </select>
+                            </div>
+                        </div>        
+                        <!--  ldap for trunk  -->
+                        <div id="ldapDiv">
+                            <div id="div_ldap_sync_enable" class="field-cell">
+                                <div class="field-label" glabel="@LANG2493" tooltip="@LANG2497"></div>
+                                <div align=left class="field-content">
+                                    <input type='checkbox' id="ldap_sync_enable" name="ldap_sync_enable" />
+                                </div>
+                            </div>        
+                            <div id="div_ldap_sync_passwd" class="field-cell">
+                                <div class="field-label" glabel="@LANG2494" tooltip="@LANG2498"></div>
+                                <div align=left class="field-content">
+                                    <input type='text' id="ldap_sync_passwd" name="ldap_sync_passwd" maxlength="64" />
+                                </div>
+                            </div>        
+                            <div id="div_ldap_sync_port" class="field-cell">
+                                <div class="field-label" glabel="@LANG2495" tooltip="@LANG2499"></div>
+                                <div align=left class="field-content">
+                                    <input type='text' id="ldap_sync_port" name="ldap_sync_port" />
+                                </div>
+                            </div>        
+                            <div id="div_ldap_default_outrt" class="field-cell">
+                                <div class="field-label" glabel="@LANG2496" tooltip="@LANG2500"></div>
+                                <div align=left class="field-content">
+                                    <select type='text' id="ldap_default_outrt" name="ldap_default_outrt" noSerialize=true></select>
+                                </div>
+                            </div>
+                            <div id="div_ldap_default_outrt_prefix" class="field-cell">
+                                <div class="field-label" glabel="@LANG2518" tooltip="@LANG2519"></div>
+                                <div align=left class="field-content">
+                                    <input type='text' id="ldap_outrt_prefix" name="ldap_outrt_prefix" noSerialize=true />
+                                </div>
+                            </div>        
+                            <div id="div_ldap_last_sync_date" class="field-cell">
+                                <div class="field-label" glabel="@LANG2652" tooltip="@LANG2653"></div>
+                                <div class="field-content" id="label_ldap_last_sync_date"></div>
+                            </div>
+                        </div>
+                        <!--  ccss for trunk  -->
+                        <div id="ccss">
+                            <div class='section-title' locale="LANG3725"></div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG3726" tooltip="@LANG3727"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id='enable_cc' noSerialize="true" />
+                                </div>
+                            </div>
+                            <div class="field-cell cc-max-agents">
+                                <div class="field-label" gLabel="@LANG3733" tooltip="@LANG3734"></div>
+                                <div class="field-content">
+                                    <input type='text' id='cc_max_agents' name="cc_max_agents" maxlength="10" style="width: 80px;" noSerialize="true" value='10' />
+                                </div>
+                            </div>
+                            <div class="field-cell cc-max-monitors">
+                                <div class="field-label" gLabel="@LANG3739" tooltip="@LANG3740"></div>
+                                <div class="field-content">
+                                    <input type='text' id='cc_max_monitors' name="cc_max_monitors" maxlength="10" style="width: 80px;" noSerialize="true" value='10' />
+                                </div>
+                            </div>
+                        </div>
+                        <!--  ended of ldap fro trunk  -->
+                    </div>
+                    <!--/advance-->
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands">
+                    <button type="button" id="edit_VOIPTrunk_cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="edit_VOIPTrunk_save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/trunks-voip-modal.js"></script>
+    <script type="text/javascript" src="../js/jquery.slide.js"></script>
+</body>
+</html>

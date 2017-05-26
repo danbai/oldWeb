@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG5382">Email Send Log</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .options {
+            position: relative;
+            top: -1px;
+        }
+
+        .jumpPage {
+            text-decoration: underline; 
+            cursor: pointer;
+        }
+
+        /* Interaction Cues */
+        #form .ui-state-highlight,
+        #form .ui-content .ui-state-highlight,
+        #form .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+
+        #form .ui-state-highlight a,
+        #form .ui-content .ui-state-highlight a,
+        #form .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+
+        tr.jqgrow .more {
+            color: #398FD6;
+            cursor: pointer;
+            margin: 0 0 0 2px;
+        }
+
+        tr.jqgrow .more-content {
+            display: none;
+        }
+
+        .lite_desc_warning {
+            color: #f00;
+        }
+
+        #lite_desc_warning {
+            margin-top: 30px;
+        }
+
+        .error_code {
+            color: #00f;
+            font-weight: bold;
+            width: 50px;
+            float:left;
+        }
+
+        .error_txt {
+            float: left;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG5382"></div>
+    <form id="form">
+        <div id="divOpts">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1048" tooltip="@LANG5436"></div>
+                <div class="field-content">
+                    <input type='text' id='start_date' name="start_date" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1049" tooltip="@LANG5437"></div>
+                <div class="field-content">
+                    <input type='text' id='end_date' name="end_date" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5385" tooltip="@LANG5438"></div>
+                <div class="field-content">
+                    <input type='text' id="recipient" name="recipient" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5388" tooltip="@LANG5442"></div>
+                <div class="field-content">
+                    <input type='text' id='send_result' name="send_result" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5389" tooltip="@LANG5443"></div>
+                <div class="field-content">
+                    <input type='text' id="return_code" name="return_code" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5384"></div>
+                <div class="field-content">
+                    <select id="module" name="module">
+                        <option value="" locale="LANG4160"></option>
+                        <option value="account" locale="LANG85"></option>
+                        <option value="voicemail" locale="LANG20"></option>
+                        <option value="conference" locale="LANG3775"></option>
+                        <option value="password" locale="LANG2810"></option>
+                        <option value="alert" locale="LANG2553"></option>
+                        <option value="cdr" locale="LANG7"></option>
+                        <option value="fax" locale="LANG95"></option>
+                        <option value="test" locale="LANG2273"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class='top_buttons'>
+            <button type="submit" id="search" class="btn btn-update" locale="LANG803"></button>
+            <button type="button" id="showAll" class="btn btn-update" locale="LANG4107"></button>
+            <!-- <button type="button" id="DeleteSearchResults" class="btn btn-update" locale="LANG3920"></button> -->
+            <button type="button" id="DeleteAll" class="btn btn-update" locale="LANG3911"></button>
+        </div>
+        <div class="section-title" locale="LANG5431"></div>
+        <div>
+            <p class="clearfix"><span class="error_code">250</span> <span locale="LANG5421" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">501</span> <span locale="LANG5422" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">535</span> <span locale="LANG5423" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">550</span> <span locale="LANG5424" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">552</span> <span locale="LANG5425" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">553</span> <span locale="LANG5426" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">554</span> <span locale="LANG5427" class="error_txt"></span></p>
+            <p class="clearfix"><span class="error_code">none</span> <span locale="LANG5428" class="error_txt"></span></p>
+        </div>
+        <div class="lite_desc lite_desc_warning" locale="LANG5429" id="lite_desc_warning"></div>
+        <div class="lite_desc lite_desc_warning" locale="LANG5430"></div>
+    </form>
+    <div id="emailSendLogDiv">
+        <table id="emailSendLog"></table>
+        <div id="emailSendLogPager"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/email-send-log.js"></script>
+</body>
+</html>

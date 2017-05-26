@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG649">Reset & Reboot</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .verify_title {
+            margin-top: 10px;
+        }
+
+        .field-cell .special {
+            display: inline-block;
+        }
+
+        .field-cell .special span {
+            position: relative;
+            margin-right: 8px;
+            top: -6px;
+        }
+
+        #modules {
+            width: 400px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG649"></div>
+    <div class='section-title' locale="LANG650"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1486" tooltip="@LANG2253"></div>
+                <div class="field-content">
+                    <select id="mtype" name="mtype">
+                        <option value="data" locale="LANG1488">User Data</option>
+                        <option value="all" locale="LANG104">All</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell user-data-modules">
+                <div class="field-label" gLabel="@LANG4805" tooltip="@LANG5293"></div>
+                <div class="field-content" id="modules">
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="record" name="record"></input>
+                        <span locale="LANG2640"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="vfax" name="vfax"></input>
+                        <span locale="LANG4773 LANG95"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="voicemail_file" name="voicemail_file"></input>
+                        <span locale="LANG20"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="hom_file" name="hom_file"></input>
+                        <span locale="LANG27"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="prompt_tone" name="prompt_tone"></input>
+                        <span locale="LANG4752"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="cdr_log" name="cdr_log"></input>
+                        <span locale="LANG4053"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="zeroconfig" name="zeroconfig"></input>
+                        <span locale="LANG4773 LANG16"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="operation_log" name="operation_log"></input>
+                        <span locale="LANG3908"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="backup_file" name="backup_file"></input>
+                        <span locale="LANG4773 LANG62"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="corefile" name="corefile"></input>
+                        <span locale="LANG4807"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="troubleshooting" name="troubleshooting"></input>
+                        <span locale="LANG4773 LANG68"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" class="module-type" id="qmail" name="qmail"></input>
+                        <span locale="LANG4773 LANG2032"></span>
+                    </div>
+                    <div class="special">
+                        <input type="checkbox" id="select_all" name="select_all"></input>
+                        <span locale="LANG104"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="submit" id="reset" class="btn btn-save" locale="LANG750"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class='section-title' locale="LANG737"></div>
+    <div class="section-body">
+        <div class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="reboot" class="btn btn-save" locale="LANG737"></button>
+            </div>
+        </div>
+    </div>
+    <!-- <div class='section-title verify_title' locale="LANG4803"></div>
+    <div class="section-body">
+        <div class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="resetUserData" class="btn btn-save" locale="LANG750"></button>
+            </div>
+        </div>
+    </div> -->
+    <div class='section-title verify_title' locale="LANG4200"></div>
+    <div class="section-body">
+        <div class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="verify" class="btn btn-save" locale="LANG4200"></button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/maintenance.js"></script>
+</body>
+</html>

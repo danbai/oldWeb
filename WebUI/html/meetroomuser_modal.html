@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title>Manage Conference Rooms</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+
+    #setForm .field-cell {
+        display: block;
+    }
+    
+    .field-cell .field-label {
+        width: 205px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        vertical-align: middle;
+    }
+    
+    .field-label div.glab span.label {
+        width: 165px;
+    }
+    
+    .field-cell.two .field-content {
+        width: 160px;
+    }
+    
+    #addMcbForm .field-cell .field-label {
+        width: 245px;
+    }
+    
+    #addMcbForm .field-label div.glab span.label {
+        width: 200px;
+    }
+    
+    #extension,
+    #pincode,
+    #admin_pincode {
+        width: 71px;
+    }
+    
+    .field-content input[type=checkbox] {
+        position: relative;
+        top: 4px;
+    }
+    
+    .modal-commands {
+        display: block;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="display: none; width: 750px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1029" tooltip="@LANG1030">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="extension" name="extension" maxlength="32" />
+                    </div>
+                </div>
+                <div class="section-title" locale="LANG598">Password Options</div>
+                <div class="field-cell two">
+                    <div class="field-label" glabel="@LANG1032" tooltip="@LANG1033">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="pincode" name="pincode" maxlength="10" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1020" tooltip="@LANG1021">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="admin_pincode" name="admin_pincode" maxlength="10" />
+                    </div>
+                </div>
+                <div class="section-title" locale="LANG599">Conference Room Options</div>
+                <div class="field-cell two">
+                    <div class="field-label" glabel="@LANG1025" tooltip="@LANG1026">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="call_menu" name="call_menu" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1038" tooltip="@LANG1039">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="recording" name="recording" />
+                    </div>
+                </div>
+                <div class="field-cell two">
+                    <div class="field-label" glabel="@LANG1036" tooltip="@LANG1037">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="quiet_mode" name="quiet_mode" />
+                        <input type='hidden' id="quiet_mode_unchecked" name="quiet_mode" value="no" readonly="readonly" noSerialize="true" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1041" tooltip="@LANG1040">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="wait_admin" name="wait_admin" />
+                        <input type='hidden' id="wait_admin_unchecked" name="wait_admin" value="no" readonly="readonly" noSerialize="true" />
+                    </div>
+                </div>
+                <div class="field-cell two">
+                    <div class="field-label" glabel="@LANG1027" tooltip="@LANG1028">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="user_invite" name="user_invite" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1022" tooltip="@LANG1023">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="announce_callers" name="announce_callers" />
+                        <input type='hidden' id="announce_callers_unchecked" name="announce_callers" value="no" readonly="readonly" noSerialize="true" />
+                    </div>
+                </div>
+                <div class="field-cell two">
+                    <div class="field-label" glabel="@LANG2431" tooltip="@LANG2432">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="public" name="public" />
+                        <input type='hidden' id="public_unchecked" name="public" value="no" readonly="readonly" noSerialize="true" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1034" tooltip="@LANG1035">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="moh_firstcaller" name="moh_firstcaller" />
+                    </div>
+                </div>
+                <div class="field-cell two">
+                    <div class="field-label" glabel="@LANG1043" tooltip="@LANG1044">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id="skipauth" name="skipauth" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1024" style="display: none;">
+                    </div>
+                    <div class="field-content" style="display: none;">
+                        <input type='checkbox' id="closeLastAdmin" name="closeLastAdmin" />
+                    </div>
+                    <div class="field-cell two" id="tr_musicclass">
+                        <div class="field-label" glabel="@LANG1178">
+                        </div>
+                        <div class="field-content">
+                            <select id="musicclass" name="musicclass"></select>
+                        </div>
+                    </div>
+                    <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                        <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                        <button type="submit" class="btn btn-save" id="addConference" locale="LANG728"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="addUserForm" style="display: none; width: 600px;">
+            <input type="text" id="belong_room_id" name="belong_room_id" style="display: none;" />
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1042">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="create_user_id" name="create_user_id" maxlength="20" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2351" tooltip="@LANG2352">
+                    </div>
+                    <div class="field-content">
+                        <input type="checkbox" id="need_confirm" name="need_confirm" checked="checked" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-update" id="addUser" locale="LANG769"></button>
+                </div>
+            </div>
+        </div>
+        <div id="addMcbForm" style="width: 600px; display: none;">
+            <input type="text" id="belong_room_id_mcb" name="belong_room_id_mcb" style="display: none;" />
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2693">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="create_remote_room" name="create_remote_room" maxlength="20" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2694">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="create_remote_pass" name="create_remote_pass" maxlength="20" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-update" id="addMcb" locale="LANG769"></button>
+                </div>
+            </div>
+        </div>
+        <div id="setForm" style="display: none; width: 750px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5098" tooltip="@LANG5099">
+                    </div>
+                    <div class="field-content">
+                        <input type="checkbox" id="talk_detection_events" name="talk_detection_events"/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5100" tooltip="@LANG5101">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="dsp_talking_threshold" name="dsp_talking_threshold" value="500"/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5102" tooltip="@LANG5103">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="dsp_silence_threshold" name="dsp_silence_threshold" value="2500"/>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="setConference" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/meetroomuser-modal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2516 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>User Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell-one,
+    .field-cell-two,
+    .field-cell_special {
+        line-height: 30px;
+    }
+    
+    .field-cell-one {
+        width: 385px;
+    }
+    
+    .field-cell-two {
+        width: 410px;
+    }
+    
+    .modify-user-div {
+        margin-left: 20px;
+    }
+    
+    .batch-user-div {
+        margin-left: 25px;
+    }
+    .batch-clear-user-div {
+        margin-left: -25px;
+    }
+    .edit-clear-user-div {
+        margin-left: -20px;
+    }
+    .field-cell {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        padding: 0;
+        line-height: 30px;
+        width: 385px;
+    }
+    
+    .field-cell .field-label {
+        width: 200px;
+    }
+    
+    div.field-label .glab span.label {
+        width: 160px;
+    }
+    
+    #div_fullname,
+    #div_dahdi,
+    #div_sip_iax_secret,
+    #div_sip_multiple_enablehotdesk,
+    #div_sip_enablehotdesk,
+    #auth_id,
+    #div_sip_batch_enablehotdesk,
+    #div_encryption,
+    #div_strategy_ipacl,
+    #div_multiple_sip,
+    #div_multiple_iax,
+    #batch_sip,
+    #batch_iax,
+    .cc-mode,
+    .cc-max-agents,
+    .cc-max-monitors,
+    .div_sip,
+    .div_iax,
+    .div_fxs,
+    .password-div,
+    #div_custom_autoanswer,
+    #batch_div_custom_autoanswer {
+        display: none;
+    }
+    
+    #leftSelect, #rightSelect, #batch_edit_leftSelect, #batch_edit_rightSelect, #batch_add_leftSelect, #batch_add_rightSelect {
+        width: 240px; 
+        height: 95px;
+    }
+
+    #seamless_leftSelect, #seamless_rightSelect, #seamless_batch_edit_leftSelect, #seamless_batch_edit_rightSelect, #seamless_batch_add_leftSelect, #seamless_batch_add_rightSelect {
+        width: 240px; 
+        height: 95px;
+    }
+
+    #codec_div div {
+        float: left;
+        height: 110px;
+    }
+    
+    #codec_div img {
+        margin-top: 5px;
+        top: 18px;
+        display: block;
+        position: relative;
+    }
+    
+    #codec_div select {
+        width: 175px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    
+    #codec_div span {
+        display: block;
+        text-align: center;
+    }
+    
+    #pickup_div div {
+        float: left;
+        height: 110px;
+    }
+    
+    #pickup_div img {
+        margin-top: 5px;
+        top: 18px;
+        display: block;
+        position: relative;
+    }
+    
+    #pickup_div select {
+        width: 175px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    
+    #pickup_div span {
+        display: block;
+        text-align: center;
+    }
+    
+    .click {
+        padding-top: 35px;
+    }
+    
+    .special {
+        padding-top: 10px;
+    }
+    
+    .field-content-specail {
+        position: relative;
+        top: 7px;
+    }
+    
+    .field-content-specails {
+        top: 4px;
+    }
+    
+    .field-strategy {
+        width: 19px;
+        height: 25px;
+        float: left;
+        padding-right: 5px;
+    }
+    
+    #multiple_local_networks {
+        width: 560px;
+    }
+
+    /* Pengcheng Zou Add. */
+    .field-cell .field-content {
+        top: 0;
+    }
+    
+    .checkbox,
+    .radio {
+        height: 19px;
+    }
+    
+    .divSelect {
+        top: 5px;
+    }
+    
+    .width580 {
+        width: 580px;
+    }
+    .width550 {
+        width: 550px;
+    }
+    
+    .section-title {
+        width: 775px;
+    }
+    
+    .btn_add {
+        background: url(../images/add.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+    
+    .btn_del {
+        background: url(../images/delete_circle.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+
+    /* Time Condition */
+    #table_edit_template .label {
+        /* width: 110px; */
+        text-align: left;
+    }
+    
+    .tableIcon {
+        margin-left: 3px;
+        margin-right: 3px;
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        cursor: pointer;
+    }
+    
+    .table-add-icon {
+        background: url(../images/add.png) no-repeat;
+    }
+    
+    .table-edit {
+        background: url(../images/edit_circle.png) no-repeat;
+    }
+    
+    .table-del {
+        background: url(../images/delete_circle.png);
+    }
+    
+    #table_timecondition {
+        table-layout: fixed;
+    }
+    
+    #table_timecondition tbody td .label:hover {
+        text-decoration: none;
+        cursor: auto;
+    }
+    
+    #table_timecondition td span:hover {
+        cursor: auto;
+        text-decoration: none;
+    }
+    
+    #table_timecondition td span {
+        color: black;
+        margin-left: 0px;
+        cursor: auto;
+    }
+    
+    #table_timecondition .table-add:hover,
+    #table_timecondition .table-edit:hover,
+    #table_timecondition .table-del:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    .timecondition-tips {
+        display: none;
+        margin: 10px 5px;
+        text-align: left;
+        line-height: 18px;
+        color: #8E8E8E;
+    }
+    
+    .day_selected:hover {
+        background: #C77;
+    }
+    
+    .day_selected {
+        background: #78EE22;
+    }
+    
+    .day_unselected:hover {
+        background: #78DD55;
+    }
+    
+    .day_selected_pending:hover {
+        background: #C77;
+        cursor: col-resize;
+    }
+    
+    .day_selected_pending {
+        background: #78DD55;
+    }
+    
+    .day_unselected_pending {
+        background: #C77;
+    }
+    
+    .day_unselected_pending:hover {
+        background: #C77;
+        cursor: col-resize;
+    }
+    
+    /* disable text selection */
+    #new_itrl_day_container td {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -moz-user-select: none;
+    }
+    
+    #new_itrl_day_container td:hover {
+        cursor: pointer;
+    }
+    
+    td .field-label {
+        width: 250px;
+        padding-left: 25px;
+    }
+    
+    td .field-content {
+        width: 500px;
+        text-align: left;
+    }
+    
+    table tbody {
+        background-color: auto;
+    }
+    
+    #new_itrl_month_container div,
+    #new_itrl_week_container div {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    
+    .boxLabel {
+        position: relative;
+        top: 0;
+    }
+    
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .fullWidth {
+        width: 100%;
+    }
+    
+    .Width500 {
+        width: 500px;
+    }
+    
+    .title_bottom {
+        margin: 10px 0;
+    }
+    
+    .lightOffBtn,
+    .sip_webrtc,
+    .alertinfo,
+    .custom-alert,
+    .batch_edit_sip_webrtc,
+    #pms_room,
+    #maximum_time,
+    #batch_pms_room,
+    #enable_div_webrtc,
+    #edit_maximum_time,
+    #batch_maximum_time,
+    #batch_enable_div_webrtc,
+    #batchEdit_enable_div_webrtc,
+    #batchEdit_enable_div_webrtc {
+        display: none;
+    }
+
+    .field-cell .field_no_check {
+        width: 24px;
+        height: 24px;
+    }
+    .hide {
+        display: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="add_extension_div" style="display: none; width: 800px; height:500px;">
+            <div class="section-body section-body-top">
+                <div class="nav_wrap">
+                    <div class="settings_hr"></div>
+                    <ul id="nav_settings" class="clearfix">
+                        <li class="current">
+                            <a href="javascript:;" locale="LANG2217"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" locale="LANG3886"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" locale="LANG106"></a>
+                        </li>
+                        <li id="li_last">
+                            <a href="javascript:;" locale="LANG3288"></a>
+                        </li>
+                        <!--<li>
+                            <a href="javascript:;" locale="LANG5213"></a>
+                        </li>-->
+                    </ul>
+                </div>
+                <!--5 items-->
+                <div class="item_parent">
+                    <!--basic-->
+                    <div class="settings_floor1 settings current_position">
+                        <!--General-->
+                        <div class='section-title' locale="LANG625"></div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG85" tooltip="@LANG1064"></div>
+                            <div class="field-content">
+                                <input type="text" id="edit_extension" name="edit_extension" maxlength="18" />
+                            </div>
+                        </div>
+                        <div class="field-cell" id='div_dahdi'>
+                            <div class="field-label" gLabel="@LANG1091" tooltip="@LANG1092"></div>
+                            <div class="field-content">
+                                <select id='edit_dahdi' name='edit_dahdi'></select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1067" tooltip="@LANG1068"></div>
+                            <div class="field-content">
+                                <input type="text" name='edit_cidnumber' style="display: none;" />
+                                <input type="text" id='edit_cidnumber' name='edit_cidnumber' maxlength="32" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1069" tooltip="@LANG1070"></div>
+                            <div class="field-content">
+                                <select id='edit_permission'>
+                                    <option value='internal' locale="LANG1071"></option>
+                                    <option value='internal-local' locale="LANG1072"></option>
+                                    <option value='internal-local-national' locale="LANG1073"></option>
+                                    <option value='internal-local-national-international' locale="LANG1074"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell" id='div_sip_iax_secret'>
+                            <div class="field-label" gLabel="@LANG1075" tooltip="@LANG1076"></div>
+                            <div class="field-content">
+                                <input type="password" name="edit_secret" style="display: none;" />
+                                <span id="edit_secret_span">
+                                    <input type="text" id="edit_secret" name="edit_secret" maxlength="32" autocomplete="off" />
+                                </span>
+                                <button type="button" class="lightOffBtn" onclick="top.UCMGUI.show_password(this, 'edit_secret_span', 0, 'edit_secret', document);" localeTitle="LANG799"></button>
+                            </div>
+                        </div>
+                        <div class="field-cell field-cell-one" id="auth_id">
+                            <div class="field-label" gLabel="@LANG2487" tooltip="@LANG2488"></div>
+                            <div class="field-content">
+                                <input type="password" name="edit_authid" style="display: none;">
+                                <input type="text" id="edit_authid" name="edit_authid" maxlength="32" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1077" tooltip="@LANG1078"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id='edit_hasvoicemail' checked class="change_show" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG1079" tooltip="@LANG1080"></div>
+                            <div class="field-content">
+                                <input type="password" name="edit_vmsecret" style="display: none;" />
+                                <span id="edit_vmsecret_span">
+                                    <input type="text" id="edit_vmsecret" name="edit_vmsecret" maxlength="32" />
+                                </span>
+                                <button type="button" class="lightOffBtn" onclick="top.UCMGUI.show_password(this, 'edit_vmsecret_span', 0, 'edit_vmsecret', document);" localeTitle="LANG799"></button>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG2685" tooltip="@LANG2686"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id='edit_skip_vmsecret' />
+                            </div>
+                        </div>
+                        <div class="field-cell field-cell-one qualify_div">
+                            <div class="field-label" gLabel="@LANG1105" tooltip="@LANG1106"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id="edit_enable_qualify" dfalt='no' />
+                                </div>
+                            </div>
+                            <div class="field-cell qualify_div">
+                                <div class="field-label" gLabel="@LANG1107" tooltip="@LANG1108"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_qualifyfreq" name="edit_qualifyfreq" class="inputWidth30" value="60" dfalt='60' maxlength="4" disabled/>
+                                </div>
+                            </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG2755" tooltip="@LANG2756"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id='edit_out_of_service' />
+                            </div>
+                        </div>
+                        <!--<div id="enable_div_webrtc" class="sip_webrtc">
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4394" tooltip="@LANG4394"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_ice_support' checked/>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4395" tooltip="@LANG4395"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_use_avpf' checked/>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--General-->
+                        <!--User Settings-->
+                        <div id='div_userInfo'>
+                            <div class='section-title' locale="LANG2712"></div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2817" tooltip="@LANG2848"></div>
+                                <div class="field-content">
+                                    <input type="text" id='first_name' name='first_name' maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2813" tooltip="@LANG2849"></div>
+                                <div class="field-content">
+                                    <input type="text" id="last_name" name="last_name" maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1081" tooltip="@LANG1082"></div>
+                                <div class="field-content">
+                                    <input type="text" id="email" name="email" maxlength="256" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2810" tooltip="@LANG2845"></div>
+                                <div class="field-content">
+                                    <input type="text" id="user_password" name="user_password" maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG31" tooltip="@LANG2545"></div>
+                                <div class="field-content">
+                                    <select id='language'></select>
+                                </div>
+                            </div>
+                            <div class="field-cell" id="max_contacts_div">
+                                <div class="field-label" gLabel="@LANG4222" tooltip="@LANG4223"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_max_contacts" name="max_contacts" dfalt="1" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2815" tooltip="@LANG2851"></div>
+                                <div class="field-content">
+                                    <input type="text" id="phone_number" name="phone_number" maxlength="18" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--User Settings-->
+                    </div>
+                    <!--basic-->
+                    <!--floor2-->
+                    <div class="settings_floor2 settings">
+                        <!--SIP Settings-->
+                        <div class='div_sip'>
+                            <div class='section-title' locale="LANG626"></div>
+                            <div class="field-cell field-cell-one">
+                                <div class="field-label" gLabel="NAT:" tooltip="@LANG1093"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id='edit_nat' checked dfalt='yes' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1094" tooltip="@LANG1095"></div>
+                                <div class="field-content">
+                                    <select id='edit_directmedia' dfalt='no'>
+                                        <!-- <option value="nonat" locale="LANG1096"></option> -->
+                                        <option value="yes" locale="LANG136"></option>
+                                        <option value="no" selected locale="LANG137"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell field-cell-one">
+                                <div class="field-label" gLabel="@LANG1097" tooltip="@LANG1098"></div>
+                                <div class="field-content">
+                                    <select id="edit_dtmfmode" dfalt='rfc2833'>
+                                        <option value="rfc2833">RFC2833</option>
+                                        <option value="info" locale="LANG1099"></option>
+                                        <option value="inband" locale="LANG1100"></option>
+                                        <option value="auto" locale="LANG138"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell" style='display: none'>
+                                <div class="field-label" gLabel="MWI from:" tooltip="@TIP_USERS_33"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_mwifrom" />
+                                </div>
+                            </div>
+                            <!-- <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1101" tooltip="@LANG1102"></div>
+                                <div class="field-content">
+                                    <select id="edit_insecure" dfalt='port'>
+                                        <option value='port' locale="LANG1103"></option>
+                                        <option value='port,invite' locale="LANG1407"></option>
+                                        <option value='no' locale="LANG137"></option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2768" tooltip="@LANG2769"></div>
+                                <div class="field-content">
+                                    <select id="edit_tel_uri" dfalt='disabled'>
+                                        <option value='disabled' locale="LANG2770"></option>
+                                        <option value='user_phone' locale="LANG2771"></option>
+                                        <option value='enabled' locale="LANG2772"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--SIP Settings-->
+                        <!--FXS Settings-->
+                        <div class='div_fxs'>
+                            <div class='section-title' locale="LANG628"></div>
+                            <div class="field-cell" style='display: none'>
+                                <div class="field-label" gLabel="In Directory:" tooltip="@TIP_USERS_9"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_inDirectory' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1109" tooltip="@LANG1110"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_callwaiting' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1111" tooltip="@LANG1112"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_sharpissendkey' checked />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1113" tooltip="@LANG1114"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_rxgain" name="edit_rxgain" class='inputWidth60 inline_margin' value="0" maxlength="6" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1115" tooltip="@LANG1116"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_txgain" name="edit_txgain" class='inputWidth60 inline_margin' value="0" maxlength="6" />
+                                </div>
+                            </div>
+                            <div class="field-cell" style='display: none'>
+                                <div class="field-label" gLabel="@LANG1117" tooltip="@LANG1118"></div>
+                                <div class="field-content">
+                                    <input type="text" id='edit_flash' name='edit_flash' class='inputWidth30 inline_margin' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1117" tooltip="@LANG1118"></div>
+                                <div class="field-content">
+                                    <input type="text" id='edit_rxflash_min' name='edit_rxflash_min' class='inputWidth60 inline_margin' value="200" maxlength="6" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1119" tooltip="@LANG1120"></div>
+                                <div class="field-content">
+                                    <input type="text" id='edit_rxflash' name='edit_rxflash' class='inputWidth60 inline_margin' value="1250" maxlength="6" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1121" tooltip="@LANG1122"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_answeronpolarityswitch' checked />
+                                </div>
+                            </div>
+                            <div class="field-cell" style='display: none'>
+                                <div class="field-label" gLabel="@LANG1123" tooltip="@LANG1124"></div>
+                                <div class="field-content">
+                                    <select id='edit_cidsignalling' class='inline_margin' dfalt='bell'>
+                                        <option value='bell' locale="LANG1125"></option>
+                                        <option value='dtmf'>DTMF</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1126" tooltip="@LANG1127"></div>
+                                <div class="field-content">
+                                    <select id='edit_echocancel' class='inline_margin' dfalt='yes'>
+                                        <option value='yes' locale="LANG139">ON</option>
+                                        <option value='no' locale="LANG140">OFF</option>
+                                        <option value='32'>32</option>
+                                        <option value='64'>64</option>
+                                        <option value='128'>128</option>
+                                        <option value='256'>256</option>
+                                        <option value='512'>512</option>
+                                        <option value='1024'>1024</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1128" tooltip="@LANG1129"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' checked id='edit_threewaycalling' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2687" tooltip="@LANG2688"></div>
+                                <div class="field-content">
+                                    <select id='edit_sendcalleridafter' class='inline_margin' dfalt='1'>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FXS Settings-->
+                        <!--IAX Settings-->
+                        <div class='div_iax'>
+                            <div class='section-title' locale="LANG627"></div>
+                            <div class="field-cell field-cell-one">
+                                <div class="field-label" gLabel="@LANG1130" tooltip="@LANG1131"></div>
+                                <div class="field-content">
+                                    <input type='text' id='edit_maxcallnumbers' name='edit_maxcallnumbers' maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell" style='display: none'>
+                                <div class="field-label" gLabel="Transport :" tooltip="@TIP_USERS_20"></div>
+                                <div class="field-content">
+                                    <select id="edit_transport">
+                                        <option value="udp">UDP Only</option>
+                                        <option value="tcp">TCP Only</option>
+                                        <option value="tls">TLS Only</option>
+                                        <option value="udp,tcp,tls" selected>All - UDP Primary</option>
+                                        <option value="tcp,udp,tls">All - TCP Primary</option>
+                                        <option value="tls,udp,tcp">All - TLS Primary</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1132" tooltip="@LANG1133"></div>
+                                <div class="field-content">
+                                    <select id="edit_requirecalltoken" dfalt="yes">
+                                        <option value='yes' locale="LANG136"></option>
+                                        <option value='no' locale="LANG137"></option>
+                                        <option value='auto' locale="LANG138"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--IAX Settings-->
+                        <div class="field-cell alertinfo">
+                            <div class="field-label" glabel="@LANG3248" tooltip="@LANG3249"></div>
+                            <div class="field-content field-content-special">
+                                <select id="edit_alertinfo" name="edit_alertinfo">
+                                    <option locale="LANG133" value="">None</option>
+                                    <option value="ring1">Ring 1</option>
+                                    <option value="ring2">Ring 2</option>
+                                    <option value="ring3">Ring 3</option>
+                                    <option value="ring4">Ring 4</option>
+                                    <option value="ring5">Ring 5</option>
+                                    <option value="ring6">Ring 6</option>
+                                    <option value="ring7">Ring 7</option>
+                                    <option value="ring8">Ring 8</option>
+                                    <option value="ring9">Ring 9</option>
+                                    <option value="ring10">Ring 10</option>
+                                    <option value="Bellcore-dr1">Bellcore-dr1</option>
+                                    <option value="Bellcore-dr2">Bellcore-dr2</option>
+                                    <option value="Bellcore-dr3">Bellcore-dr3</option>
+                                    <option value="Bellcore-dr4">Bellcore-dr4</option>
+                                    <option value="Bellcore-dr5">Bellcore-dr5</option>
+                                    <option locale="LANG231" value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell custom-alert" id="customAlertDiv">
+                            <div class="field-label" glabel="@LANG3250"></div>
+                            <div class="field-content">
+                                <input type="text" id="edit_custom_alert_info" name="edit_custom_alert_info" noserialize="true" maxlength=64 />
+                            </div>
+                        </div>
+                        <div class="field-cell" id="faxmode">
+                            <div class="field-label" gLabel="@LANG3871" tooltip="@LANG4199"></div>
+                            <div class="field-content">
+                                <select id='edit_faxmode'>
+                                    <option value='no' locale="LANG133"></option>
+                                    <option value='detect' locale="LANG1135"></option>
+                                    <option value='gateway' locale="LANG3554"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell" id="t38_udptl_div">
+                            <div class="field-label" gLabel="@LANG4225" tooltip="@LANG4224"></div>
+                            <div class="field-content">
+                                <input type='checkbox' id='edit_t38_udptl' />
+                            </div>
+                        </div>
+                        <!--SRTP...-->
+                        <div class="field-cell" id="div_encryption">
+                            <div class="field-label" gLabel="SRTP:" tooltip="@LANG1134"></div>
+                            <div class="field-content">
+                                <select name="" id="edit_encryption">
+                                    <option value="no" locale="LANG4377"></option>
+                                    <option value="support" locale="LANG4376"></option>
+                                    <option value="yes" locale="LANG4375"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell" id="div_strategy_ipacl">
+                            <div class="field-label" gLabel="@LANG1137" tooltip="@LANG1138"></div>
+                            <div class="field-content">
+                                <select id='edit_strategy_ipacl' onchange="changeShow();">
+                                    <option value='0' locale="LANG1139"></option>
+                                    <option value='1' locale="LANG1140"></option>
+                                    <option value='2' locale="LANG1141"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell width550" id='allow_a_ip' style="display: none;">
+                            <div class="field-cell width550">
+                                <div class="field-label" gLabel="@LANG1144" tooltip="@LANG2346"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_specific_ip" name="specific_ip" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-cell width580" id='local_networks' style="display: none;">
+                            <div class="field-label" gLabel="@LANG1146"></div>
+                            <div class="field-content">
+                                <table id="strategy_table1" border="0" style="margin-left:-2px;">
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="edit_local_network1" name="local_network1" maxlength="100" />
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn_add" id="btn_local_network1"></button><span style="color: #aaa; margin-left: 10px;" locale="LANG1145"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="field-cell" style="display: none; width: 700px;">
+                            <div class="field-label" gLabel="@LANG1149" tooltip="@LANG1150"></div>
+                            <div class="field-content special">
+                                <div id="codec_div">
+                                    <div>
+                                        <span locale="LANG631"></span>
+                                        <select id="select_available_codec" size="5" multiple="multiple">
+                                            <option value="g726aal2">AAL2-G.726-32</option>
+                                            <option value="adpcm">ADPCM</option>
+                                            <option value="g723">G.723</option>
+                                            <option value="h263">H.263</option>
+                                            <option value="h263p">H.263p</option>
+                                            <option value="vp8">VP8</option>
+                                            <option value="opus" class="hide">OPUS</option>
+                                        </select>
+                                    </div>
+                                    <div class="click">
+                                        <span class="selectIcon addAll" id="button_addall_codec"></span>
+                                        <span class="selectIcon addRight" id="button_add_codec"></span>
+                                        <span class="selectIcon addLeft" id="button_remove_codec"></span>
+                                        <span class="selectIcon removeAll" id="button_removeall_codec"></span>
+                                    </div>
+                                    <div>
+                                        <span locale="LANG630"></span>
+                                        <select name="edit_allow" size="5" id="edit_allow" multiple="multiple">
+                                            <option value="ulaw">PCMU</option>
+                                            <option value="alaw">PCMA</option>
+                                            <option value="gsm">GSM</option>
+                                            <option value="g726">G.726</option>
+                                            <option value="g722">G.722</option>
+                                            <option value="g729">G.729</option>
+                                            <option value="h264">H.264</option>
+                                            <option value="ilbc">iLBC</option>
+                                        </select>
+                                    </div>
+                                    <div class="click">
+                                        <span class="selectIcon clickTop" id="button_top"></span>
+                                        <span class="selectIcon clickUp" id="button_up"></span>
+                                        <span class="selectIcon clickDown" id="button_down"></span>
+                                        <span class="selectIcon clickBottom" id="button_bottom"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--\SRTP...-->
+                    </div>
+                    <!--\floor2-->
+                    <!--floor3-->
+                    <div class="settings_floor3 settings">
+                        <div class="timecondition-tips"></div>
+                        <!--item1-->
+                        <div class="floor3_item1">
+                            <div class='section-title' locale="LANG3887"></div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1083" tooltip="@LANG1084"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_cfu" name="edit_cfu" maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG3371" tooltip="@LANG3374"></div>
+                                <div class="field-content">
+                                    <select id="edit_cfu_timetype" name="edit_cfu_timetype" dfalt="0">
+                                        <option locale="LANG3285" value="0">All Time</option>
+                                        <option locale="LANG3271" value="1">Office Time</option>
+                                        <option locale="LANG3275" value="2">Out of Office Time</option>
+                                        <option locale="LANG3266" value="3">Holiday</option>
+                                        <option locale="LANG3286" value="4">Out of Holiday</option>
+                                        <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                        <option locale="LANG3288" value="6">Specific Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1085" tooltip="@LANG1086"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_cfn" name="edit_cfn" maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG3372" tooltip="@LANG3375"></div>
+                                <div class="field-content">
+                                    <select id="edit_cfn_timetype" name="edit_cfn_timetype" dfalt="0">
+                                        <option locale="LANG3285" value="0">All Time</option>
+                                        <option locale="LANG3271" value="1">Office Time</option>
+                                        <option locale="LANG3275" value="2">Out of Office Time</option>
+                                        <option locale="LANG3266" value="3">Holiday</option>
+                                        <option locale="LANG3286" value="4">Out of Holiday</option>
+                                        <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                        <option locale="LANG3288" value="6">Specific Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1087" tooltip="@LANG1088"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_cfb" name="edit_cfb" maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG3373" tooltip="@LANG3376"></div>
+                                <div class="field-content">
+                                    <select id="edit_cfb_timetype" name="edit_cfb_timetype" dfalt="0">
+                                        <option locale="LANG3285" value="0">All Time</option>
+                                        <option locale="LANG3271" value="1">Office Time</option>
+                                        <option locale="LANG3275" value="2">Out of Office Time</option>
+                                        <option locale="LANG3266" value="3">Holiday</option>
+                                        <option locale="LANG3286" value="4">Out of Holiday</option>
+                                        <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                        <option locale="LANG3288" value="6">Specific Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4768" tooltip="@LANG5179"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id="edit_dnd" name="edit_dnd" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4769" tooltip="@LANG5180"></div>
+                                <div class="field-content">
+                                    <select id="edit_dnd_timetype" name="edit_dnd_timetype" dfalt="0" disabled>
+                                        <option locale="LANG3285" value="0">All Time</option>
+                                        <option locale="LANG3271" value="1">Office Time</option>
+                                        <option locale="LANG3275" value="2">Out of Office Time</option>
+                                        <option locale="LANG3266" value="3">Holiday</option>
+                                        <option locale="LANG3286" value="4">Out of Holiday</option>
+                                        <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                        <option locale="LANG3288" value="6">Specific Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell" style="display: none;" id="strategy_table4_div">
+                                <div class="field-label" gLabel="@LANG5178" tooltip="@LANG5177"></div>
+                                <div class="field-content">
+                                    <table id="strategy_table4" border="0" style="margin-left:-2px;">
+                                        <tr>
+                                            <td>
+                                                <input type="text" id="edit_whitelist1" name="edit_whitelist1" maxlength="100" />
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn_add" id="btn_whitelist1"></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/item1-->
+                        <!--ccss Settings-->
+                        <div id="ccss" class="floor3_item2">
+                            <div class='section-title' locale="LANG3725"></div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG3726" tooltip="@LANG3727"></div>
+                                <div class="field-content">
+                                    <input type="checkbox" id='enable_cc' />
+                                </div>
+                            </div>
+                            <div class="field-cell cc-mode">
+                                <div class="field-label" gLabel="@LANG3728" tooltip="@LANG3729"></div>
+                                <div class="field-content">
+                                    <select id='cc_mode' dfalt='normal'>
+                                        <option value='normal'>Normal</option>
+                                        <option value='trunk'>For Trunk</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell cc-max-agents">
+                                <div class="field-label" gLabel="@LANG3733" tooltip="@LANG3734"></div>
+                                <div class="field-content">
+                                    <input type='text' id='edit_cc_max_agents' name="edit_cc_max_agents" maxlength="10" style="width: 80px;" value='10' />
+                                </div>
+                            </div>
+                            <div class="field-cell cc-max-monitors">
+                                <div class="field-label" gLabel="@LANG3739" tooltip="@LANG3740"></div>
+                                <div class="field-content">
+                                    <input type='text' id='edit_cc_max_monitors' name="edit_cc_max_monitors" maxlength="10" style="width: 80px;" value='10' />
+                                </div>
+                            </div>
+                        </div>
+                        <!--\ccss Settings-->
+                        <!--item3-->
+                        <div class="floor3_item3">
+                            <div class='section-title' locale="LANG1062"></div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel='@LANG1062' tooltip="@LANG3760"></div>
+                                <!-- <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div> -->
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_en_ringboth' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG3458" tooltip="@LANG3761"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_external_number" name="edit_external_number" maxlength="32" disabled>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <!-- <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div> -->
+                                <div class="field-label" gLabel='@LANG3762' tooltip="@LANG3763"></div>
+                                <div class="field-content">
+                                    <select id="edit_ringboth_timetype" name="edit_ringboth_timetype" dfalt="0" disabled>
+                                        <option locale="LANG3285" value="0">All Time</option>
+                                        <option locale="LANG3271" value="1">Office Time</option>
+                                        <option locale="LANG3275" value="2">Out of Office Time</option>
+                                        <option locale="LANG3266" value="3">Holiday</option>
+                                        <option locale="LANG3286" value="4">Out of Holiday</option>
+                                        <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                        <option locale="LANG3288" value="6">Specific Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--\item3-->
+                        <!-- Hotline Settings -->
+                        <div class="floor3_item4 div_fxs">
+                            <div class='section-title' locale="LANG4182"></div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel='@LANG4183' tooltip="@LANG4183"></div>
+                                <!-- <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div> -->
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_en_hotline' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4184" tooltip="@LANG4184"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_hotline_number" name="edit_hotline_number" maxlength="32" disabled>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <!-- <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div> -->
+                                <div class="field-label" gLabel='@LANG4185' tooltip="@LANG4188"></div>
+                                <div class="field-content">
+                                    <select id="edit_hotline_type" name="edit_hotline_type" dfalt="1" disabled>
+                                        <option locale="LANG4186" value="1">Immediate Hotline</option>
+                                        <option locale="LANG4187" value="2">Delay Hotline</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hotline Settings -->
+                        <!-- Callbarging Monitor -->
+                        <div class="floor3_item5">
+                            <div class='section-title' locale="LANG5079"></div>
+                            <div class="field-label" gLabel="@LANG5080" tooltip="@LANG5081"></div>
+                            <div class="field-content special">
+                                <table cellpadding="2" cellspacing="2" border="0" width="50%" align="center">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <b locale="LANG2484"></b>
+                                        </td>
+                                        <td width="50" align="center">
+                                        </td>
+                                        <td align="center" valign="top">
+                                            <b locale="LANG2483"></b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <select id="leftSelect" name="leftSelect" noserialize="true" multiple size="8"></select>
+                                        </td>
+                                        <td width="80" align="center" valign="center">
+                                            <span class="selectIcon addAll" id="allToRight"></span>
+                                            <span class="selectIcon addRight" id="oneToRight"></span>
+                                            <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                            <span class="selectIcon removeAll" id="allToLeft"></span>
+                                        </td>
+                                        <td align="right" valign="top">
+                                            <select id="rightSelect" name="rightSelect" noserialize="true" multiple size="8"></select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Callbarging Monitor -->
+                        <!-- Seamless Transfer -->
+                        <div>
+                            <div class='section-title' locale="LANG5294"></div>
+                            <div class="field-label" gLabel="@LANG5295" tooltip="@LANG5296"></div>
+                            <div class="field-content special">
+                                <table cellpadding="2" cellspacing="2" border="0" width="50%" align="center">
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <b locale="LANG2484"></b>
+                                        </td>
+                                        <td width="50" align="center">
+                                        </td>
+                                        <td align="center" valign="top">
+                                            <b locale="LANG2483"></b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <select id="seamless_leftSelect" name="leftSelect" noserialize="true" multiple size="8"></select>
+                                        </td>
+                                        <td width="80" align="center" valign="center">
+                                            <span class="selectIcon addAll" id="seamless_allToRight"></span>
+                                            <span class="selectIcon addRight" id="seamless_oneToRight"></span>
+                                            <span class="selectIcon addLeft" id="seamless_oneToLeft"></span>
+                                            <span class="selectIcon removeAll" id="seamless_allToLeft"></span>
+                                        </td>
+                                        <td align="right" valign="top">
+                                            <select id="seamless_rightSelect" name="rightSelect" noserialize="true" multiple size="8"></select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Seamless Transfer -->
+                        <!--other Settings-->
+                        <div class="floor3_item6">
+                            <div class='section-title' locale="LANG629"></div>
+                            <div class="field-cell" id='div_fullname'>
+                                <div class="field-label" gLabel="@LANG1065" tooltip="@LANG1066"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_fullname" name="edit_fullname" disabled maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell" style="display: none;">
+                                <div class="field-label" gLabel="Trunk Authority Password:" tooltip="@TIP_USERS_28"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_trunk_secret" name="edit_trunk_secret" maxlength="32" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1598" tooltip="@LANG1599"></div>
+                                <div class="field-content">
+                                    <input type="text" id="edit_ring_timeout" name="edit_ring_timeout" class="inputWidth30" maxlength="3" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2543" tooltip="@LANG2544"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_auto_record' />
+                                </div>
+                            </div>
+                            <div class="field-cell" style='display: none'>
+                                <div class="field-label" gLabel="ADA User:" tooltip="@TIP_USERS_12"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_cti' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1142" tooltip="@LANG4047"></div>
+                                <div class="field-content">
+                                    <select id='edit_bypass_outrt_auth'>
+                                        <option value='no' locale="LANG137"></option>
+                                        <option value='yes' locale="LANG136"></option>
+                                        <option value='bytime' locale="LANG4044"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG2746" tooltip="@LANG2747"></div>
+                                <div class="field-content">
+                                    <input type='text' id='edit_user_outrt_passwd' name="edit_user_outrt_passwd" field_name='Dial Trunk Password' maxlength="10" style="width: 80px;" />
+                                </div>
+                            </div>
+                            <div class="field-cell skip_auth_timetype" style="display: none;">
+                                <div class="field-label" gLabel="@LANG4045" tooltip="@LANG4046"></div>
+                                <div class="field-content">
+                                    <select id="edit_skip_auth_timetype" name="edit_skip_auth_timetype" dfalt="0">
+                                        <option locale="LANG3285" value="0">All Time</option>
+                                        <option locale="LANG3271" value="1">Office Time</option>
+                                        <option locale="LANG3275" value="2">Out of Office Time</option>
+                                        <option locale="LANG3266" value="3">Holiday</option>
+                                        <option locale="LANG3286" value="4">Out of Holiday</option>
+                                        <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                        <option locale="LANG3288" value="6">Specific Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-cell" id='div_sip_enablehotdesk'>
+                                <div class="field-label" gLabel="@LANG2689" tooltip="@LANG2690"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_enablehotdesk' />
+                                </div>
+                            </div>                        
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG4135" tooltip="@LANG4136"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_enable_ldap' checked/>
+                                </div>
+                            </div>
+                            <div class="field-cell sip_webrtc">
+                                <div class="field-label" gLabel="@LANG4393" tooltip="@LANG4452"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_enable_webrtc' />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div>
+                                <div class="field-content">
+                                    <select id="edit_mohsuggest" name="edit_mohsuggest" dfalt="default"></select>
+                                </div>
+                            </div>
+                            <div id="pms_room" class="field-cell">
+                                <div class="field-label" gLabel="@LANG4878" tooltip="@LANG4879"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id='edit_room' />
+                                </div>
+                            </div>
+                            <div id="out_limitime" class="field-cell">
+                                <div class="field-label" glabel="@LANG3025" tooltip="@LANG3026"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id="enable_out_limitime" name="enable_out_limitime"  noSerialize=true />
+                                </div>
+                            </div>
+                            <div id="maximum_time" class="field-cell">
+                                <div class="field-label" glabel="@LANG3017" tooltip="@LANG3018"></div>
+                                <div class="field-content">
+                                    <input type="text" id="maximumTime" name="maximumTime" maxlength="5" dfalt="" noSerialize=true />
+                                </div>
+                            </div>
+                            <div id="div_custom_autoanswer" class="field-cell">
+                                <div class="field-label" glabel="@LANG5048" tooltip="@LANG5049"></div>
+                                <div class="field-content">
+                                    <input type='checkbox' id="edit_custom_autoanswer" name="edit_custom_autoanswer" noSerialize=true />
+                                </div>
+                            </div>
+                        </div>
+                        <!--other Settings-->
+                    </div>
+                    <!--\floor3-->
+                    <!--officeTimeList-->
+                    <div id="officeTimeList" class="settings_floor4 settings">
+                        <div class='section-title title_bottom' locale="LANG3288"></div>
+                        <div class='STT_TR_OPTIONS'>
+                            <div class="section-body">
+                                <div>
+                                    <table id='table_timecondition' cellpadding="0" cellspacing="0" border="0" class="tableWidget" style='clear: both; width: 100%;'></table>
+                                </div>
+                                <div id='table_template_placeholder' style="display:none">
+                                    <div id='table_edit_template'>
+                                        <div class="field-cell fullWidth">
+                                            <div class="field-label" glabel="@LANG169"></div>
+                                            <div class="field-content">
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_stime_hour" name="new_itrl_stime_hour" class="itrl_time"></select>
+                                                </div>
+                                                <div class="selectDiv">:</div>
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_stime_minute" name="new_itrl_stime_minute" class="itrl_time"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell fullWidth">
+                                            <div class="field-label" glabel="@LANG184"></div>
+                                            <div class="field-content">
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_ftime_hour" name="new_itrl_ftime_hour" class="itrl_time"></select>
+                                                </div>
+                                                <div class="selectDiv">:</div>
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_ftime_minute" name="new_itrl_ftime_minute" class="itrl_time"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell fullWidth">
+                                            <div class="field-cell local_week fullWidth">
+                                                <div class="field-label" glabel="@LANG243"></div>
+                                                <div class="field-content" id="new_itrl_week_container">
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_sun" name="new_itrl_week_sun" class="chk_week" maxlength="2" value="sun" />
+                                                        <span locale="LANG250" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_mon" name="new_itrl_week_mon" class="chk_week" maxlength="2" value="mon" />
+                                                        <span locale="LANG251" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_tue" name="new_itrl_week_tue" class="chk_week" value="tue" />
+                                                        <span locale="LANG252" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_wed" name="new_itrl_week_wed" class="chk_week" value="wed" />
+                                                        <span locale="LANG253" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_thu" name="new_itrl_week_thu" class="chk_week" value="thu" />
+                                                        <span locale="LANG254" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_fri" name="new_itrl_week_fri" class="chk_week" value="fri" />
+                                                        <span locale="LANG255" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_sat" name="new_itrl_week_sat" class="chk_week" value="sat" />
+                                                        <span locale="LANG256" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_week_all" name="new_itrl_week_all" value="*" />
+                                                        <span locale="LANG104" class="boxLabel"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field-cell fullWidth">
+                                                <div class="field-label" glabel="@LANG3196" tooltip="@LANG3270"></div>
+                                                <div class="field-content" id="new_itrl_date">
+                                                    <input type="checkbox" id="mode" name="mode" />
+                                                </div>
+                                            </div>
+                                            <div class="field-cell local_month fullWidth" style="display: none;">
+                                                <div class="field-label" glabel="@LANG244"></div>
+                                                <div class="field-content" id="new_itrl_month_container">
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_jan" name="new_itrl_month_jan" class="chk_month" value="jan" />
+                                                        <span locale="LANG204" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_feb" name="new_itrl_month_feb" class="chk_month" value="feb" />
+                                                        <span locale="LANG205" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_mar" name="new_itrl_month_mar" class="chk_month" value="mar" />
+                                                        <span locale="LANG206" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_apr" name="new_itrl_month_apr" class="chk_month" value="apr" />
+                                                        <span locale="LANG207" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_may" name="new_itrl_month_may" class="chk_month" value="may" />
+                                                        <span locale="LANG208" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_jun" name="new_itrl_month_jun" class="chk_month" value="jun" />
+                                                        <span locale="LANG209" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_jul" name="new_itrl_month_jul" class="chk_month" value="jul" />
+                                                        <span locale="LANG210" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_aug" name="new_itrl_month_aug" class="chk_month" value="aug" />
+                                                        <span locale="LANG211" class="boxLabel"></span>&nbsp;&nbsp;
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_sep" name="new_itrl_month_sep" class="chk_month" value="sep" />
+                                                        <span locale="LANG212" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_oct" name="new_itrl_month_oct" class="chk_month" value="oct" />
+                                                        <span locale="LANG213" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_nov" name="new_itrl_month_nov" class="chk_month" value="nov" />
+                                                        <span locale="LANG214" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_dec" name="new_itrl_month_dec" class="chk_month" value="dec" />
+                                                        <span locale="LANG215" class="boxLabel"></span>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="new_itrl_month_all" name="new_itrl_month_all" type="checkbox" value="*" />
+                                                        <span locale="LANG104" class="boxLabel"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field-cell local_day fullWidth" style="display: none;">
+                                                <div class="field-label" glabel="@LANG242"></div>
+                                                <div class="field-content">
+                                                    <span id="new_itrl_day_container"></span>
+                                                </div>
+                                            </div>
+                                            <div class="field-cell modal-commands fullWidth">
+                                                <button type="button" id="tm_cancel" name="cancel" class="btn btn-cancel" locale="LANG726" onclick="OrderTable.tbl_btn_cancel(event);"></button>
+                                                <button type="submit" id="table-add-btn" class="btn btn-update" locale="LANG769" onclick="OrderTable.tbl_btn_add(event);"></button>
+                                                <button type="submit" id="table-edit-btn" class="btn btn-update" locale="LANG770" onclick="OrderTable.tbl_btn_update(event);"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--officeTimeList-->
+                    <!--CTI Settings-->
+                    <!--<div class="settings_floor5 settings">
+                        <div class='section-title' locale="LANG5213"></div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG5214" tooltip="@LANG5215"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="edit_extension_status" name="edit_extension_status" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG3006" tooltip="@LANG5216"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="edit_active_call" name="edit_active_call" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG3007" tooltip="@LANG5217"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="edit_hangup" name="edit_hangup" disabled />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG3008" tooltip="@LANG5218"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="edit_callbarge" name="edit_callbarge" disabled />
+                            </div>
+                        </div>
+                    </div>-->
+                    <!--CTI Settings\-->
+                </div>
+                <!--\5 items-->
+                <!--cancel submit-->
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 750px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="createUser" locale="LANG728"></button>
+                </div>
+                <!--cancel submit-->
+            </div>
+        </div>
+        <div id="batchEdit_extensions_div" style="display: none; width: 800px;">
+            <div class="section-body">
+                <div class='section-title' locale="LANG625"></div>
+                <div class="field-cell" style="display: none;">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_obcid' />
+                    </div>
+                    <div class="field-label" gLabel="CallerID Number:" tooltip="@TIP_USERS_27"></div>
+                    <div class="field-content">
+                        <input type="text" id='edit_multiple_obcid' name="edit_OutBoundCallerid" maxlength="32" />
+                    </div>
+                </div>
+                <br/>
+                <div class="field-cell  field-cell-two">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_permission' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1069" tooltip="@LANG1070"></div>
+                    <div class="field-content">
+                        <select id='edit_multiple_permission' disabled>
+                            <option value='internal' locale="LANG1071"></option>
+                            <option value='internal-local' locale="LANG1072"></option>
+                            <option value='internal-local-national' locale="LANG1073"></option>
+                            <option value='internal-local-national-international' locale="LANG1074"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_hasvoicemail' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1077" tooltip="@LANG1078"></div>
+                    <div class="field-content">
+                        <input type="checkbox" checked disabled id='edit_multiple_hasvoicemail' />
+                    </div>
+                </div>
+                <br/>
+                <div class="field-cell field-cell-two">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_secret' class="editseenable" />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1075" tooltip="@LANG1076"></div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_vmsecret' class="editvmenable" />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1079" tooltip="@LANG1080"></div>
+                </div>
+                <div class="field-cell field-cell-two modify-user-div">
+                    <div class="field-content">
+                        <input type="radio" checked disabled id='edit_multiple_seCHoice0' name='edit_multiple_seCHoice' class="editseenable" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1151"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special">
+                    <div class="field-content">
+                        <input type="radio" checked disabled id='edit_multiple_vmCHoice0' name='edit_multiple_vmCHoice' class="editvmenable" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1151"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-two modify-user-div password-div">
+                    <div class="field-content">
+                        <input type="radio" disabled id='edit_multiple_seCHoice2' name='edit_multiple_seCHoice' class="editseenable" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1152"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special password-div">
+                    <div class="field-content">
+                        <input type="radio" disabled id='edit_multiple_vmCHoice2' name='edit_multiple_vmCHoice' class="editvmenable" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1152"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-two modify-user-div">
+                    <div class="field-content">
+                        <input type="radio" disabled id='edit_multiple_seCHoice1' name='edit_multiple_seCHoice' class="editseenable" />
+                    </div>
+                    <div class="field-content field-content-specail field-content-specails">
+                        <span locale="LANG1153"></span>
+                        <input type="text" id="edit_multiple_secret" name="edit_multiple_secret" class="inputWidth50" maxlength="32" disabled=true />
+                        <span locale="LANG1154"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special">
+                    <div class="field-content">
+                        <input type="radio" disabled id='edit_multiple_vmCHoice1' name='edit_multiple_vmCHoice' class="editvmenable" />
+                    </div>
+                    <div class="field-content field-content-specail field-content-specails">
+                        <span locale="LANG1153"></span>
+                        <input type="text" id='edit_multiple_vmsecret' name='edit_multiple_vmsecret' class="inputWidth50" maxlength="32" disabled=true />
+                        <span locale="LANG1154"></span>
+                    </div>
+                </div>
+
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_callerNum' class="editCallerNumenable" />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1067" tooltip="@LANG1068"></div>
+                </div>
+                <div class="field-cell field-cell-two">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_ring_timeout'>
+                    </div>
+                    <div class="field-label" gLabel="@LANG1598" tooltip="@LANG1599"></div>
+                    <div class="field-content">
+                        <input type='text' disabled id="edit_multiple_ring_timeout" name="edit_ring_timeout" class="inputWidth30" maxlength="3" />
+                    </div>
+                </div>
+                <div class="field-cell field-cell-two modify-user-div">
+                    <div class="field-content">
+                        <input type="radio" checked disabled id='edit_multiple_callerNum' name='edit_multiple_callerNums' class="editCallerNumenable" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG5106"></span>
+                    </div>
+                </div>
+                <div class="field-cell edit-clear-user-div">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_auto_record' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG2543" tooltip="@LANG2544"></div>
+                    <div class="field-content">
+                        <input type='checkbox' disabled id='edit_multiple_auto_record' />
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special modify-user-div">
+                    <div class="field-content">
+                        <input type="radio" disabled id='edit_multiple_callerNums' name='edit_multiple_callerNums' class="editCallerNumenable" />
+                    </div>
+                    <div class="field-content field-content-specail field-content-specails">
+                        <span locale="LANG1153"></span>
+                        <input type="text" id='edit_multiple_callerNumer' name='edit_multiple_callerNumer' class="inputWidth50" maxlength="32" disabled=true />
+                        <span locale="LANG5107"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-two" id="div_sip_multiple_enablehotdesk" style="display: none;">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_enablehotdesk' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG2689" tooltip="@LANG2690"></div>
+                    <div class="field-content">
+                        <input type='checkbox' disabled id='edit_multiple_enablehotdesk' />
+                    </div>
+                </div>
+                <div class="field-cell field-cell-two edit-clear-user-div">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_skip_vmsecret' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG2685" tooltip="@LANG2686"></div>
+                    <div class="field-content">
+                        <input type='checkbox' disabled id='edit_multiple_skip_vmsecret' />
+                    </div>
+                </div>
+                <div class="field-cell field-cell-two qualify_div">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_enable_qualify' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1105" tooltip="@LANG1106"></div>
+                    <div class="field-content">
+                        <input type="checkbox" disabled dfalt='no' id="edit_multiple_enable_qualify" />
+                    </div>
+                </div>
+                <div class="field-cell qualify_div">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_qualifyfreq' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1107" tooltip="@LANG1108"></div>
+                    <div class="field-content">
+                        <input type="text" disabled id="edit_multiple_qualifyfreq" name="edit_qualifyfreq" class="inputWidth60" maxlength="6" value="60" dfalt='60' />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_mohsuggest' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div>
+                    <div class="field-content">
+                        <select id="edit_multiple_mohsuggest" dfalt="default" disabled></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_multiple_check_out_of_service' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG2755" tooltip="@LANG2756"></div>
+                    <div class="field-content">
+                        <input type='checkbox' disabled id='edit_multiple_out_of_service' />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_multiple_check_enable_ldap' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG4135" tooltip="@LANG4136"></div>
+                    <div class="field-content">
+                        <input type='checkbox' disabled id='edit_multiple_enable_ldap' checked/>
+                    </div>
+                </div>
+                <div class="field-cell batch_edit_sip_webrtc">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_multiple_check_enable_webrtc' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG4393" tooltip="@LANG4393"></div>
+                    <div class="field-content">
+                        <input type='checkbox' disabled id='edit_multiple_enable_webrtc'/>
+                    </div>
+                </div>
+                <div id="edit_out_limitime" class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_enable_out_limitime' />
+                    </div>
+                    <div class="field-label" glabel="@LANG3025" tooltip="@LANG3026"></div>
+                    <div class="field-content">
+                       <input type='checkbox' id="edit_enable_out_limitime" name="edit_enable_out_limitime" disabled/>
+                    </div>
+                </div>
+                <div id="edit_maximum_time" class="field-cell">
+                    <div class="field-label" glabel="@LANG3017" tooltip="@LANG3018"></div>
+                    <div class="field-content">
+                       <input type="text" id="edit_maximumTime" name="edit_maximumTime" maxlength="14" dfalt=""/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_language' />
+                    </div>
+                    <div class="field-label" glabel="@LANG31" tooltip="@LANG2545"></div>
+                    <div class="field-content">
+                       <select id='edit_language' disabled></select>
+                    </div>
+                </div>
+                <!--<div id="batchEdit_enable_div_webrtc" class="batch_edit_sip_webrtc">
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG4394" tooltip="@LANG4394"></div>
+                        <div class="field-content">
+                            <input type='checkbox' id='edit_multiple_ice_support' checked/>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG4395" tooltip="@LANG4395"></div>
+                        <div class="field-content">
+                            <input type='checkbox' id='edit_multiple_use_avpf' checked/>
+                        </div>
+                    </div>
+                </div>-->
+                <div id="div_multiple_sip">
+                    <div class='section-title' locale="LANG626"></div>
+                    <div class="field-cell field-cell-two">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_nat' />
+                        </div>
+                        <div class="field-label" gLabel="NAT:" tooltip="@LANG1093"></div>
+                        <div class="field-content">
+                            <input type='checkbox' disabled checked id='edit_multiple_nat' />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_directmedia' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG1094" tooltip="@LANG1095"></div>
+                        <div class="field-content">
+                            <select id='edit_multiple_directmedia' disabled dfalt='no'>
+                                <!-- <option value="nonat" locale="LANG1096"></option> -->
+                                <option value="yes" locale="LANG136"></option>
+                                <option value="no" selected locale="LANG137"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell field-cell-two">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_dtmfmode' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG1097" tooltip="@LANG1098"></div>
+                        <div class="field-content">
+                            <select id="edit_multiple_dtmfmode" disabled>
+                                <option value="rfc2833">RFC2833</option>
+                                <option value="info" locale="LANG1099"></option>
+                                <option value="inband" locale="LANG1100"></option>
+                                <option value="auto" locale="LANG138"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="field-cell">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_insecure' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG1101" tooltip="@LANG1102"></div>
+                        <div class="field-content">
+                            <select id='edit_multiple_insecure' disabled>
+                                <option value='port' locale="LANG1103"></option>
+                                <option value='port,invite' locale="LANG1407"></option>
+                                <option value='no' locale="LANG137"></option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="field-cell field-cell-two">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_tel_uri' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG2768" tooltip="@LANG2769"></div>
+                        <div class="field-content">
+                            <select id="edit_multiple_tel_uri" disabled>
+                                <option value='disabled' locale="LANG2770"></option>
+                                <option value='user_phone' locale="LANG2771"></option>
+                                <option value='enabled' locale="LANG2772"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_max_contacts' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG4222" tooltip="@LANG4223"></div>
+                        <div class="field-content">
+                            <input type="text" disabled id="edit_multiple_max_contacts" name="max_contacts" class="inputWidth60" maxlength="6" value="1" dfalt='1' />
+                        </div>
+                    </div>
+                </div>
+                <div id="div_multiple_iax">
+                    <div class='section-title' locale="LANG627"></div>
+                    <div class="field-cell field-cell-two">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_maxcallnumbers' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG1130" tooltip="@LANG1131"></div>
+                        <div class="field-content">
+                            <input type='text' disabled id='edit_multiple_maxcallnumbers' name='edit_maxcallnumbers' maxlength="32" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-content">
+                            <input type="checkbox" id='edit_check_multiple_requirecalltoken' />
+                        </div>
+                        <div class="field-label" gLabel="@LANG1132" tooltip="@LANG1133"></div>
+                        <div class="field-content">
+                            <select id="edit_multiple_requirecalltoken" disabled>
+                                <option value='yes' locale="LANG136"></option>
+                                <option value='no' locale="LANG137"></option>
+                                <option value='auto' locale="LANG138"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class='section-title' locale="LANG5079"></div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_leftRightSelect' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG5080" tooltip="@LANG5081"></div>
+                </div>
+                <div class="field-content special">
+                    <table cellpadding="2" cellspacing="2" border="0" width="50%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2484"></b>
+                            </td>
+                            <td width="50" align="center">
+                            </td>
+                            <td align="center" valign="top">
+                                <b locale="LANG2483"></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <select id="batch_edit_leftSelect" name="leftSelect" noserialize="true" multiple size="8" disabled="true"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll disabled" id="batch_edit_allToRight"></span>
+                                <span class="selectIcon addRight disabled" id="batch_edit_oneToRight"></span>
+                                <span class="selectIcon addLeft disabled" id="batch_edit_oneToLeft"></span>
+                                <span class="selectIcon removeAll disabled" id="batch_edit_allToLeft"></span>
+                            </td>
+                            <td align="right" valign="top">
+                                <select id="batch_edit_rightSelect" name="rightSelect" noserialize="true" multiple size="8" disabled="true"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='section-title' locale="LANG5294"></div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_seamless_check_leftRightSelect' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG5295" tooltip="@LANG5296"></div>
+                </div>
+                <div class="field-content special">
+                    <table cellpadding="2" cellspacing="2" border="0" width="50%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2484"></b>
+                            </td>
+                            <td width="50" align="center">
+                            </td>
+                            <td align="center" valign="top">
+                                <b locale="LANG2483"></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <select id="seamless_batch_edit_leftSelect" name="leftSelect" noserialize="true" multiple size="8" disabled="true"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll disabled" id="seamless_batch_edit_allToRight"></span>
+                                <span class="selectIcon addRight disabled" id="seamless_batch_edit_oneToRight"></span>
+                                <span class="selectIcon addLeft disabled" id="seamless_batch_edit_oneToLeft"></span>
+                                <span class="selectIcon removeAll disabled" id="seamless_batch_edit_allToLeft"></span>
+                            </td>
+                            <td align="right" valign="top">
+                                <select id="seamless_batch_edit_rightSelect" name="rightSelect" noserialize="true" multiple size="8" disabled="true"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--<div class='section-title' locale="LANG5213"></div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_extension_status' />
+                    </div>
+                    <div class="field-label" glabel="@LANG5214" tooltip="@LANG5215"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="edit_multiple_extension_status" name="edit_multiple_extension_status"  noSerialize=true disabled/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_active_call' />
+                    </div>
+                    <div class="field-label" glabel="@LANG3006" tooltip="@LANG5216"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="edit_multiple_active_call" name="edit_multiple_active_call"  noSerialize=true disabled/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content field_no_check">
+                    </div>
+                    <div class="field-label" glabel="@LANG3007" tooltip="@LANG5217"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="edit_multiple_hangup" name="edit_multiple_hangup"  noSerialize=true disabled/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content field_no_check">
+                    </div>
+                    <div class="field-label" glabel="@LANG3008" tooltip="@LANG5218"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="edit_multiple_callbarge" name="edit_multiple_callbarge"  noSerialize=true disabled/>
+                    </div>
+                </div>-->
+                <div class='section-title' locale="LANG629"></div>
+                <div class="field-cell field-cell-two">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_encryption' />
+                    </div>
+                    <div class="field-label" gLabel="SRTP:" tooltip="@LANG1134"></div>
+                    <div class="field-content">
+                        <select name="" id="edit_multiple_encryption" disabled>
+                            <option value="no" locale="LANG4377"></option>
+                            <option value="support" locale="LANG4376"></option>
+                            <option value="yes" locale="LANG4375"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_fax_mode' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG3871" tooltip="@LANG4199"></div>
+                    <div class="field-content">
+                        <select id='edit_multiple_fax_mode' disabled>
+                            <option value='no' locale="LANG133"></option>
+                            <option value='detect' locale="LANG1135"></option>
+                            <!-- <option value='gateway' locale="LANG3554"></option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_bypass_outrt_auth' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1142" tooltip="@LANG1143"></div>
+                    <div class="field-content">
+                        <select id='edit_multiple_bypass_outrt_auth' disabled>
+                            <option value='no' locale="LANG137"></option>
+                            <option value='yes' locale="LANG136"></option>
+                            <option value='bytime' locale="LANG4044"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell skip_auth_timetype" style="display: none;">
+                    <div class="field-strategy"></div>
+                    <div class="field-label" gLabel="@LANG4045" tooltip="@LANG4046"></div>
+                    <div class="field-content">
+                        <select id="edit_multiple_skip_auth_timetype" name="edit_multiple_skip_auth_timetype" dfalt="0">
+                            <option locale="LANG3285" value="0">All Time</option>
+                            <option locale="LANG3271" value="1">Office Time</option>
+                            <option locale="LANG3275" value="2">Out of Office Time</option>
+                            <option locale="LANG3266" value="3">Holiday</option>
+                            <option locale="LANG3286" value="4">Out of Holiday</option>
+                            <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                            <option locale="LANG3288" value="6">Specific Time</option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <div class="field-cell field-cell-two">
+                    <div class="field-content">
+                        <input type="checkbox" id='edit_check_multiple_strategy_ipacl' />
+                    </div>
+                    <div class="field-label" gLabel="@LANG1137" tooltip="@LANG1138"></div>
+                    <div class="field-content">
+                        <select id='edit_multiple_strategy_ipacl' disabled onchange="changeShow();">
+                            <option value='0' selected="0" locale="LANG1139"></option>
+                            <option value='1' locale="LANG1140"></option>
+                            <option value='2' locale="LANG1141"></option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <div class="field-cell width550" id='multiple_allow_a_ip' style="display: none;">
+                    <div class="field-strategy"></div>
+                    <div class="field-label" gLabel="@LANG1144" tooltip="@LANG2346"></div>
+                    <div class="field-content">
+                        <input id="edit_multiple_specific_ip" name="specific_ip" />
+                    </div>
+                </div>
+                <div class="field-cell width550" id='multiple_local_networks' style="display: none;">
+                    <div class="field-strategy"></div>
+                    <div class="field-label" gLabel="@LANG1146"></div>
+                    <div class="field-content">
+                        <table id="strategy_table2" border="0" style="margin-left:-3px;">
+                            <tr>
+                                <td>
+                                    <input type="text" id="edit_multiple_local_network1" name="local_network1" maxlength="100" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn_add" id="btn_multiple_local_network1"></button><span style="color: #aaa; margin-left: 10px;" locale="LANG1145"></td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+              <div class="field-cell" style="width:700px;">
+                  <div class="field-content">
+                      <input type="checkbox" id='edit_check_multiple_allow' />
+                  </div>
+                  <div class="field-label"  gLabel="@LANG1149" tooltip="@LANG1150"></div>
+                  <div id='multi_codecs' class="field-content special"></div>
+              </div>
+              <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                  <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                  <button type="submit" class="btn btn-save" id="editUser" locale="LANG728"></button>
+              </div>
+          </div>
+        </div>       
+        <div id="batchAdd_extensions_div" style="display: none; width: 800px;">
+            <div class="section-body">
+                <div class='section-title' locale="LANG625"></div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1155" tooltip="@LANG1156"></div>
+                    <div class="field-content">
+                        <input type="text" id='batch_extension' name="edit_extension" maxlength="18" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1157" tooltip="@LANG1158"></div>
+                    <div class="field-content">
+                        <input type="text" id='batch_number' name="batch_number" maxlength="3" class="inputWidth30" value="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG5104" tooltip="@LANG5105"></div>
+                    <div class="field-content">
+                        <input type="text" id='batch_interval' name="batch_interval" maxlength="3" class="inputWidth30" value="1" />
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1069" tooltip="@LANG1070"></div>
+                    <div class="field-content">
+                        <select id='batch_permission'>
+                            <option value='internal' locale="LANG1071"></option>
+                            <option value='internal-local' locale="LANG1072"></option>
+                            <option value='internal-local-national' locale="LANG1073"></option>
+                            <option value='internal-local-national-international' locale="LANG1074"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1077" tooltip="@LANG1078"></div>
+                    <div class="field-content">
+                        <input type='checkbox' checked id='batch_hasvoicemail' />
+                    </div>
+                </div>
+                <div class="field-cell batch_sip_webrtc">
+                    <div class="field-label" gLabel="@LANG4393" tooltip="@LANG4393"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_enable_webrtc'/>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1075" tooltip="@LANG1076"></div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1079" tooltip="@LANG1080"></div>
+                </div>
+                <div class="field-cell field-cell-one batch-user-div">
+                    <div class="field-content">
+                        <input type="radio" checked id='batch_rand_secret' name='batch_password' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1151"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special">
+                    <div class="field-content">
+                        <input type="radio" checked id='batch_rand_vmsecret' name='batch_vmpassword' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1151"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one batch-user-div password-div">
+                    <div class="field-content">
+                        <input type="radio" id='batch_ext_secret' name='batch_password' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1152"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special password-div">
+                    <div class="field-content">
+                        <input type="radio" id='batch_ext_vmsecret' name='batch_vmpassword' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG1152"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one batch-user-div">
+                    <div class="field-content">
+                        <input type="radio" id='batch_same_secret' name='batch_password' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail field-content-specails">
+                        <span locale="LANG1153"></span>
+                        <input type="text" id="batch_secret" name="edit_multiple_secret" maxlength="32" class="inputWidth50" disabled=true />
+                        <span locale="LANG1154"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special">
+                    <div class="field-content">
+                        <input type="radio" id='batch_same_vmsecret' name='batch_vmpassword' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail field-content-specails">
+                        <span locale="LANG1153"></span>
+                        <input type="text" id='batch_vmsecret' name='batch_vmsecret' class="inputWidth50" maxlength="32" disabled="true" />
+                        <span locale="LANG1154"></span>
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1067" tooltip="@LANG1068"></div>
+                </div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1598" tooltip="@LANG1068"></div>
+                    <div class="field-content">
+                        <input type="text" id="batch_ring_timeout" name="edit_ring_timeout" class="inputWidth30" maxlength="3" />
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special batch-user-div">
+                    <div class="field-content">
+                        <input type="radio" checked id='batch_same_callerNumber' name='batch_callerNumber' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail">
+                        <span locale="LANG5106"></span>
+                    </div>
+                </div>
+                <div class="field-cell batch-clear-user-div">
+                    <div class="field-label" gLabel="@LANG2543" tooltip="@LANG2544"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_auto_record' />
+                    </div>
+                </div>
+                <div class="field-cell field-cell_special batch-user-div">
+                    <div class="field-content">
+                        <input type="radio" id='batch_same_callerNum' name='batch_callerNumber' class="password_change" />
+                    </div>
+                    <div class="field-content field-content-specail field-content-specails">
+                        <span locale="LANG1153"></span>
+                        <input type="text" id='batch_callerNum' name='batch_callerNum' class="inputWidth50" maxlength="32" disabled="true" />
+                        <span locale="LANG5107"></span>
+                    </div>
+                </div>
+                <div class="field-cell" id='div_sip_batch_enablehotdesk' style="display: none;">
+                    <div class="field-label" gLabel="@LANG2689" tooltip="@LANG2690"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_enablehotdesk' />
+                    </div>
+                </div>
+                <div class="field-cell batch-clear-user-div">
+                    <div class="field-label" gLabel="@LANG1178" tooltip="@LANG1800"></div>
+                    <div class="field-content">
+                        <select id="batch_mohsuggest" dfalt="default"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4135" tooltip="@LANG4136"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_enable_ldap' checked/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2685" tooltip="@LANG2686"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_skip_vmsecret' />
+                    </div>
+                </div>
+                <div class="field-cell qualify_div">
+                    <div class="field-label" gLabel="@LANG1105" tooltip="@LANG1106"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="batch_enable_qualify" />
+                    </div>
+                </div>
+                <div class="field-cell qualify_div">
+                    <div class="field-label" gLabel="@LANG1107" tooltip="@LANG1108"></div>
+                    <div class="field-content">
+                        <input type="text" id="batch_qualifyfreq" name="edit_qualifyfreq" class="inputWidth60" value="60" maxlength="6" disabled />
+                    </div>
+                </div>
+                <!--<div id="batch_enable_div_webrtc" class="batch_sip_webrtc">
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG4394" tooltip="@LANG4394"></div>
+                        <div class="field-content">
+                            <input type='checkbox' id='batch_ice_support' checked/>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG4395" tooltip="@LANG4395"></div>
+                        <div class="field-content">
+                            <input type='checkbox' id='batch_use_avpf' checked/>
+                        </div>
+                    </div>
+                </div>-->
+                <div id="batch_out_limitime" class="field-cell">
+                    <div class="field-label" glabel="@LANG3025" tooltip="@LANG3026"></div>
+                    <div class="field-content">
+                       <input type='checkbox' id="batch_enable_out_limitime" name="batch_enable_out_limitime" />
+                    </div>
+                </div>
+                <div id="batch_div_custom_autoanswer" class="field-cell">
+                    <div class="field-label" glabel="@LANG5048" tooltip="@LANG5049"></div>
+                    <div class="field-content">
+                       <input type='checkbox' id="batch_custom_autoanswer" name="batch_custom_autoanswer" />
+                    </div>
+                </div>
+                <div id="batch_maximum_time" class="field-cell">
+                    <div class="field-label" glabel="@LANG3017" tooltip="@LANG3018"></div>
+                    <div class="field-content">
+                       <input type="text" id="batch_maximumTime" name="batch_maximumTime" maxlength="14"/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG31" tooltip="@LANG2545"></div>
+                    <div class="field-content">
+                       <select id='batch_language'></select>
+                    </div>
+                </div>
+                <div id="batch_sip">
+                    <div class='section-title' locale="LANG626"></div>
+                    <div class="field-cell field-cell-one">
+                        <div class="field-label" gLabel="NAT:" tooltip="@LANG1093"></div>
+                        <div class="field-content">
+                            <input type="checkbox" checked id='batch_nat' />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1094" tooltip="@LANG1095"></div>
+                        <div class="field-content">
+                            <select id="batch_directmedia">
+                                <!-- <option value="nonat" locale="LANG1096"></option> -->
+                                <option value="yes" locale="LANG136"></option>
+                                <option value="no" selected locale="LANG137"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell field-cell-one">
+                        <div class="field-label" gLabel="@LANG1097" tooltip="@LANG1098"></div>
+                        <div class="field-content">
+                            <select id="batch_dtmfmode">
+                                <option value="rfc2833">RFC2833</option>
+                                <option value="info" locale="LANG1099"></option>
+                                <option value="inband" locale="LANG1100"></option>
+                                <option value="auto" locale="LANG138"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1101" tooltip="@LANG1102"></div>
+                        <div class="field-content">
+                            <select id="batch_insecure">
+                                <option value='port' locale="LANG1103"></option>
+                                <option value='port,invite' locale="LANG1407"></option>
+                                <option value='no' locale="LANG137"></option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="field-cell field-cell-one">
+                        <div class="field-label" gLabel="@LANG2768" tooltip="@LANG2769"></div>
+                        <div class="field-content">
+                            <select id="batch_tel_uri">
+                                <option value='disabled' locale="LANG2770"></option>
+                                <option value='user_phone' locale="LANG2771"></option>
+                                <option value='enabled' locale="LANG2772"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell" id="batch_max_contacts_div">
+                        <div class="field-label" gLabel="@LANG4222" tooltip="@LANG4223"></div>
+                        <div class="field-content">
+                            <input type="text" id="batch_max_contacts" name="max_contacts" dfalt="1" />
+                        </div>
+                    </div>
+                </div>
+                <div id="batch_iax">
+                    <div class='section-title' locale="LANG627"></div>
+                    <div class="field-cell field-cell-one">
+                        <div class="field-label" gLabel="@LANG1130" tooltip="@LANG1131"></div>
+                        <div class="field-content">
+                            <input type='text' id='batch_maxcallnumbers' name='edit_maxcallnumbers' maxlength="32" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" gLabel="@LANG1132" tooltip="@LANG1133"></div>
+                        <div class="field-content">
+                            <select id="batch_requirecalltoken">
+                                <option value='yes' locale="LANG136"></option>
+                                <option value='no' locale="LANG137"></option>
+                                <option value='auto' locale="LANG138"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class='section-title' locale="LANG5079"></div>
+                <div class="field-label" gLabel="@LANG5080" tooltip="@LANG5081"></div>
+                <div class="field-content special">
+                    <table cellpadding="2" cellspacing="2" border="0" width="50%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2484"></b>
+                            </td>
+                            <td width="50" align="center">
+                            </td>
+                            <td align="center" valign="top">
+                                <b locale="LANG2483"></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <select id="batch_add_leftSelect" name="leftSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll" id="batch_add_allToRight"></span>
+                                <span class="selectIcon addRight" id="batch_add_oneToRight"></span>
+                                <span class="selectIcon addLeft" id="batch_add_oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="batch_add_allToLeft"></span>
+                            </td>
+                            <td align="right" valign="top">
+                                <select id="batch_add_rightSelect" name="rightSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='section-title' locale="LANG5294"></div>
+                <div class="field-label" gLabel="@LANG5295" tooltip="@LANG5296"></div>
+                <div class="field-content special">
+                    <table cellpadding="2" cellspacing="2" border="0" width="50%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2484"></b>
+                            </td>
+                            <td width="50" align="center">
+                            </td>
+                            <td align="center" valign="top">
+                                <b locale="LANG2483"></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">
+                                <select id="seamless_batch_add_leftSelect" name="leftSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll" id="seamless_batch_add_allToRight"></span>
+                                <span class="selectIcon addRight" id="seamless_batch_add_oneToRight"></span>
+                                <span class="selectIcon addLeft" id="seamless_batch_add_oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="seamless_batch_add_allToLeft"></span>
+                            </td>
+                            <td align="right" valign="top">
+                                <select id="seamless_batch_add_rightSelect" name="rightSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--<div class='section-title' locale="LANG5213"></div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG5214" tooltip="@LANG5215"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="batch_extension_status" name="batch_extension_status" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG3006" tooltip="@LANG5216"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="batch_active_call" name="batch_active_call" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG3007" tooltip="@LANG5217"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="batch_hangup" name="batch_hangup" disabled />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG3008" tooltip="@LANG5218"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="batch_callbarge" name="batch_callbarge" disabled />
+                    </div>
+                </div>-->
+                <div class='section-title' locale="LANG629"></div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG3871" tooltip="@LANG4199"></div>
+                    <div class="field-content">
+                        <select id='batch_faxmode'>
+                            <option value='no' locale="LANG133"></option>
+                            <option value='detect' locale="LANG1135"></option>
+                            <!-- <option value='gateway' locale="LANG3554"></option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" id="batch_t38_udptl_div">
+                    <div class="field-label" gLabel="@LANG4225" tooltip="@LANG4224"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_t38_udptl' />
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="SRTP:" tooltip="@LANG1134"></div>
+                    <div class="field-content">
+                        <select name="" id="batch_encryption">
+                            <option value="no" locale="LANG4377"></option>
+                            <option value="support" locale="LANG4376"></option>
+                            <option value="yes" locale="LANG4375"></option>
+                        </select>
+                    </div>
+                </div>
+                <div id="batch_pms_room" class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG4878" tooltip="@LANG4879"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='batch_room' />
+                    </div>
+                </div>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1142" tooltip="@LANG1143"></div>
+                    <div class="field-content">
+                        <select id='batch_bypass_outrt_auth'>
+                            <option value='no' locale="LANG137"></option>
+                            <option value='yes' locale="LANG136"></option>
+                            <option value='bytime' locale="LANG4044"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell skip_auth_timetype" style="display: none;">
+                    <div class="field-label" gLabel="@LANG4045" tooltip="@LANG4046"></div>
+                    <div class="field-content">
+                        <select id="batch_skip_auth_timetype" name="batch_skip_auth_timetype" dfalt="0">
+                            <option locale="LANG3285" value="0">All Time</option>
+                            <option locale="LANG3271" value="1">Office Time</option>
+                            <option locale="LANG3275" value="2">Out of Office Time</option>
+                            <option locale="LANG3266" value="3">Holiday</option>
+                            <option locale="LANG3286" value="4">Out of Holiday</option>
+                            <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                            <option locale="LANG3288" value="6">Specific Time</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="field-cell field-cell-one">
+                    <div class="field-label" gLabel="@LANG1137" tooltip="@LANG1138"></div>
+                    <div class="field-content">
+                        <select id='batch_strategy_ipacl' onchange="changeShow();">
+                            <option value='0' locale="LANG1139"></option>
+                            <option value='1' locale="LANG1140"></option>
+                            <option value='2' locale="LANG1141"></option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="field-cell" id='batch_allow_a_ip' style="display: none;">
+                    <div class="field-cell width550">
+                        <div class="field-label" gLabel="@LANG1144" tooltip="@LANG2346"></div>
+                        <div class="field-content">
+                            <input id="batch_specific_ip" name="specific_ip">
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell width550" id='batch_local_networks' style="display: none;">
+                    <div class="field-label" gLabel="@LANG1146"></div>
+                    <div class="field-content">
+                        <table id="strategy_table3" border="0" style="margin-left:-2px;">
+                            <tr>
+                                <td>
+                                    <input type="text" id="batch_local_network1" name="local_network1" maxlength="100" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn_add" id="btn_batch_local_network1"></button><span style="color: #aaa; margin-left: 10px;" locale="LANG1145">
+                                </td>
+                          </tr>
+                      </table>
+                    </div>
+                </div>
+                <div class="field-cell"  style="width:700px;">
+                  <div class="field-label"  gLabel="@LANG1149" tooltip="@LANG1150"></div>
+                  <div id='batch_codecs' class="field-content special"></div>
+                </div>
+              <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                  <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                  <button type="submit" class="btn btn-update" id="batchAddUsers" locale="LANG742"></button>
+              </div>
+          </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.slide.js"></script>
+    <script type="text/javascript" src="../js/extension-modal.js"></script>
+</body>
+
+</html>

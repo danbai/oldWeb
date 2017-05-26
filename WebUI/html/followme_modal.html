@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Follow Me Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #sqDestinations {
+        height: 120px;
+        background-color: #FFFFFF;
+        padding: 5px;
+        border-width: 1px;
+        border-color: #7E5538;
+        border-style: solid;
+        cursor: default;
+        font: 83%/1.4 arial, helvetica, sans-serif;
+        overflow: auto;
+    }
+    
+    #sqDestinations div.step {
+        clear: both;
+        padding: 2px 5px;
+        min-height: 26px;
+    }
+    
+    #sqDestinations div.step:hover {
+        background-color: #DEDEDE;
+    }
+    
+    #sqDestinations div.step div.step_btn {
+        float: right;
+        line-height: 24px;
+        background: transparent;
+        display: inline-block;
+        height: 24px;
+    }
+    
+    #sqDestinations div.step div.step_desc {
+        width: 450px;
+        line-height: 24px;
+        background: transparent;
+        display: inline-block;
+    }
+    
+    #sqDestinations div.step div.step_desc:hover {
+        background-color: #DEDEDE;
+    }
+    
+    #sqDestinations div.step span.step_add {
+        float: right;
+        width: 13px;
+        background: transparent url("../images/add.png") no-repeat;
+        top: 5px;
+        position: relative;
+        display: inline-block;
+        height: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    #sqDestinations div.step span.step_up {
+        float: right;
+        width: 13px;
+        background: transparent url("../images/asterisk-arrow-up.png") no-repeat;
+        top: 5px;
+        position: relative;
+        display: inline-block;
+        height: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    #sqDestinations div.step span.step_down {
+        float: right;
+        width: 13px;
+        background: transparent url("../images/asterisk-arrow-down.png") no-repeat;
+        top: 5px;
+        position: relative;
+        display: inline-block;
+        height: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    #sqDestinations div.step span.step_delete {
+        float: right;
+        width: 13px;
+        background: transparent url("../images/delete_circle.png") no-repeat;
+        top: 5px;
+        position: relative;
+        display: inline-block;
+        height: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 12px;
+        vertical-align: top;
+        position: relative;
+    }
+    
+    .params,
+    .FORM_newFM_Number {
+        display: none;
+    }
+    
+    .labelText {
+        position: relative;
+        top: -6px;
+    }
+    
+    .divSelect {
+        top: 4px;
+    }
+
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .external_number {
+        top: -2px;
+        position: relative;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="firstStep">
+                    <div class='section-title addFollowmeTip' locale="LANG3385"></div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG85" tooltip="@LANG1064"></div>
+                        <div class="field-content">
+                            <select id='extension'></select>
+                        </div>
+                    </div>
+                    <div class="field-cell modal-commands">
+                        <button type="button" class="btn btn-update" id="next" locale="LANG3386"></button>
+                    </div>
+                </div>
+                <div class="params">
+                    <div class="field-cell selectedAccountContainer">
+                        <div class="field-label" glabel="@LANG2483"></div>
+                        <div class="field-content">
+                            <span id="selectedAccount" name="selectedAccount"></span>
+                            <span id="Reselect" class="link" locale="LANG3388">Reselect</span>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG274" tooltip="@LANG1980"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id='enable_followme' name='enable_followme' checked />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1142" tooltip="@LANG4043"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id='bypass_outrt_auth' name='bypass_outrt_auth' />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1976" tooltip="@LANG1977"></div>
+                        <div class="field-content">
+                            <select id='musicclass'></select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG4091" tooltip="@LANG4092"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id='enable_option' name='enable_option' checked />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2990"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="enable_destination" name="enable_destination" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1558" tooltip="@LANG4276"></div>
+                        <div class="field-content">
+                            <div class="selectDiv">
+                                <select id="destination_type" name="destination_type"></select>
+                            </div>
+                            <div class="selectDiv selectDivValue">
+                                <select id="destination_value" name="destination_value" class='dest_val' noserialize="true"></select>
+                            </div>
+                            <input type="text" id='external_number' class='external_number' name='external_number' maxlength="32" style='display: none;' />
+                        </div>
+                    </div>
+                    <div class='section-title' locale="LANG711"></div>
+                    <div class="field-cell">
+                        <div id='sqDestinations'></div>
+                    </div>
+                    <div class="field-cell new-fm-cmds">
+                        <button type="button" id="btnAdd" class="btn btn-update" onclick="followMe_MiscFunctions.add_number();" locale="LANG798"></button>
+                    </div>
+                    <div class="field-cell FORM_newFM_Number">
+                        <div class="field-label" glabel="@LANG1978" tooltip="@LANG1979"></div>
+                        <div class="field-content">
+                            <input type="radio" name='newFM_Number_radio' id='newFM_Number_radio_local' />
+                            <span class="labelText" for='newFM_Number_radio_local' id='newFM_Number_radio_local_label' locale="LANG1981"></span>
+                            <input type="radio" name='newFM_Number_radio' id='newFM_Number_radio_Externals' />
+                            <span class="labelText" for='newFM_Number_radio_Externals' locale="LANG1982"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell FORM_newFM_Number">
+                        <div class="field-label">&nbsp;</div>
+                        <div class="field-content">
+                            <select id='FMU_newNumber_local' name='FMU_newNumber_local'></select>
+                            <input id='FMU_newNumber_External' name='FMU_newNumber_External' maxlength="40" /><span locale="LANG569" style="padding: 0 5px;"></span>
+                            <input id='FMU_newNumber_seconds' name='time' style="width:20px;" /><span locale="LANG570" style="padding-left: 5px;"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell FORM_newFM_Number">
+                        <div class="field-label" glabel="@LANG1974" tooltip="@LANG1975"></div>
+                        <div class="field-content">
+                            <input type="radio" name='newFM_Order_radio' id='newFM_Order_radio_after' />
+                            <span class="labelText" for='newFM_Order_radio_after' locale="LANG1983"></span>
+                            <br>
+                            <input type="radio" name='newFM_Order_radio' id='newFM_Order_radio_alongWith' />
+                            <span class="labelText" for='newFM_Order_radio_alongWith' id='newFM_Order_radio_alongWith_label' locale="LANG1984"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell FORM_newFM_Number modal-commands">
+                        <button type="button" class="btn btn-cancel" onclick="followMe_MiscFunctions.hide_FORM_newFM_Number();" locale="LANG726"></button>
+                        <button type="submit" id="addNewDes" class="btn btn-update" locale="LANG769"></button>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/followme-modal.js"></script>
+</body>
+
+</html>

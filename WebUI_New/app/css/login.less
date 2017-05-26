@@ -1,0 +1,167 @@
+/*
+ * Custom Login Style
+ */
+html body {
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#app-login-wrapper {
+    min-height: 100%;
+    text-align: center;
+    background: url('../images/login_bg.png') center center no-repeat #11181c;
+    padding-top: 225px;
+}
+
+@media screen and (min-height: 769px) and (max-height: 900px) {
+    #app-login-wrapper {
+        padding-top: 175px;
+    }
+}
+
+@media screen and (max-height: 768px) {
+    #app-login-wrapper {
+        padding-top: 110px;
+    }
+}
+
+#app-login-wrapper {
+    .app-login .main-box {
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        margin: 0px auto 15px 0px;
+        transition: all 0.5s ease;
+    }
+
+    .app-login .login-box {
+        margin: 0 auto;
+        label, .ant-input {
+            font-size: 14px;
+        }
+    }
+
+    .login-form {
+        width: 370px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .ant-menu-inline, .ant-menu-vertical {
+        border: none;
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 55px;
+    }
+
+    .login-title {
+        font-size: 42px;
+        color: #fff;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        text-shadow: 0 2px 4px rgba(39, 44, 56, 0.8)
+    }
+
+    .login-msg {
+        color: #e4e5e6;
+        font-size: 16px;
+    }
+
+    .login-input {
+        width: 370px;
+        height: 44px;
+        background: #fff;
+        border: 0;
+        padding: 0 20px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .forget-pwd-wrap {
+        text-align: right;
+    }
+
+    .forget-pwd {
+        cursor: pointer;
+        color: #bcbcbd;
+    }
+
+    .change-lan-sel {
+        width: 100px;
+    }
+
+    .change-lan {
+        position: absolute;
+        right: 35px;
+        top: 20px;
+    }
+
+    .login-btn {
+        width: 370px;
+        height: 50px;
+        background-color: rgba(72, 133, 240, 0.84);
+        color: #fff;
+        font-size: 16px;
+        margin: 20px 0 15px 0;
+        border: 0;
+        border-radius: 4px;
+    }
+
+    .login-btn:hover{
+        background-color: rgba(76, 136, 255, 1);
+    }
+
+    .ant-select-selection {
+        background-color: transparent;
+        border: 0;
+        color: #8f9fb2;
+    }
+
+    .ant-select-selection__rendered {
+        float: left;
+    }
+
+    .ant-select-selection-selected-value {
+        padding-right: 0;
+    }
+
+    .ant-select-arrow {
+        position: static;
+        margin-top: 4px;
+        float: left;
+    }
+
+    .input-wrapper {
+        position: relative;
+        margin-bottom: 0;
+    }
+
+    .sprite-pos {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+
+    .login-logo {
+        position: absolute;
+        left: 20px;
+        top: 30px;
+    }
+
+    .login-logo a {
+        display: block;
+    }
+
+    .header-lan {
+        color: #b8c1cc;
+        cursor: pointer;
+        position: relative;
+    }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+}
+

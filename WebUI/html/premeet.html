@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title locale="LANG3775"></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../date/main.css">
+    <link rel="stylesheet" href="../date/minical.css">
+    <link rel="stylesheet" href="../date/calendar.css">
+    <style>
+    #table_eventlist {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #D6D6D6;
+        border-spacing: 0px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    #table_userlist {
+        border: 0px;
+        text-align: left;
+        width: 100%;
+    }
+    #table_eventlist tr {
+        background: white;
+        height: 30px;
+    }
+    #table_eventlist tr.frow {
+        background: #91c6e4;
+        color: #3b3b3b;
+    }
+    #table_userlist tr {
+        background: #e3e3e2;
+        color: #747474;
+        height: 30px;
+    }
+    #table_userlist tr.frow {
+        background: #e3e3e2;
+        color: #747474;
+    }
+    #table_userlist, #table_eventlist tr.frow td {
+        font-weight: bold;
+    }
+    #table_eventlist tr.even:hover, #table_eventlist tr.odd:hover {
+        background: #a8b6e5;
+        cursor: default;
+    }
+    .table {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #d6d6d6; /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset,0px 0px 1px rgba(200, 200, 200, 0.5);*/
+        border-spacing: 0px;
+    /*    table-layout: fixed;*/
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+
+    table#table_userlist thead th, table#table_userlist tbody td {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+    table tbody td.noUser {
+        border-bottom: 0;
+        height: 30px;
+    }
+    table tbody {
+        background-color: #fff;
+    }
+
+    table.table tbody td span, table.table thead th span {
+        cursor: pointer;
+        /*color: #225685;*/
+        margin-left: 8px;
+    }
+
+    .thead tr, table.table tbody tr.frow {
+        background: #91C6E5;
+        height: 23px;
+        color: #3A3C3B;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .tbody tr {
+        height: 23px;
+    }
+    table tbody tr.even {
+        background: #EFEFEF;
+    }
+
+    table tbody tr.odd {
+        background: #FFFFFF;
+    }
+    .tbody tr:hover, table.table tbody tr.even:hover, table.table tbody tr.odd:hover {
+        background: #CAECFF;
+    }
+    .top_buttons .special {
+        position: relative;
+        top: -8px;
+    }
+    .field-label-special {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    .field-label-special .field-label {
+        width: auto;
+        margin-right: 8px;
+    }
+    #sub_div {
+        margin-top: 15px;
+    }
+    #userslist {
+        width: 300px;
+        margin-left: 30px;
+        margin-top: 12px;
+        clear: both;
+    }
+    .ui-jqgrid{
+        margin-top: 0;
+    }
+    #usercontain td{
+        overflow: hidden;
+    }
+    body.page {
+        background-color: #fff;
+    }
+    #toppanel .top_buttons {
+        float: left;
+    }
+    .GSRTL #toppanel .top_buttons {
+        float: right;
+    }
+    #mainpanel .top_buttons {
+        margin: 0;
+    }
+    #mainpanel .cal_wrap{
+        float: right;
+    }
+    .GSRTL #mainpanel .cal_wrap{
+        float: left;
+    }
+    #mainpanel #todaybtn {
+        height: 30px;
+    }
+    #mainpanel #viewswithbtn {
+        height: 30px;
+        border: 1px solid #ddd;
+    }
+    #mainpanel #viewswithbtn button {
+        height: 30px;
+        border-radius: 0;
+        border: 0;
+    }
+    .lite_Heading {
+        margin: 10px 0;
+    }
+    .page .ui-jqgrid .view {
+        left: 280px;
+        bottom: 7px;
+        top: auto;
+        z-index: 10;
+        width: 200px;
+    }
+    .page .ui-jqgrid {
+        left: 10px;
+    }
+    #gbox_groups_list {
+        margin: 0 0 0 -10px;
+    }
+    #top_table {
+        display: none;
+        margin-top: 10px;
+    }
+    #top_table .top_buttons {
+        margin-bottom: 0;
+    }
+    </style>
+</head>
+<body class="page">
+    <!-- <div class='lite_Heading' locale="LANG3775"></div> -->
+    <div id="top_table">
+        <div class="top_buttons">
+            <button type="button" id="refresh_google" class="btn btn-update special" locale="LANG2740"></button>
+        </div>
+        <div class="lite_desc" id="lite_desc" locale="LANG4467"></div>
+        <table id="groups_list"></table>
+        <div id="groups_list_pager"></div>
+    </div>
+    <div id="mainpanel">
+        <div id="toppanel" class="clearfix">
+            <!-- <div id="loadingpannel" style="display: none;">Loading data...</div> -->
+            <div class="top_buttons">
+                <button type="button" id="btnAdd" class="btn btn-update special" locale="LANG3776"></button>
+                <button type="button" id="btnClear" class="btn btn-update special" locale="LANG4277"></button>
+                <button type="button" id="btn_show_table" class="btn btn-update special" locale="LANG4336"></button>
+            </div>
+            <div class="cal_wrap">
+                <div class="calbtnp1">
+                    <button id="todaybtn" type="button" class="btn btn-save">Today</button>
+                    <div class="btngroup">
+                        <span id="prevbtn" type="button" class="btn prevbtn"></span>
+                        <div id="dateshow"></div>
+                        <span id="nextbtn" type="button" class="btn nextbtn"></span>
+                    </div>
+                </div>
+                <div class="calbtnp2">
+                    <div id="viewswithbtn" class="btngroup">
+                        <button id="daybtn" type="button" class="btn">Day</button>
+                        <button id="weekbtn" type="button" class="btn current">Week</button>
+                        <button id="monthbtn" type="button" class="btn">Month</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="leftpanel">
+            <div id="minical" class="minical"></div>
+        </div>
+        <div id="rightpanel">
+            <div id="xgcalendarp"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/premeet.js"></script>
+    <script type="text/javascript" src="../date/xgcalendar-en.js"></script>
+    <script type="text/javascript" src="../date/xgcalendar.js"></script>
+    <script type="text/javascript" src="../date/common.js"></script>
+    <script type="text/javascript" src="../date/minicalendar.js"></script>
+    <script type="text/javascript" src="../date/premeet-minical.js"></script>
+</body>
+</html>

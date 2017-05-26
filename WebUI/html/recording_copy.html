@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title>Choose Link</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #editForm {
+            width: 400px;
+            overflow: hidden;
+        }
+       .field-cell {
+            display: inline-block;
+            *display: inline; 
+            zoom: 1;
+            width: 580px;
+        }
+        .field-cell .field-label {
+            width: 205px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        .field-label div.glab span.label {
+            width: 165px;
+        }
+        .modal-commands {
+            display: block;
+        }
+        #failed {
+            display: none;
+        }
+        .des {
+            margin: 10px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm">
+            <div class="section-body">
+                <div class='section-title' locale="LANG3758"></div>
+                <div class="field-cell" id="monitor_cell" >
+                    <div class="field-label" glabel="@LANG2640" tooltip="@LANG3764">
+                    </div>
+                    <div class="field-content">
+                        <!-- <input type="radio" id="monitor" name="recordings" value="monitor" field_name='Rule Name'  /> -->
+                        <input type="checkbox" id="monitor" name="recordings" class="chk_recordings" value="monitor" />
+                    </div>
+                </div>
+                <div class="field-cell" id="meetme_cell" >
+                    <div class="field-label" glabel="@LANG18" tooltip="@LANG3765">
+                    </div>
+                    <div class="field-content">
+                        <!-- <input type="radio" id="meetme" name="recordings" value="meetme" field_name='Rule Name'  /> -->
+                        <input type="checkbox" id="meetme" name="recordings" class="chk_recordings" value="meetme" />
+                    </div>
+                </div>
+                <div class="field-cell" id="queue_cell">
+                    <div class="field-label" glabel="@LANG2377" tooltip="@LANG3766">
+                    </div>
+                    <div class="field-content">
+                        <!-- <input type="radio" id="queue" name="recordings" value="queue" field_name='Rule Name' checked="true" /> -->
+                        <input type="checkbox" id="queue" name="recordings" class="chk_recordings" value="queue" />
+                    </div>
+                </div>
+<!--                 <div class="field-cell" id="voicemail_cell">
+                    <div class="field-label" glabel="@LANG20" tooltip="@LANG4881">
+                    </div>
+                    <div class="field-content">
+                        <input type="radio" id="queue" name="recordings" value="queue" field_name='Rule Name' checked="true" />
+                        <input type="checkbox" id="voicemail" name="recordings" class="chk_recordings" value="voicemail" />
+                    </div>
+                </div> -->
+                <div class="field-cell" id="all_cell">
+                    <div class="field-label" glabel="@LANG104" tooltip="@LANG3767">
+                    </div>
+                    <div class="field-content">
+                        <!-- <input type="radio" id="all_recordings" name="recordings" value="all" field_name='Rule Name'  checked="true" /> -->
+                        <input type="checkbox" id="all_recordings" name="recordings" value="all" checked="true"/>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726" ></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG727"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <!--><script type="text/javascript" src="../js/recording-copy.js"></script><!-->
+</body>
+</html>

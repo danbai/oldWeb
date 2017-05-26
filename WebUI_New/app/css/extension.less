@@ -1,0 +1,102 @@
+.app-content-extension {
+    .top-button {
+        .ant-btn {
+            margin-top: 5px;
+        }
+
+        .ant-btn-group {
+            margin-right: 5px;
+            vertical-align: inherit;
+
+            .ant-btn {
+                margin-right: 0;
+                border-left: 0 none;
+                border-right: 0 none;
+            }
+        }
+
+        form {
+            padding: 0;
+            border-bottom: 0 none;
+            background-color: transparent;
+
+            .ant-form-item {
+                margin-bottom: 10px;
+            }
+
+            .ant-form-item-control {
+                line-height: 28px;
+
+                .ant-input {
+                    border-color: #e2e8ef;
+                    margin-top: 5px;
+                    border-radius: 4px;
+                }
+
+                .ant-input[disabled] {
+                    width: 250px;
+                    border-color: #e1e1e1;
+                }
+            }
+        }
+
+        @media screen and (min-width: 1280px) {
+            form {
+                padding: 0;
+                float: right;
+                border-bottom: 0 none;
+                background-color: transparent;
+
+                .ant-form-item {
+                    margin: 0 0 14px 10px;
+                }
+
+                .ant-form-item-control {
+                    line-height: 28px;
+
+                    .ant-input {
+                        width: 250px;
+                        margin-top: 5px;
+                    }
+
+                    .ant-btn {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .dynamic-network-button {
+        top: 6px;
+        color: #999;
+        right: -30px;
+        font-size: 18px;
+        cursor: pointer;
+        position: absolute;
+        transition: all .3s;
+
+        &:hover {
+            color: #777;
+        }
+
+        &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .status-container.email-status-disabled span,
+    .status-container.email-status-sent span {
+        float: none
+    }
+
+    row-status {
+        text-align: left;
+    }
+
+    .email-status-sent, .email-status-disabled {
+        position: relative;
+        top: 3px;
+    }
+}

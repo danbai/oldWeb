@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Ami User</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #editForm {
+            width: 600px;
+            overflow: hidden;
+        }
+        .field-cell .field-label {
+            width: 190px;
+        }
+        .field-label .glab span.label {
+            width: 152px;
+            overflow: hidden;
+        }
+        .divLineHeight {
+            line-height: 30px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .divLineHeight input.styled {
+            top: 13px
+        }
+        .divLineHeight .checkbox {
+            top: 9px;
+        }
+        .btn_add {
+            background: url(../images/add.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+        .btn_del {
+            background: url(../images/delete_circle.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG72"></div>
+                    <div class="field-content">
+                        <input type="text" id="username" name="username" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG73"></div>
+                    <div class="field-content">
+                        <input type="text" id="secret" name="secret" maxlength="32" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2775" tooltip="@LANG3825"></div>
+                    <div class="field-content">
+                        <table id="denyTable" border="0" style="margin-left:-2px;">
+                            <tr>
+                                <td><input position="left" type="text" id="denyIP0" name="denyIP0" maxlength="100" /></td>
+                                <td><label>/</label></td> 
+                                <td><input position="right" type="text" id="denyNetmask0" name="denyNetmask0" maxlength="100"  /></td>
+                                <td><button type="button" class="btn_add" id="btnDeny0" onclick="addRow(this, 'denyTable');"></button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2776" tooltip="@LANG3826"></div>
+                    <div class="field-content">
+                        <table id="permitTable" border="0" style="margin-left:-2px;">
+                            <tr>
+                                <td><input position="left" type="text" id="permitIP0" name="permitIP0" maxlength="100" /></td>
+                                <td><label>/</label></td> 
+                                <td><input position="right" type="text" id="permitNetmask0" name="permitNetmask0" maxlength="100" /></td>
+                                <td><button type="button" class="btn_add" id="btnPermit0" onclick="addRow(this, 'permitTable');"></button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2811" tooltip="@LANG3529"></div>
+                    <div id ="all_pri_container" class="field-content" style="width: 350px; top: -5px;">
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="chk_pri_all" name="chk_pri_all" noSerialize='true' />
+                            <span locale="LANG104">All</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="originate" name="originate" class="chk_pri" noSerialize='true' />
+                            <span>originate</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="call" name="call" class="chk_pri" noSerialize='true' />
+                            <span>call</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="cdr" name="cdr" class="chk_pri" noSerialize='true' />
+                            <span>cdr</span>
+                        </div>
+                        <!-- <div class="divLineHeight">
+                            <input type="checkbox" id="log" name="log" class="chk_pri" noSerialize='true' />
+                            <span>log</span>
+                        </div> -->
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="agent" name="agent" class="chk_pri" noSerialize='true' />
+                            <span>agent</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="cc" name="cc" class="chk_pri" noSerialize='true' />
+                            <span>CC</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="dtmf" name="dtmf" class="chk_pri" noSerialize='true' />
+                            <span>DTMF</span>
+                        </div>
+                        <!-- <div class="divLineHeight">
+                            <input type="checkbox" id="aoc" name="aoc" class="chk_pri" noSerialize='true' />
+                            <span>AOC</span>
+                        </div> -->
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="dialplan" name="dialplan" class="chk_pri" noSerialize='true' />
+                            <span>dialplan</span>
+                        </div>
+                        <!-- <div class="divLineHeight">
+                            <input type="checkbox" id="verbose" name="verbose" class="chk_pri" noSerialize='true' />
+                            <span>verbose</span>
+                        </div> -->
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="reporting" name="reporting" class="chk_pri" noSerialize='true' />
+                            <span>reporting</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="user" name="user" class="chk_pri" noSerialize='true' />
+                            <span>user</span>
+                        </div>
+                        <div class="divLineHeight">
+                            <input type="checkbox" id="security" name="security" class="chk_pri" noSerialize='true' />
+                            <span>security</span>
+                        </div>
+                        <!-- <div class="divLineHeight">
+                            <input type="checkbox" id="test" name="test" class="chk_pri" noSerialize='true' />
+                            <span>test</span>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ami-modal.js"></script>
+</body>
+</html>

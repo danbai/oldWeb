@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4039">Oray Setting</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            background-color: #EFEFEF;
+        }
+        #Pen_auto_clean div {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            line-height: 30px;
+       }
+       .boxLabel {
+            position: relative;
+            top: -5px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4039">Oray Settings</div>
+    <form id="form">
+        <div class="lite_desc" locale="LANG4033">User Oray allows you to access your network using domain names instead of IP address.</div>
+        <div class="section-body">
+            <div class="section-title" locale="LANG4039">Oray Settings</div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4034" tooltip="@LANG4035"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enable_phddns' name="enable_phddns" dfalt="no" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4036" tooltip="@LANG4037"></div>
+                <div class="field-content">
+                    <input type="text" id='szHost' name="szHost" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG72" tooltip="@LANG4025"></div>
+                <div class="field-content">
+                    <input type="text" name="szUserID" style="display: none;" />
+                    <input type="text" id='szUserID' name="szUserID" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG73" tooltip="@LANG4026"></div>
+                <div class="field-content">
+                    <input type="password" name="szUserPWD" style="display: none;" />
+                    <input type="password" id='szUserPWD' name="szUserPWD" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1938" tooltip="@LANG4038"></div>
+                <div class="field-content">
+                    <select id="nicName" name="nicName" dfalt="eth0">
+                      <!--  <option locale="svip0" value="svip0">svip0</option>
+                        <option locale="lo" value="lo">lo</option> -->
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1435" tooltip="@LANG1436"></div>
+                <div class="field-content">
+                    <input type="text" id='szLog' name="szLog" /> 
+                </div>
+            </div> -->
+            <div id="buttons" class="field-cell last" >
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save"  locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/phddns-settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG583">Device Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/cfgbasic.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/moduleMenuCrumbs.css?home" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/jquery.mCustomScrollbar.css?home" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    body {
+        overflow-y: hidden;
+        display: none;
+    }
+    
+    table {
+        max-width: 600px;
+        position: relative;
+        top: 8px;
+        right: 35px;
+        float: right;
+        z-index: 2;
+    }
+    
+    #applyChanges_Button {
+        visibility: hidden;
+        margin-right: 13px;
+    }
+    
+    #line_Button {
+        position: relative;
+        visibility: hidden;
+    }
+    
+    #langSelect {
+        padding: 0 23px 0 13px;
+        height: 23px;
+        line-height: 18px;
+    }
+    
+    #sysTime {
+        text-align: right;
+        cursor: default;
+    }
+    
+    #crumbs-div {
+        height: 28px;
+        background-color: #acadad;
+        z-index: 999;
+    }
+    
+    #footer-row,
+    .copyrights {
+        width: 100%;
+    }
+    
+    /* menu */    
+    .menu {
+        position: relative;
+        display: inline-block;
+        /* width: 70px;
+        overflow: hidden;
+        white-space: nowrap;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis; */
+    }
+    
+    .menu .subnav {
+        border-top: none;
+        display: none;
+        position: absolute;
+        top: 22px;
+        left: 0px;
+        z-index: 2000;
+        width: 90px;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        overflow: auto;
+        max-height: 210px;
+        filter: alpha(Opacity=90);
+        -moz-opacity: 0.9;
+        opacity: 0.9;
+    }
+
+    /* #navbox.current .subnav {
+        display: block;
+    } */
+    
+    ul li span {
+        /* padding: 0px 3px; */
+        padding: 5px 0 5px 15px;
+        display: block;
+        border-bottom: solid 1px #ddd;
+        overflow: hidden;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+        -webkit-transition: all 0.25s ease-in-out;
+        -moz-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        -ms-transition: all 0.25s ease-in-out;
+        font-size: 12px;
+    }
+    
+    ul li span:hover {
+        background: #f3f3f3;
+        color: #000;
+    }
+    
+    #navbox span.dd-pointer {
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: -4px;
+        cursor: pointer;
+        cursor: hand;
+    }
+    
+    #navbox span.dd-pointer-down {
+        top: 11px;
+        border: solid 5px transparent;
+        border-top: solid 5px #eee;
+    }
+    
+    #navbox span.dd-pointer-up {
+        top: 5px;
+        border: solid 5px transparent !important;
+        border-bottom: solid 5px #eee !important;
+    }
+    
+    #userInfo {
+        display: inline-block;
+        /* max-width: 70px;
+        overflow: hidden;
+        white-space: nowrap;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis; */
+        text-decoration: underline;
+    }
+    
+    #check_msg {
+        display: none;
+        position: fixed;
+        left: 50%;
+        margin-left: -360px;
+        top: 0px;
+        padding: 0 10px 10px 0;
+        background: #fcf0cb;
+        color: #222;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 5px;
+        max-width: 560px;
+        max-height: 29px;
+        overflow: hidden;
+    }
+    
+    #check_msg p {
+        display: none;
+        margin: 6px 0 0 20px;
+    }
+    
+    #check_msg p font {
+        color: #00f;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body topmargin="1" leftmargin="2" onselectstart="return false;" id="HomeBody">
+    <div id="main-container">
+        <div class="header_row">
+            <div class="main_logo" id="main_logo">
+                <img alt="" align="left" id="logo" />
+            </div>
+            <table id="settings_table">
+                <tr>
+                    <td>
+                        <span class='button_t1' onclick="top.applyChanges()" id='applyChanges_Button' localeTitle="LANG260" locale="LANG260">Apply Changes</span>
+                    </td>
+                    <td>
+                        <span class="line" id="line_Button">|</span>
+                    </td>
+                    <td>
+                        <span class='button_t1' id='settingsGuide' localeTitle="LANG4283" locale="LANG4283">Settings Guide</span>
+                    </td>
+                    <td>
+                        <span class="line" id="">|</span>
+                    </td>
+                    <td id="langSelect">
+                        <div id="language"></div>
+                    </td>
+                    <td>
+                        <span class="line" id="">|</span>
+                    </td>
+                    <td id="roleSelect">
+                        <div id="navbox" class="menu">
+                            <span id="userInfo" class="button_t1" onclick="module.jumpMenu('user_list.html');">admin</span>
+                            <span class="dd-pointer dd-pointer-down"></span>
+                            <ul class="subnav">
+                                <li>
+                                    <span id="reboot_Button" onclick="top.UCMGUI.loginFunction.confirmReboot('confirm')" localeTitle="LANG737" locale="LANG737">Reboot</span>
+                                </li>
+                                <li>
+                                    <span id="logout_Button" onclick="top.UCMGUI.logoutFunction.confirmlogout()" localeTitle="LANG259" locale="LANG259">Logout</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="7" id="sysTime">
+                        <span class="sysTime"></span>
+                    </td>
+                </tr>
+            </table>
+            <div id="check_msg">
+                <p id="pwd_prompt" locale="LANG4193"></p>
+                <p id="email_prompt" locale="LANG4197"></p>
+            </div>
+            <div id="moduleList">
+                <ul class="module"></ul>
+            </div>
+        </div>
+        <div id="center-row">
+            <div id="pad-content">
+                <div id="accordion_div">
+                    <div id="left_shadow"></div>
+                    <div id="menu-div"></div>
+                    <div class="left_bottom_shadow"></div>
+                </div>
+                <div id="content-pad">
+                    <div id="crumbs-div"></div>
+                    <div>
+                        <iframe marginheight="0" marginwidth="0" id="mainScreen" name="mainScreen" frameborder="0" scrolling="auto"></iframe>
+                    </div>
+                    <div class="right_bottom_shadow"></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-row">
+            <div class="copyrights">
+                <span id="copyright"></span>
+            </div>
+        </div>
+        <div id="dropdownSubmenuOverUl" style="position: absolute; width: 182px;"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/moduleMenuCrumbs.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
+</body>
+
+</html>

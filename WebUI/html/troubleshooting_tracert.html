@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG670">Traceroute</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/styles.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title {
+            margin-top: 12px;
+        }
+
+        /* Interaction Cues */
+        #form .ui-state-highlight,
+        #form .ui-content .ui-state-highlight,
+        #form .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+
+        #form .ui-state-highlight a,
+        #form .ui-content .ui-state-highlight a,
+        #form .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG670"></div>
+    <div class="section-body">
+        <form id="form">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1583" tooltip="@LANG1584"></div>
+                <div class="field-content">
+                    <input type="text" name="traceroute" type='text' maxlength="256" class="inputWidth232 dis_static" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="btnStart" onclick="javascript:btnStart_click();">
+                        <font locale="LANG724">Start</font>
+                    </button>
+                    <button type="button" id="btnStop" onclick="javascript:btnStop_click();">
+                        <font locale="LANG725">Stop</font>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG666"></div>
+    <div class="section-body" style="font-size: 13px; height: 350px; padding: 5px; overflow: auto;">
+        <div id='outputBody'></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/troubleshooting-tracert.js"></script>
+</body>
+</html>

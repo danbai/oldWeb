@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG2546">Warning Contact</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .btn_add {
+        background: url(../images/add.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+    
+    .btn_del {
+        background: url(../images/delete_circle.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        position: relative;
+        margin-left: 10px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class="lite_Heading" locale="LANG2546"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5058" tooltip="@LANG2573"></div>
+                <div class="field-content">
+                    <table id="superEmailTable" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input type="text" id="superEmail0" name="superEmail0" maxlength="100" /></td>
+                            <td><button type="button" class="btn_add" id="btnSuperEmail0" onclick="addEmailRow(this, 'superEmailTable');"></button></td>
+                            <td><span id="superEemailTemplate" class="link" locale="LANG4576"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2572" tooltip="@LANG2573"></div>
+                <div class="field-content">
+                    <table id="emailTable" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input type="text" id="email0" name="email0" maxlength="100" /></td>
+                            <td><button type="button" class="btn_add" id="btnemail0" onclick="addEmailRow(this, 'emailTable');"></button></td>
+                            <td><span id="emailTemplate" class="link" locale="LANG4576"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/warning-contact.js"></script>
+</body>
+
+</html>

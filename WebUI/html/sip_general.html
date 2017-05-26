@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG701">Sip General</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+     <style type="text/css">
+        .btn_add {
+            background: url(../images/add.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+        
+        .btn_del {
+            background: url(../images/delete_circle.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG701"></div>
+    <form id="form">
+        <div class="section-body">
+            <div style="display: none;" class="field-cell">
+                <div class="field-label" gLabel="@LANG1751" tooltip="@LANG1752"></div>
+                <div class="field-content">
+                    <input type='text' dfalt='default' id="context" name="context" maxlength="20" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1765" tooltip="@LANG1766"></div>
+                <div class="field-content">
+                    <input type='text' dfalt='asterisk' id="realm" name="realm" maxlength="30" /> 
+                </div>
+            </div>
+
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1768" tooltip="@LANG1767"></div>
+                <div class="field-content">
+                    <input type='text' id="bindport" name="bindport" maxlength="6" class="inputWidth50" dfalt='5060' /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1759" tooltip="@LANG1760"></div>
+                <div class="field-content">
+                    <input type='text' id="bindaddr" name="bindaddr"  maxlength="40" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5123" tooltip="@LANG5124"></div>
+                <div class="field-content">
+                    <input type='text' id="bindaddr6" name="bindaddr6"  maxlength="44" class="IPv6Input" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1745" tooltip="@LANG1746"></div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='no' id="allowguest" name="allowguest">
+                </div>
+            </div>
+<!--             <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1763" tooltip="@LANG1764"></div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='y' id="allowoverlap" name="allowoverlap">
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1747" tooltip="@LANG1748"></div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='y' id="allowtransfer" name="allowtransfer">
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1755" tooltip="@LANG1756"></div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='y' id="srvlookup" name="srvlookup">
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1761" tooltip="@LANG1762"></div>
+                <div class="field-content">
+                    <input type='text' id="mwi_from" name="mwi_from" maxlength="30" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4578" tooltip="@LANG4579"></div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt="yes" id="enable_diversion" name="enable_diversion" /> 
+                </div>
+            </div>
+  <!--      </div>
+         <div class='section-title' locale="LANG702"></div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1753" tooltip="@LANG1754"></div>
+                <div class="field-content">
+                    <table id="domainTable" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input type="text" id="domain0" name="domain0" maxlength="100" /></td>
+                            <td><button type="button" class="btn_add" id="btndomain0"></button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1757" tooltip="@LANG1758"></div>
+                <div class="field-content">
+                    <input type='text' id="fromdomain" name="fromdomain" maxlength="30" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1749" tooltip="@LANG1750"></div>
+                <div class="field-content">
+                    <input type='checkbox' id="autodomain" name="autodomain" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1743" tooltip="@LANG1744"></div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='y' id="allowexternaldomains" name="allowexternaldomains" />
+                </div>
+            </div> -->
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/astman.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/sip-general.js"></script>
+</body>
+</html>

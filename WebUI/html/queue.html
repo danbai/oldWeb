@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+<head>
+    <title locale="LANG607">Queues</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title-specail {
+            margin: 30px 0 5px 0;
+        }
+        .ui-jqgrid {
+            margin-top: 0;
+        }
+        .choose_buttons {
+            display: none;
+            margin-bottom:10px;
+        }
+        .choose-tips {
+            line-height: 24px;
+            color: #000000;
+            background-color: #ed9845;
+            display: inline-block;
+            position: relative;
+            top: 1px;
+        }
+        .no-margin-top {
+            margin-top: 0;
+        }
+        .recording_buttons {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG607">Call Queue</div>
+    <div class="top_buttons">
+        <button id="btnAdd" type="button" class="btn btn-create" locale="LANG747">Create New Queue</button>
+        <button id="settings" type="button" class="btn btn-update" locale="LANG748">Agent Login Settings</button>
+    </div>
+    <div id="queue_div">
+        <table id="queue-list"></table> 
+        <div id="queue-pager"></div>
+    </div>
+    <div class="section-title section-title-specail" locale="LANG2731">Queue Recordings</div>
+    <div class="recording_buttons">
+        <button type="button" id="batchDelete" class="btn btn-update" locale="LANG3488"></button>
+        <button type="button" id="btnDelete" class="btn btn-update special" locale="LANG3439"></button>
+        <button type="button" id="btnDownloadBatch" class="btn btn-update" locale="LANG4761 LANG2640"></button>
+        <button type="button" id="btnDownloadAll" class="btn btn-update" locale="LANG741 LANG2640"></button>
+    </div>
+    <div class="choose_buttons">
+        <label class="choose-tips" border-color="#FF0000" style="padding: 0 6px;"></label>
+        <button type="button" id="btnChoose" class="btn btn-save no-margin-top" onclick="storeChoose();" locale="LANG727"></button>
+    </div>
+    <table id="recordFiles"></table>
+    <div id="recordFiles-pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/queue.js"></script>
+</body>
+</html>

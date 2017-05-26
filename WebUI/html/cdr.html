@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG592">CDR Viewer</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    table thead td,
+    table tbody td {
+        border-bottom: 0;
+    }
+    
+    table tbody td span {
+        color: #3B3B3B;
+    }
+    
+    div#delete_all,
+    div#delete_record {
+        position: fixed;
+        left: 30%;
+        top: 40%;
+    }
+    
+    .selectable {
+        cursor: pointer;
+    }
+    
+    .info {
+        font-size: small;
+        color: #6b79a5;
+    }
+    
+    .field-cell {
+        width: 100%;
+    }
+    
+    .field-cell .field-label {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        width: 200px;
+    }
+    
+    .field-content > div {
+        display: inline-block;
+        position: relative;
+    }
+    
+    .field-content > div .boxLabel {
+        margin-right: 20px;
+        position: relative;
+        top: -6px;
+    }
+
+    .GSRTL .field-content > div .boxLabel {
+        margin-left: 20px;
+        margin-right: 0;
+    }
+    
+    .right {
+        text-align: right;
+    }
+    
+    .left {
+        text-align: left;
+    }
+
+    .GSRTL .right {
+        text-align: left;
+    }
+    
+    .GSRTL .left {
+        text-align: right;
+    }
+    
+    div.glab span.tooltip {
+        margin-left: 1px;
+        text-align: left;
+        width: 15px;
+    }
+    
+    div.glab span.label {
+        margin-left: 1px;
+        text-align: left;
+        width: 150px;
+    }
+
+    .GSRTL div.glab span.label {
+        text-align: right;
+    }
+    
+    .table_CDR_search tr {
+        /* padding: 5px; */
+        background: #EFEFEF;
+        /* height: 36px; */
+    }
+    
+    .table_CDR_search tr td {
+        /* padding: 5px; */
+    }
+    
+    #serch_options .multi-select {
+        width: 135px;
+        height: 50px;
+    }
+    
+    .answereddiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/answered.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .noanswerdiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/noanswer.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .faileddiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/failed.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .busydiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/busy.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .phonediv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/intext.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .connectdiv {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background: url(../images/connect.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .incomingdiv {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background: url(../images/incoming.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .outgoingdiv {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background: url(../images/outgoing.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .pstndiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/telephone.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .choose_buttons {
+        display: none;
+    }
+    
+    .choose-tips {
+        line-height: 24px;
+        color: #000000;
+        background-color: #ed9845;
+        display: inline-block;
+        position: relative;
+        top: 1px;
+    }
+    
+    .no-margin-top {
+        margin-top: 0;
+    }
+    
+    /* Interaction Cues */
+    #form .ui-state-highlight,
+    #form .ui-content .ui-state-highlight,
+    #form .ui-widget-header .ui-state-highlight {
+        border: 1px solid #EDC7C6;
+        background: #FFE6E7;
+        color: #363636;
+    }
+    
+    #form .ui-state-highlight a,
+    #form .ui-content .ui-state-highlight a,
+    #form .ui-widget-header .ui-state-highlight a {
+        color: #363636;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG594">Call Detail Report</div>
+    <form id="form">
+        <table id='table_CDR_search' class='table_CDR_search'>
+            <tr align='left'>
+                <td valign='top' align='left'>
+                    <table id="serch_options">
+                        <tr>
+                            <td class="right">
+                                <div class="field-label" gLabel="@LANG2235" tooltip="@LANG4783"></div>
+                            </td>
+                            <td class="left">
+                                <select id="userfield" class="multi-select" multiple size="8">
+                                    <option value="Inbound" locale="LANG193">Inbound Calls</option>
+                                    <option value="Outbound" locale="LANG194">Outbound Calls</option>
+                                    <option value="Internal" locale="LANG195">Internal Calls</option>
+                                    <option value="External" locale="LANG196">External Calls</option>
+                                </select>
+                            </td>
+                            <td class="right">
+                                <div gLabel="@LANG186"></div>
+                            </td>
+                            <td class="left">
+                                <select id="disposition" class="multi-select" multiple size="8">
+                                    <option value="ANSWERED" locale="LANG4863">Answered</option>
+                                    <option value="NO ANSWER" locale="LANG4864">No Answer</option>
+                                    <option value="BUSY" locale="LANG2237">Busy</option>
+                                    <option value="FAILED" locale="LANG2405">Failed</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="privilege">
+                            <td class="right">
+                                <div gLabel="@LANG5132"></div>
+                            </td>
+                            <td class="left">
+                                <select id="src_trunk_name" class="multi-select" multiple size="8"></select>
+                            </td>
+                            <td class="right">
+                                <div gLabel="@LANG5133"></div>
+                            </td>
+                            <td class="left">
+                                <select id="dst_trunk_name" class="multi-select" multiple size="8"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right">
+                                <div gLabel="@LANG5134"></div>
+                            </td>
+                            <td class="left">
+                                <select id="action_type" class="multi-select" multiple size="8"></select>
+                            </td>
+                            <td class="right user-portal-callnumber-label">
+                                <div class="privilege" gLabel="@LANG4569"></div>
+                            </td>
+                            <td class="left user-portal-callnumber">
+                                <select id="accountcode" class="multi-select privilege" multiple size="8"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right">
+                                <div gLabel="@LANG1048"></div>
+                            </td>
+                            <td class="left">
+                                <input type='text' id="startfrom" name="startfrom" class="inputWidth130 special" />
+                            </td>
+                            <td class="right">
+                                <div gLabel="@LANG1049"></div>
+                            </td>
+                            <td class="left">
+                                <input type='text' id="startto" name="startto" class="inputWidth130 special" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right">
+                                <div gLabel="@LANG2216" tooltip="@LANG4021"></div>
+                            </td>
+                            <td class="left">
+                                <input type='text' id='CallerNumber' name='CallerNumber' class="inputWidth130 special" />
+                            </td>
+                            <td class="right">
+                                <div gLabel="@LANG2234"></div>
+                            </td>
+                            <td class="left">
+                                <input type='text' id='CallerName' name='CallerName' class="inputWidth130 special" />
+                            </td>
+                        </tr>
+                        <tr class="privilege">
+                            <td class="right callnumber-label">
+                                <div gLabel="@LANG2793"></div>
+                            </td>
+                            <td class="left callnumber">
+                                <input type='text' id='CalledNumber' name='CalledNumber' class="inputWidth130 special" />
+                            </td>
+                            <td class="right"></td>
+                            <td class="left"></td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td class="right">
+                                <span locale="LANG580">Duration:</span>
+                                <input type='checkbox' id='dfselect' />
+                                <span locale="LANG170">From:</span>
+                            </td>
+                            <td class="left">
+                                <input type='text' id='drfrom' class="special">
+                            </td>
+                            <td class="right">
+                                <input type='checkbox' id='dtselect' />
+                                <span locale="LANG171">To:</span>
+                            </td>
+                            <td class="left">
+                                <input type='text' id='drto' class="special" />
+                                <span locale="LANG570">(seconds)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div style="padding: 6px;">
+            <button type="submit" id="btnSubmit" class="btn btn-update" locale="LANG803">Search</button>
+            <button type="button" id="btnDownloadSearch" class="btn btn-update" locale="LANG3699">Download Search Result(s)</button>
+            <button type="button" id="btnDownload" class="btn btn-update privilege" locale="LANG741 LANG4146">Download All Records</button>
+            <button type="button" id="btnDownloadSettings" class="btn btn-update privilege" locale="LANG3955">Automatic Download Settings</button>
+            <button type="button" id="btnDelete" class="btn btn-update privilege" locale="LANG740">Delete All</button>
+        </div>
+    </form>
+    <div class="choose_buttons" style="padding: 0 6px;">
+        <label class="choose-tips" border-color="#FF0000" style="padding: 0 6px;"></label>
+        <button type="button" id="btnChoose" class="btn btn-save no-margin-top" onclick="storeChoose();" locale="LANG727"></button>
+    </div>
+    <div class='top_buttons' style="font-size: 12px;">
+        <div id="info" class="info"></div>
+        <span locale="LANG1018">Click on column header to sort by that column. Click on row to display full record.</span>
+    </div>
+    <table id="cdr_records"></table>
+    <div id="cdr_records_pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/cdr.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2502">Change Time</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div id="tabbedMenu"></div>
+    <div class='lite_Heading' locale="LANG2502">Change Time</div>
+    <div id="main-container" style="width:900px">
+        <form id="form">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2501" tooltip="@LANG2532"></div>
+                    <div class="field-content">
+                        <input type="text" name="setsystime" id="setsystime" />
+                        <span style="color:#aaa">(</span><span style="color:#aaa" locale="LANG272">format</span><span style="color:#aaa">: YYYY-MM-DD HH:MI:SS)</span>
+                    </div>
+                </div>
+                <div class="field-cell last">
+                    <div class="field-label">&nbsp;</div>
+                    <div class="content">
+                        <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                        <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                    </div> 
+                </div>
+             </div> 
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/changetime.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2303">Dynamic Defense</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .ui-resizable-se {
+            cursor: se-resize;
+            right: 1px;
+            bottom: 18px;
+        }
+        .ui-resizable-handle {
+            position: absolute;
+            font-size: 0.1px;
+            display: block;
+        }
+        .ui-icon {
+            background-image: url(../images/ui-icons_469bdd_256x240.png);
+            width: 16px;
+            height: 16px;
+            text-indent: -99999px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+        }
+        .ui-icon-gripsmall-diagonal-se {
+            background-position: -64px -224px;
+        }
+        #whitelist {
+            border: 1px solid #D4D2CE;
+            overflow: auto;
+        }
+        input[type="text"] {
+            width: 50px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2303"></div>
+    <form id="form">
+        <div class='section-title' locale="LANG2305"></div>
+        <div id="fw_simple_region">
+            <div class='field-cell'> 
+                <div class='field-label' glabel="@LANG2304"></div>
+                <div class='field-content'>
+                    <input type='checkbox' id='enable' />
+                </div>
+            </div>
+            <div class='field-cell'>
+                <div class='field-label' glabel="@LANG2302" tooltip="@LANG2298"></div>
+                <div class='field-content'>
+                    <input type="text" id='timeout' name='timeout' maxlength="2" /> 
+                </div>
+            </div>
+            <div class='field-cell'>
+                <div class='field-label' glabel="@LANG2301" tooltip="@LANG2297"></div>
+                <div class='field-content'>
+                    <input type="text" name='block_timeout' id='block_timeout' maxlength="5" /> 
+                </div>
+            </div>
+            <div class='field-cell'>
+                <div class='field-label' glabel="@LANG2300" tooltip="@LANG2296"></div>
+                <div class='field-content'>
+                    <input type="text" name='threshold' id='threshold' maxlength="4" /> 
+                </div>
+            </div>
+            <div class='field-cell'>
+                <div class='field-label' glabel="@LANG2295" tooltip="@LANG2294"></div>
+                <div class='field-content'>
+                    <textarea id="whitelist" name="whitelist" cols="25" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class='section-title' locale="LANG2316"></div>
+        <table id='dynamic_blacklist' cellpadding="0" cellspacing="0" border="0" class="tableWidget" style="width: 100%;">
+        </table>
+        <div class="field-cell last"> 
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <p>
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" type="button" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </p>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/astman.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/dynamic-defense.js"></script>
+</body>
+</html>

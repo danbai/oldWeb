@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ *
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ * This project extends Asterisk GUI project and contains Grandstream Network's
+ * implementation which uses Asterisk GUI.
+ *
+ * Asterisk and Asterisk GUI are registered trademarks of Digium, Inc. 
+ * Please see http://www.asterisk.org for more information about the Asterisk 
+ * project.
+ *
+ * This program is free software, distributed under the terms of
+ * the GNU General Public License Version 2. See the LICENSE file
+ * at the top of the source tree.
+ *
+-->
+<html>
+
+<head>
+    <title>Manage Firewall Rules</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" name="editForm" style="width: 600px; display: none;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1947" tooltip="@LANG1960"></div>
+                    <div class="field-content">
+                        <input type="text" id="new_fw_name" name="new_fw_name" field_name='Rule Name' maxlength="25" />
+                        <input type="hidden" id="rejectRuleName" name="rejectRuleName" value="reject_all" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1948" tooltip="@LANG1961"></div>
+                    <div class="field-content">
+                        <select id="new_fw_act" name="new_fw_act" dfalt="">
+                            <option value="accept">ACCEPT</option>
+                            <option value="reject">REJECT</option>
+                            <option value="drop">DROP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1950" tooltip="@LANG1963"></div>
+                    <div class="field-content">
+                        <select id="new_fw_type" name="new_fw_type" dfalt="">
+                            <option value="in">IN</option>
+                            <option value="out">OUT</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="new_fw_interf" class="field-cell" style="display: none;">
+                    <div class="field-label" glabel="@LANG1938" tooltip="@LANG1964"></div>
+                    <div class="field-content">
+                        <select id="new_fw_interface" name="new_fw_interface" dfalt="">
+                        </select>
+                    </div>
+                </div>
+                <div id="new_fw_services_cell" class="field-cell">
+                    <div class="field-label" glabel="@LANG1951" tooltip="@LANG1965"></div>
+                    <div class="field-content">
+                        <select id="new_fw_services" name="new_fw_services" dfalt="">
+                            <option value="FTP">FTP</option>
+                            <option value="SSH">SSH</option>
+                            <option value="Telnet">Telnet</option>
+                            <!-- <option value="TFTP">TFTP</option> -->
+                            <option value="HTTP">HTTP</option>
+                            <option value="LDAP">LDAP</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                </div>
+                <div id='new_fw_src' style="display: none;" class="field-cell">
+                    <div class="field-label" glabel="@LANG1952" tooltip="@LANG1967"></div>
+                    <div class="field-content">
+                        <input type="text" id="new_fw_src_ipaddr" name="new_fw_src_ipaddr" maxlength="45" /> &nbsp;&nbsp;
+                        <B>:</B>&nbsp;&nbsp;
+                        <input type="text" id="new_fw_src_port" name="new_fw_src_port" class="inputWidth50" maxlength="13" />
+                    </div>
+                </div>
+                <div id='new_fw_dst' style="display: none;" class="field-cell">
+                    <div class="field-label" glabel="@LANG1953" tooltip="@LANG1968"></div>
+                    <div class="field-content">
+                        <input type="text" id="new_fw_dst_ipaddr" name="new_fw_dst_ipaddr" maxlength="45" /> &nbsp;&nbsp;
+                        <B>:</B>&nbsp;&nbsp;
+                        <input type="text" id="new_fw_dst_port" name="new_fw_dst_port" class="inputWidth50" maxlength="13" />
+                    </div>
+                </div>
+                <div id='new_fw_proto_container' style='display: none;' class="field-cell">
+                    <div class="field-label" glabel="@LANG1949" tooltip="@LANG1962"></div>
+                    <div class="field-content">
+                        <select id="new_fw_proto" name="new_fw_proto" dfalt="">
+                            <option value="tcp">TCP</option>
+                            <option value="udp">UDP</option>
+                            <option value="both" locale="LANG1959"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body">
+                <div id="modal_btn" class="field-cell modal-commands">
+                    <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/astman.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/security.js"></script>
+</body>
+
+</html>

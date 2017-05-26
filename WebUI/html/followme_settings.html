@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+<head>
+    <title locale="LANG568">Follow Me</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell .field-label {
+            width: 270px;
+        }
+        div.glab span.label {
+            width: 220px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px; min-height: 140px;">
+            <div class="section-body">
+                <div class='section-title' locale="LANG797"></div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3387" tooltip="@LANG1985"></div>
+                    <div class="field-content">
+                       <input type="checkbox" id="incoming_status" name="incoming_status" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3381" tooltip="@LANG1986"></div>
+                    <div class="field-content">
+                       <input type="checkbox" id="record_name" name="record_name" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3382" tooltip="@LANG1987"></div>
+                    <div class="field-content">
+                       <input type="checkbox" id="unreachable_status" name="unreachable_status" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/followme-settings.js"></script>
+</body>
+</html>

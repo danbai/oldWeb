@@ -1,0 +1,241 @@
+#mainpanel {
+  margin: 5px 5px 20px 0;
+}
+
+#mainpanel a {
+  text-decoration: none;
+}
+
+#toppanel {
+  padding: 5px 0;
+  line-height: 40px;
+  border-bottom: solid 1px #ddd;
+  margin: 0px 0px 10px 0px;
+}
+
+#loadingpannel,#errorpannel {
+  position: absolute;
+  top: 10px;
+  left: 565px;
+  height: 20px;
+  line-height: 20px;
+  padding: 1px 4px 1px 4px;
+  font-weight: normal;
+  z-index: 998;
+  display: none;
+}
+
+#loadingpannel {
+  background: #c44;
+  color: #fff;
+}
+
+#errorpannel {
+  padding: 1px 4px 1px 4px;
+  background: #fad163;
+}
+
+#toppanel .btn {
+  /*font-weight: 600;*/
+}
+
+p.logo {
+  float: left;
+  font-size: 14px;
+  margin: 0px 0px 0 15px;
+  color: #DD4B39;
+  display: block;
+  width: 165px;
+}
+
+.calbtnp1 {
+  float: left;
+  padding: 3px 0;
+}
+
+.GSRTL .calbtnp1 {
+  float: right;
+  padding: 3px 0;
+}
+
+#todaybtn {
+  float: left;
+  width: auto;
+  min-width: 0px;
+}
+
+.GSRTL #todaybtn {
+  float: right;
+}
+
+
+.calbtnp1 .btngroup {
+  margin-left: 10px;
+  float: left;
+}
+
+.GSRTL .calbtnp1 .btngroup {
+  margin-left: 0;
+  margin-right: 10px;
+  float: right;
+}
+
+.btngroup .btn {
+  /*z-index: 1;
+  margin-left: -1px;
+  position: relative;*/
+}
+
+#mainpanel #viewswithbtn .btn.current {
+  border: 1px solid #51aa5b;
+  z-index: 888;
+}
+
+.btn:hover,.btn.active {
+  /*border-color: #c6c6c6;
+  z-index: 888;*/
+}
+
+.calbtnp1 .btngroup .btn {
+  float: left;
+  display: block;
+  width: 28px;
+  min-width: 0px;
+  padding: 0px;
+  height: 30px;
+  border: 0;
+  border-radius: 0;
+}
+.calbtnp1 .btngroup .prevbtn {
+  background: url('../date/images/arrow_left.png');
+}
+.calbtnp1 .btngroup .nextbtn {
+  background: url('../date/images/arrow_right.png');
+}
+
+#dateshow {
+  font-size: 14px;
+  line-height: 28px;
+  float: left;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  padding: 0 15px;
+}
+
+.calbtnp2 {
+  float: right;
+  margin: 2px 0 0 25px;
+}
+
+.GSRTL .calbtnp2 {
+  float: left;
+  margin: 2px 25px 0 0;
+}
+
+.calbtnp2 .btngroup .btn {
+  float: left;
+  display: block;
+  width: 70px;
+  min-width: 52px;
+}
+
+.GSRTL .calbtnp2 .btngroup .btn {
+  float: right;
+}
+
+.calbtnp3 {
+  float: right;
+  width: 100px;
+}
+
+.calbtnp3 span {
+  float: left;
+  margin-right: 4px;
+}
+
+.calbtnp3 a {
+  color: #333;
+  float: left;
+  margin-right: 4px;
+}
+
+.calbtnp3 a:hover {
+  text-decoration: underline;
+}
+
+.calbtnp3 a:visited {
+  color: #333;
+}
+
+#leftpanel {
+  float: left;
+  width: 180px;
+  margin-right: -182px;
+}
+
+.GSRTL #leftpanel {
+  float: right;
+  width: 180px;
+  margin-left: -182px;
+  margin-right: 0;
+}
+
+.addbtnp {
+  text-align: center;
+}
+
+.addbtnp button {
+  margin: 4px;
+}
+
+#rightpanel {
+  width: auto;
+  margin-left: 180px;
+}
+
+.GSRTL #rightpanel {
+  width: auto;
+  margin-left: 0;
+  margin-right: 180px;
+}
+
+#bbit-cal-quickAddBTN {
+  min-width: 54px;
+  width: 70px;
+  height: 29px;
+  line-height: 25px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  border-color: #e6e6e6;
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #ddd;
+  *border: 0;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.bottom {
+  text-align: center;
+  margin-top: 10px;
+  color: #555;
+}
+
+.bottom a {
+  color: #555;
+}
+
+.bottom a:hover {
+  color: #333;
+  text-decoration: underline;
+}

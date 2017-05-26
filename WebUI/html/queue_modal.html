@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>Queues</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell .field-label {
+        width: 180px;
+    }
+    
+    .field-cell div.glab span.label {
+        width: 140px;
+    }
+    
+    .field-cell .field-content {
+        width: 220px;
+        line-height: 25px;
+    }
+    
+    .field-cell.three .field-label {
+        width: 110px;
+    }
+    
+    .field-cell.three div.glab span.label {
+        width: 70px;
+    }
+    
+    .field-cell.three .field-content {
+        width: 80px;
+    }
+    
+    #leftSelect,
+    #rightSelect {
+        width: 280px;
+        height: 95px;
+    }
+    
+    #pin,
+    #waittime {
+        position: relative;
+        top: -5px;
+    }
+    
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .divSelect > span.modelSpanDes {
+        width: 100px;
+    }
+    
+    #external_number {
+        width: 80px;
+        top: -2px;
+        position: relative;
+    }
+
+    .cycle,
+    .custom-alert {
+        display: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 800px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG85" tooltip="@LANG1171"></div>
+                    <div class="field-content">
+                        <input type="text" id="extension" name="extension" maxlength="10" class="inputWidth100" />
+                    </div>
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG1180"></div>
+                    <div class="field-content">
+                        <input type="text" id="queue_name" name="queue_name" maxlength="25" class="inputWidth100" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG132" tooltip="@LANG1183"></div>
+                    <div class="field-content">
+                        <select id="strategy" name="strategy" dfalt='ringall'>
+                            <option locale="LANG1197" value="ringall">Ringall</option>
+                            <option locale="LANG1198" value="linear">Linear</option>
+                            <option locale="LANG1199" value="leastrecent">Least Recent</option>
+                            <option locale="LANG1200" value="fewestcalls">Fewest Calls</option>
+                            <option locale="LANG1201" value="random">Random</option>
+                            <option locale="LANG1202" value="rrmemory">Rrmemory</option>
+                        </select>
+                    </div>
+                    <div class="field-label" glabel="@LANG1178" tooltip="@LANG1179"></div>
+                    <div class="field-content">
+                        <select id="musicclass" dfalt="default"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1174" tooltip="@LANG1175"></div>
+                    <div class="field-content">
+                        <select id="leavewhenempty" name="leavewhenempty" dfalt='strict'>
+                            <option value='yes' locale="LANG136">Yes</option>
+                            <option value='no' locale="LANG137">No</option>
+                            <option value='strict' locale="LANG1203">Strict</option>
+                        </select>
+                    </div>
+                    <div class="field-label" glabel="@LANG1172" tooltip="@LANG1173"></div>
+                    <div class="field-content">
+                        <select id="joinempty" dfalt="no">
+                            <option value='yes' locale="LANG136">Yes</option>
+                            <option value='no' locale="LANG137">No</option>
+                            <option value='strict' locale="LANG1203">Strict</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <!-- <div class="field-label" glabel="@LANG1069"></div>
+                    <div class="field-content">
+                        <select id="permission" name="permission" dfalt="internal">
+                            <option locale="LANG1071" value="internal">Internal</option>
+                            <option locale="LANG1072" value="internal-local">Local</option>
+                            <option locale="LANG1073" value="internal-local-national">National</option>
+                            <option locale="LANG1074" value="internal-local-national-international">International</option>
+                        </select>
+                    </div> -->
+                    <div class="field-label" glabel="@LANG1169" tooltip="@LANG1170"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="chk_pin" noSerialize="true" />
+                        <input type="text" id="pin" name="pin" maxlength="8" class="inputWidth60" />
+                    </div>
+                    <div class="field-label" glabel="@LANG5071" tooltip="@LANG5072"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="replace_caller_id" name="replace_caller_id" />
+                    </div>
+                </div>
+            </div>
+            <div class='section-title' locale="LANG609">Queue Options</div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1184" tooltip="@LANG1185"></div>
+                    <div class="field-content">
+                        <input type="text" id="ringtime" name="ringtime" dfalt="15" maxlength="3" class="inputWidth50" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1189" tooltip="@LANG1188"></div>
+                    <div class="field-content">
+                        <input type="text" id="wrapuptime" name="wrapuptime" dfalt="15" maxlength="3" class="inputWidth50" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4797" tooltip="@LANG4798"></div>
+                    <div class="field-content">
+                        <input type="text" id="retry" name="retry" dfalt="5" maxlength="3" class="inputWidth50" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1176" tooltip="@LANG1177"></div>
+                    <div class="field-content">
+                        <input type="text" id="maxlen" name="maxlen" dfalt="0" maxlength="2" class="inputWidth50" />
+                    </div>
+                    <div class="field-label" glabel="@LANG1181" tooltip="@LANG1182"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="reportholdtime" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1186" tooltip="@LANG1187"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="chk_waittime" noSerialize="true" />
+                        <input type="text" id="waittime" name="waittime" maxlength="4" class="inputWidth50" />
+                    </div>
+                    <div class="field-label" glabel="@LANG2543" tooltip="@LANG2544"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="auto_record" name="auto_record" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2990" tooltip="@LANG3553"></div>
+                    <div class="field-content">
+                        <select id="enable_destination" name="enable_destination">
+                            <option locale="LANG273" value="D">Disable</option>
+                            <option locale="LANG4582" value="T">Enter Destination When Timeout</option>
+                            <option locale="LANG4583" value="V">Enter Destination With Voice Prompt</option>
+                        </select>
+                    </div>
+                    <div class="timeout">
+                        <div class="field-label" glabel="@LANG4083" tooltip="@LANG4084"></div>
+                        <div class="field-content">
+                            <input type="text" id="queue_timeout" name="queue_timeout" dfalt="60" maxlength="3" class="inputWidth50" />
+                        </div>
+                    </div>
+                    <div class="cycle">
+                        <div class="field-label" glabel="@LANG4580" tooltip="@LANG4581"></div>
+                        <div class="field-content">
+                            <input type="text" id="voice_prompt_time" name="voice_prompt_time" dfalt="60" maxlength="3" class="inputWidth50" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3880" tooltip="@LANG3751"></div>
+                    <div class="field-content" id="desContainer">
+                        <div class="selectDiv">
+                            <select id="destination_type" name="destination_type" maxWidth="60px"></select>
+                        </div>
+                        <div class="selectDiv selectDivValue">
+                            <select id="destination_value" name="destination_value" class='dest_val' noserialize="true" maxWidth="80px"></select>
+                        </div>
+                        <input type="text" id='external_number' name='external_number' maxlength="32" style='display: none' />
+                    </div>
+                    <div class="cycle">
+                        <div class="field-label" glabel="@LANG28" tooltip="@LANG5060"></div>
+                        <div class="field-content">
+                            <select id="custom_prompt" name="custom_prompt"></select>
+                        </div>
+                    </div>
+                </div>
+                <div id="vmoption" class="field-cell" style="display: none;">
+                    <div class="field-label" glabel="@LANG127"></div>
+                    <div class="field-content">
+                        <input type="text" id="vmsecret" name="vmsecret" maxlength="15" />
+                    </div>
+                    <div class="field-label" glabel="@LANG126"></div>
+                    <div class="field-content">
+                        <input type="text" id="email" name="email" maxlength="256" />
+                    </div>
+                </div>
+                <div id="vmSelectDiv" class="field-cell" style="display: none;">
+                    <div class="field-label" glabel="@LANG20"></div>
+                    <div class="field-content">
+                        <select id="vm_extension" name="vm_extension" noserialize="true" mSelect="true"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5308" tooltip="@LANG5309"></div>
+                    <div class="field-content field-content-special">
+                        <input type="checkbox" id="vq_switch" name="vq_switch" />
+                    </div>
+                    <div class="field-label" glabel="@LANG5310" tooltip="@LANG5311"></div>
+                    <div class="field-content">
+                        <select id="vq_mode" name="vq_mode">
+                            <option locale="LANG5317" value="periodic">Offered to caller after timeout in seconds</option>
+                            <option locale="LANG5316" value="digit">Triggered on user request(Press 2)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5312" tooltip="@LANG5313"></div>
+                    <div class="field-content field-content-special">
+                        <input type="text" id="vq_periodic" name="vq_periodic" maxlength=64 value="20" />
+                    </div>
+                    <div class="field-label" glabel="@LANG5314" tooltip="@LANG5315"></div>
+                    <div class="field-content">
+                        <input type="text" id="vq_outprefix" name="vq_outprefix" maxlength=20 />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5446" tooltip="@LANG5446"></div>
+                    <div class="field-content field-content-special">
+                        <input type="checkbox" id="announce_position" name="announce_position" />
+                    </div>
+                    <div class="field-label" glabel="@LANG5447" tooltip="@LANG5447"></div>
+                    <div class="field-content">
+                        <input type="text" id="announce_frequency" name="announce_frequency" dfalt="20" maxlength="4" class="inputWidth50" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3248" tooltip="@LANG3249"></div>
+                    <div class="field-content field-content-special">
+                        <select id="alertinfo" name="alertinfo">
+                            <option locale="LANG133" value="">None</option>
+                            <option value="ring1">Ring 1</option>
+                            <option value="ring2">Ring 2</option>
+                            <option value="ring3">Ring 3</option>
+                            <option value="ring4">Ring 4</option>
+                            <option value="ring5">Ring 5</option>
+                            <option value="ring6">Ring 6</option>
+                            <option value="ring7">Ring 7</option>
+                            <option value="ring8">Ring 8</option>
+                            <option value="ring9">Ring 9</option>
+                            <option value="ring10">Ring 10</option>
+                            <option value="Bellcore-dr1">Bellcore-dr1</option>
+                            <option value="Bellcore-dr2">Bellcore-dr2</option>
+                            <option value="Bellcore-dr3">Bellcore-dr3</option>
+                            <option value="Bellcore-dr4">Bellcore-dr4</option>
+                            <option value="Bellcore-dr5">Bellcore-dr5</option>
+                            <option locale="LANG231" value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="field-label" glabel="@LANG4169" tooltip="@LANG4170"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="enable_feature" name="enable_feature" />
+                    </div>
+                </div>
+                <div class="field-cell custom-alert" id="customAlertDiv">
+                    <div class="field-label" glabel="@LANG3250"></div>
+                    <div class="field-content">
+                        <input type="text" id="custom_alert_info" name="custom_alert_info" noserialize="true" maxlength=64 />
+                    </div>
+                </div>
+            </div>
+            <div class='section-title field-cell'>
+                <div gLabel="@LANG143" tooltip="@LANG1190"></div>
+            </div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <table cellpadding="2" cellspacing="2" border="0" width="90%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2701">Available Extensions/Extension Groups</b>
+                            </td>
+                            <td width="50" align="center"></td>
+                            <td align="center" valign="top">
+                                <b locale="LANG1191">Static Agents</b>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelect" multiple noserialize="true" size="8"></select>
+                            </td>
+                            <td width="10" align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRight"></span>
+                                <span class="selectIcon addRight" id="oneToRight"></span>
+                                <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="allToLeft"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select name="rightSelect" id="rightSelect" multiple noserialize="true" size="8"></select>
+                            </td>
+                            <td width="50" valign="center">
+                                <span class="selectIcon clickTop" id="button_top"></span>
+                                <span class="selectIcon clickUp" id="button_up"></span>
+                                <span class="selectIcon clickDown" id="button_down"></span>
+                                <span class="selectIcon clickBottom" id="button_bottom"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell modal-commands dialogContainer-commands">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/queue-modal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>Automatic Download Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell {
+        width: 90%;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        padding: 2px 0px;
+    }
+    
+    .field-content {
+        height: 31px;
+    }
+    
+    .field-cell .field-label {
+        width: 220px;
+    }
+    
+    div.field-label .glab span.label {
+        width: 182px;
+    }
+    
+    #editForm {
+        width: 600px;
+    }
+    
+    .lite_desc {
+        line-height: 20px;
+        display: inline-block;
+        width: 550px;
+        margin: 10px 0 0 25px;
+    }
+    
+    .lite_desc b {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        vertical-align: top;
+        position: relative;
+    }
+
+    .month,
+    .week {
+        display: none;
+    }
+
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        position: relative;
+        margin-left: 10px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm">
+            <div class="section-body">
+                <div class="lite_desc" locale="LANG3959 LANG64"></div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG274"></div>
+                    <div class="field-content">
+                        <input type="checkbox" checked id="enable" name="enable" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3956" tooltip="@LANG3957"></div>
+                    <div class="field-content">
+                        <select id="time" name="time" dfalt="day">
+                            <option locale="LANG200" value="day">By Day</option>
+                            <option locale="LANG199" value="week">By Week</option>
+                            <option locale="LANG198" value="month">By Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell week">
+                    <div class="field-label" glabel="@LANG243" tooltip="@LANG4548"></div>
+                    <div class="field-content">
+                        <select id="day_of_week" name="day_of_week" dfalt="0">
+                            <option locale="LANG250" value="0">Sun</option>
+                            <option locale="LANG251" value="1">Mon</option>
+                            <option locale="LANG252" value="2">Tue</option>
+                            <option locale="LANG253" value="3">Wed</option>
+                            <option locale="LANG254" value="4">Thu</option>
+                            <option locale="LANG255" value="5">Fri</option>
+                            <option locale="LANG256" value="6">Sat</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell month">
+                    <div class="field-label" glabel="@LANG242" tooltip="@LANG4549"></div>
+                    <div class="field-content">
+                        <select id="day_of_month" name="day_of_month" dfalt="1"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4545" tooltip="@LANG4547"></div>
+                    <div class="field-content">
+                        <select id="hour" name="hour" dfalt="0"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2032" tooltip="@LANG4546"></div>
+                    <div class="field-content">
+                        <input type="text" id="email" name="email" />
+                        <span id="emailTemplate" class="link" locale="LANG4576"></span>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/cdr-download-settings.js"></script>
+</body>
+
+</html>

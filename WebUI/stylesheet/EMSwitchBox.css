@@ -1,0 +1,50 @@
+/*
+ * Description: Stylesheet for EMSwitchBox.
+ * Version: 1.3
+ * Modified By Pengcheng Zou 
+ */
+div.switch {
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	text-align: center;
+	background: url(../images/switch_off_bg.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+div.switch  div.thumb {
+	position: relative;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background: url(../images/switch_roll.png);
+	background-repeat: no-repeat;
+	left: -12px;
+}
+
+div.on {
+	background: url(../images/switch_on_bg.png);
+}
+
+div.on div.thumb {
+	left: 12px;
+}
+
+div.off {
+	background: url(../images/switch_off_bg.png);
+}
+
+div.off div.thumb {
+	left: -12px;
+}
+
+.green {
+	color: #1e6583;	
+}
+
+.red {
+	color: #595d5f;
+}
+

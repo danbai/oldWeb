@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Ami Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #editForm {
+            width: 600px;
+            overflow: hidden;
+        }
+        .deleteFileBtn {
+            top: -1px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3835" tooltip="@LANG3828"></div>
+                    <div class="field-content">
+                        <input type="text" id="port" name="port" maxlength="5" class="inputWidth60" value="5038" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3829" tooltip="@LANG3830"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="webenable" name="webenable" />
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1868" tooltip="@LANG3831"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="tlsenable" name="tlsenable" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3832" tooltip="@LANG3833"></div>
+                    <div class="field-content">
+                        <input type="text" id="tlsbindport" name="tlsbindport" maxlength="5" class="inputWidth60" value="5039" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4570" tooltip="@LANG4571"></div>
+                    <div class="field-content">
+                        <input type="text" id="writetimeout" name="writetimeout" maxlength="5" class="inputWidth60" value="100" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1856" tooltip="@LANG3834"></div>
+                    <div class="field-content">
+                        <input type="text" id="tlsbindaddr" name="tlsbindaddr" maxlength="127" value="0.0.0.0" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4574" tooltip="@LANG4575"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="timestampevents" name="timestampevents" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3000" tooltip="@LANG3847"></div>
+                    <div class="field-content">
+                        <div class="field-content" style="display:inline-block;">
+                            <input type="text" id="tlsprivatekey" noSerialize=true readonly="readonly" />
+                            <button type="button" id="ami_tls_key_select" class="selectBtn"></button> 
+                        </div>
+                        <div class="field-content" style="display:inline-block;">
+                            <button type="button" id="ami_tls_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                            <button type="button" id="ami_tls_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3002" tooltip="@LANG3863"></div>
+                    <div class="field-content">
+                        <div class="field-content" style="display:inline-block;">
+                            <input type="text" id="tlscertfile" noSerialize=true readonly="readonly" />
+                            <button type="button" id="ami_tls_cert_select" class="selectBtn"></button>
+                        </div>
+                        <div class="field-content" style="display:inline-block;">
+                            <button type="button" id="ami_tls_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                            <button type="button" id="ami_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG4384"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/ami-settings.js"></script>
+</body>
+</html>

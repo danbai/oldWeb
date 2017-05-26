@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>DAHDI Hardware Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .taglist {
+            border: 1px solid #666666;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        .taglist tr.frow {
+            background-color: #6b79a5;
+            color: #CED7EF;
+        }
+        .taglist tr.even {
+            background-color: #DFDFDF;
+        }
+        .taglist tr.odd {
+            background-color: #FFFFFF;
+        }
+        .taglist tr.even:hover, .taglist tr.odd:hover {
+            background-color: #a8b6e5;
+        }
+        #errmsg {
+            border: 1px solid #666666;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding: 20px 10px 20px 10px;
+            font-size: 125%;
+            text-align: center;
+            background-color: #FFFFFF;
+        }
+        .advanced {
+            text-align: left;
+        }
+        .advanced > div > span {
+            float: left;
+            margin-right: 5px;
+            text-align: right;
+            width: 50%;
+        }
+        .advanced > div > input, .advanced > div > select {
+            margin: 2px 0 3px 0;
+            text-align: left;
+        }
+        #vpmsettings {
+            display: none;
+        }
+        .pageheading {
+            padding: 10px 10px 4px 10px;
+            font-size: 135%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .field-content {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell" id="acim_btn_div">
+                    <div class="field-label" glabel="@LANG2340" tooltip="@LANG2341"></div>
+                    <div class="field-content">
+                        <button type="button" id="acim_btn" class="btn btn-paging" onclick="acim_detect();" locale="LANG2325"></button>
+                    </div>
+                </div>
+                <div class="field-cell" id="acim_option_div">
+                    <div class="field-label" glabel="@LANG5136" tooltip="@LANG5136"></div>
+                    <div class="field-content">
+                        <select id="acim_option" name="acim_option">
+                            <option value="erl" locale="LANG5137"></option>
+                            <option value="pr" locale="LANG5138"></option>
+                        </select>
+                    </div>
+                </div>
+                <div id='edit_options_container'></div>
+                <div class="field-cell last dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-update" locale="LANG770">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/hardware-dahdi-analog-modal.js"></script>
+</body>
+</html>

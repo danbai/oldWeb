@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2217">Basic Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .null
+    .sugarcrm,
+    .salesforce {
+        display: none;
+    }
+
+    #leftSelect,
+    #rightSelect {
+        width: 180px;
+        height: 95px;
+    }
+
+    .login {
+        color: green;
+    }
+
+    .logout {
+        color: gray;
+    }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2217"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5111" tooltip="@LANG5111"></div>
+                <div class="field-content">
+                    <select id="crm_module" name="crm_module">
+                        <option value="" locale="LANG2770"></option>
+                        <option value="sugarcrm">SugarCRM</option>
+                        <option value="salesforce">Salesforce</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG585" tooltip="@LANG585"></div>
+                <div class="field-content">
+                    <span id="crmstatus"></span>
+                </div>
+            </div> -->
+            <div class="field-cell sugarcrm">
+                <div class="field-label" glabel="@LANG5112" tooltip="@LANG5188"></div>
+                <div class="field-content">
+                    <input type='text' name='crm_addr' id="crm_addr" maxlength="128" class="IPv6Input" />
+                </div>
+            </div>
+            <!-- <div class="field-cell salesforce">
+                <div class="field-label" glabel="@LANG5113" tooltip="@LANG5113"></div>
+                <div class="field-content">
+                    <input type='text' name='security_token' id="security_token" maxlength="128" />
+                </div>
+            </div>
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG72" tooltip="@LANG72"></div>
+                <div class="field-content">
+                    <input type='text' name='crm_username' id="crm_username" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG73" tooltip="@LANG73"></div>
+                <div class="field-content">
+                    <input type='text' name='crm_password' id="crm_password" maxlength="64" />
+                </div>
+            </div> -->
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG5115" tooltip="@LANG5120"></div>
+                <div class="field-content">
+                    <select id="number_add" name="number_add">
+                        <option value="contacts" locale="LANG5117">Contacts</option>
+                        <option value="leads" locale="LANG5118">Leads</option>
+                        <option value="accounts" locale="LANG5119">Accounts</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG5114" tooltip="@LANG5114"></div>
+                <div class="field-content">
+                    <table cellpadding="2" cellspacing="2" border="0" align="left">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG5121"></b>
+                            </td>
+                            <td width="30" align="center"></td>
+                            <td align="center" valign="top">
+                                <b locale="LANG3475"></b>
+                            </td>
+                            <td width="30" align="center"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRight"></span>
+                                <span class="selectIcon addRight" id="oneToRight"></span>
+                                <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="allToLeft"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select name="rightSelect" id="rightSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td align="center" valign="center">
+                                <span class="selectIcon clickTop" id="button_top"></span>
+                                <span class="selectIcon clickUp" id="button_up"></span>
+                                <span class="selectIcon clickDown" id="button_down"></span>
+                                <span class="selectIcon clickBottom" id="button_bottom"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/crm-settings.js"></script>
+</body>
+</html>

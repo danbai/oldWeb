@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4497">WebRTC Request Headers</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #select_headers {
+            min-width: 155px;
+            max-width: 250px;
+        }
+        #header_add {
+            background:url(../images/add.png) no-repeat;
+            display: inline-block;
+            height: 13px;
+            width: 13px;
+            margin: 0 0 0 15px;
+            padding: 0px;
+            cursor: pointer;
+            border: 0px;
+        }
+        #header_add:hover {
+            filter: alpha(opacity=70); /* IE 5-7 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; /* IE 8 */
+            -moz-opacity: 0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        }
+        #div_total {
+            display: block;
+            float: right;
+            margin-right: 10px;
+        }
+        #del_btn {
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            margin: 0 0 0 10px;
+            padding: 0px;
+            cursor:pointer;
+            border: 0px;
+            background: url(../images/delete_unpressed.png) no-repeat scroll 0 0 transparent;
+        }
+        #del_btn:hover {
+            background: url(../images/delete_hover.png) no-repeat scroll 0 0 transparent;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" name="editForm" style="width: 650px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4497" tooltip="@LANG4567"></div>
+                    <div class="field-content">
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <select id="select_headers" name="select_headers" multiple size="7"></select>
+                                </td>
+                                <td>
+                                    <button type="button" id="del_btn" localeTitle="LANG739"></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="div_total">
+                                        <span locale="LANG115"></span>
+                                        <span id="headers_total"></span>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4498" tooltip="@LANG4568"></div>
+                    <div class="field-content">
+                        <input type="text" id="new_header" name="new_header" maxlength="32" />
+                        <button type="submit" id="header_add" name="header_add" localeTitle="LANG769"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body">
+                <div id="modal_btn" class="field-cell modal-commands dialogContainer-commands" style="width: 700px; display: none;">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/webrtc-request-headers.js"></script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG610">Call Features</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell {
+        display: inline-block;
+        width: 45%;
+    }
+    
+    .section_btns {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    
+    input[type="text"] {
+        width: 50px;
+    }
+    
+    .field-cell .field-content {
+        top: 2px;
+    }
+    
+    .field-cell .feature_map {
+        line-height: 18px;
+        top: 3px;
+        top: 0\9;
+    }
+    
+    .field-cell select {
+        left: 58px;
+    }
+    
+    .field-cell select#inbound_mode{
+        left: 0;
+    }
+    .divSelect {
+        top: 0;
+        top: 6px\9;
+    }
+    
+    #fgeneral_parkpos {
+        width: 100px;
+    }
+
+    #featureCodes .checkbox,
+    #callForward .checkbox {
+        top: 10px;
+    }
+
+    #barge_enable_div .checkbox,
+    #enable_inboud_multi_mode_div .checkbox {
+        top: 3px;
+    }
+    #parkedmusicclass {
+        left: 0px;
+    }
+
+    #fcode_seamless_transfer_div div.checkbox {
+        top: 10px;
+    }
+
+    .field-cell .feature_check_top {
+        top: -4px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG610"></div>
+    <form id="form">
+        <table style="width:100%">
+            <div class="section-body left_container" id="featureMaps">
+                <div class='section-title' locale="LANG612">feature map</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="featureMaps" locale="LANG751">Reset All </button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="featureMaps" locale="LANG749">Default All </button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1214" tooltip="@LANG1215"></div>
+                    <div class="field-content feature_map">
+                        <input type="text" id="blindxfer" name="blindxfer" dfalt="#1" maxlength="5" />
+                        <select id="blindxfer_allow" class="share_dial">
+                            <option locale="LANG1254" value="">Disable</option>
+                            <option locale="LANG1255" value="T">Allow Caller</option>
+                            <option locale="LANG1256" value="t">Allow Callee</option>
+                            <option locale="LANG1257" value="tT">Allow Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1208" tooltip="@LANG1209"></div>
+                    <div class="field-content feature_map">
+                        <input type="text" id="atxfer" name="atxfer" dfalt="*2" maxlength="5" />
+                        <select id="atxfer_allow" class="share_dial">
+                            <option locale="LANG1254" value="">Disable</option>
+                            <option locale="LANG1255" value="T">Allow Caller</option>
+                            <option locale="LANG1256" value="t">Allow Callee</option>
+                            <option locale="LANG1257" value="tT">Allow Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" id="fcode_seamless_transfer_div">
+                    <div class="field-label" glabel="@LANG5153" tooltip="@LANG5155"></div>
+                    <div class="field-content feature_map feature_check_top">
+                        <input type="text" id="fcode_seamless_transfer" name="fcode_seamless_transfer" dfalt="*44" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_seamless_transfer" name="enable_fcode_seamless_transfer" dfalt="no" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1236" tooltip="@LANG1237"></div>
+                    <div class="field-content feature_map">
+                        <input type="text" id="disconnect" name="disconnect" dfalt="*0" maxlength="5" />
+                        <select id="disconnect_allow">
+                            <option locale="LANG1254" value="">Disable</option>
+                            <option locale="LANG1255" value="H">Allow Caller</option>
+                            <option locale="LANG1256" value="h">Allow Callee</option>
+                            <option locale="LANG1257" value="hH">Allow Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1216" tooltip="@LANG1217"></div>
+                    <div class="field-content feature_map">
+                        <input type="text" id="parkcall" name="parkcall" dfalt="#72" maxlength="5" />
+                        <select id="parkcall_allow">
+                            <option locale="LANG1254" value="">Disable</option>
+                            <option locale="LANG1255" value="K">Allow Caller</option>
+                            <option locale="LANG1256" value="k">Allow Callee</option>
+                            <option locale="LANG1257" value="kK">Allow Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell" style="display:none;">
+                    <div class="field-label" glabel="@LANG1212" tooltip="@LANG1213"></div>
+                    <div class="field-content feature_map">
+                        <input type="text" id="automon" name="automon" dfalt="*1" maxlength="5" />
+                        <select id="automon_allow">
+                            <option locale="LANG1254" value="">Disable</option>
+                            <option locale="LANG1255" value="w">Allow Caller</option>
+                            <option locale="LANG1256" value="W">Allow Callee</option>
+                            <option locale="LANG1257" value="wW">Allow Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1210" tooltip="@LANG1211"></div>
+                    <div class="field-content feature_map">
+                        <input type="text" id="automixmon" name="automixmon" dfalt="*3" maxlength="5" />
+                        <select id="automixmon_allow">
+                            <option locale="LANG1254" value="">Disable</option>
+                            <option locale="LANG1255" value="X">Allow Caller</option>
+                            <option locale="LANG1256" value="x">Allow Callee</option>
+                            <option locale="LANG1257" value="xX">Allow Both</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body right_container" id="callForward">
+                <div class='section-title' locale="LANG611">feature dnd</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="callForward" locale="LANG751">Reset All </button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="callForward" locale="LANG749">Default All </button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1238" tooltip="@LANG1239"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_dnd_on" name="fcode_dnd_on" dfalt="*77" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_dnd_on" name="enable_fcode_dnd_on" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1240" tooltip="@LANG1241"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_dnd_off" name="fcode_dnd_off" dfalt="*78" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_dnd_off" name="enable_fcode_dnd_off" dfalt="yes" checked>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1220" tooltip="@LANG1221"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_cfb_on" name="fcode_cfb_on" dfalt="*90" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cfb_on" name="enable_fcode_cfb_on" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1222" tooltip="@LANG1223"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_cfb_off" name="fcode_cfb_off" dfalt="*91" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cfb_off" name="enable_fcode_cfb_off" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1224" tooltip="@LANG1225"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_cfn_on" name="fcode_cfn_on" dfalt="*92" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cfn_on" name="enable_fcode_cfn_on" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1226" tooltip="@LANG1227"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_cfn_off" name="fcode_cfn_off" dfalt="*93" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cfn_off" name="enable_fcode_cfn_off" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1228" tooltip="@LANG1229"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_cfu_on" name="fcode_cfu_on" dfalt="*72" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cfu_on" name="enable_fcode_cfu_on" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1230" tooltip="@LANG1231"></div>
+                    <div class="field-content feature_dnd">
+                        <input type="text" id="fcode_cfu_off" name="fcode_cfu_off" dfalt="*73" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cfu_off" name="enable_fcode_cfu_off" dfalt="yes" checked />
+                    </div>
+                </div>
+            </div>
+            <div class="section-body left_container" id="featureMisc">
+                <div class='section-title' locale="LANG613">Misc</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="featureMisc" locale="LANG751">Reset All </button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="featureMisc" locale="LANG749">Default All </button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1234" tooltip="@LANG1235"></div>
+                    <div class="field-content feature_general">
+                        <input type="text" id="featuredigittimeout" name="featuredigittimeout" dfalt="1000" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1244" tooltip="@LANG1245"></div>
+                    <div class="field-content feature_general">
+                        <input type="text" id="parkext" name="parkext" dfalt="700" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1242" tooltip="@LANG1243"></div>
+                    <div class="field-content feature_general">
+                        <input type="text" id="parkpos" name="parkpos" dfalt="701-720" maxlength="11" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3982" tooltip="@LANG3983"></div>
+                    <div class="field-content feature_general">
+                        <input type="checkbox" id="park_as_extension" name="park_as_extension" dfalt="no" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1250" tooltip="@LANG1251"></div>
+                    <div class="field-content feature_general">
+                        <input type="text" id="parkingtime" name="parkingtime" dfalt="300" maxlength="5" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1603"></div>
+                    <div id="parked_music_class_list" class="field-content">
+                        <select id='parkedmusicclass' dfalt="default"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body right_container" id="featureCodes">
+                <div class='section-title' locale="LANG610">feature code</div>
+                <div class="section_btns">
+                    <button type="button" class="btn btn-paging" action="resetClass" actionParam="featureCodes" locale="LANG751">Reset All </button>
+                    <button type="button" class="btn btn-paging" action="defaultClass" actionParam="featureCodes" locale="LANG749">Default All </button>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1232" tooltip="@LANG1233"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_dialvm" name="fcode_dialvm" dfalt="*98" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_dialvm" name="enable_fcode_dialvm" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1253" tooltip="@LANG1252"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_vmmain" name="fcode_vmmain" dfalt="*97" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_vmmain" name="enable_fcode_vmmain" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1204" tooltip="@LANG1205"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_agentpause" name="fcode_agentpause" dfalt="*83" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_agentpause" name="enable_fcode_agentpause" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1206" tooltip="@LANG1207"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_agentunpause" name="fcode_agentunpause" dfalt="*84" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_agentunpause" name="enable_fcode_agentunpause" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1248" tooltip="@LANG1249"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_paging_prefix" name="fcode_paging_prefix" dfalt="*81" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_paging_prefix" name="enable_fcode_paging_prefix" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1246" tooltip="@LANG1247"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_intercom_prefix" name="fcode_intercom_prefix" dfalt="*80" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_intercom_prefix" name="enable_fcode_intercom_prefix" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2282" tooltip="@LANG2286"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_blacklist_add" name="fcode_blacklist_add" dfalt="*40" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_blacklist_add" name="enable_fcode_blacklist_add" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2281" tooltip="@LANG2284"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_blacklist_remove" name="fcode_blacklist_remove" dfalt="*41" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_blacklist_remove" name="enable_fcode_blacklist_remove" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1218" tooltip="@LANG1219"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_pickup" name="fcode_pickup" dfalt="**" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_pickup" name="enable_fcode_pickup" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5154" tooltip="@LANG5156"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="number_seamless_transfer" name="number_seamless_transfer" dfalt="*45" maxlength="10" />
+                        <input type="checkbox" id="enable_number_seamless_transfer" name="enable_number_seamless_transfer" dfalt="no" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2516" tooltip="@LANG2517"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fgeneral_pickupexten" name="fgeneral_pickupexten" dfalt="*8" maxlength="10" />
+                        <input type="checkbox" id="enable_fgeneral_pickupexten" name="enable_fgeneral_pickupexten" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2638" tooltip="@LANG2639"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_direct_vm" name="fcode_direct_vm" dfalt="*" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_direct_vm" name="enable_fcode_direct_vm" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5095" tooltip="@LANG5096"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_direct_phonenumber" name="fcode_direct_phonenumber" dfalt="*88" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_direct_phonenumber" name="enable_fcode_direct_phonenumber" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3721" tooltip="@LANG3722"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_cc_request" name="fcode_cc_request" dfalt="*11" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cc_request" name="enable_fcode_cc_request" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3723" tooltip="@LANG3724"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_cc_cancel" name="fcode_cc_cancel" dfalt="*12" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_cc_cancel" name="enable_fcode_cc_cancel" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell" id="barge_enable_div">
+                    <div class="field-label" glabel="@LANG4018" tooltip="@LANG4019"></div>
+                    <div class="field-content feature_code">
+                        <input type="checkbox" id="barge_enable" name="barge_enable" dfalt="no" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4012" tooltip="@LANG4013"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_barge_listen" name="fcode_barge_listen" dfalt="*54" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4014" tooltip="@LANG4015"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_barge_whisper" name="fcode_barge_whisper" dfalt="*55" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4016" tooltip="@LANG4017"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_barge_barge" name="fcode_barge_barge" dfalt="*56" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell" id="enable_inboud_multi_mode_div">
+                    <div class="field-label" glabel="@LANG4295" tooltip="@LANG4298"></div>
+                    <div class="field-content feature_code">
+                        <input type="checkbox" id="enable_inboud_multi_mode" name="enable_inboud_multi_mode" dfalt="no" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4541" tooltip="@LANG4542"></div>
+                    <div class="field-content feature_code">
+                        <select id="inbound_mode" class="styled" style="width: 154px;" dfalt="0">
+                            <option locale="LANG3940" value="0">Default Mode</option>
+                            <option locale="LANG4540" value="1">Mode 1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4296" tooltip="@LANG4299"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_inbound_mode_zero" name="fcode_inbound_mode_zero" dfalt="*61" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4297" tooltip="@LANG4300"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_inbound_mode_one" name="fcode_inbound_mode_one" dfalt="*62" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4858" tooltip="@LANG5202"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_ucm_wakeup" name="fcode_ucm_wakeup" dfalt="*36" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_ucm_wakeup" name="enable_fcode_ucm_wakeup" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5166" tooltip="@LANG5165"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_wakeup" name="fcode_wakeup" dfalt="*35" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_wakeup" name="enable_fcode_wakeup" dfalt="yes" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4885" tooltip="@LANG4924"></div>
+                    <div class="field-content feature_code">
+                        <input type="text" id="fcode_pms_status" name="fcode_pms_status" dfalt="*23" maxlength="10" />
+                        <input type="checkbox" id="enable_fcode_pms_status" name="enable_fcode_pms_status" dfalt="yes" checked />
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="submit" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </table>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/features.js"></script>
+</body>
+
+</html>

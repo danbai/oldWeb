@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Manage SLA Station</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            display: block;
+            *display: block; 
+            zoom: 1; 
+            padding: 2px 0px;
+        }
+        .field-content {
+            height: 31px;
+        }
+        .field-cell .field-label {
+            width: 190px;
+        }
+        div.field-label .glab span.label {
+            width: 152px;
+        }
+        #leftSelect, #rightSelect {
+            width: 240px; 
+            height: 95px;
+        }
+        .selectDiv {
+            position: relative; 
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" style="overflow: hidden;">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3228"></div>
+                    <div class="field-content">
+                        <input type="text" id="station_name" name="station_name" maxlength=25 />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3229" tooltip="@LANG3237"></div>
+                    <div class="field-content">
+                        <select id="station" name="station" noserialize="true"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <table cellpadding="2" cellspacing="2" border="0" width="90%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG3231">Available SLA Trunks</b>
+                            </td>
+                            <td width="50" align="center">
+                            </td>
+                            <td align="center" valign="top">
+                                <b locale="LANG3232">Selected SLA Trunks</b>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRight"></span>
+                                <span class="selectIcon addRight" id="oneToRight"></span>
+                                <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="allToLeft"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select name="rightSelect" id="rightSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon clickTop" id="button_top"></span>
+                                <span class="selectIcon clickUp" id="button_up"></span>
+                                <span class="selectIcon clickDown" id="button_down"></span>
+                                <span class="selectIcon clickBottom" id="button_bottom"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='section-title' locale="LANG3233">SLA Station Options</div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1598" tooltip="@LANG3234"></div>
+                    <div class="field-content">
+                        <input type="text" id="ringtimeout" name="ringtimeout" maxlength=10 />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3235" tooltip="@LANG3236"></div>
+                    <div class="field-content">
+                        <input type="text" id="ringdelay" name="ringdelay" maxlength=10 />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3222" tooltip="@LANG3243"></div>
+                    <div class="field-content"> 
+                        <select id="holdaccess" name="holdaccess" dfalt='open'>
+                            <option value="open">Open</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/sla-station-modal.js"></script>
+</body>
+</html>

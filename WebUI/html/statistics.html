@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG593">Statistics Viewer</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/styles.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #TwentyFourHourChart {
+            width: 700px;
+            height: 240px;
+            border: solid 1px #B3B3DC;
+            position: relative;
+            top: 40px;
+            left: 20px;
+        }
+        .field-cell .field-label {
+            width: 30px;
+            display: inline-block;
+        }
+        .field-cell .field-content {
+            position: relative;
+            top: 5px;
+        }
+        .field-cell .field-content span {
+            position: relative;
+            top: -2px;   
+        }
+        .field-cell span, .special {
+            position: relative;
+            top: -5px;
+        }
+        .tableSpecial {
+            margin-top: 10px;
+        }
+        table.tableSpecial tbody {
+            background-color: #EFEFEF;
+        }
+        table.tableSpecial thead td, table.tableSpecial tbody td {
+            border: 0;
+        }
+        .field-cell {
+            display: inline-block;
+            width: 250px;
+        }
+        .field-cell-special {
+            display: block;
+            margin-left: 5px;
+            width: 700px;
+        }
+        .left, .right {
+            display: inline-block;
+            margin-right: 55px;
+        }
+        .left-specail {
+            margin-right: 70px;
+        }
+        .ui-datepicker-calendar {
+            display:none;
+        }
+        .label {
+            position: relative;
+            top: -6px;
+        }
+        table.tableSpecial tbody td select {
+            left: 4px;
+            top: 4px;        
+        }
+        #service_choices label {
+            position: relative;
+            top: -5px;
+        }
+        .divSelect {
+            top: 0;
+        }
+        /* Interaction Cues */
+        #form .ui-state-highlight,
+        #form .ui-content .ui-state-highlight,
+        #form .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+        #form .ui-state-highlight a,
+        #form .ui-content .ui-state-highlight a,
+        #form .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+        .ui-datepicker-trigger {
+            right: 16px;
+            top: -1px;
+        }
+        .ui-tooltip {
+            display: none;
+        }
+        .align {
+            text-align: left;
+        }
+        .GSRTL .align {
+            text-align: right;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG593"></div>
+    <div id="placeholder" style="width: 96%; height: 300px;"></div>
+    <form id="form">
+        <table id="choices_table" class="tableSpecial">
+            <tr>
+                <td class="align" valign="top">
+                    <div id="service_choices"></div>
+                </td>
+                <td class="align" valign="top">
+                    <div id="calltype_choices"></div>
+                </td>
+                <td class="align" valign="top">
+                    <div id="period_choices"></div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div role="tooltip" class="ui-tooltip ui-widget ui-corner-all ui-content wordBreak">
+        <div class="ui-tooltip-content"></div>
+        <div class="arrow top center"></div>
+    </div>
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="../js/excanvas.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.tooltip.js"></script>
+    <script type="text/javascript" src="../js/jquery.fixedheader.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.time.js"></script>
+    <script type="text/javascript" src="../js/statistics.js"></script>
+</body>
+</html>

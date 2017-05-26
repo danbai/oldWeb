@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+<head>
+    <title locale="LANG632">Manage Zero Config</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/jquery.qtip.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.zero-config.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .selectPosition {
+            position: relative;
+        }
+        div#selectdeviceModel.divSelect span.modelSpanDes {
+            max-width: initial;
+            min-width: 130px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 740px;">
+            <div id="preparePad" style="width: 96%; height: 500px; display: table;">
+                <div style="display: table-cell; vertical-align: middle;">
+                    <div>
+                        <img src="../images/ani_loading.gif" />
+                    </div>
+                    <div id="loadingMsg" locale="LANG805" style="text-align: center;"></div>
+                </div>
+
+            </div>
+            <div id="contentPad" style="display: none; height: 500px; width: 96%;">
+                <div class="section-body">
+                    <div id="info-container">
+                        <div class="cell thumbnail">
+                            <img id="thumbnail" src="../images/empty.png" class="sm_thumbnail" />
+                        </div>
+                        <div class="cell">
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG3461" tooltip="@LANG3461"></div>
+                                <div class="field-content">
+                                    <select id="deviceModel" name="deviceModel"></select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1293" tooltip="@LANG1294"></div>
+                                <div class="field-content">
+                                    <input id="deviceMac" name='deviceMac' type="text" maxlength="12" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1291" tooltip="@LANG1292"></div>
+                                <div class="field-content">
+                                    <input id="deviceIp" name="deviceIp" type="text" maxlength="64" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1298" tooltip="@LANG1297"></div>
+                                <div class="field-content">
+                                    <input id="deviceVersion" name="deviceVersion" type="text" maxlength="128" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="batch-container" style="display: none;">
+                        <div class="section-message" locale="LANG3889"></div>
+                        <div id="batch-list"></div>
+                    </div>
+                    <div id="option-container">
+                        <ul id="menu">
+                            <li id="menu-basic"><a locale="LANG3472">Basic</a></li>
+                            <li id="menu-advanced"><a locale="LANG3473">Advanced</a></li>
+                        </ul>
+                    </div>
+                    <div id="content-container">
+                        <div id="empty-pad">
+                            <div style="text-align: center; height: 30px; padding-top: 30px;" locale="LANG3474"></div>
+                        </div>
+                        <div id="loading-pad" style="display: none;">
+                            <div style="padding-top: 30px; ">
+                                <img src="../images/ani_loading.gif" />
+                            </div>
+                            <div locale="LANG805" style="text-align: center; display: none;"></div>
+                        </div>
+                        <div id="content-pad" style="background-color: #efefef; "></div>    
+                    </div>
+                    
+                    <div class="field-cell modal-commands dialogContainer-commands" style="width: 96%; display: none;">
+                        <hr style="width: 96%;" />
+                        <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog('*');" locale="LANG726"></button>
+                        <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.qtip.js"></script>
+    <script type="text/javascript" src="../js/jquery.maphilight.js"></script>
+    <script type="text/javascript" src="../js/magnificpopup.js"></script>
+    <script type="text/javascript" src="../js/zc-devices-modal-basic.js"></script>
+    <script type="text/javascript" src="../js/subclass.js"></script>
+    <script type="text/javascript" src="../js/ucm-widgets.js"></script>
+</body>
+</html>

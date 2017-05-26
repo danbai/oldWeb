@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2217">Basic Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 12px;
+        vertical-align: top;
+        position: relative;
+        top: -2px;
+    }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2217"></div>
+    <div class="lite_desc" locale="LANG2331"></div>
+    <form id="form">
+        <div class="section-body">
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG4882" tooltip="@LANG4882"></div>
+                <div class="field-content">
+                    <input type='checkbox' name='pms_enable' id="pms_enable" noSerialize="true" />
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5246" tooltip="@LANG5246"></div>
+                <div class="field-content">
+                    <select id="pms_protocol" name="pms_protocol">
+                        <option value="" locale="LANG2770"></option>
+                        <option value="hmobile">Hmobile</option>
+                        <option value="mitel">Mitel</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG4859" tooltip="@LANG4859"></div>
+                <div class="field-content">
+                    <select id="wakeup_prompt" name="wakeup_prompt"></select>
+                    <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                </div>
+            </div>
+            <div class="field-cell hmobile">
+                <div class="field-label" glabel="@LANG4860" tooltip="@LANG4940"></div>
+                <div class="field-content">
+                    <input type='text' name='pms_addr' id="pms_addr" maxlength="127" class="IPv6Input" />
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG4853" tooltip="@LANG4853"></div>
+                <div class="field-content">
+                    <input type='text' name='pms_port' id="pms_port" class="inputWidth60" maxlength="5" />
+                </div>
+            </div> -->
+            <div class="field-cell null">
+                <div class="field-label" glabel="@LANG4880" tooltip="@LANG4934"></div>
+                <div class="field-content">
+                    <input type='text' name='ucm_port' id="ucm_port" class="inputWidth60" maxlength="5" />
+                </div>
+            </div>
+            <div class="field-cell hmobile">
+                <div class="field-label" glabel="@LANG72" tooltip="@LANG72">
+                </div>
+                <div class="field-content">
+                    <input type='text' name='username' id="username" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell hmobile">
+                <div class="field-label" glabel="@LANG73" tooltip="@LANG73">
+                </div>
+                <div class="field-content">
+                    <input type='text' name='password' id="password" maxlength="64" />
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG4911" tooltip="@LANG4911">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' name='start_fastagi' id="start_fastagi" noserialize="true" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4894" tooltip="@LANG4895">
+                </div>
+                <div class="field-content">
+                    <input type='text' name='site' id="site" maxlength="128" />
+                </div>
+            </div> -->
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/pms-settings.js"></script>
+</body>
+</html>

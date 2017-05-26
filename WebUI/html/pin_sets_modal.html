@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Pin Sets Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #PinSetsMember {
+        height: 120px;
+        background-color: #FFFFFF;
+        padding: 5px;
+        border-width: 1px;
+        border-color: #7E5538;
+        border-style: solid;
+        cursor: default;
+        font: 83%/1.4 arial, helvetica, sans-serif;
+        overflow: auto;
+    }
+    
+    #PinSetsMember div.step {
+        clear: both;
+        padding: 2px 5px;
+        min-height: 26px;
+    }
+    
+    #PinSetsMember div.step.editState,
+    #PinSetsMember div.step:hover {
+        background-color: #DEDEDE;
+    }
+    
+    #PinSetsMember div.step div.step_btn {
+        float: right;
+        background: transparent;
+        display: inline-block;
+        line-height: 24px;
+        height: 24px;
+    }
+    
+    #PinSetsMember div.step div.step_desc {
+        width: 450px;
+        background: transparent;
+        display: inline-block;
+        line-height: 24px;
+    }
+    
+    #PinSetsMember div.step div.step_desc:hover {
+        background-color: #DEDEDE;
+    }
+    
+    #PinSetsMember div.step span.step_delete {
+        float: right;
+        width: 13px;
+        background: transparent url("../images/delete_circle.png") no-repeat;
+        top: 5px;
+        position: relative;
+        display: inline-block;
+        height: 13px;
+        margin: 0 5px;
+    }
+
+    #PinSetsMember div.step span.step_edit {
+        float: right;
+        width: 13px;
+        background: transparent url("../images/edit_circle.png") no-repeat;
+        top: 5px;
+        position: relative;
+        display: inline-block;
+        height: 13px;
+        margin: 0 5px;
+    }
+
+    #PinSetsMember div.step span.cursor {
+        cursor: pointer;
+    }
+    
+    .Member_FORM {
+        display: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form" autocomplete="off">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG135"></div>
+                    <div class="field-content">
+                        <input type="text" id="pin_sets_name" name="pin_sets_name" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4559" tooltip="@LANG4559"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id='record_in_cdr' name='record_in_cdr' />
+                    </div>
+                </div>
+                <div class='section-title' locale="LANG128"></div>
+                <div class="field-cell">
+                    <div id='PinSetsMember'></div>
+                </div>
+                <div class="new-ps-cmds">
+                    <button type="button" id="btnAdd" class="btn btn-update" onclick="PinSets_MiscFunctions.add_member();" locale="LANG4560"></button>
+                </div>
+                <div class="field-cell Member_FORM">
+                    <div class="field-label" glabel="@LANG4555" tooltip="@LANG4555"></div>
+                    <div class="field-content">
+                        <input type="text" id="pin" name="pin" maxlength="32" minlength="4" />
+                    </div>
+                </div>
+                <div class="field-cell Member_FORM">
+                    <div class="field-label" glabel="@LANG4556" tooltip="@LANG4556"></div>
+                    <div class="field-content">
+                        <input type="text" id="pin_name" name="pin_name" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell Member_FORM modal-commands">
+                    <button type="button" class="btn btn-cancel" onclick="PinSets_MiscFunctions.hide_Member_FORM();" locale="LANG726"></button>
+                    <button type="submit" id="saveMember" class="btn btn-update" locale="LANG769"></button>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/pin-sets-modal.js"></script>
+</body>
+
+</html>

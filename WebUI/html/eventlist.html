@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG2474">Event List</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #table_eventlist {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #D6D6D6;
+        border-spacing: 0px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    #table_userlist {
+        border: 0px;
+        text-align: left;
+        width: 100%;
+    }
+    
+    #table_eventlist tr {
+        background: white;
+        height: 30px;
+    }
+    
+    #table_eventlist tr.frow {
+        background: #91c6e4;
+        color: #3b3b3b;
+    }
+    
+    #table_userlist tr {
+        background: #e3e3e2;
+        color: #747474;
+        height: 30px;
+    }
+    
+    #table_userlist tr.frow {
+        background: #e3e3e2;
+        color: #747474;
+    }
+    
+    #table_userlist,
+    #table_eventlist tr.frow td {
+        font-weight: bold;
+    }
+    
+    #table_eventlist tr.even:hover,
+    #table_eventlist tr.odd:hover {
+        background: #a8b6e5;
+        cursor: default;
+    }
+    
+    .table {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset,0px 0px 1px rgba(200, 200, 200, 0.5); */
+        border-spacing: 0px;
+        /* table-layout: fixed; */
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    table#table_userlist thead th,
+    table#table_userlist tbody td {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+    
+    table tbody td.noUser {
+        border-bottom: 0;
+        height: 30px;
+    }
+    
+    table tbody {
+        background-color: #fff;
+    }
+    
+    table.table tbody td span,
+    table.table thead th span {
+        cursor: pointer;
+        /* color: #225685; */
+        margin-left: 8px;
+    }
+    
+    .thead tr,
+    table.table tbody tr.frow {
+        background: #91C6E5;
+        height: 23px;
+        color: #3A3C3B;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .tbody tr {
+        height: 23px;
+    }
+    
+    table tbody tr.even {
+        background: #EFEFEF;
+    }
+    
+    table tbody tr.odd {
+        background: #FFFFFF;
+    }
+    
+    .tbody tr:hover,
+    table.table tbody tr.even:hover,
+    table.table tbody tr.odd:hover {
+        background: #CAECFF;
+    }
+    
+    .top_buttons .special {
+        position: relative;
+        top: -26px;
+    }
+    
+    .field-label-special {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    
+    .field-label-special .field-label {
+        width: auto;
+        margin-right: 8px;
+    }
+    
+    .special {
+        position: relative;
+        top: -18px;
+    }
+    
+    .top_buttons,
+    .top_content {
+        margin-bottom: 0px;
+    }
+    
+    #sub_div {
+        margin-top: 15px;
+    }
+    
+    #userslist {
+        width: 300px;
+        margin-left: 30px;
+        margin-top: 12px;
+        clear: both;
+        float: left;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG2474">EventList</div>
+    <div class="top_buttons">
+        <button type="button" id="btnAdd" class="btn btn-update special" locale="LANG2475"></button>
+        <div class="field-cell field-label-special">
+            <div class="field-label">
+                <span locale="LANG2218"></span>
+            </div>
+            <div class="field-content">
+                <input type='checkbox' id='en_auto_reflesh' checked='checked' />
+            </div>
+        </div>
+    </div>
+    <table id="eventlist"></table>
+    <div id="eventlist_pager"></div>
+    <div class="section-body" id="sub_div">
+        <div class="section-title" locale="LANG2476"></div>
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG2478" tooltip="@LANG2482">
+            </div>
+            <div class="field-content">
+                <select id="edit_sub"></select>
+            </div>
+        </div>
+        <table id='userslist'></table>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/eventlist.js"></script>
+</body>
+
+</html>

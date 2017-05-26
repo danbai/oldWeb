@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title locale="LANG717">Email settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF8" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        #recipients {
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+	<form id="form">
+        <div id="smtp_test_div" class="section-body" style="width: 500px;">
+            <div class="center">
+                <span class="lite_desc" locale="LANG2264"></span>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG126"></div>
+                <div class="field-content">
+                    <input type="text" id="recipients" name="recipients" maxlength="128"></input>
+                </div>
+            </div>
+            <div class="field-cell center">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button type="submit" class="btn btn-update" locale="LANG2273"></button>
+            </div>
+        </div>
+	</form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/smtp-test.js"></script>
+</body>
+</html>

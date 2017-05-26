@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Manage Dial By Name</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            display: block;
+            *display: block; 
+            zoom: 1; 
+            padding: 2px 0px;
+        }
+        .field-content {
+            height: 31px;
+        }
+        .field-cell .field-label {
+            width: 190px;
+        }
+        div.field-label .glab span.label {
+            width: 152px;
+        }
+        #leftSelect, #rightSelect, #leftSelectLDAP, #rightSelectLDAP {
+            width: 240px; 
+            height: 95px;
+        }
+        .selectDiv {
+            position: relative; 
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            margin-right: 12px;
+        }
+        .specailabel {
+            position: relative;
+            top: -7px;
+        }
+        .radioDiv {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form" style="overflow: hidden;">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135"></div>
+                    <div class="field-content">
+                        <input type="text" id="name" name="name" maxlength="25" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG85"></div>
+                    <div class="field-content">
+                        <input type="text" id="extension" name="extension" maxlength="10" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <table cellpadding="2" cellspacing="2" border="0" width="90%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG2484">Available Extensions</b>
+                            </td>
+                            <td width="50" align="center"></td>
+                            <td align="center" valign="top">
+                                <b locale="LANG2483">Selected Extensions</b>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRight"></span>
+                                <span class="selectIcon addRight" id="oneToRight"></span>
+                                <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                <span class="selectIcon removeAll" id="allToLeft"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select name="rightSelect" id="rightSelect" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <!-- <span class="selectIcon clickTop" id="button_top"></span>
+                                <span class="selectIcon clickUp" id="button_up"></span>
+                                <span class="selectIcon clickDown" id="button_down"></span>
+                                <span class="selectIcon clickBottom" id="button_bottom"></span> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="field-cell">
+                    <table cellpadding="2" cellspacing="2" border="0" width="90%" align="center">
+                        <tr>
+                            <td align="center" valign="top">
+                                <b locale="LANG3214">Available LDAP</b>
+                            </td>
+                            <td width="50" align="center"></td>
+                            <td align="center" valign="top">
+                                <b locale="LANG3215">Selected LDAP</b>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">
+                                <select id="leftSelectLDAP" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                                <span class="selectIcon addAll" id="allToRightLDAP"></span>
+                                <span class="selectIcon addRight" id="oneToRightLDAP"></span>
+                                <span class="selectIcon addLeft" id="oneToLeftLDAP"></span>
+                                <span class="selectIcon removeAll" id="allToLeftLDAP"></span>
+                            </td>
+                            <td align="left" valign="top">
+                                <select name="rightSelectLDAP" id="rightSelectLDAP" noserialize="true" multiple size="8"></select>
+                            </td>
+                            <td width="80" align="center" valign="center">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='section-title' locale="LANG74">Options</div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5346" tooltip="@LANG5347"></div>
+                    <div class="field-content">
+                        <input type="text" id="wait_time" name="wait_time" maxlength="3" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2890" tooltip="@LANG2764"></div>
+                    <div class="field-content">
+                        <div class="radioDiv">
+                            <input type="radio" class="query" id="last" name="query_type" value="LASTNAME" noserialize="true" />
+                            <label for="last" locale="LANG2892" class="specailabel"></label>
+                        </div>
+                        <div class="radioDiv">
+                            <input type="radio" class="query" id="first" name="query_type" value="FIRSTNAME" noserialize="true" />
+                            <label for="first" locale="LANG2893" class="specailabel"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2891" tooltip="@LANG2765"></div>
+                    <div class="field-content">
+                        <div class="radioDiv">
+                            <input type="radio" class="select" id="order" name="select_type" value="SEQ" noserialize="true" />
+                            <label for="order" locale="LANG2895" class="specailabel"></label>
+                        </div>
+                        <div class="radioDiv">
+                            <input type="radio" class="select" id="menu" name="select_type" value="MENU" noserialize="true" />
+                            <label for="menu" locale="LANG2896" class="specailabel"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 600px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/directory-modal.js"></script>
+</body>
+</html>

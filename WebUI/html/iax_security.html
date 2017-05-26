@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG683">IAX Security</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #iax_security_calllimit_settings div {
+            position: relative;
+        }
+        #iax_security_calllimit_settings div span.callnumber_delete {
+            float: none;
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+        .GSRTL #iax_security_calllimit_settings div span.callnumber_delete {
+            float: none;
+            position: absolute;
+            left: 0;
+            right: auto;
+            top: 5px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG683"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1681" tooltip="@LANG1682">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="calltokenoptional" name="calltokenoptional" dfalt='' maxlength="60"  class="IPv6Input" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1683" tooltip="@LANG1684">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="maxcallnumbers" name="maxcallnumbers" dfalt=''  class="inputWidth50" maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1685" tooltip="@LANG1686">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="maxcallnumbers_nonvalidated" name="maxcallnumbers_nonvalidated" dfalt=''  class="inputWidth50" maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1687" tooltip="@LANG1688">
+                </div>
+                <div class="field-content" style="width: 500px;">
+                    <div id="iax_security_calllimit_settings" noserialize="true"></div>
+                </div>
+            </div>
+            <div id="dAddCallNumberLimit" class="field-cell">
+                <div class="field-label">&nbsp;
+                </div>
+                <div class="field-content">
+                    <button type="button" class="btn btn-update" onclick="showCallNumberLimitsForm()" locale="LANG723"></button>
+                </div>
+            </div>
+            <div class="form_newCallNumberLimit">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1689" tooltip="@LANG1682">
+                    </div>
+                    <div class="field-content">
+                        <input type='text' id="form_newCallNumberLimit_ip" name="form_newCallNumberLimit_ip" maxlength="60" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1683">
+                    </div>
+                    <div class="field-content">
+                        <input type='text' id="form_newCallNumberLimit_maxcallnumbers" name="form_newCallNumberLimit_maxcallnumbers" dfalt='512' class="inputWidth50" maxlength="6" />
+                    </div>
+                </div>
+                <div class="field-cell last">
+                    <div class="field-label">&nbsp;</div>
+                    <div class="field-content">
+                        <button type="button" class="btn btn-cancel" onclick="hideCallNumberLimitsForm();" locale="LANG726"></button>
+                        <button type="submit" class="btn btn-update" onclick="addNewCallNumberLimit();" locale="LANG769"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" type="button" onclick="updateIAXSecSettings()" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/iax-security.js"></script>
+</body>
+</html>

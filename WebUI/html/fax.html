@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG614">Fax</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title-specail {
+            margin: 20px 0 0 0;
+        }
+        .table_fax_search tr {
+            padding: 5px;
+            background: #EFEFEF;
+        }
+        .table_fax_search tr td {
+            padding: 5px;
+        }
+        #btnSearch {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div id="fax_extension_div">
+        <div class='lite_Heading' locale="LANG614">Fax Extension</div>
+        <div class='top_buttons'>
+            <button type="button" id="btnAdd" class="btn btn-update" locale="LANG752">Create New Fax</button>
+            <button type="button" id="batchDelete" class="btn btn-update" locale="LANG2924">Delete Selected Faxs</button>
+            <button type="button" id="settings" class="btn btn-update" locale="LANG753">Settings for Fax</button>
+        </div>
+        <div class="lite_desc" locale="LANG1258"></div>
+        <table id='fax_list'></table>
+        <div id="fax_list_pager"></div>
+        <div class="section-title section-title-specail" locale="LANG2987">Fax Files:</div>
+        <form id="form">
+            <table id='table_fax_search' class='table_fax_search'>
+                <tr>
+                    <td>
+                        <div class="field-cell">
+                            <div class="field-label" gLabel="@LANG2793" tooltip="@LANG2792"></div>
+                            <div class="field-content">
+                                <input type='text' id='file_keyword' name="file_keyword">
+                                <button type="submit" id="btnSearch" class="btn btn-update" locale="LANG803">Search</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="padding: 6px;">
+                <button type="button" id="batchDeleteSelected" class="btn btn-update" locale="LANG2791">Delete Selected Fax Files</button>
+                <button type="button" id="btnDeleteAll" class="btn btn-update" locale="LANG740">Delete All</button>
+                <!-- <button type="button" disabled="disabled" id="btnDownloadAll" class="btn btn-update disabled" locale="LANG741 LANG4146">Download All Records</button> -->
+            </div>
+        </form>
+    </div>
+    <div id="faxFiles_list_div">
+        <div id="list_fax_file" class='lite_Heading' locale="LANG2987">List of Fax Files</div>
+        <table id="faxFiles_list"></table> 
+        <div id="faxFiles_list_pager"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/fax.js"></script>
+</body>
+</html>

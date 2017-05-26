@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title locale="LANG2802">User Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <style>
+        .link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            vertical-align: top;
+            position: relative;
+            top: -2px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG2802"></div>
+    <div id="user_list_div">
+        <div class='top_buttons'>
+            <button type="button" id="btnAdd" class="btn btn-update" locale="LANG2807"></button>
+        </div>
+        <table id="user-list"></table> 
+        <div id="user-pager"></div>
+    </div>
+    <div id="user_detail">
+        <form id="form" autocomplete="off">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2809" tooltip="@LANG2844"></div>
+                    <div class="field-content">
+                        <input type="text" id="user_name" name="user_name" maxlength="32" autocomplete="off" disabled="true" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2810" tooltip="@LANG2845"></div>
+                    <div class="field-content">
+                        <span id="jumpPwd" class="link" locale="LANG55" data-url="password">Change Password</span>
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2812" tooltip="@LANG2847"></div>
+                    <div class="field-content">
+                        <!-- <select id='department'></select> -->
+                        <input type="text" id='department' name='department' maxlength="64" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG95" tooltip="@LANG2852"></div>
+                    <div class="field-content">
+                        <input type="text" id="fax" name="fax" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1081" tooltip="@LANG1082"></div>
+                    <div class="field-content">
+                        <span id="jumpEmail" class="link" locale="LANG4203" data-url="bind_email"></span>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2817" tooltip="@LANG2849"></div>
+                    <div class="field-content">
+                        <input type="text" id='first_name' name='first_name' maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2813" tooltip="@LANG2848"></div>
+                    <div class="field-content">
+                        <input type="text" id="last_name" name="last_name" maxlength="256" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2814" tooltip="@LANG2850"></div>
+                    <div class="field-content">
+                        <input type="text" id='family_number' name='family_number' maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2815" tooltip="@LANG2851"></div>
+                    <div class="field-content">
+                        <input type="text" id='phone_number' name='phone_number' maxlength="32" />
+                    </div>
+                </div>
+                <div id="buttons" class="field-cell last">
+                    <div class="field-label">&nbsp;</div>
+                    <div class="field-content">
+                        <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                        <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/user-list.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG697">Sip Session Timer</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG3437"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3438" tooltip="@LANG3432"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='service_check_enable' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3433" tooltip="@LANG3434"></div>
+                <div class="field-content">
+                    <input type='text' id="service_check_timeout" name='service_check_timeout' maxlength="5" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3435" tooltip="@LANG3436"></div>
+                <div class="field-content">
+                    <input type='text' id='service_check_count' name='service_check_count' class="inputWidth30" maxlength="2" /> 
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/service-check.js"></script>
+</body>
+</html>

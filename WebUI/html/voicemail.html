@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG651">General VoiceMail Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell .field-label {
+        width: 210px;
+    }
+
+    .section-title-specail {
+        margin: 40px 0 0 0;
+    }
+
+    .ui-jqgrid {
+        margin-top: 30px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div id="voicemail_settings">
+        <div class='lite_Heading' locale="LANG651"></div>
+        <div class="top_buttons">
+            <button type="button" id="setting" class="btn btn-update" locale="LANG767"></button>
+        </div>
+        <form id="form">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1493" tooltip="@LANG1494"></div>
+                <div class="field-content">
+                    <input id='maxgreet' name='maxgreet' type='text' maxlength=4 class="inputWidth50 dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1491" tooltip="@LANG1492"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='operator' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1594" tooltip="@LANG1595"></div>
+                <div class="field-content">
+                    <select id="operator_exten" name="operator_exten"></select>
+                </div>
+            </div>
+            <div class='section-title' locale="LANG652"></div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1495" tooltip="@LANG1496"></div>
+                <div class="field-content">
+                    <input id='maxmsg' name='maxmsg' type='text' style="width:30px;" maxlength=4 class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1497" tooltip="@LANG1498"></div>
+                <div class="field-content">
+                    <select id='maxsecs' class="dis_static field">
+                        <option value='60' locale="LANG1513"></option>
+                        <option value='120' locale="LANG1514"></option>
+                        <option value='300' locale="LANG1515"></option>
+                        <option value='900' locale="LANG1516"></option>
+                        <option value='1800' locale="LANG1517"></option>
+                        <option value='0' locale="LANG1518"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1499" tooltip="@LANG1500"></div>
+                <div class="field-content">
+                    <select id='minsecs' class="dis_static field">
+                        <option value='0' locale="LANG1507"></option>
+                        <option value='1' locale="LANG1508"></option>
+                        <option value='2' locale="LANG1509"></option>
+                        <option value='3' locale="LANG1510"></option>
+                        <option value='4' locale="LANG1511"></option>
+                        <option value='5' locale="LANG1512"></option>
+                    </select>
+                </div>
+            </div>
+            <div class='section-title' locale="LANG653"></div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1503" tooltip="@LANG1504"></div>
+                <div class="field-content">
+                    <input id='saycid' type='checkbox' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1505" tooltip="@LANG1506"></div>
+                <div class="field-content">
+                    <input id='sayduration' type='checkbox' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1501" tooltip="@LANG1502"></div>
+                <div class="field-content">
+                    <input id='envelope' type='checkbox' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4060" tooltip="@LANG4061"></div>
+                <div class="field-content">
+                    <input id='en_reverse' type='checkbox' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1489" tooltip="@LANG1490"></div>
+                <div class="field-content">
+                    <input id='review' type='checkbox' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <p>
+                        <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">
+                        </button>
+                        <button type="submit" id="save" class="btn btn-save" locale="LANG728">
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="voicemail_file_list_div">
+        <div class='lite_Heading' locale="LANG20">Voicemail</div>
+        <div id="urgentVoicemailList">
+            <div class="section-title" locale="LANG5253"></div>
+            <table id="urgent_voicemails_dir_list" type="urgent_voicemails_dir"></table>
+            <div id="urgent_voicemails_dir_pager"></div>
+        </div>
+        <div id="voicemailList">
+            <div class="section-title section-title-specail" locale="LANG5254"></div>
+            <table id="voicemails_dir_list" type="voicemails_dir"></table>
+            <div id="voicemails_dir_pager"></div>
+        </div>
+        <div id="oldVoicemailList">
+            <div class="section-title section-title-specail" locale="LANG5255"></div>
+            <table id="old_voicemails_dir_list" type="old_voicemails_dir"></table>
+            <div id="old_voicemails_dir_pager"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/voicemail.js"></script>
+</body>
+
+</html>

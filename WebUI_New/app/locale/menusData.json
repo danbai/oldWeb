@@ -1,0 +1,337 @@
+{
+    "subMenus": [
+        {
+            "name": "system-status",
+            "title": "LANG585",
+            "icon": "sprite-menu-system-status",
+            "items": [
+                {
+                    "name": "LANG5261",
+                    "path": "dashboard"
+                }, {
+                    "name": "LANG586",
+                    "path": "systemInformation"
+                }, {
+                    "name": "LANG3006",
+                    "path": "activityCall"
+                }, {
+                    "name": "LANG4010",
+                    "path": "networkStatus"
+                }
+            ]
+        }, {
+            "name": "extension-trunk",
+            "title": "LANG5263",
+            "icon": "sprite-menu-extension-trunk",
+            "items": [
+                {
+                    "name": "LANG87",
+                    "path": "extension"
+                }, {
+                    "name": "LANG2800",
+                    "path": "extensionGroup"
+                }, {
+                    "name": "LANG639",
+                    "path": "analogTrunk"
+                }, {
+                    "name": "LANG3141",
+                    "path": "digitalTrunk"
+                }, {
+                    "name": "LANG3573",
+                    "path": "dataTrunk"
+                }, {
+                    "name": "LANG13",
+                    "path": "voipTrunk"
+                }, {
+                    "name": "LANG3225",
+                    "path": "slaStation"
+                }, {
+                    "name": "LANG14",
+                    "path": "outboundRoute"
+                }, {
+                    "name": "LANG15",
+                    "path": "inboundRoute"
+                }
+            ]
+        }, {
+            "name": "call-features",
+            "title": "LANG17",
+            "icon": "sprite-menu-call-features",
+            "items": [
+                {
+                    "name": "LANG18",
+                    "path": "conference"
+                }, {
+                    "name": "LANG19",
+                    "path": "ivr"
+                }, {
+                    "name": "LANG20",
+                    "path": "voicemail"
+                }, {
+                    "name": "LANG22",
+                    "path": "ringGroup"
+                }, {
+                    "name": "LANG23",
+                    "path": "pagingIntercom"
+                }, {
+                    "name": "LANG24",
+                    "path": "callQueue"
+                }, {
+                    "name": "LANG2510",
+                    "path": "pickupGroup"
+                }, {
+                    "name": "LANG2884",
+                    "path": "dialByName"
+                }, {
+                    "name": "LANG3501",
+                    "path": "speedDial"
+                }, {
+                    "name": "LANG2353",
+                    "path": "disa"
+                }, {
+                    "name": "LANG3741",
+                    "path": "callback"
+                }, {
+                    "name": "LANG2474",
+                    "path": "eventList"
+                }, {
+                    "name": "LANG26",
+                    "path": "featureCode"
+                }, {
+                    "name": "LANG29",
+                    "path": "fax"
+                }, {
+                    "name": "LANG99",
+                    "path": "parkingLot"
+                }
+            ]
+        }, {
+            "name": "pbx-settings",
+            "title": "LANG5299",
+            "icon": "sprite-menu-pbx-settings",
+            "items": [
+                {
+                    "name": "LANG3949",
+                    "path": "pbxGeneralSettings"
+                }, {
+                    "name": "LANG39",
+                    "path": "sipSettings"
+                }, {
+                    "name": "LANG34",
+                    "path": "iaxSettings"
+                }, {
+                    "name": "LANG30",
+                    "path": "rtpSettings"
+                }, {
+                    "name": "LANG27",
+                    "path": "musicOnHold"
+                }, {
+                    "name": "LANG4752",
+                    "path": "voicePrompt"
+                }, {
+                    "name": "LANG40",
+                    "path": "jitterBuffer"
+                }, {
+                    "name": "LANG5303",
+                    "path": "interfaceSettings"
+                }, {
+                    "name": "LANG5304",
+                    "path": "recordingStorageSettings"
+                }
+            ]
+        }, {
+            "name": "system-settings",
+            "title": "LANG5300",
+            "icon": "sprite-menu-system-settings",
+            "items": [
+                {
+                    "name": "LANG57",
+                    "path": "httpServer"
+                }, {
+                    "name": "LANG48",
+                    "path": "networkSettings"
+                }, {
+                    "name": "LANG3990",
+                    "path": "openVPN"
+                }, {
+                    "name": "LANG4040",
+                    "path": "ddnsSettings"
+                }, {
+                    "name": "LANG5301",
+                    "path": "securitySettings"
+                }, {
+                    "name": "LANG56",
+                    "path": "ldapServer"
+                }, {
+                    "name": "LANG718",
+                    "path": "timeSettings"
+                }, {
+                    "name": "LANG58",
+                    "path": "emailSettings"
+                }, {
+                    "name": "LANG4359",
+                    "path": "haSettings"
+                }
+            ]
+        }, {
+            "name": "maintenance",
+            "title": "LANG60",
+            "icon": "sprite-menu-maintenance",
+            "items": [
+                {
+                    "name": "LANG3859",
+                    "path": "userManagement"
+                }, {
+                    "name": "LANG5584",
+                    "path": "changePassword"
+                }, {
+                    "name": "LANG3908",
+                    "path": "operationLog"
+                }, {
+                    "name": "LANG67",
+                    "path": "systemLog"
+                }, {
+                    "name": "LANG2580",
+                    "path": "systemEvent"
+                }, {
+                    "name": "LANG61",
+                    "path": "upgrade"
+                }, {
+                    "name": "LANG62",
+                    "path": "backup"
+                }, {
+                    "name": "LANG5302",
+                    "path": "cleanReset"
+                }, {
+                    "name": "LANG5461",
+                    "path": "netTroubleshooting"
+                }, {
+                    "name": "LANG5462",
+                    "path": "signalTroubleshooting"
+                }, {
+                    "name": "LANG3437",
+                    "path": "serviceCheck"
+                }
+            ]
+        }, {
+            "name": "cdr",
+            "title": "LANG7",
+            "icon": "sprite-menu-cdr",
+            "items": [
+                {
+                    "name": "LANG7",
+                    "path": "cdr"
+                }, {
+                    "name": "LANG8",
+                    "path": "statistics"
+                }, {
+                    "name": "LANG2640",
+                    "path": "recordingFile"
+                }, {
+                    "name": "LANG3003",
+                    "path": "cdrApi"
+                }
+            ]
+        }, {
+            "name": "value-added-features",
+            "title": "LANG4066",
+            "icon": "sprite-menu-value-added-features",
+            "items": [
+                {
+                    "name": "LANG16",
+                    "path": "zeroConfig"
+                }, {
+                    "name": "LANG3525",
+                    "path": "ami"
+                }, {
+                    "name": "LANG4815",
+                    "path": "ctiServer"
+                }, {
+                    "name": "LANG5110",
+                    "path": "crm"
+                }, {
+                    "name": "LANG4855",
+                    "path": "pms"
+                }, {
+                    "name": "LANG4858",
+                    "path": "wakeupService"
+                }, {
+                    "name": "LANG4067",
+                    "path": "faxSending"
+                }, {
+                    "name": "LANG4338",
+                    "path": "announcementCenter"
+                }, {
+                    "name": "LANG4263",
+                    "path": "webrtc"
+                }
+            ]
+        }
+    ],
+    "userPortalMenus": [
+        {
+            "name": "user-basic-information",
+            "title": "LANG4101",
+            "icon": "sprite-menu-personal-status",
+            "items": [
+                {
+                    "name": "LANG2802",
+                    "path": "userInformation"
+                }, {
+                    "name": "LANG5614",
+                    "path": "userConfig"
+                }, {
+                    "name": "LANG87",
+                    "path": "userExtension"
+                }, {
+                    "name": "LANG7",
+                    "path": "cdr"
+                }, {
+                    "name": "LANG5584",
+                    "path": "changePassword"
+                }
+            ]
+        }, {
+            "name": "user-personal-data",
+            "title": "LANG5582",
+            "icon": "sprite-menu-personal-data",
+            "items": [
+                {
+                    "name": "LANG568",
+                    "path": "userFollowMe"
+                }, {
+                    "name": "LANG20",
+                    "path": "userVoicemail"
+                }, {
+                    "name": "LANG2640",
+                    "path": "userRecordingFile"
+                }, {
+                    "name": "LANG2988",
+                    "path": "userFaxFiles"
+                }
+            ]
+        }, {
+            "name": "user-value-added-features",
+            "title": "LANG4066",
+            "icon": "sprite-menu-value-added-features",
+            "items": [
+                {
+                    "name": "LANG4263",
+                    "path": "userWebrtc"
+                }, {
+                    "name": "LANG4067",
+                    "path": "faxSending"
+                }, {
+                    "name": "LANG24",
+                    "path": "userAgent"
+                }, {
+                    "name": "LANG4858",
+                    "path": "userWakeupService"
+                }, {
+                    "name": "LANG5225",
+                    "path": "userCrmUserSettings"
+                }
+            ]
+        }
+    ]
+}

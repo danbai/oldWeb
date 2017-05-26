@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG718">Time Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="page">
+    <div id="tabbedMenu"></div>
+    <div class='lite_Heading' locale="LANG59"></div>
+    <div id="main-container" style="width:900px">
+        <form id="form">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2062" tooltip="@LANG2063"></div>
+                    <div class="field-content">
+                        <input type="text" name="remote_ntp_server" class="IPv6Input" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2059" tooltip="@LANG2060"></div>
+                    <div class="field-content">
+                        <input type="checkbox" name="enable_dhcp_option_2" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2064" tooltip="@LANG2065"></div>
+                    <div class="field-content">
+                        <input type="checkbox" name="enable_dhcp_option_42" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2058"></div>
+                    <div class="field-content">
+                        <select type="select" name="time_zone" id="time_zone">
+                            <!-- <option value="auto" locale="LANG2066">Automatic</option> -->
+                            <option value="TZA+12" locale="LANG2067">GMT-12:00 (International Date Line West)</option>
+                            <option value="TZB+11" locale="LANG2068">GMT-11:00 (Midway Island, Samoa)</option>
+                            <option value="HAW10" locale="LANG2069">GMT-10:00 (US Hawaiian Time)</option>
+                            <option value="AKST9AKDT" locale="LANG2070">GMT-09:00 (US Alaska Time)</option>
+                            <option value="PST8PDT" locale="LANG2071">GMT-08:00 (US Pacific Time, Los Angeles)</option>
+                            <option value="PST8PDT,M4.1.0,M10.5.0" locale="LANG2072">GMT-08:00 (Baja California)</option>
+                            <option value="MST7MDT" locale="LANG2073">GMT-07:00 (US Mountain Time, Denver)</option>
+                            <option value="MST7" locale="LANG2074">GMT-07:00 (Mountain Time (Arizona, no DST))</option>
+                            <option value="MST7MDT,M4.1.0,M10.5.0" locale="LANG2075">GMT-07:00 (Chihuahua, La Paz, Mazatlan)</option>
+                            <option value="CST6CDT" locale="LANG2076">GMT-06:00 (Central Time)</option>
+                            <option value="CST+6" locale="LANG2077">GMT-06:00 (Central America)</option>
+                            <option value="CST6CDT,M4.1.0,M10.5.0" locale="LANG2078">GMT-06:00 (Guadalajara, Mexico City, Monterrey)</option>
+                            <option value="EST5EDT" locale="LANG2079">GMT-05:00 (Eastern Time)</option>
+                            <option value="TZf+4:30" locale="LANG2080">GMT-04:30 (Caracas)</option>
+                            <option value="AST4ADT" locale="LANG2081">GMT-04:00 (Atlantic Time)</option>
+                            <option value="AST4ADT,M4.1.0/00:01:00,M10.5.0/00:01:00" locale="LANG2082">GMT-04:00 (Atlantic Time (New Brunswick))</option>
+                            <option value="NST+3:30NDT+2:30,M4.1.0/00:01:00,M10.5.0/00:01:00" locale="LANG2083">GMT-03:30 (Newfoundland Time)</option>
+                            <option value="TZK+3" locale="LANG2084">GMT-03:00 (Greenland)</option>
+                            <option value="BRST+3BRDT+2,M10.3.0,M2.3.0" locale="LANG2085">GMT-03:00 (Brazil, Sao Paulo)</option>
+                            <option value="UTC+3" locale="LANG2086">GMT-02:00 (Argentina)</option>
+                            <option value="UTC+3" locale="LANG4538">GMT-03:00 (Uruguay)</option>
+                            <option value="UTC+2" locale="LANG4539">GMT-02:00 (Uruguay daylight saving time)</option>
+                            <option value="TZL+2" locale="LANG2087">GMT-02:00 (Mid-Atlantic)</option>
+                            <option value="TZM+1" locale="LANG2088">GMT-01:00 (Azores, Cape Verde Is.)</option>
+                            <option value="TZN+0" locale="LANG2089">GMT (Edinburgh, Casablanca, Monrovia)</option>
+                            <option value="GMT+0BST-1,M3.5.0/01:00:00,M10.5.0/02:00:00" locale="LANG2090">GMT (London, Great Britain)</option>
+                            <option value="WET-0WEST-1,M3.5.0/01:00:00,M10.5.0/02:00:00" locale="LANG2091">GMT (Lisbon, Portugal)</option>
+                            <option value="GMT+0IST-1,M3.5.0/01:00:00,M10.5.0/02:00:00" locale="LANG2092">GMT (Dublin, Ireland)</option>
+                            <option value="CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00" locale="LANG2094">GMT+01:00 (Roma, Paris, Madrid, Prague, Berlin, Budapest, Amsterdam, Barcelona)</option>
+                            <option value="CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00" locale="LANG2095">GMT+01:00 (Brussels, Vienna, Warsaw)</option>
+                            <option value="TZP-2" locale="LANG2096">GMT+02:00 (Israel, Cairo, Athens, Istanbul, Bucharest)</option>
+                            <option value="EET-2EEST-3,M3.5.0/03:00:00,M10.5.0/04:00:00" locale="LANG2097">GMT+02:00 (Helsinki, Athens, Tallinn)</option>
+                            <option value="EET-2EEST,M3.5.0/3,M10.5.0/4" locale="LANG2098">GMT+02:00 (Kyiv, Ukraine)</option>
+                            <option value="TZQ-3" locale="LANG2099">GMT+03:00 (Kuwait, Baghdad, Tehran, Nairobi)</option>
+                            <option value="MSK-3" locale="LANG2100">GMT+03:00 (Moscow, Russia)</option>
+                            <option value="MST-3" locale="LANG2101">GMT+03:00 (St.Petersburg, Russia)</option>
+                            <option value="TZR-4" locale="LANG2102">GMT+04:00 (Abu Dhabi, Baku)</option>
+                            <option value="TZS-5" locale="LANG2103">GMT+05:00 (Islamabad, Ekaterinburg, Karachi, Tashkent)</option>
+                            <option value="TZT-5:30" locale="LANG2104">GMT+05:30 (Chennai, New Delhi, Mumbai)</option>
+                            <option value="TZU-5:45" locale="LANG2105">GMT+05:45 (Kathmandu)</option>
+                            <option value="TZV-6" locale="LANG2106">GMT+06:00 (Almaty, Astana, Dhaka, Novosibirsk)</option>
+                            <option value="TZW-6:30" locale="LANG2107">GMT+06:30 (Rangoon)</option>
+                            <option value="TZX-7" locale="LANG2108">GMT+07:00 (Bankok, Hanoi, Krasnoyarsk)</option>
+                            <option value="WIB-7" locale="LANG2109">GMT+07:00 (Jakarta)</option>
+                            <option value="TZY-8" locale="LANG2110">GMT+08:00 (Beijing, Taipei, Kuala Lumpur, Irkutsk)</option>
+                            <option value="SGT-8" locale="LANG2111">GMT+08:00 (Singapore)</option>
+                            <option value="ULAT-8" locale="LANG2112">GMT+08:00 (Ulaanbaatar, Mongolia)</option>
+                            <option value="WST-8" locale="LANG2113">GMT+08:00 (Perth)</option>
+                            <option value="TZZ-9" locale="LANG2114">GMT+09:00 (Japan, Korea, Yakutsk)</option>
+                            <option value="CST-9:30CDT-10:30,M10.5.0/02:00:00,M3.5.0/03:00:00" locale="LANG2115">GMT+09:30 (Adelaide)</option>
+                            <option value="CST-9:30" locale="LANG2116">GMT+09:30 (Darwin)</option>
+                            <option value="TZb-10" locale="LANG2117">GMT+10:00 (Guam)</option>
+                            <option value="EST-10EDT-11,M10.1.0/02:00:00,M3.5.0/03:00:00" locale="LANG2118">GMT+10:00 (Hobart)</option>
+                            <option value="EST-10EDT-11,M10.5.0/02:00:00,M3.5.0/03:00:00" locale="LANG2119">GMT+10:00 (Sydney, Melbourne, Canberra)</option>
+                            <option value="EST-10" locale="LANG2120">GMT+10:00 (Brisbane)</option>
+                            <option value="TZc-11" locale="LANG2121">GMT+11:00 (Magadan, Solomon Is., New Caledonia)</option>
+                            <option value="NZST-12NZDT-13,M9.5.0/02:00:00,M4.1.0/03:00:00" locale="LANG2122">GMT+12:00 (Auckland, Wellington)</option>
+                            <option value="TZd-12" locale="LANG2123">GMT+12:00 (Fiji)</option>
+                            <option value="TZe-13" locale="LANG2124">GMT+13:00 (Nuku'alofa)</option>
+                            <option value="customize" locale="LANG2125">Self-Defined Time Zone</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2061"></div>
+                    <div class="field-content">
+                        <input type="text" name="self_defined_time_zone" class="inputWidth182" />
+                    </div>
+                </div>
+                <div class="field-cell last">
+                    <div class="field-label">&nbsp;</div>
+                    <div class="content">
+                        <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                        <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/datetime.js"></script>
+</body>
+
+</html>

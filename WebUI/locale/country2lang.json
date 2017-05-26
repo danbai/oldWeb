@@ -1,0 +1,74 @@
+{
+    "US": {
+        "languages": "en-US",
+        "englishName": "United States",
+        "localName": "English",
+        "localeDirection": "ltr"
+    },
+    "CN": {
+        "languages": "zh-CN",
+        "englishName": "China",
+        "localName": "简体中文",
+        "localeDirection": "ltr"
+    }, 
+    "TW": {
+        "languages": "zh-TW",
+        "englishName": "Taiwan",
+        "localName": "正體中文",
+        "localeDirection": "ltr"
+    }, 
+    "ES": {
+        "languages": "es-ES",
+        "englishName": "Spain",
+        "localName": "Español",
+        "localeDirection": "ltr"
+    },  
+    "FR": {
+        "languages": "fr-FR",
+        "englishName": "France",
+        "localName": "Français",
+        "localeDirection": "ltr"
+    },  
+    "PT": {
+        "languages": "pt-PT",
+        "englishName": "Portugal",
+        "localName": "Português",
+        "localeDirection": "ltr"
+    },  
+    "RU": {
+        "languages": "ru",
+        "englishName": "Russia",
+        "localName": "Русский",
+        "localeDirection": "ltr"
+    },  
+    "IT": {
+        "languages": "it-IT",
+        "englishName": "Italy",
+        "localName": "Italiano",
+        "localeDirection": "ltr"
+    },  
+    "PL": {
+        "languages": "pl",
+        "englishName": "Poland",
+        "localName": "Polski",
+        "localeDirection": "ltr"
+    },  
+    "DE": {
+        "languages": "de-DE",
+        "englishName": "German",
+        "localName": "Deutsch",
+        "localeDirection": "ltr"
+    },
+    "TR": {
+        "languages": "tr",
+        "englishName": "Turkey",
+        "localName": "Türkçe",
+        "localeDirection": "ltr"
+    },
+    "CZ": {
+        "languages": "cs",
+        "englishName": "Czech",
+        "localName": "Čeština",
+        "localeDirection": "ltr"
+    }
+}

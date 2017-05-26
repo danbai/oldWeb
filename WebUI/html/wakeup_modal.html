@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+
+<head>
+    <title>Wakeup Modal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    /* Interaction Cues */
+    
+    #form .ui-state-highlight,
+    #form .ui-content .ui-state-highlight,
+    #form .ui-widget-header .ui-state-highlight {
+        border: 1px solid #EDC7C6;
+        background: #FFE6E7;
+        color: #363636;
+    }
+    
+    #form .ui-state-highlight a,
+    #form .ui-content .ui-state-highlight a,
+    #form .ui-widget-header .ui-state-highlight a {
+        color: #363636;
+    }
+    
+    #weekBox {
+        width: 300px;
+    }
+
+    #weekBox div {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    
+    #weekBox .boxLabel {
+        position: relative;
+        top: -6px;
+        margin-right: 5px;
+    }
+    
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 12px;
+        vertical-align: top;
+        position: relative;
+        top: -2px;
+    }
+
+    .checkbox {
+        padding-right: 0;
+    }
+
+    .custom {
+        display: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5196" tooltip="@LANG5196"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id='wakeup_enable' noserialize="true" checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG135"></div>
+                    <div class="field-content">
+                        <input type="text" id="wakeup_name" name="wakeup_name" maxlength="128" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG85" tooltip="@LANG85"></div>
+                    <div class="field-content">
+                        <select id='extension' name="extension"></select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1484" tooltip="@LANG1484"></div>
+                    <div class="field-content">
+                        <select id='prompt' name="prompt"></select>
+                        <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5198 LANG203" tooltip="@LANG203"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id='custom' noserialize="true" />
+                    </div>
+                </div>
+                <div class="field-cell custom-date">
+                    <div class="field-label" glabel="@LANG203" tooltip="@LANG203"></div>
+                    <div class="field-content">
+                        <input type="text" id="custom_date" name="custom_date" maxlength="128" noserialize="true" />
+                    </div>
+                </div>
+                <div class="field-cell custom">
+                    <div class="field-label" glabel="@LANG203" tooltip="@LANG203"></div>
+                    <div id="weekBox" class="field-content">
+                        <div>
+                            <input type="checkbox" id="week_sun" name="week_sun" class="chk_week" value="0" noserialize="true" />
+                            <span locale="LANG250" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_mon" name="week_mon" class="chk_week" value="1" noserialize="true" />
+                            <span locale="LANG251" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_tue" name="week_tue" class="chk_week" value="2" noserialize="true" />
+                            <span locale="LANG252" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_wed" name="week_wed" class="chk_week" value="3" noserialize="true" />
+                            <span locale="LANG253" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_thu" name="week_thu" class="chk_week" value="4" noserialize="true" />
+                            <span locale="LANG254" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_fri" name="week_fri" class="chk_week" value="5" noserialize="true" />
+                            <span locale="LANG255" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_sat" name="week_sat" class="chk_week" value="6" noserialize="true" />
+                            <span locale="LANG256" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="week_all" name="week_all" value="*" noserialize="true" />
+                            <span locale="LANG104" class="boxLabel"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG247" tooltip="@LANG247"></div>
+                    <div class="field-content">
+                        <div class="selectDiv">
+                            <select id="time_hour" name="time_hour" noserialize="true">
+                                <option value="00">00</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                            </select>
+                        </div>
+                        <div class="selectDiv">:</div>
+                        <div class="selectDiv">
+                            <select id="time_minute" name="time_minute" noserialize="true">
+                                <option value="00">00</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5197" tooltip="@LANG5197"></div>
+                    <div class="field-content">
+                        <input type="text" id="remark" name="remark" maxlength="128" />
+                    </div>
+                </div> -->
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/wakeup-modal.js"></script>
+</body>
+
+</html>

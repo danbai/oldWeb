@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG269">Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../stylesheet/cfgbasic.css?login" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?login" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    body {
+        text-align: center;
+        background-attachment: fixed;
+        background: #225783;
+    }
+    
+    #container {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        vertical-align: middle;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 245px;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        margin-bottom: 20px;
+        padding-left: 4px;
+        height: 30px;
+    }
+    
+    input:focus,
+    input.ieFocusHack {
+        background-color: #FFC58A;
+    }
+    
+    .guiButton {
+        position: relative;
+        top: 15px;
+        cursor: pointer;
+        width: 252px;
+        background-color: #68a6ca;
+        border: 0px;
+        font-size: 18px;
+        color: #315965;
+        font-weight: bold;
+        padding: 5px;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+    }
+    
+    .guiButton:hover {
+        background-color: #86bcdc;
+    }
+    
+    .guibutton:hover {
+        color: white;
+        background-color: #86bcdc;
+        font-weight: bold;
+    }
+    
+    .inputtip {
+        font-size: 16px;
+        color: white;
+        margin-bottom: 2px;
+        text-align: left;
+    }
+    
+    #username,
+    #secret {
+        font-size: 14px;
+        height: 28px;
+    }
+    
+    .lineHeight {
+        line-height: 28px;
+    }
+    
+    .map {
+        position: relative;
+        background: url(../images/map.png) no-repeat;
+        top: -30px;
+    }
+    
+    .mapFont {
+        position: relative;
+        top: 10px;
+        left: -40px;
+        height: 140px;
+        font-weight: bold;
+        color: #ffffff;
+        padding-left: 70px;
+        padding-right: 90px;
+    }
+    
+    .errorInfo {
+        height: 10px;
+        color: red;
+        font-size: 16px;
+        position: relative;
+        top: -20px;
+    }
+    
+    #model_name {
+        font-size: 60px;
+        float: left;
+        padding-right: 80px;
+    }
+    
+    #description {
+        float: right;
+        font-size: 45px;
+        margin-top: 5px;
+        /* width: 249px; */
+        height: 53px;
+    }
+    
+    .copyright {
+        position: fixed!important;
+        left: 0px;
+        bottom: 10px;
+        text-align: center;
+        font: 14px;
+        color: white;
+        width: 100%;
+    }
+    
+    .dd-container {
+        float: right;
+        right: 12px;
+    }
+    
+    #loginContainer {
+        display: inline-block;
+        width: 1024px;
+        height: 419px;
+    }
+    
+    .map {
+        width: 610px;
+        height: 419px;
+        float: left;
+    }
+    
+    #loginDiv {
+        float: left;
+        margin-left: 50px;
+        margin-top: 70px;
+        text-align: left;
+    }
+    
+    #errorInfo {
+        visibility: hidden;
+    }
+    
+    #langDiv {
+        position: relative;
+        margin-left: 0px;
+        width: 247px;
+    }
+    
+    #forget_pwd {
+        float: left;
+        font-size: 14px;
+        text-decoration: #4a82a9;
+        color: #68a6ca;
+    }
+    
+    #forget_pwd:hover {
+        color: #FBB702;
+    }
+
+    .main_logo img {
+        margin-left: 36px;
+        margin-top: 36px;
+    }
+    </style>
+</head>
+
+<body id="loginBody" topmargin="0" onselectstart="return false">
+    <div class="header_row">
+        <div class="main_logo" id="main_logo">
+            <img id="logo" align="left" />
+        </div>
+    </div>
+    <div id="container">
+        <div id="loginContainer">
+            <div class="map">
+                <div class="mapFont">
+                    <span id="model_name"></span>
+                    <span id="description"></span>
+                </div>
+            </div>
+            <div id="loginDiv">
+                <div class="errorInfo"></div>
+                <form action="./home.html" method="POST">
+                    <div class="inputtip" locale="LANG992">Username:</div>
+                    <div>
+                        <input type="text" id="username" name="username" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"/>
+                    </div>
+                    <div class="inputtip" locale="LANG993">Password:</div>
+                    <div>
+                        <input type="password" id="secret" name="secret" />
+                    </div>
+                    <div id="langDiv">
+                        <a href="javascript:;" id="forget_pwd" locale="LANG4189"></a>
+                        <div id="language"></div>
+                        <button type="submit" class='guiButton' id='login_button' locale="LANG269">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="copyright" id="copyright"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/md5.js"></script>
+    <script type="text/javascript" src="../js/login.js"></script>
+</body>
+
+</html>

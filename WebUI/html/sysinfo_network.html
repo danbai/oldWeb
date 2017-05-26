@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG586">System Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG589"></div>
+    <div class="section-body">
+        <div id="wan" style="display: none;">
+            <div class='section-title' locale="LANG49"></div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG154"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_mac"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5130"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_ipv6"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5131"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_ipv6_link"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="wan_gateway_div">
+                <div class="field-label" glabel="@LANG156"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_gateway"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="wan_dns_div">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="wan_dns"></div>
+                </div>
+            </div>
+        </div>
+        <div id="lan">
+            <div class='section-title' locale="LANG50"></div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG154"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_mac"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5130"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_ipv6"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5131"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_ipv6_link"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="lan_gateway_div">
+                <div class="field-label" glabel="@LANG156"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_gateway"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="lan_dns_div">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="lan_dns"></div>
+                </div>
+            </div>
+        </div>
+        <div id="lan1" style="display: none;">
+            <div class='section-title'>LAN 1</div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG154"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_mac"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5130"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_ipv6"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5131"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_ipv6_link"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="lan1_gateway_div">
+                <div class="field-label" glabel="@LANG156"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_gateway"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="lan1_dns_div">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="lan1_dns"></div>
+                </div>
+            </div>
+        </div>
+        <div id="lan2" style="display: none;">
+            <div class='section-title'>LAN 2</div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG154"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_mac"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5130"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_ipv6"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5131"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_ipv6_link"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="lan2_gateway_div">
+                <div class="field-label" glabel="@LANG156"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_gateway"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="lan2_dns_div">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="lan2_dns"></div>
+                </div>
+            </div>
+        </div>
+        <div id="vpn" style="display: none;">
+            <div id="VPNTitle" class="section-title">VPN</div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="vpn_route_div">
+                <div class="field-label" glabel="@LANG550"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn_route"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="vpn_ptp_div">
+                <div class="field-label" glabel="@LANG4009"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn_ptp"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn_dns"></div>
+                </div>
+            </div>
+        </div>
+        <div id="vpn1" style="display: none;">
+            <div id="VPN1Title" class="section-title">WebRTC VPN</div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn1_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="vpn_route_div">
+                <div class="field-label" glabel="@LANG550"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn1_route"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn1_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="vpn_ptp_div">
+                <div class="field-label" glabel="@LANG4009"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn1_ptp"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="vpn1_dns"></div>
+                </div>
+            </div>
+        </div>
+        <div id="hdlc1" style="display: none;">
+            <div class='section-title' locale="LANG3572"></div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5195"></div>
+                <div class="field-content">
+                    <div class="content" id="hdlc1_ip"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="hdlc1_gateway_div">
+                <div class="field-label" glabel="@LANG156"></div>
+                <div class="field-content">
+                    <div class="content" id="hdlc1_gateway"></div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG157"></div>
+                <div class="field-content">
+                    <div class="content" id="hdlc1_mask"></div>
+                </div>
+            </div>
+            <div class="field-cell" id="hdlc1_dns_div">
+                <div class="field-label" glabel="@LANG579"></div>
+                <div class="field-content">
+                    <div class="content" id="hdlc1_dns"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/sysinfo-network.js"></script>
+</body>
+</html>

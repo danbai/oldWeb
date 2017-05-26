@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG3965">Login Timeout Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell{
+            display: inline-block;
+            width: 100%;
+        }
+        .field-cell .field-label {
+            width: 240px;
+        }
+        div.glab span.label {
+            width: 200px;
+        }
+    </style>
+</head>
+<body class="page">
+    <form id="form">
+        <div class='lite_Heading' locale="LANG3965"></div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3966" tooltip="@LANG3967"></div>
+                <div class="field-content">
+                    <input type="text" id="cookie_timeout" name="cookie_timeout" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4726" tooltip="@LANG4727"></div>
+                <div class="field-content">
+                    <input type="text" id="login_max_num" name="login_max_num" maxlength="3" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4728" tooltip="@LANG4729"></div>
+                <div class="field-content">
+                    <input type="text" id="login_band_time" name="login_band_time" maxlength="5" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" type="button" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+        <div class="lite_Heading" locale="LANG4791"></div>
+        <table id="session-timer-settings-list"></table>
+        <div id="session-timer-settings-pager"></div>
+        <div class="lite_Heading" locale="LANG4793"></div>
+        <div class="top_buttons">
+            <button type="button" id="add" class="btn btn-update" locale="LANG769"></button>
+        </div>
+        <div class="lite_desc" locale="LANG5024"></div>
+        <table id="login-white-list-list"></table>
+        <div id="login-white-list-pager"></div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/session-timer-settings.js"></script>
+</body>
+</html>

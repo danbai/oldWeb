@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2582">Warning Events List</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/EMSwitchBox.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .checkbox {
+            top: 0px;
+        }
+        .editParameters {
+            background: url(../images/edit_unpressed.png) no-repeat;
+        }
+        .editParameters:hover {
+            background: url(../images/edit_hover.png) no-repeat;
+        }
+        .editParameters:disabled {
+            background: url(../images/edit_disabled.png) no-repeat;
+        }
+        .editParameters.disabled {
+            background: url(../images/edit_disabled.png) no-repeat;
+        }
+        #email_circle {
+            width: 80px;
+        }
+        #selectPtype_send_warningemail {
+            top: 4px;
+        }
+        #save_btn {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG2582"></div>
+    <div class="search_section">
+        <form id="form">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4802" tooltip="@LANG4801"></div>
+                <div class="field-content">
+                    <select id="Pmode_send_warningemail" name="Pmode_send_warningemail">
+                        <option value="0" locale="LANG4799"></option>
+                        <option value="1" locale="LANG4800"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4446" tooltip="@LANG4447"></div>
+                <div class="field-content">
+                    <input type="text" id="email_circle" name="email_circle" maxlength="18">
+                    <select id="Ptype_send_warningemail" name="Ptype_send_warningemail" style="margin-left: 88px;">
+                        <option value="minute" locale="LANG2576"></option>
+                        <option value="hour" locale="LANG2577"></option>
+                        <option value="day" locale="LANG2578"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">取 消</button>
+                    <button type="submit" id="save_btn" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='top_buttons'>
+        <button type="button" id="btnTurnOnWarning" class="btn btn-update" locale="LANG2554"></button>
+        <button type="button" id="btnTurnOffWarning" class="btn btn-update" locale="LANG2555"></button>
+        <button type="button" id="btnTurnOnMailNotification" class="btn btn-update" locale="LANG2556"></button>
+        <button type="button" id="btnTurnOffMailNotification" class="btn btn-update" locale="LANG2557"></button>
+    </div>
+    <div id='warning_log_container'></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/table.js"></script>
+    <script type="text/javascript" src="../js/EMSwitchBox.js"></script>
+    <script type="text/javascript" src="../js/warning-events-list.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+</body>
+</html>

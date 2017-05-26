@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG632">Manage Zero Config</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .selectPosition {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 650px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2629"></div>
+                    <div class="field-content">
+                        <input class='check disablecheck' type='checkbox' id='hotdesking' name='hotdesking' />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1293" tooltip="@LANG1294"></div>
+                    <div class="field-content">
+                        <input id="new_mac" name='new_mac' type="text" maxlength="12" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1291" tooltip="@LANG1292"></div>
+                    <div class="field-content">
+                        <input id="edit_ip" name="edit_ip" type="text" maxlength="15" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG85" tooltip="@LANG1290">
+                    </div>
+                    <div class="field-content">
+                        <select id="edit_account" name="edit_account" >
+                        </select>
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1298" tooltip="@LANG1297"></div>
+                    <div class="field-content">
+                        <input id="edit_version" name="edit_version" type="text" maxlength="128" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1295" tooltip="@LANG1296"></div>
+                    <div class="field-content">
+                        <input id="edit_model" name="edit_model" type="text" maxlength="128" />
+                    </div>
+                </div>
+                <!-- <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2625" tooltip="@LANG2628"></div>
+                    <div class="field-content">
+                        <select id="edit_index" name="edit_index"></select>
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG2625" tooltip="@LANG2628"></div>
+                    <div class="field-content" id="edit_ext"></div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 650px; display: none;">
+                    <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/zc-devices-modal.js"></script>
+</body>
+</html>

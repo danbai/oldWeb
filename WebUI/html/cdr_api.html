@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2998">API Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .btn_add {
+            background: url(../images/add.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+        .btn_del {
+            background: url(../images/delete_circle.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+        .deleteFileBtn {
+            top: -1px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG2998"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG274" tooltip="@LANG2784"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enabled' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1856" tooltip="@LANG2790"></div>
+                <div class="field-content">
+                    <input type='text' name='tlsbindaddr' id="tlsbindaddr" maxlength="127" class="field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3000" tooltip="@LANG2999"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="tlsprivatekey" noSerialize=true readonly="readonly" />
+                        <button type="button" id="cdr_tls_key_select" class="selectBtn"></button> 
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3002" tooltip="@LANG3001"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="tlscertfile" noSerialize=true readonly="readonly" />
+                        <button type="button" id="cdr_tls_cert_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG72" tooltip="@LANG2779">
+                </div>
+                <div class="field-content">
+                    <input type='text' name='username' id="username" maxlength="64" class="field" value="cdrapi" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG73" tooltip="@LANG2780">
+                </div>
+                <div class="field-content">
+                    <input type='text' name='secret' id="secret" maxlength="64" class="field" value="12345" />
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG2775" tooltip="@LANG2777">
+                </div>
+                <div class="field-content">
+                    <table id="denyTable" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input position="left" type="text" id="denyIP0" name="denyIP0" maxlength="100" /></td>
+                            <td><label>/</label></td> 
+                            <td><input position="right" type="text" id="denyNetmask0" name="denyNetmask0" maxlength="100" /></td>
+                            <td><button type="button" class="btn_add" id="btnDeny0" onclick="addRow(this, 'denyTable');"></button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG2776" tooltip="@LANG2778">
+                </div>
+                <div class="field-content">
+                    <table id="permitTable" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input position="left" type="text" id="permitIP0" name="permitIP0" maxlength="100" /></td>
+                            <td><label>/</label></td> 
+                            <td><input position="right" type="text" id="permitNetmask0" name="permitNetmask0" maxlength="100" /></td>
+                            <td><button type="button" class="btn_add" id="btnPermit0"></button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/cdr-api.js"></script>
+</body>
+</html>

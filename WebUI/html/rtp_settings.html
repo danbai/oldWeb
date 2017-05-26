@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG676">RTP Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG676"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1618" tooltip="@LANG1619">
+                </div>
+                <div class="field-content">
+                    <input id="rtpstart" name='rtpstart' type='text' maxlength="6" class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1616" tooltip="@LANG1617">
+                </div>
+                <div class="field-content">
+                    <input id='rtpend' name='rtpend' type='text' maxlength="6" class="dis_static field " />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1620" tooltip="@LANG1621">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id='strictrtp' name="strictrtp" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1614" tooltip="@LANG1615">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id='rtpchecksums' name="rtpchecksums" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4394" tooltip="@LANG4436"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='icesupport' name="icesupport" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1575" tooltip="@LANG4437">
+                </div>
+                <div class="field-content">
+                    <input id="stunaddr" name='stunaddr' type='text' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4738" tooltip="@LANG4742">
+                </div>
+                <div class="field-content">
+                    <input id="bfcpstart" name='bfcpstart' type='text' maxlength="6" class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4739" tooltip="@LANG4743">
+                </div>
+                <div class="field-content">
+                    <input id='bfcpend' name='bfcpend' type='text' maxlength="6" class="dis_static field " />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4740" tooltip="@LANG4744">
+                </div>
+                <div class="field-content">
+                    <input id="bfcp_tcp_start" name='bfcp_tcp_start' type='text' maxlength="6" class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4741" tooltip="@LANG4745">
+                </div>
+                <div class="field-content">
+                    <input id='bfcp_tcp_end' name='bfcp_tcp_end' type='text' maxlength="6" class="dis_static field " />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label"  glabel="@LANG4406" tooltip="@LANG4438" >
+                </div>
+                <div class="field-content">
+                    <input id="turnaddr" name='turnaddr' type='text' class="dis_static field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label"  glabel="@LANG4407" tooltip="@LANG4439" >
+                </div>
+                <div class="field-content">
+                    <input name='turnusername' type='text' style="display: none;" />
+                    <input id="turnusername" name='turnusername' type='text' class="dis_static field" maxlength="32"/>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label"  glabel="@LANG4408" tooltip="@LANG4440" >
+                </div>
+                <div class="field-content">
+                    <input name='turnpassword' type='password' style="display: none;" />
+                    <input id="turnpassword" name='turnpassword' type='password' class="dis_static field" />
+                </div>
+            </div>
+            <div id="error" class="error"></div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-git.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/rtp-settings.js"></script>
+</body>
+
+</html>

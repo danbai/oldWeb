@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title locale="LANG592">CDR Viewer</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/styles.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    table thead th,
+    table tbody td {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+    
+    .select_category {
+        text-align: left;
+        width: 140px;
+    }
+    
+    .select_extlist {
+        text-align: right;
+        width: 140px;
+    }
+    
+    .select_period {
+        text-align: left;
+        width: 140px;
+    }
+    
+    .table_chart td {
+        width: 150px;
+        text-align: center;
+        margin-right: 0px;
+    }
+    
+    .table_calldetail {
+        border: 1px solid #d6d6d6;
+        border-collapse: collapse;
+        margin: 0 10px;
+        width: 940px;
+        text-align: left;
+        padding: 3px;
+        word-wrap: break-word;
+        word-break: break-all;
+        border-spacing: 0px;
+    }
+    
+    .table_calldetail thead {
+        background: #91C6E5;
+        color: #3A3C3B;
+        font-size: 17px;
+    }
+    
+    .table_calldetail thead th {
+        font-weight: bold;
+        cursor: pointer;
+        height: 23px;
+        text-align: center;
+    }
+    
+    .table_calldetail tr td {
+        padding: 3px;
+    }
+    
+    .table_record {
+        border: 1px solid #d6d6d6;
+        border-collapse: collapse;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        padding: 3px;
+        word-wrap: break-word;
+        word-break: break-all;
+        border-spacing: 0px;
+    }
+    
+    .table_record thead {
+        background: #91C6E5;
+        color: #3A3C3B;
+        font-size: 17px;
+    }
+    
+    .table_record thead th {
+        font-weight: bold;
+        cursor: pointer;
+        height: 23px;
+        text-align: center;
+    }
+    
+    .table_record tr td {
+        padding: 3px;
+    }
+    
+    #delete_record .checkbox {
+        left: 100px;
+    }
+
+    .answereddiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/answered.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .noanswerdiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/noanswer.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .faileddiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/failed.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .busydiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/busy.png) center center no-repeat transparent;
+        margin: 0 0 0 10px;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .phonediv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/intext.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .connectdiv {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background: url(../images/connect.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .incomingdiv {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background: url(../images/incoming.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .outgoingdiv {
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        background: url(../images/outgoing.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    
+    .pstndiv {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/telephone.png) center center no-repeat transparent;
+        margin: 0 0 0 0;
+        padding: 0px;
+        border: 0px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form>
+        <div id="delete_filelist" style="width: 600px; display: none;" align="center">
+            <div id="delete_record"></div>
+            <div id="delete_hint" style="height: 20px; display: none;">
+                <span loacle="LANG1019">Please select files to continue!</span>
+            </div>
+            <div class="field-cell modal-commands" style="width: 300px; text-align:center;">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button id="delete_submit" type="button" class="btn btn-update" locale="LANG739"></button>
+            </div>
+        </div>
+        <div id="download_filelist" style="width: 600px; height: 200px; display: none;" align="center">
+            <div id="download_record"></div>
+        </div>
+        <div id="play_filelist" style="width: 600px; height: 200px; display: none;" align="center">
+            <div id="play_record"></div>
+        </div>
+        <div id="chart" style="width: 700px; display: none;">
+            <div id="charttitle" align="center"></div>
+            <div id="placeholder" style="width: 680px; height: 200px; border: 0; margin-left: 3%;" align="center"></div>
+            <div id="choiceholder" style="width: 680px; margin-left: 30px; margin-top: 20px;" align="left"></div>
+        </div>
+        <div id="calldetail" style="width: 960px; height: 300px; display: none;" align="center"></div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <!-- [if lte IE 8]>
+        <script type="text/javascript" src="../js/excanvas.min.js"></script>
+    <![endif] -->
+    <script type="text/javascript" src="../js/jquery.flot.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.time.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.categories.js"></script>
+    <script type="text/javascript" src="../js/jquery.flot.canvas.js"></script>
+    <!-- <script type="text/javascript" src="../js/jquery.flot.symbol.js"></script> -->
+    <script type="text/javascript" src="../js/jquery.flot.axislabels.js"></script>
+    <script type="text/javascript" src="../js/cdr-modal.js"></script>
+</body>
+
+</html>

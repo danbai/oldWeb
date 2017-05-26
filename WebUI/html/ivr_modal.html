@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>IVR</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .link { 
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-left: 12px;
+            vertical-align: top;
+            position: relative;
+            top: -2px;
+        }
+        .field-cell {
+            padding:2px 0px;
+        }
+        .field-content{
+            width:210px;
+        }
+        .field-content-special {
+            line-height: 28px;
+            width: 260px;
+        }
+        #prompt_welcome {
+            margin-right: 5px;
+        }
+
+        .divLineHeight {
+            line-height: 30px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .divLineHeight input.styled {
+            top: 13px
+        }
+
+        .divLineHeight .checkbox {
+            top: 9px;
+        }
+
+        .custom-alert {
+            display: none;
+        }
+
+        .select_div div {
+            float: left;
+        }
+
+        .click {
+            position: relative;
+            top: 45px;
+        }
+
+        .select_div img {
+            margin-top: 5px;
+            top: 18px;
+            display: block;
+            position: relative;
+        }
+
+        .select_div select {
+            width: 200px;
+            margin-right: 15px;
+            margin-left: 15px;
+            height: 95px;
+        }
+
+        .select_div b {
+            display: block;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        #leftSelect {
+            margin-left: 0;
+        }
+
+        .hide_list {
+            display: none;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px; height: 533px;">
+            <div class="section-body section-body-top">
+                <div class="nav_wrap" id="nav_wrap">
+                    <div class="settings_hr"></div>
+                    <ul id="nav_settings" class="clearfix">
+                        <li class="current">
+                            <a href="javascript:;" locale="LANG2217"></a>
+                        </li>
+                        <li id="li_last">
+                            <a href="javascript:;" locale="LANG648"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="settings_parent item_parent">
+                    <!--basic-->
+                    <div class="basic settings current_position">
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG135" tooltip="@LANG1459"></div>
+                            <div class="field-content">
+                                <input type="text" id='ivr_name' name='ivr_name' maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG85" tooltip="@LANG1451"></div>
+                            <div class="field-content">
+                                <input type="text" id='extension' name='extension' maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1447" tooltip="@LANG1448"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id='dial_trunk' />
+                            </div>
+                        </div>
+                        <div id="dialTrunkIsEnable" class="field-cell">
+                            <div class="field-label" gLabel="@LANG1069" tooltip="@LANG1070"></div>
+                            <div class="field-content">
+                                <select id='permission' dfalt="internal">
+                                    <option value='internal' locale="LANG1071"></option>
+                                    <option value='internal-local' locale="LANG1072"></option>
+                                    <option value='internal-local-national' locale="LANG1073"></option>
+                                    <option value='internal-local-national-international' locale="LANG1074"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell DID_destination_div">
+                            <div class="field-label" glabel="@LANG1445" tooltip="@LANG1446"></div>
+                            <div class="field-content" style="width: 400px; top: -5px;">
+                                <div class="divLineHeight">
+                                    <input type="checkbox" checked id="dial_extension" class="check-DID" name="dial_extension" />
+                                    <span locale="LANG85"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_conference" class="check-DID" name="dial_conference" />
+                                    <span locale="LANG18"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_queue" class="check-DID" name="dial_queue" />
+                                    <span locale="LANG607"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_ringgroup" class="check-DID" name="dial_ringgroup" />
+                                    <span locale="LANG600"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_paginggroup" class="check-DID" name="dial_paginggroup" />
+                                    <span locale="LANG604"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_vmgroup" class="check-DID" name="dial_vmgroup" />
+                                    <span locale="LANG21"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_fax" class="check-DID" name="dial_fax" />
+                                    <span locale="LANG1268"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_directory" class="check-DID" name="dial_directory" />
+                                    <span locale="LANG2884"></span>
+                                </div>
+                                <div class="divLineHeight">
+                                    <input type="checkbox" id="dial_all" name="dial_all" noSerialize="true" />
+                                    <span locale="LANG104"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="field-cell" style="display:none;">
+                            <div class="field-label" glabel="@LANG1449" tooltip="@LANG1450"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id='ivr_disPin' />
+                            </div>
+                        </div>
+                        <div class="field-cell" style="display:none;">
+                            <div class="field-label" glabel="@LANG1472" tooltip="@LANG1473"></div>
+                            <div class="field-content">
+                                <input type="text" id='ivr_trunkExt' name='ivr_trunkExt' maxlength="32" />
+                            </div>
+                        </div> -->
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG5327" tooltip="@LANG5328"></div>
+                            <div class="field-content">
+                                <select id="switch" name="switch">
+                                    <option value='no' locale="LANG5332"></option>
+                                    <option value='black' locale="LANG2292"></option>
+                                    <option value='white' locale="LANG5333"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell specail clearfix hide_list">
+                            <div class="field-label" glabel="@LANG5331" tooltip="@LANG5350"></div>
+                            <div class="select_div">
+                                <div>
+                                    <b locale="LANG2484"></b>
+                                    <select id="leftSelect" size="5" noserialize="true" multiple="multiple"></select>
+                                </div>
+                                <div class="click">
+                                    <span class="selectIcon addAll" id="allToRight"></span>
+                                    <span class="selectIcon addRight" id="oneToRight"></span>
+                                    <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                    <span class="selectIcon removeAll" id="allToLeft"></span>
+                                </div>
+                                <div>
+                                    <b locale="LANG2483"></b>
+                                    <select name="ivr_blackwhite_list" size="5" id="ivr_blackwhite_list" noserialize="true" multiple="multiple"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='field-cell hide_list'>
+                            <div class='field-label' glabel="@LANG5329" tooltip="@LANG5330"></div>
+                            <div class='field-content'>
+                                <textarea id="ivr_out_blackwhite_list" name="ivr_out_blackwhite_list" cols="30" rows="3" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG5071" tooltip="@LANG5075"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id='replace_caller_id' />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG3248" tooltip="@LANG3249"></div>
+                            <div class="field-content field-content-special">
+                                <select id="alertinfo" name="alertinfo">
+                                    <option locale="LANG133" value="">None</option>
+                                    <option value="ring1">Ring 1</option>
+                                    <option value="ring2">Ring 2</option>
+                                    <option value="ring3">Ring 3</option>
+                                    <option value="ring4">Ring 4</option>
+                                    <option value="ring5">Ring 5</option>
+                                    <option value="ring6">Ring 6</option>
+                                    <option value="ring7">Ring 7</option>
+                                    <option value="ring8">Ring 8</option>
+                                    <option value="ring9">Ring 9</option>
+                                    <option value="ring10">Ring 10</option>
+                                    <option value="Bellcore-dr1">Bellcore-dr1</option>
+                                    <option value="Bellcore-dr2">Bellcore-dr2</option>
+                                    <option value="Bellcore-dr3">Bellcore-dr3</option>
+                                    <option value="Bellcore-dr4">Bellcore-dr4</option>
+                                    <option value="Bellcore-dr5">Bellcore-dr5</option>
+                                    <option locale="LANG231" value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell custom-alert" id="customAlertDiv">
+                            <div class="field-label" glabel="@LANG3250"></div>
+                            <div class="field-content">
+                                <input type="text" id="custom_alert_info" name="custom_alert_info" noserialize="true" maxlength=64 />
+                            </div>
+                        </div>
+                        <div class="field-cell" >
+                            <div class="field-label" glabel="@LANG1483" tooltip="@LANG1482"></div>
+                            <div class="field-content field-content-special">
+                                <select id="welcome_prompt"></select>
+                                <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2360" tooltip="@LANG2541"></div>
+                            <div class="field-content">
+                                <input type="text" id="digit_timeout" name="digit_timeout" class="inputWidth30" maxlength="3" dfalt="3" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2540" tooltip="@LANG1479"></div>
+                            <div class="field-content">
+                                <input type="text" id="response_timeout" name="response_timeout" class="inputWidth30" maxlength="3" dfalt="10" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1474" tooltip="@LANG1475"></div>
+                            <div class="field-content">
+                                <select id="timeout_prompt"></select>
+                                <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1453" tooltip="@LANG1454"></div>
+                            <div class="field-content">
+                                <select id="invalid_prompt"></select>
+                                <span onclick="link_prompt();" class="link" locale="LANG1484"></span>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1476" tooltip="@LANG1477"></div>
+                            <div class="field-content">
+                                <select id="tloop" dfalt="3" >
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1455" tooltip="@LANG1456"></div>
+                            <div class="field-content">
+                                <select id="iloop" dfalt="3">
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1458" tooltip="@LANG2545"></div>
+                            <div class="field-content">
+                                <select id="language" ></select>
+                            </div>
+                        </div>
+                        <!--/basic-->
+                    </div>
+                    <!--advanced-->
+                    <div class="field-cell settings advance">
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1460"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_0"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_0" name="keypressevent_0"></select>
+                                <input type="text" id='keypressevent_nu_0' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1461"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_1"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_1" name="keypressevent_1"></select>
+                                <input type="text" id='keypressevent_nu_1' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1462"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_2"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_2" name="keypressevent_2"></select>
+                                <input type="text" id='keypressevent_nu_2' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1463"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_3"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_3" name="keypressevent_3"></select>
+                                <input type="text" id='keypressevent_nu_3' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1464"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_4"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_4" name="keypressevent_4"></select>
+                                <input type="text" id='keypressevent_nu_4' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1465"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_5"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_5" name="keypressevent_5"></select>
+                                <input type="text" id='keypressevent_nu_5' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1466"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_6"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_6" name="keypressevent_6"></select>
+                                <input type="text" id='keypressevent_nu_6' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1467"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_7"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_7" name="keypressevent_7"></select>
+                                <input type="text" id='keypressevent_nu_7' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1468"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_8"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_8" name="keypressevent_8"></select>
+                                <input type="text" id='keypressevent_nu_8' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1469"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_9"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_9" name="keypressevent_9"></select>
+                                <input type="text" id='keypressevent_nu_9' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1470"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_10"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_10" name="keypressevent_10"></select>
+                                <input type="text" id='keypressevent_nu_10' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG102" tooltip="@LANG1481"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_t"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_t" name="keypressevent_t"></select>
+                                <input type="text" id='keypressevent_nu_t' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG1452" tooltip="@LANG1457"></div>
+                            <div class="field-content">
+                                <select class="keypress" id="keypress_i"></select>
+                            </div>
+                            <div class="field-content">
+                                <select id="keypressevent_i" name="keypressevent_i"></select>
+                                <input type="text" id='keypressevent_nu_i' name="external_number" class="external_number" maxlength="32" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--/advanced-->
+                </div>
+                <div class="field-cell modal-commands newStep_select_tr dialogContainer-commands">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+             </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ivr-modal.js"></script>
+    <script type="text/javascript" src="../js/jquery.slide.js"></script>
+</body>
+</html>

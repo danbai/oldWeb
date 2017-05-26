@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG3908">Operation Log</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .options {
+            position: relative;
+            top: -1px;
+        }
+
+        .jumpPage{
+            text-decoration: underline; 
+            cursor: pointer;
+        }
+
+        /* Interaction Cues */
+        #form .ui-state-highlight,
+        #form .ui-content .ui-state-highlight,
+        #form .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+
+        #form .ui-state-highlight a,
+        #form .ui-content .ui-state-highlight a,
+        #form .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+
+        tr.jqgrow .more {
+            color: #398FD6;
+            cursor: pointer;
+            margin: 0 0 0 2px;
+        }
+
+        tr.jqgrow .more-content {
+            display: none;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG3908"></div>
+    <form id="form">
+        <div id="divOpts">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1048"></div>
+                <div class="field-content">
+                    <input type='text' id='fromDate' name="fromDate" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1049"></div>
+                <div class="field-content">
+                    <input type='text' id='toDate' name="toDate" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG5200"></div>
+                <div class="field-content">
+                    <input type='text' id="operLogIP" name="operLogIP" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG2809"></div>
+                <div class="field-content">
+                    <select id="operLogUsr" name="operLogUsr"></select>
+                </div>
+            </div> 
+        </div>
+        <div class='top_buttons'>
+            <button type="submit" id="viewOperLog" class="btn btn-update" locale="LANG803"></button>
+            <button type="button" id="allOperLog" class="btn btn-update" locale="LANG4107"></button>
+            <button type="button" id="DelSearchOperLog" class="btn btn-update" locale="LANG4071"></button>
+            <button type="button" id="btnDelAll" class="btn btn-update" locale="LANG3911"></button>
+           <!--  <button type="button" id="batchDelete" class="btn btn-update" locale="LANG3911">Delete Selected Operation Logs</button> -->
+        </div>
+    </form>
+    <div id="operationLog_div">
+        <table id="operationLog"></table>
+        <div id="operationLogPager"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/operationLog.js"></script>
+</body>
+</html>

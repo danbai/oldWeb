@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+
+<head>
+    <title locale="LANG4396">WebRTC/HTTP/DTLS</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG4396"></div>
+    <form id="form_http">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4398" tooltip="@LANG4429"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enabled' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4399" tooltip="@LANG4430"></div>
+                <div class="field-content">
+                    <input type='text' name='bindaddr' id="bindaddr" maxlength="127" class="field IPv6Input" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4400" tooltip="@LANG4431"></div>
+                <div class="field-content">
+                    <input type='text' name='bindport' id="bindport" maxlength="127" class="field" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1868" tooltip="@LANG4432"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='tlsenable' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1856" tooltip="@LANG4433"></div>
+                <div class="field-content">
+                    <input type='text' name='tlsbindaddr' id="tlsbindaddr" maxlength="127" class="field IPv6Input" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4422" tooltip="@LANG4434"></div>
+                <div class="field-content">
+                    <input type='text' id='websocket_interface' maxlength="127" class="field" disabled/>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4423" tooltip="@LANG4435"></div>
+                <div class="field-content">
+                    <input type='text' id="secure_websocket_interface" maxlength="127" class="field" disabled/>
+                </div>
+            </div>
+            <!--<div class="field-cell">
+                <div class="field-label" glabel="@LANG3000" tooltip="@LANG2999"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="tlsprivatekey" name="tlsprivatekey" disabled />
+                        <button type="button" id="cdr_tls_key_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3002" tooltip="@LANG3001"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="tlscertfile" name="tlscertfile" disabled />
+                        <button type="button" id="cdr_tls_cert_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>-->
+            <!--<div class="field-cell">
+                <div class="field-label" glabel="@LANG4427" tooltip="@LANG4428"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enable_webrtc_anonymous_call' />
+                </div>
+            </div>-->
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                    <!--<button type="button" id="downloadPackage" class="btn btn-paging" onclick="download_pkg();" locale="LANG4512"></button>-->
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--<div class='lite_Heading' locale="LANG4397"></div>
+    <form id="form_dtls">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4404" tooltip="@LANG4404"></div>
+                <div class="field-content">
+                    <select id="dtls_setup" name="dtls_setup">
+                        <option value="actpass">actpass</option>
+                        <option value="active">active</option>
+                        <option value="passive">passive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4401" tooltip="@LANG4401"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="dtls_private_key" name="dtls_private_key" disabled />
+                        <button type="button" id="cdr_tls_key_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4402" tooltip="@LANG4402"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="dtls_cert_file" name="dtls_cert_file" disabled />
+                        <button type="button" id="cdr_tls_cert_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4403" tooltip="@LANG4403"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="dtls_ca_file" name="dtls_ca_file" disabled />
+                        <button type="button" id="cdr_tls_cert_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="cdr_tls_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="cdr_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>-->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <!--<script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>-->
+    <script type="text/javascript" src="../js/sip-webrtc.js"></script>
+</body>
+
+</html>

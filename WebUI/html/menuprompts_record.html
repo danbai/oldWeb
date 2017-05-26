@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG674">Custom IVR Prompts</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .nocf {
+        display: none;
+    }
+    </style>
+</head>
+<body class="page">
+    <div class='nocf' id='nocf' locale="LANG1604"></div>
+    <div class="lite_Heading" locale="LANG674"></div>
+    <div class='top_buttons'>
+        <button type="button" id="btnAdd" class="btn btn-update" locale="LANG775"></button>
+        <button type="button" id="btnUpload" class="btn btn-update" locale="LANG776"></button>
+        <button type="button" id="btnDownloadAll" class="btn btn-update" locale="LANG741 LANG28"></button>
+        <button type="button" id="batchDelete" class="btn btn-update" locale="LANG3872 LANG28"></button>
+        <button type="button" id="deleteAll" class="btn btn-update" locale="LANG3873 LANG28"></button>
+    </div>
+    <div class="section-body">
+        <table id="ivrprompts_list"></table>
+        <div id="ivrprompts_pager"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/menuprompts-record.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG658">Incoming Calling Rules</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell .field-label {
+        width: auto;
+    }
+    
+    div.glab {
+        padding: 4px 6px;
+    }
+    
+    div.glab span.label {
+        width: 60px;
+    }
+    
+    div.members {
+        line-height: 24px;
+    }
+    
+    .blue {
+        color: blue;
+    }
+    
+    .green {
+        color: green;
+    }
+
+    .disabled_extension_trunk {
+        margin-right: 0;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class="lite_Heading" locale="LANG658"></div>
+    <div class='top_buttons'>
+        <button type="button" id="btnAdd" class="btn btn-update" locale="LANG771">Create New Incoming Rule</button>
+        <button type="button" id="btnBlackList" class="btn btn-update" locale="LANG2278"></button>
+        <button type="button" id="btnSetGlobalInboundMode" class="btn btn-update" locale="LANG4543"></button>
+    </div>
+    <div class="section-body" id="trunkListDiv" style="display: none;">
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG83"></div>
+            <div class="field-content">
+                <select id='trunkList' name='trunkList'></select>
+            </div>
+        </div>
+    </div>
+    <table id="incomingRulesList"></table>
+    <div id="incomingRulesList_pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/incoming.js"></script>
+</body>
+
+</html>

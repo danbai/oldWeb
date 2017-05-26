@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG4553">PIN Groups</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #table_memberlist {
+        border: 0px;
+        text-align: left;
+        width: 100%;
+    }
+    
+    #table_memberlist tr {
+        background: #e3e3e2;
+        color: #747474;
+        height: 30px;
+    }
+
+    #table_memberlist tr.frow {
+        background: #e3e3e2;
+        color: #747474;
+    }
+
+    #table_memberlist {
+        font-weight: bold;
+    }
+    
+    .table {
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset,0px 0px 1px rgba(200, 200, 200, 0.5); */
+        border-spacing: 0px;
+        /* table-layout: fixed; */
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    table#table_memberlist thead th,
+    table#table_memberlist tbody td {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+
+    table tbody td.noUser {
+        border-bottom: 0;
+        height: 30px;
+    }
+    
+    table tbody {
+        background-color: #fff;
+    }
+    
+    table.table tbody td span,
+    table.table thead th span {
+        cursor: pointer;
+        /* color: #225685; */
+        margin-left: 8px;
+    }
+    
+    .thead tr,
+    table.table tbody tr.frow {
+        background: #91C6E5;
+        height: 23px;
+        color: #3A3C3B;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .tbody tr {
+        height: 23px;
+    }
+    
+    table tbody tr.even {
+        background: #EFEFEF;
+    }
+    
+    table tbody tr.odd {
+        background: #FFFFFF;
+    }
+    
+    .tbody tr:hover,
+    table.table tbody tr.even:hover,
+    table.table tbody tr.odd:hover {
+        background: #CAECFF;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG4553">PIN Groups</div>
+    <div class="top_buttons">
+        <button type="button" id="btnAdd" class="btn btn-update" locale="LANG4340 LANG4554"></button>
+    </div>
+    <table id="PinSetsList"></table>
+    <div id="PinSetsPager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/pin-sets.js"></script>
+</body>
+
+</html>

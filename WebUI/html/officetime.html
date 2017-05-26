@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+<head>
+    <title locale="LANG3271">Office Time</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .reflesh-cell {
+            clear: both;
+            min-height: 26px;
+            line-height: 26px;
+        }
+        .reflesh-label-special {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            line-height: 30px;
+            position: relative;
+            vertical-align: middle;
+            margin: 8px 0 0 0;
+        }
+        .reflesh-label-special .reflesh-label {
+            width: auto;
+            margin-right: 8px;
+            float: left;
+        }
+        .reflesh-cell .reflesh-content {
+            float: left;
+            position: relative;
+            height: 30px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG3271"></div>
+    <div class='top_buttons'>
+        <div class="top_buttons">
+            <button type="button" id="add" class="btn btn-update" locale="LANG3267"></button>
+            <button type="button" id="batchDelete" class="btn btn-update" locale="LANG3268"></button>
+        </div>
+    </div>
+    <table id="officetime-list"></table> 
+    <div id="officetime-pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/officetime.js"></script>
+</body>
+</html>

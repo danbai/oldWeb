@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG689">Language Preferences</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+    #languagediv .language_wrap {
+        line-height: 32px;
+    }
+    
+    #languagediv .language_wrap span {
+        width: 172px;
+        display: inline-block;
+        position: relative;
+        top: -6px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG689">Language Settings</div>
+    <div class='section-title' locale="LANG783"></div>
+    <div class="section-body">
+        <form id="form">
+            <div class="field-cell" style="display:inline-block;">
+                <div class="field-label" gLabel="@LANG1741" tooltip="@LANG1742"></div>
+                <div class="field-content">
+                    <input type="text" id="fileUrl" readonly="readonly" />
+                    <button type="button" id="upload" class="selectBtn"></button>
+                </div>
+                <div class="field-content" style="display:inline-block;">
+                    <button type="button" id="udo" class="uploadFileBtn" locale="LANG782"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG781"></div>
+    <div class="section-body">
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG1739" tooltip="@LANG1740"></div>
+            <div class="field-content">
+                <div id='languagediv' class="dis_static field"></div>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <p>
+                    <button id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726">Cancel</button>
+                    <button id="update" class="btn btn-paging" onclick="showVoicePromptsDialog();" locale="LANG2464">Upgrade</button>
+                    <button type="button" id="save" class="btn btn-save" onclick="save_changes();" locale="LANG728">Save</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/language.js"></script>
+</body>
+
+</html>

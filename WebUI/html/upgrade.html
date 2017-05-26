@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG619">Upgrade Firmware</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-content-special {
+            left: 2px;
+        }
+        .field-cell .field-label {
+            width: 230px;
+        }
+        div.glab span.label {
+            width: 190px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG619"></div>
+    <div class='section-title' locale="LANG620"></div>
+    <div class="section-body">
+        <form id="form_network" autocomplete="off">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1269" tooltip="@LANG1270"></div>
+                <div class="field-content field-content-special">
+                    <select id="upgrade-via" name="upgrade-via" class="pvalue"  >
+                        <option value="0" locale="LANG216">TFTP</option>
+                        <option value="1" locale="LANG217">HTTP</option>
+                        <option value="2" locale="LANG218">HTTPS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1271" tooltip="@LANG1272"></div>
+                <div class="field-content">
+                    <input type='text' id='firmware-server-path' name="firmware-server-path" maxlength="256" class="pvalue" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1273" tooltip="@LANG1274"></div>
+                <div class="field-content">
+                    <input type='text' id='firmware-file-prefix' name="firmware-file-prefix" maxlength="256" class="pvalue" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1275" tooltip="@LANG1276"></div>
+                <div class="field-content">
+                    <input type='text' id='firmware-file-suffix' name="firmware-file-suffix" maxlength="256" class="pvalue" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1277" tooltip="@LANG1278"></div>
+                <div class="field-content">
+                    <input type='text' name="username" style="display: none;" />
+                    <input type='text' id='username' name="username" maxlength="256" class="pvalue" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1279" tooltip="@LANG1280"></div>
+                <div class="field-content">
+                    <input type="password" name="password" style="display: none;" />
+                    <input type='password' id='password' name="password" maxlength="256" class="pvalue" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" gLabel="@LANG1281"></div>
+                <div class="field-content">
+                    <input type='text' id='P237' name="P237" maxlength="256" class="pvalue" />
+                </div>
+            </div>
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" gLabel="@LANG1282"></div>
+                <div class="field-content">
+                    <input type='text' id='P234' name="P234" maxlength="256" class="pvalue" />
+                </div>
+            </div>
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" gLabel="@LANG1283"></div>
+                <div class="field-content">
+                    <input type='text' id='P235' name="P235" maxlength="256" class="pvalue" />
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG621"></div>
+    <div class="section-body">
+        <form id="form_upgrade">
+            <div class="field-cell" style="display:inline-block;">
+                <div class="field-label" gLabel="@LANG1284" tooltip="@LANG1285"></div>
+                <div class="field-content">
+                    <input type="text" id="fileUrl" name="fileUrl" readonly="readonly" />
+                    <button type="button" id="upload" class="selectBtn"></button>
+                </div>
+                <div class="field-content" style="display:inline-block;">
+                    <button type="submit" id="udo" class="uploadFileBtn" locale="LANG785"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/upgrade.js"></script>
+</body>
+</html>

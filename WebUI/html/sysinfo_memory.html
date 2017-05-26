@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG586">System Information</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #p {
+            margin: 2em auto;
+            text-align: center;
+            border-top: 1px soild #CCC;
+            border-bottom: 1px soild #CCC;
+            background: #e4e4e4;
+            padding:10px 0px;
+            color: #5a5a5a;
+            text-shadow: 1px 1px 25px #000000;
+            border-radius: 0px 0px 5px 5px;
+            box-shadow: 0px 0px 10px #202020;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG591"></div>
+    <div class="section-body">
+        <ul>
+            <li style="float: left; width: 50%;">
+                <div locale="LANG165"></div>
+                <div id="cpu_usage" class="p" style="width: 360px; height: 240px;"></div>
+            </li>
+            <li style="float: left; width: 50%;">
+                <div locale="LANG166"></div>
+                <div id="memory_usage" class="p" style="width: 360px; height: 240px;"></div>
+            </li>
+       </ul>
+    </div>
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="../js/excanvas.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/raphael.2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/justgage.1.0.1.min.js"></script>
+    <script type="text/javascript" src="../js/sysinfo-memory.js"></script>
+</body>
+</html>

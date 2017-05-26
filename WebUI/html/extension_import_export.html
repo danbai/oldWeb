@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Import/Export Extensions</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            display: inline-block;
+            *display: inline; 
+            zoom: 1;
+            width: 580px;
+        }
+        .field-cell .field-label {
+            width: 205px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        .field-label div.glab span.label {
+            width: 165px;
+        }
+        .modal-commands {
+            display: block;
+        }
+        #failed {
+            display: none;
+        }
+        .des {
+            margin: 10px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="import_extension_div" style="display: none; width: 600px;">
+            <div class="section-body">
+                <div class="section-title" locale="LANG2735">Import Options</div>
+                <div class="des">
+                    <span locale="LANG4421"></span>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2737" tooltip="@LANG3202"></div>
+                    <div class="field-content">
+                        <select id='dupliOperation'>
+                            <option value='skip' locale="LANG2738"></option>
+                            <option value='delete' locale="LANG2739"></option>
+                            <option value='update' locale="LANG4468"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2736"></div>
+                    <div class="field-content">
+                        <input type="text" id="fileUrl" name="fileUrl" readonly="readonly"/>
+                        <button type="button" id="upload" class="selectBtn"></button>
+                    </div>
+                </div>
+                <div class="field-cell" id="failed">
+                    <div style="padding-left: 210px;">
+                        <span class="levelTip" style="display: inline; margin-left: 0;"></span>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="importExtensions" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+        <div id="export_extension_div" style="display: none; width: 600px;">
+            <div class="section-body">
+                <div class="section-title" locale="LANG2741">Export Options</div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG623"></div>
+                    <div class="field-content">
+                        <select id='accountType'>
+                            <option value='sip'>SIP</option>
+                            <option value='iax'>IAX</option>
+                            <option value='fxs'>FXS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="exportExtensions" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/extension-import-export.js"></script>
+</body>
+</html>

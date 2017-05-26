@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>VoiceMail Email Settings</title>
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell .field-label-temp {
+        width: 150px;
+    }
+    
+    div.field-label-temp .glab span.label {
+        width: 110px;
+    }
+    
+    .btn-paging {
+        line-height: 14px;
+    }
+    
+    div.section-body div.glab span.label {
+        width: 190px;
+    }
+    
+    div.section-body .field-cell .field-label {
+        width: 230px;
+    }
+    
+    .lite_desc {
+        padding-bottom: 0;
+    }
+
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        position: relative;
+    }
+
+    /*.special {
+        width: 345px;
+        display: inline-block;
+    }*/
+    </style>
+</head>
+
+<body class="modal" marginwidth="0" marginheight="0">
+    <form id="form">
+        <div id="editForm" style="width: 600px;">
+            <div class='section-title' locale="LANG767"></div>
+            <div class="section-body">
+                <div class="field-cell" style="display: none;">
+                    <div class="field-label" glabel="@LANG1522" tooltip="@LANG1523"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='emailonly' />
+                    </div>
+                </div>
+                <div class="field-cell special">
+                    <div class="field-label" glabel="@LANG1519" tooltip="@LANG1520"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='attach' />
+                    </div>
+                </div>
+                <div class="field-cell special keep-recordings">
+                    <div class="field-label" glabel="@LANG4284" tooltip="@LANG4285"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id='reserve' checked />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG4576"></div>
+                    <div class="field-content">
+                        <span id="emailTemplate" class="link" locale="LANG4576"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="section-title" locale="LANG654"></div> -->
+            <div class="lite_desc">
+                <!-- <div class="field-cell">
+                    <div class="field-label field-label-temp" glabel="@LANG1525"></div>
+                    <div class="field-content" style="width: 400px;">
+                        <ul>
+                            <li>\t : TAB</li>
+                            <li>${VM_NAME} : <span locale="LANG1526"></span></li>
+                            <li>${VM_DUR} : <span locale="LANG1527"></span></li>
+                            <li>${VM_MAILBOX} : <span locale="LANG1528"></span></li>
+                            <li>${VM_CALLERID} : <span locale="LANG1529"></span></li>
+                            <li>${VM_MSGNUM} : <span locale="LANG1530"></span></li>
+                            <li>${VM_DATE} : <span locale="LANG1531"></span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label field-label-temp" glabel="@LANG1524"></div>
+                    <div class="field-content">
+                        <input type="text" id="emailsubject" name="emailsubject" style="width:350px;" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label field-label-temp" glabel="@LANG1521"></div>
+                    <div class="field-content">
+                        <textarea id="emailbody" name="emailbody" rows="5" cols="65"></textarea>
+                    </div>
+                </div> -->
+                <div class="field-cell modal-commands">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <!-- <button type="button" id="span_load_defaults" class="btn btn-paging" onclick="loadDefaults();" locale="LANG773"></button> -->
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/emailsettings.js"></script>
+</body>
+
+</html>

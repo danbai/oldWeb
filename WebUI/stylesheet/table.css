@@ -1,0 +1,385 @@
+.tableWidget
+{
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #d6d6d6; /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset,0px 0px 1px rgba(200, 200, 200, 0.5);*/
+    border-spacing: 0px;
+/*    table-layout: fixed;*/
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+table.tableWidget thead th, table.tableWidget tbody td
+{
+    border-bottom: 1px solid #d6d6d6;
+    padding: 4px;
+    height: 20px;
+    text-align: center;
+}
+table.tableWidget tbody td.noUser {
+    border-bottom: 0;
+    height: 30px;
+}
+table.tableWidget tbody
+{
+    background-color: #fff;
+}
+
+table.tableWidget tbody td span, table.tableWidget thead th span
+{
+    cursor: pointer;
+    /*color: #225685;*/
+    margin-left: 8px;
+}
+/*table tbody td span.disable
+{
+    color: #656767;
+}
+table tbody td span:hover
+{
+    text-decoration: underline;
+}*/
+
+table.tableWidget thead.thead tr, table.tableWidget tbody tr.frow
+{
+    background: #91C6E5;
+    height: 23px;
+    color: #3A3C3B;
+    font-size: 17px;
+    font-weight: bold;
+}
+.tbody tr
+{
+    height: 23px;
+}
+table.tableWidget tbody tr.even
+{
+    background: #EFEFEF;
+}
+
+table.tableWidget tbody tr.odd
+{
+    background: #FFFFFF;
+}
+.tbody tr:hover, table.tableWidget tbody tr.even:hover, table.tableWidget tbody tr.odd:hover
+{
+    background: #CAECFF;
+}
+
+.tfoot
+{
+    background: white;
+}
+.tfoot tr
+{
+    height: 48px;
+}
+.pageDes
+{
+    float: left;
+    color: #225685;
+    position: relative;
+    left: 22px;
+    margin-top: 2px;
+}
+.GSRTL .pageDes
+{
+    float: right;
+    left: auto;
+    right: 22px;
+}
+.total, .current
+{
+    margin-right: 14px;
+}
+.GSRTL .total, .GSRTL .current
+{
+    margin-left: 14px;
+    margin-right: 0;
+}
+.jump
+{
+    width: 30px!important;
+    height: 16px;
+    background: white;
+    margin-right: 4px;
+    border: 1px solid gray;
+}
+.GSRTL .jump
+{
+    margin-left: 4px;
+    margin-right: 0;
+}
+.pageOptions
+{
+    position: relative;
+    right: 24px;
+    float: right;
+    margin-top: 2px;
+}
+.GSRTL .pageOptions
+{
+    left: 24px;
+    right: auto;
+    float: left;
+}
+div.pageOptions button
+{
+    margin-right: 2px;
+}
+
+/* conference style*/
+.options
+{
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin: 0 0 0 10px;
+    padding: 0px;
+    cursor:pointer;
+    border: 0px;
+}
+.room_addUser{
+    background: url(../images/user_invite_unpressed.png) no-repeat;
+}
+.room_addUser:hover{
+    background: url(../images/user_invite_hover.png) no-repeat;
+}
+.room_addUser:disabled{
+    background: url(../images/user_invite_disabled.png) no-repeat;
+}
+.room_addUser.disabled{
+    background: url(../images/user_invite_disabled.png) no-repeat;
+}
+.room_lock{
+    background: url(../images/lock_unpressed.png) no-repeat;
+}
+.room_lock:hover{
+    background: url(../images/lock_hover.png) no-repeat;
+}
+.room_lock:disabled{
+    background: url(../images/lock_disabled.png) no-repeat;
+}
+.room_lock.disabled{
+    background: url(../images/lock_disabled.png) no-repeat;
+}
+.room_unlock{
+    background: url(../images/unlock_unpressed.png) no-repeat;
+}
+.room_unlock:hover{
+    background: url(../images/unlock_hover.png) no-repeat;
+}
+.room_unlock:disabled{
+    background: url(../images/unlock_disabled.png) no-repeat;
+}
+.room_unlock.disabled{
+    background: url(../images/unlock_disabled.png) no-repeat;
+}
+.edit, .medit{
+    background: url(../images/edit_unpressed.png) no-repeat;
+}
+.edit:hover, .medit:hover{
+    background: url(../images/edit_hover.png) no-repeat;
+}
+.edit:disabled, .medit:disabled {
+    background: url(../images/edit_disabled.png) no-repeat; 
+}
+.edit.disabled, .medit.disabled {
+    background: url(../images/edit_disabled.png) no-repeat; 
+}
+.del, .mdel{
+    background: url(../images/delete_unpressed.png) no-repeat;
+}
+.del:hover, .mdel:hover{
+    background: url(../images/delete_hover.png) no-repeat;
+}
+.del:disabled, .mdel:disabled {
+    background: url(../images/delete_disabled.png) no-repeat; 
+}
+.del.disabled, .mdel.disabled {
+    background: url(../images/delete_disabled.png) no-repeat; 
+}
+.download {
+    background: url(../images/download_unpressed.png) no-repeat; 
+}
+.download:hover {
+    background: url(../images/download_hover.png) no-repeat; 
+}
+.download:disabled {
+    background: url(../images/download_disabled.png) no-repeat; 
+}
+.download.disabled {
+    background: url(../images/download_disabled.png) no-repeat; 
+}
+.play {
+    background: url(../images/play_unpressed.png) no-repeat; 
+}
+.play:hover {
+    background: url(../images/play_hover.png) no-repeat; 
+}
+.play:disabled {
+    background: url(../images/play_disabled.png) no-repeat; 
+}
+.play.disabled {
+    background: url(../images/play_disabled.png) no-repeat; 
+}
+.upgrade {
+    background: url(../images/upload_24_unpressed.png) no-repeat; 
+}
+.upgrade:hover {
+    background: url(../images/upload_24_hover.png) no-repeat; 
+}
+.upgrade:disabled {
+    background: url(../images/upload_24_disabled.png) no-repeat; 
+}
+.upgrade.disabled {
+    background: url(../images/upload_24_disabled.png) no-repeat; 
+}
+.dial {
+    background: url(../images/dial.png) no-repeat; 
+}
+.answered {
+    background: url(../images/answered.png) no-repeat; 
+}
+.noanswer {
+    background: url(../images/noanswer.png) no-repeat;
+}
+.voicemail {
+    background: url(../images/voicemail.png) no-repeat;
+}
+.hangup {
+    background: url(../images/hangup.png) no-repeat;
+}
+.failed {
+    background: url(../images/failed.png) no-repeat;
+}
+.reboot {
+    background: url(../images/reboot_unpressed.png) no-repeat; 
+}
+.reboot:hover {
+    background: url(../images/reboot_hover.png) no-repeat; 
+}
+.reboot:disabled {
+    background: url(../images/reboot_disabled.png) no-repeat; 
+}
+.reboot.disabled {
+    background: url(../images/reboot_disabled.png) no-repeat; 
+}
+.record {
+    background: url(../images/record_unpressed.png) no-repeat; 
+}
+.record:hover {
+    background: url(../images/record_hover.png) no-repeat; 
+}
+.record:disabled {
+    background: url(../images/record_disabled.png) no-repeat; 
+}
+.record.disabled {
+    background: url(../images/record_disabled.png) no-repeat; 
+}
+.restore {
+    background: url(../images/restore_unpressed.png) no-repeat; 
+}
+.restore:hover {
+    background: url(../images/restore_hover.png) no-repeat; 
+}
+.restore:disabled {
+    background: url(../images/restore_disabled.png) no-repeat; 
+}
+.restore.disabled {
+    background: url(../images/restore_disabled.png) no-repeat; 
+}
+.room_userkick
+{
+    background: url(../images/user_kick_unpressed.png) no-repeat;
+}
+.room_userkick:hover
+{
+    background: url(../images/user_kick_hover.png) no-repeat;
+}
+
+.room_unmuted
+{
+    background: url(../images/unmute_unpressed.png) no-repeat;
+}
+.room_unmuted:hover
+{
+    background: url(../images/unmute_hover.png) no-repeat;
+}
+
+.room_muted
+{
+    background: url(../images/mute_unpressed.png) no-repeat;
+}
+.room_muted:hover
+{
+    background: url(../images/mute_hover.png) no-repeat;
+}
+
+.room_user
+{
+    cursor: default;
+    background: url(../images/user.png) no-repeat;
+}
+
+.room_admin
+{
+    background: url(../images/admin.png) no-repeat;
+}
+
+.room_request
+{
+    cursor: default;
+    background: url(../images/request.png) no-repeat;
+}
+
+.room_notalk
+{
+    cursor: default;
+    background: url(../images/notalk.png) no-repeat;
+}
+
+.room_talk
+{
+    cursor: default;
+    background: url(../images/talk.png) no-repeat;
+}
+
+.room_select
+{
+    cursor: pointer;
+    background: url(../images/arrow1.png) no-repeat;
+    height: 12px;
+    width:12px;
+}
+
+.room_noselect
+{
+    cursor: pointer;
+    background: url(../images/arrow2.png) no-repeat;
+    height: 12px;
+    width:12px;
+}
+
+.header_sort_up
+{
+    background-image: url(../images/sort-arrow-up.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-left: 13px;
+	padding-right: 13px;
+	color: #FFFFFF;
+    *display: inline-block;
+}
+
+.header_sort_down
+{
+    background-image: url(../images/sort-arrow-down.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-left: 13px;
+	padding-right: 13px;
+	color: #FFFFFF;
+    *display: inline-block;
+}

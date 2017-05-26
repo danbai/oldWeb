@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>IVR</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG3981">Model Package Update</div>
+    <div id="preparePad" style="width: 500px; ">
+        <div style="margin-top: 60px;">
+            <img src="../images/ani_loading.gif" />
+        </div>
+        <div id="loadingMsg" locale="LANG805" style="text-align:center;"></div>
+    </div>
+    <div class='page-content' style="display:none">
+      <div class='section-title' locale="LANG4765">Version Information</div>
+      <div class="section-body">
+          <div class="field-cell">
+              <div class="field-label" glabel="@LANG4766" tooltip="@LANG4767"></div>
+              <div class="field-content">
+                  <div class="content" id="base_version"></div>
+              </div>
+          </div>
+      </div>
+
+      <div class='section-title' locale="LANG4116">Upload Model Template Package</div>
+      <div class="section-body">
+        <form id="form">
+          <div class="field-cell" style="display:inline-block;">
+            <div class="field-label" gLabel="@LANG4117" tooltip="@LANG4118"></div>
+            <div class="field-content">
+              <input type="text" id="fileUrl" readonly="readonly"/>
+              <button type="button" id="upload" class="selectBtn"></button>
+            </div>
+            <div class="field-content" style="display:inline-block;">
+              <button type="button" id="udo" class="uploadFileBtn" locale="LANG782"></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class='section-title' locale="LANG4119">Model Template Pasckages List</div>
+      <div id="contentPad">
+        <form id="form" style="overflow: hidden;">
+          <div id="editForm" style="width: 750px;">
+            <table id="model_list"></table>
+            <div id="model_pager"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/zc-template-management.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/handlebars-v2.0.0.js"></script>
+    <script id="releaseNotesTemplate" type="text/x-handlebars-template">
+        <h2>Release Notes for {{model}}</h2>
+        <div style="text-align: left;">
+            {{#each updates}}
+            <div style="margin-top: 10px;">
+                Version: {{version}}
+                <ul>
+                    {{#each updates}}
+                    <li>-{{this}}<li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/each}}
+        </div>
+    </script>
+  	<script id="invalidModelWarning" type="text/x-handlebars-template">
+  		<p style="line-height:1.5;margin-bottom: 0;">{{warning_msg}}</p>
+	    <div>
+	        {{#each models}}
+	        <div>
+	            {{name}} ({{xml_version}})
+	        </div>
+	        {{/each}}
+	    </div>
+	    <p style="line-height:1.5;margin-bottom: 0;">{{restore_here}}</p>
+  	</script>
+</body>
+</html>

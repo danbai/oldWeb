@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+-->
+<html>
+<head>
+    <title locale="LANG585">System Status</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #bridge_channel_div, table tfoot tr td {
+            /* border: 1px solid #d6d6d6; */
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -moz-border-radius-bottomright: 4px;
+            -moz-border-radius-bottomleft: 4px;
+            -webkit-border-bottom-right-radius: 4px;
+            -webkit-border-bottom-left-radius: 4px;
+        }
+        .border, table tfoot tr td {
+            border: 1px solid #d6d6d6;
+        }
+        table.tableWidget {
+            border: 0;
+        }
+        .borderSpacing {
+            border-spacing: 4px;
+        }
+        .noneBorderSpacing {
+            border-spacing: 0;
+        }
+        table tbody tr.noData {
+            height: 28px;
+            text-align: center;
+            background: #EFEFEF;
+        }
+        table tbody tr {
+            background: #FFFFFF;
+        }
+        .hoverTd {
+            background: #CAECFF;
+        }
+        table tfoot tr {
+            height: 48px;
+        }
+        .pageDes {
+            float: left;
+            color: #225685;
+            position: relative;
+            left: 22px;
+            margin-top: 2px;
+        }
+        .total, .current {
+            margin-right: 14px;
+        }
+        .jump {
+            width: 30px!important;
+            height: 16px;
+            background: white;
+            margin-right: 4px;
+            border: 1px solid gray;
+        }
+        .pageOptions {
+            position: relative;
+            right: 24px;
+            float: right;
+            margin-top: 2px;
+        }
+        div.pageOptions span {
+            margin-right: 2px;
+        }
+        .callState, .options {
+            display: inline-block;
+            margin: 0 0 0 10px;
+            padding: 0px;
+            cursor: pointer;
+            border: 0px;
+        }
+        .callState {
+            height: 30px;
+            width: 30px;
+        }
+        .dialing, .pre-ring, .ring, .ringing {
+            background: url(../images/ringing.gif) center center no-repeat transparent;
+        }
+        .up, .busy {
+            background: url(../images/answered.gif) center center no-repeat transparent;
+        }
+        .down, .rsrvd, .offhook, .unknown, .normal {
+            background: url(../images/offhook.png) center center no-repeat transparent;
+        }
+        .parked {
+            background: url(../images/parking_lot.gif) center center no-repeat transparent;
+        }
+        .queue {
+            background: url(../images/call_queue.gif) center center no-repeat transparent;
+        }
+        .meetme, .sla, .confbridge {
+            background: url(../images/conference.gif) center center no-repeat transparent;
+        }
+        .ring_group{
+            background: url(../images/ring_group.gif) center center no-repeat transparent;
+        }
+        .connectState {
+            position: relative;
+            top: -2px;
+            display: inline-block;
+            width: 132px;
+            height: 20px;
+            margin: 0 0 0 10px;
+            padding: 0px;
+            border: 0px;
+        }
+        .connectRinging {
+            background: url(../images/connectRinging.png) center center no-repeat transparent;
+        }
+        .connected {
+            background: url(../images/connected.png) center center no-repeat transparent;
+        }
+        .connectedLongTime {
+            background: url(../images/connectedLongTime.png) center center no-repeat transparent;
+        }
+        .connectedWarning {
+            background: url(../images/connectedWarning.png) center center no-repeat transparent;
+        }
+        .options {
+            height: 24px;
+            width: 24px;
+        }
+        .hangUp {
+            background: url(../images/hang_up_unpressed.png) no-repeat;
+        }
+        .hangUp:hover {
+            background: url(../images/hang_up_hover.png) no-repeat;
+        }
+        .hangUp:disabled {
+            background: url(../images/hang_up_disabled.png) no-repeat;
+        }
+        .hangUp.disabled {
+            background: url(../images/hang_up_disabled.png) no-repeat;
+        }
+        .transfer {
+            background: url(../images/transfer_unpressed.png) no-repeat;
+        }
+        .transfer:hover {
+            background: url(../images/transfer_hover.png) no-repeat;
+        }
+        .transfer:disabled {
+            background: url(../images/transfer_disabled.png) no-repeat;
+        }
+        .transfer.disabled {
+            background: url(../images/transfer_disabled.png) no-repeat;
+        }
+        .monitor {
+            background: url(../images/monitor_unpressed.png) no-repeat;
+        }
+        .monitor:hover {
+            background: url(../images/monitor_hover.png) no-repeat;
+        }
+        .monitor:disabled {
+            background: url(../images/monitor_disabled.png) no-repeat;
+        }
+        .monitor.disabled {
+            background: url(../images/monitor_disabled.png) no-repeat;
+        }
+        .channeList {
+            width: 50%;
+            height: 100px;
+            border: 1px solid #d6d6d6;
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+        }
+        .caller, .callTime, .callee {
+            margin: 0 20px;
+        }
+        .caller, .callTime, .callee, .callerName, .calleeName {
+            display: inline-block; 
+            position: relative;
+        }
+        .callerNum, .calleeNum {
+            position: absolute;
+            left: 10px;
+            top: 30px;
+            /* white-space: nowrap; */
+            width: 150px;
+        }
+        .callerName, .calleeName {
+            position: absolute;
+            left: 10px;
+            top: 45px;
+            /* white-space: nowrap; */
+            width: 150px;
+        }
+        .activityTime {
+            position: absolute; 
+            left: 50px;
+            top: -16px;
+        }
+        .callDiv {
+            display: inline-block;
+            position: relative;
+            left: 30px;
+            top: -10px;
+        }
+        .callTime {
+            top: 5px;
+        }
+        .callOptions {
+            display: inline-block;
+            float: right;
+            position: relative;
+            top: 15px;
+        }
+        .callOptions button {
+            margin-right: 20px;
+        }
+        .noneBackground {
+            border: 0;
+            background-color: #EFEFEF;
+        }
+        table tfoot {
+            background: white;
+        }
+        table tfoot.tfoot .pageDes {
+            float: left;
+            color: #225685;
+            position: relative;
+            left: 22px;
+            margin-top: 2px;
+        }
+        table tfoot.tfoot .total, table tfoot.tfoot .current {
+            margin-right: 14px;
+        }
+        table tfoot.tfoot .jump {
+            width: 30px!important;
+            height: 16px;
+            background: white;
+            margin-right: 4px;
+            border: 1px solid gray;
+        }
+        table tfoot.tfoot .pageOptions {
+            position: relative;
+            right: 24px;
+            float: right;
+            margin-top: 2px;
+        }
+        div.pageOptions button {
+            margin-right: 2px;
+        }
+        .pointer {
+            cursor: pointer;
+        }
+        body {
+            -moz-user-select:none; 
+            -webkit-user-select:none; 
+        }
+    </style>
+</head>
+<body class="page" onselectstart="return false;">
+    <div class='lite_Heading' locale="LANG3006">Activity Calls</div>
+    <div class='top_buttons'>
+        <button type="button" id="btnHangUpAll" class="btn btn-update" locale="LANG3009"></button>
+    </div>
+    <div id="bridge_channel_div">
+        <table id="bridge_channel_list"></table>
+    </div>
+    <!-- Initial Javascript -->
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/activityCalls.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2016 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG3990">OpenVPN</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .btn_add {
+            background: url(../images/add.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+        .btn_del {
+            background: url(../images/delete_circle.png) no-repeat;
+            position: relative;
+            border: none;
+            width: 13px;
+            height: 13px;
+        }
+        .deleteFileBtn {
+            top: -1px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG3990"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG274" tooltip="@LANG3991"></div>
+                <div class="field-content">
+                    <input type="checkbox" id="enable" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1426" tooltip="@LANG3992"></div>
+                <div class="field-content">
+                    <table id="remote" border="0" style="margin-left:-2px;">
+                        <tr>
+                            <td><input type="text" id="ip" name="ip" maxlength="100" /></td>
+                            <td><label>:</label></td> 
+                            <td><input type="text" id="port" name="port" class="inputWidth50" maxlength="6" /></td>
+                            <td><!-- <button type="button" class="btn_add" id="btnPermit0" onclick="addRow(this, 'permitTable');"></button> --></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3993" tooltip="@LANG3994">
+                </div>
+                <div class="field-content">
+                    <select id="proto" name="proto">
+                        <option value="udp">UDP</option>
+                        <option value="tcp">TCP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3995" tooltip="@LANG3996">
+                </div>
+                <div class="field-content">
+                    <select id="dev" name="dev">
+                        <option value="tun">Dev TUN</option>
+                        <option value="tap">Dev TAP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3997" tooltip="@LANG3998">
+                </div>
+                <div class="field-content">
+                    <input type="checkbox" id="comp" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4007" tooltip="@LANG4008">
+                </div>
+                <div class="field-content">
+                    <select id="cipher" name="cipher">
+                        <option value="aes-128-cbc">AES-128-CBC</option>
+                        <option value="aes-128-cfb">AES-128-CFB</option>
+                        <option value="aes-128-cfb1">AES-128-CFB1</option>
+                        <option value="aes-128-cfb8">AES-128-CFB8</option>
+                        <option value="aes-128-ctr">AES-128-CTR</option>
+                        <option value="aes-128-ecb">AES-128-ECB</option>
+                        <option value="aes-128-gcm">AES-128-GCM</option>
+                        <option value="aes-128-ofb">AES-128-OFB</option>
+                        <option value="aes-128-xts">AES-128-XTS</option>
+                        <option value="aes-192-cbc">AES-192-CBC</option>
+                        <option value="aes-192-cfb">AES-192-CFB</option>
+                        <option value="aes-192-cfb1">AES-192-CFB1</option>
+                        <option value="aes-192-cfb8">AES-192-CFB8</option>
+                        <option value="aes-192-ctr">AES-192-CTR</option>
+                        <option value="aes-192-ecb">AES-192-ECB</option>
+                        <option value="aes-192-gcm">AES-192-GCM</option>
+                        <option value="aes-192-ofb">AES-192-OFB</option>
+                        <option value="aes-192-xts">AES-192-XTS</option>
+                        <option value="aes-256-cbc">AES-256-CBC</option>
+                        <option value="aes-256-cfb">AES-256-CFB</option>
+                        <option value="aes-256-cfb1">AES-256-CFB1</option>
+                        <option value="aes-256-cfb8">AES-256-CFB8</option>
+                        <option value="aes-256-ctr">AES-256-CTR</option>
+                        <option value="aes-256-ecb">AES-256-ECB</option>
+                        <option value="aes-256-gcm">AES-256-GCM</option>
+                        <option value="aes-256-ofb">AES-256-OFB</option>
+                        <option value="aes-256-xts">AES-256-XTS</option>
+                        <option value="aes128">AES-128</option>
+                        <option value="aes192">AES-192</option>
+                        <option value="aes256">AES-256</option>
+                        <option value="bf">BF</option>
+                        <option value="bf-cbc">BF-CBC(Blowfish)</option>
+                        <option value="bf-cfb">BF-CFB</option>
+                        <option value="bf-ecb">BF-ECB</option>
+                        <option value="bf-ofb">BF-OFB</option>
+                        <option value="camellia-128-cbc">CAMELLIA-128-CBC</option>
+                        <option value="camellia-128-cfb">CAMELLIA-128-CFB</option>
+                        <option value="camellia-128-cfb1">CAMELLIA-128-CFB1</option>
+                        <option value="camellia-128-cfb8">CAMELLIA-128-CFB8</option>
+                        <option value="camellia-128-ecb">CAMELLIA-128-ECB</option>
+                        <option value="camellia-128-ofb">CAMELLIA-128-OFB</option>
+                        <option value="camellia-192-cbc">CAMELLIA-192-CBC</option>
+                        <option value="camellia-192-cfb">CAMELLIA-192-CFB</option>
+                        <option value="camellia-192-cfb1">CAMELLIA-192-CFB1</option>
+                        <option value="camellia-192-cfb8">CAMELLIA-192-CFB8</option>
+                        <option value="camellia-192-ecb">CAMELLIA-192-ECB</option>
+                        <option value="camellia-192-ofb">CAMELLIA-192-OFB</option>
+                        <option value="camellia-256-cbc">CAMELLIA-256-CBC</option>
+                        <option value="camellia-256-cfb">CAMELLIA-256-CFB</option>
+                        <option value="camellia-256-cfb1">CAMELLIA-256-CFB1</option>
+                        <option value="camellia-256-cfb8">CAMELLIA-256-CFB8</option>
+                        <option value="camellia-256-ecb">CAMELLIA-256-ECB</option>
+                        <option value="camellia-256-ofb">CAMELLIA-256-OFB</option>
+                        <option value="camellia128">CAMELLIA128</option>
+                        <option value="camellia192">CAMELLIA192</option>
+                        <option value="camellia256">CAMELLIA256</option>
+                        <option value="cast">CAST</option>
+                        <option value="cast-cbc">CAST-CBC</option>
+                        <option value="cast5-cbc">CAST5-CBC</option>
+                        <option value="cast5-cfb">CAST5-CFB</option>
+                        <option value="cast5-ecb">CAST5-ECB</option>
+                        <option value="cast5-ofb">CAST5-OFB</option>
+                        <option value="des">DES</option>
+                        <option value="des-cbc">DES-CBC</option>
+                        <option value="des-cfb">DES-CFB</option>
+                        <option value="des-cfb1">DES-CFB1</option>
+                        <option value="des-cfb8">DES-CFB8</option>
+                        <option value="des-ecb">DES-ECB</option>
+                        <option value="des-ede">DES-EDE</option>
+                        <option value="des-ede-cbc">DES-EDE-CBC</option>
+                        <option value="des-ede-cfb">DES-EDE-CFB</option>
+                        <option value="des-ede-ofb">DES-EDE-OFB</option>
+                        <option value="des-ede3">DES-EDE3</option>
+                        <option value="des-ede3-cbc">DES-EDE3-CBC</option>
+                        <option value="des-ede3-cfb">DES-EDE3-CFB</option>
+                        <option value="des-ede3-cfb1">DES-EDE3-CFB1</option>
+                        <option value="des-ede3-cfb8">DES-EDE3-CFB8</option>
+                        <option value="des-ede3-ofb">DES-EDE3-OFB</option>
+                        <option value="des-ofb">DES-OFB</option>
+                        <option value="des3">DES3</option>
+                        <option value="desx">DESX</option>
+                        <option value="desx-cbc">DESX-CBC</option>
+                        <option value="id-aes128-GCM">ID-AES128-GCM</option>
+                        <option value="id-aes192-GCM">ID-AES192-GCM</option>
+                        <option value="id-aes256-GCM">ID-AES256-GCM</option>
+                        <option value="rc2">RC2</option>
+                        <option value="rc2-40-cbc">RC2-40-CBC</option>
+                        <option value="rc2-64-cbc">RC2-64-CBC</option>
+                        <option value="rc2-cbc">RC2-CBC</option>
+                        <option value="rc2-cfb">RC2-CFB</option>
+                        <option value="rc2-ecb">RC2-ECB</option>
+                        <option value="rc2-ofb">RC2-OFB</option>
+                        <option value="rc4">RC4</option>
+                        <option value="rc4-40">RC4-40</option>
+                        <option value="rc4-hmac-md5">RC4-HAMC-MD5</option>
+                        <option value="seed">SEED</option>
+                        <option value="seed-cbc">SEED-CBC</option>
+                        <option value="seed-cfb">SEED-CFB</option>
+                        <option value="seed-ecb">SEED-ECB</option>
+                        <option value="seed-ofb">SEED-OFB</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3999" tooltip="@LANG4000"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="openvpn_ca_crt" name="openvpn_ca_crt" noSerialize=true readonly="readonly" />
+                        <button type="button" id="openvpn_ca_crt_select" class="selectBtn"></button> 
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="openvpn_ca_crt_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="openvpn_ca_crt_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4001" tooltip="@LANG4002"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="openvpn_client_crt" name="openvpn_client_crt" noSerialize=true readonly="readonly" />
+                        <button type="button" id="openvpn_client_crt_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="openvpn_client_crt_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="openvpn_client_crt_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG4003" tooltip="@LANG4004"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="openvpn_client_key" name="openvpn_client_key" noSerialize=true readonly="readonly" />
+                        <button type="button" id="openvpn_client_key_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="openvpn_client_key_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="openvpn_client_key_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/openvpn.js"></script>
+</body>
+</html>

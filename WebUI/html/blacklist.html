@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG667">Blacklist</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #select_blacklist {
+            min-width: 155px;
+            max-width: 250px;
+        }
+        #blacklist_add {
+            background:url(../images/add.png) no-repeat;
+            display: inline-block;
+            height: 13px;
+            width: 13px;
+            margin: 0 0 0 15px;
+            padding: 0px;
+            cursor: pointer;
+            border: 0px;
+        }
+        #blacklist_add:hover {
+            filter: alpha(opacity=70); /* IE 5-7 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; /* IE 8 */
+            -moz-opacity: 0.7;
+            -khtml-opacity: 0.7;
+            opacity: 0.7;
+        }
+        #div_total {
+            display: block;
+            float: right;
+            margin-right: 10px;
+        }
+        #del_btn {
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            margin: 0 0 0 10px;
+            padding: 0px;
+            cursor:pointer;
+            border: 0px;
+            background: url(../images/delete_unpressed.png) no-repeat scroll 0 0 transparent;
+        }
+        #del_btn:hover {
+            background: url(../images/delete_hover.png) no-repeat scroll 0 0 transparent;
+        }
+        .center {
+            text-align: center;
+        }
+        #blacklist_list_div .btn {
+            line-height: 10px;
+            padding: 4px 6px;
+            font-size: 13px;
+        }
+
+        #blacklist_list_div .btn-go {
+            width: auto;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" name="editForm" style="width: 650px; height: 600px;">
+            <div class="section-body">
+                <div class="lite_desc">
+                    <span locale="LANG2291"></span>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2292" tooltip="@LANG2288"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="blacklist_enable" name="blacklist_enable" />
+                    </div>
+                </div>
+                <div id="modal_btn" class="field-cell modal-commands" style="width: 700px;">
+                    <div class="field-label" glabel="" tooltip=""></div>
+                    <div class="field-content">
+                        <button type="button" id="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                        <button type="button" id="save" class="btn btn-save" locale="LANG728"></button>
+                    </div>
+                </div>
+            </div>
+            <div class='section-title' locale="LANG2277"></div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3499" tooltip="@LANG3500"></div>
+                    <div class="field-content">
+                        <div class="field-content" style="display: inline-block;">
+                            <input type="text" id="fileUrl" name="fileUrl" readonly="readonly" />
+                            <button type="button" id="upload" class="selectBtn"></button>
+                        </div>
+                    </div>
+                    <div class="field-content" style="display: inline-block; top: 7px;">
+                    <button type="button" id="blacklist_upload" class="uploadFileBtn" locale="LANG782" disabled="true">Upload</button>
+                    <!-- <button type="button" id="http_tls_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button> -->
+                </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2283" tooltip="@LANG2287"></div>
+                    <div class="field-content">
+                        <input type="text" id="new_number" name="new_number" maxlength="32" />
+                        <button type="submit" id="blacklist_add" name="blacklist_add" localeTitle="LANG769"></button>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2280" tooltip="@LANG2289"></div>
+                </div>
+                <div id="blacklist_list_div">
+                    <table id="blacklist_list"></table>
+                    <div id="blacklist_listpager"></div>
+                </div>
+            </div>
+<!--             <div class="section-body">
+                <div id="modal_btn" class="field-cell modal-commands dialogContainer-commands" style="width: 700px; display: none;">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div> -->
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/blacklist.js"></script>
+</body>
+</html>

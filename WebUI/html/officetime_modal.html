@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>Office Time</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #table_edit_template .label {
+        width: 110px;
+        text-align: left;
+    }
+    
+    .tableIcon {
+        margin-left: 3px;
+        margin-right: 3px;
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        cursor: pointer;
+    }
+    
+    .table-add-icon {
+        background: url(../images/add.png) no-repeat;
+    }
+    
+    .table-edit {
+        background: url(../images/edit_circle.png) no-repeat;
+    }
+    
+    .table-del {
+        background: url(../images/delete_circle.png);
+    }
+    
+    #table_timecondition tbody td .label:hover {
+        text-decoration: none;
+        cursor: auto;
+    }
+    
+    #table_timecondition td span:hover {
+        cursor: auto;
+        text-decoration: none;
+    }
+    
+    #table_timecondition td span {
+        color: black;
+        margin-left: 0px;
+        cursor: auto;
+    }
+    
+    #table_timecondition .table-add:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    .day_selected:hover {
+        background: #C77;
+    }
+    
+    .day_selected {
+        background: #78EE22;
+    }
+    
+    .day_unselected:hover {
+        background: #78DD55;
+    }
+    
+    .day_selected_pending:hover {
+        background: #C77;
+        cursor: col-resize;
+    }
+    
+    .day_selected_pending {
+        background: #78DD55;
+    }
+    
+    .day_unselected_pending {
+        background: #C77;
+    }
+    
+    .day_unselected_pending:hover {
+        background: #C77;
+        cursor: col-resize;
+    }
+
+    /* disable text selection */
+    #new_itrl_day_container td {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -moz-user-select: none;
+        border-bottom: 1px solid #d6d6d6;
+        padding: 4px;
+        height: 20px;
+        text-align: center;
+    }
+    
+    #new_itrl_day_container td:hover {
+        cursor: pointer;
+    }
+    
+    td .field-content {
+        width: 360px;
+        text-align: left;
+    }
+    
+    table tbody {
+        background-color: auto;
+    }
+    
+    .specailabel {
+        position: relative;
+        top: -5px;
+    }
+    
+    .radioDiv {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+    
+    #new_itrl_month_container,
+    #new_itrl_week_container {
+        width: 450px;
+    }
+    
+    #new_itrl_month_container div,
+    #new_itrl_week_container div {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    
+    .boxLabel {
+        position: relative;
+        top: -5px;
+    }
+    
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .field-cell .field-content-special {
+        width: 300px;
+    }
+    
+    .divLineHeight {
+        line-height: 30px;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    
+    .divLineHeight input.styled {
+        top: 13px
+    }
+    
+    .divLineHeight .checkbox {
+        top: 9px;
+    }
+    
+    .hideOnEdit {
+        display: none;
+    }
+    
+    .necessary {
+        clear: both;
+        height: 2px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG169"></div>
+                    <div class="field-content">
+                        <div class="selectDiv">
+                            <select id="new_itrl_stime_hour" name="new_itrl_stime_hour" class="itrl_time"></select>
+                        </div>
+                        <div class="selectDiv">:</div>
+                        <div class="selectDiv">
+                            <select id="new_itrl_stime_minute" name="new_itrl_stime_minute" class="itrl_time"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG184"></div>
+                    <div class="field-content">
+                        <div class="selectDiv">
+                            <select id="new_itrl_ftime_hour" name="new_itrl_ftime_hour" class="itrl_time"></select>
+                        </div>
+                        <div class="selectDiv">:</div>
+                        <div class="selectDiv">
+                            <select id="new_itrl_ftime_minute" name="new_itrl_ftime_minute" class="itrl_time"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell local_week" style="display: ture">
+                    <div class="field-label" glabel="@LANG243"></div>
+                    <div id="new_itrl_week_container" class="field-content">
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_sun" name="new_itrl_week_sun" class="chk_week" maxlength="2" value="sun" />
+                            <span locale="LANG250" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_mon" name="new_itrl_week_mon" class="chk_week" maxlength="2" value="mon" />
+                            <span locale="LANG251" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_tue" name="new_itrl_week_tue" class="chk_week" value="tue" />
+                            <span locale="LANG252" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_wed" name="new_itrl_week_wed" class="chk_week" value="wed" />
+                            <span locale="LANG253" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_thu" name="new_itrl_week_thu" class="chk_week" value="thu" />
+                            <span locale="LANG254" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_fri" name="new_itrl_week_fri" class="chk_week" value="fri" />
+                            <span locale="LANG255" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_sat" name="new_itrl_week_sat" class="chk_week" value="sat" />
+                            <span locale="LANG256" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_week_all" name="new_itrl_week_all" value="*" />
+                            <span locale="LANG104" class="boxLabel"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3196" tooltip="@LANG3270"></div>
+                    <div class="field-content">
+                        <div>
+                            <input type="checkbox" id="advanced" name="advanced" class="check_advanced" maxlength="2" value="true" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell local_month" style="display: none;">
+                    <div class="field-label" glabel="@LANG244"></div>
+                    <div id="new_itrl_month_container" class="field-content">
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_jan" name="new_itrl_month_jan" class="chk_month" value="jan" />
+                            <span locale="LANG204" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_feb" name="new_itrl_month_feb" class="chk_month" value="feb" />
+                            <span locale="LANG205" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_mar" name="new_itrl_month_mar" class="chk_month" value="mar" />
+                            <span locale="LANG206" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_apr" name="new_itrl_month_apr" class="chk_month" value="apr" />
+                            <span locale="LANG207" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_may" name="new_itrl_month_may" class="chk_month" value="may" />
+                            <span locale="LANG208" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_jun" name="new_itrl_month_jun" class="chk_month" value="jun" />
+                            <span locale="LANG209" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_jul" name="new_itrl_month_jul" class="chk_month" value="jul" />
+                            <span locale="LANG210" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_aug" name="new_itrl_month_aug" class="chk_month" value="aug" />
+                            <span locale="LANG211" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_sep" name="new_itrl_month_sep" class="chk_month" value="sep" />
+                            <span locale="LANG212" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_oct" name="new_itrl_month_oct" class="chk_month" value="oct" />
+                            <span locale="LANG213" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_nov" name="new_itrl_month_nov" class="chk_month" value="nov" />
+                            <span locale="LANG214" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_dec" name="new_itrl_month_dec" class="chk_month" value="dec" />
+                            <span locale="LANG215" class="boxLabel"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="new_itrl_month_all" name="new_itrl_month_all" type="checkbox" value="*" />
+                            <span locale="LANG104" class="boxLabel"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell local_day" style="display: none;">
+                    <div class="field-label" glabel="@LANG242"></div>
+                    <div class="field-content">
+                        <span id="new_itrl_day_container"></span>
+                    </div>
+                </div>
+                <div class="necessary"></div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="width: 750px; display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/officetime-modal.js"></script>
+</body>
+
+</html>

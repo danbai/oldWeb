@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG680">IAX Registration</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG680"></div>
+    <form id="form">
+        <div class="section-title" locale="LANG681">IAX Registration Options</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1661" tooltip="@LANG1662">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="minregexpire" name="minregexpire" dfalt='60' class="inputWidth50"  maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1663" tooltip="@LANG1664">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="maxregexpire" name="maxregexpire" dfalt='3600' class="inputWidth50"  maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1665" tooltip="@LANG1666">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="iaxthreadcount" name="iaxthreadcount" dfalt='10' class="inputWidth50"  maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1667" tooltip="@LANG1668">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="iaxmaxthreadcount" name="iaxmaxthreadcount" dfalt='100' class="inputWidth50"  maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1669" tooltip="@LANG1670">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="autokill" name="autokill" class="inputWidth50"  maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1671" tooltip="@LANG1672">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="authdebug" name="authdebug" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1673" tooltip="@LANG1674">
+                </div>
+                <div class="field-content">
+                    <select id="codecpriority" name="codecpriority" dfalt='reqonly' class="input8"  >
+                        <option value="caller" locale="LANG75">Caller</option>
+                        <option value="disabled" locale="LANG76">Disabled</option>
+                        <option value="reqonly" locale="LANG77">Reqonly</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1675" tooltip="@LANG1676">
+                </div>
+                <div class="field-content">
+                    <select id="tos" name="tos" class="input8"  >
+                        <option value='ef'>EF</option>
+                        <option value='cs0'>CS0</option>
+                        <option value='cs1'>CS1</option>
+                        <option value='cs2'>CS2</option>
+                        <option value='cs3'>CS3</option>
+                        <option value='cs4'>CS4</option>
+                        <option value='cs5'>CS5</option>
+                        <option value='cs6'>CS6</option>
+                        <option value='cs7'>CS7</option>
+                        <option value='af11'>AF11</option>
+                        <option value='af12'>AF12</option>
+                        <option value='af13'>AF13</option>
+                        <option value='af21'>AF21</option>
+                        <option value='af22'>AF22</option>
+                        <option value='af23'>AF23</option>
+                        <option value='af31'>AF31</option>
+                        <option value='af32'>AF32</option>
+                        <option value='af33'>AF33</option>
+                        <option value='af41'>AF41</option>
+                        <option value='af42'>AF42</option>
+                        <option value='af43'>AF43</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="section-title" locale="LANG682">IAX Trunking Options</div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1677" tooltip="@LANG1678">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="trunkfreq" name="trunkfreq" dfalt='20' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1679" tooltip="@LANG1680">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="trunktimestamps" name="trunktimestamps" dfalt='n'/>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">
+                    &nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" type="button" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/iax-registration.js"></script>
+</body>
+</html>

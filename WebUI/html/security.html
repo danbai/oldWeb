@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG38">Security</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .checkbox {
+            float: right;
+        }
+        .divInline {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            line-height: 30px;
+            color: #3B3B3B;
+        }
+        .GSRTL .divInline > span {
+            float: right;
+        }
+        table#services_tbl tbody td span {
+            cursor: auto;
+            color: #3A3C3B;
+            margin-left: 8px;
+        }
+        table#services_tbl tbody tr.frow {
+            background: #91C6E5;
+            height: 23px;
+            color: #3A3C3B;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        table#services_tbl thead th, table#services_tbl tbody td {
+            border-bottom: 1px solid #d6d6d6;
+            padding: 4px;
+            height: 20px;
+            text-align: center;
+        }
+        .reflesh-cell {
+            clear: both;
+            min-height: 26px;
+            line-height: 26px;
+        }
+        .reflesh-label-special {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            line-height: 30px;
+            position: relative;
+            vertical-align: middle;
+            margin: 8px 0 0 0;
+        }
+        .reflesh-label-special .reflesh-label {
+            width: auto;
+            margin-right: 8px;
+            float: left;
+        }
+        .GSRTL .reflesh-label-special .reflesh-label {
+            margin-left: 8px;
+            margin-right: 0;
+            float: right;
+        }
+        .reflesh-cell .reflesh-content {
+            float: left;
+            position: relative;
+            height: 30px;
+        }
+        .checkbox {
+            top: 4px;
+        }
+        .reflesh-label .glab .label {
+            width: auto;
+        }
+        #synflood_hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG38"></div>
+    <form id="form_outer">
+        <div class='section-title' locale="LANG1936"></div>
+        <div class="section-body">
+            <table id='services_tbl' cellpadding="0" cellspacing="0" border="0" class="tableWidget" style="width: 100%; table-layout: fixed;"></table>
+        </div>
+        <br/><br/>
+        <div class='section-title' locale="LANG2231"></div>
+        <div class='top_buttons' id="new_fw_topbutton">
+            <button type="button" id="new_fw_button" class="btn btn-update" onclick="showFirewallCreateForm();" locale="LANG1935" style="margin-top: 5px;"></button>
+            <div class="reflesh-cell reflesh-label-special">
+                <div class="reflesh-label">
+                    <div glabel="@LANG2752" tooltip="@LANG2753"></div>
+                </div>
+                <div class="reflesh-content">
+                    <input type='checkbox' id='rejectAll' disabled="disabled" />
+                </div>
+            </div>
+        </div>
+        <table id="firewall_list"></table> 
+        <div id="firewall_pager"></div>
+        <div class='section-title' locale="LANG1937" style="margin-top: 20px;"></div>
+        <div id="fw_simple_region">
+            <div class='field-cell'>
+                <div class='field-label' glabel="@LANG1940" tooltip="@LANG2214"></div>
+                <div class='field-content' id="ping_container"></div>
+            </div>
+            <div class='field-cell' id="synflood_hidden">
+                <div class='field-label' glabel="@LANG1941" tooltip="@LANG2236"></div>
+                <div class='field-content' id="synflood_container"></div>
+            </div>
+            <div class='field-cell'>
+                <div class='field-label' glabel="@LANG1942" tooltip="@LANG2213"></div>
+                <div class='field-content' id="deathping_container"></div>
+            </div>
+        </div>
+        <div class="field-cell last"> 
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" type="button" locale="LANG726">Cancel</button>
+                <button type="button" id="apply" class="btn btn-save" onclick="applyChanges(true)" locale="LANG728"></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/astman.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/security.js"></script>
+</body>
+</html>

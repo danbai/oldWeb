@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ *
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ * This project extends Asterisk GUI project and contains Grandstream Network's
+ * implementation which uses Asterisk GUI.
+ *
+ * Asterisk and Asterisk GUI are registered trademarks of Digium, Inc. 
+ * Please see http://www.asterisk.org for more information about the Asterisk 
+ * project.
+ *
+ * This program is free software, distributed under the terms of
+ * the GNU General Public License Version 2. See the LICENSE file
+ * at the top of the source tree.
+ *
+-->
+<html>
+
+<head>
+    <title>Fax</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #text_default_email {
+        width: 250px;
+    }
+    
+    #emailsubject {
+        width: 350px;
+    }
+    
+    #emailbody {
+        margin: 0px;
+    }
+
+    .link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        position: relative;
+        margin-left: 10px;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px;">
+            <div class='section-title' locale="LANG753"></div>
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1262" tooltip="@LANG1263">
+                    </div>
+                    <div class="field-content">
+                        <input type="checkbox" id="ecm" dfval="true" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1264" tooltip="@LANG1265">
+                    </div>
+                    <div class="field-content">
+                        <select id="maxrate" name="maxrate" required="yes" dfalt="14400">
+                            <option value="2400">2400</option>
+                            <option value="4800">4800</option>
+                            <option value="7200">7200</option>
+                            <option value="9600">9600</option>
+                            <option value="12000">12000</option>
+                            <option value="14400">14400</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1266" tooltip="@LANG1267">
+                    </div>
+                    <div class="field-content">
+                        <select id="minrate" name="minrate" required="yes" dfalt="2400">
+                            <option value="2400">2400</option>
+                            <option value="4800">4800</option>
+                            <option value="7200">7200</option>
+                            <option value="9600">9600</option>
+                            <option value="12000">12000</option>
+                            <option value="14400">14400</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4302" tooltip="@LANG4304">
+                    </div>
+                    <div class="field-content">
+                        <select id="maxcomplicating" name="minrate" required="yes" dfalt="1">
+                            <option value="1">only</option>
+                            <option value="2">more</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4303" tooltip="@LANG4305">
+                    </div>
+                    <div class="field-content">
+                        <select id="queuemaxmember" name="minrate" required="yes" dfalt="6">
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5085" tooltip="@LANG5086">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="local_station_id" name="local_station_id" maxlength="50" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1260" tooltip="@LANG1261">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="default_email" name="default_email" maxlength="64" />
+                        <span id="emailTemplate" class="link" locale="LANG4576"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class='section-title' locale="LANG2259"></div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1525">
+                </div>
+                <div class="field-content lite_desc" style="width: 400px;">
+                    <ul>
+                        <li>${CALLERIDNUM} : <span locale="LANG2251"></span></li>
+                        <li>${CALLERIDNAME} : <span locale="LANG2272"></span></li>
+                        <li>${RECEIVEEXTEN} : <span locale="LANG2274"></span></li>
+                        <li>${FILENAME} : <span locale="LANG4488"></span></li>
+                        <li>${FAXPAGES} : <span locale="LANG2243"></span></li>
+                        <li>${FAXDATE} : <span locale="LANG2269"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1524">
+                </div>
+                <div class="field-content">
+                    <input type="text" id="emailsubject" name="emailsubject" maxlength="128" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1521">
+                </div>
+                <div class="field-content">
+                    <textarea id="emailbody" name="emailbody" rows="5" cols="65" maxlength="768"></textarea>
+                </div>
+            </div> -->
+            <div class="field-cell modal-commands">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="btnCancelFax" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <!-- <button type="button" id="span_load_defaults" class="btn btn-paging" onclick="loadDefaults();" locale="LANG2246"></button> -->
+                    <button type="submit" id="btnSaveFax" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/fax-settings.js"></script>
+</body>
+
+</html>

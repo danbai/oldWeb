@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+<head>
+    <title locale="LANG632">Manage Zero Config</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/jquery.qtip.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/jquery-ui.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.zero-config.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .selectPosition {
+            position: relative;
+        }
+
+        div#customContainer {
+            width: 100%;
+        }
+
+            div#customContainer .contaienr-header {
+                background: #8ec6e6;
+                font-size: 14px;
+                color: #fff;
+                line-height: 18px;
+                padding: 4px 10px;
+                border-bottom: 1px solid #68a6ca;
+            }
+
+        div#fieldContainer div.field {
+            display: table-row;
+        }
+
+            div#fieldContainer div.field div.cell {
+                display: table-cell;
+            }
+
+                div#fieldContainer div.field div.cell.label {
+                    width: 116px;
+                    padding: 6px 4px 6px 20px;
+                    color: #666;
+                }
+
+                div#fieldContainer div.field div.cell.contents {
+                    color: green;
+                    word-break: break-all;
+                }
+
+            div#fieldContainer div.field:nth-child(odd) {
+                background: #f0f0f0;
+            }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 740px;">
+            <div id="preparePad" style="width: 96%; height: 500px; display: table;">
+                <div style="display: table-cell; vertical-align: middle;">
+                    <div>
+                        <img src="../images/ani_loading.gif" />
+                    </div>
+                    <div id="loadingMsg" locale="LANG805" style="text-align: center;"></div>
+                </div>
+            </div>
+            <div id="contentPad" style="display: none; height: 500px; width: 96%;">
+                <div class="section-body">
+                    <div id="info-container">
+                        <div class="cell thumbnail">
+                            <img id="thumbnail" src="../images/empty.png" class="sm_thumbnail" />
+                        </div>
+                        <div class="cell">
+                            <div class="field-cell">
+                                <div class="field-label" locale="LANG3461" tooltip="@LANG3461"></div>
+                                <div class="field-content">
+                                    <span id="deviceModel"></span>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" locale="LANG1293" tooltip="@LANG1294"></div>
+                                <div class="field-content">
+                                    <span id="deviceMac"></span>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" locale="LANG1291" tooltip="@LANG1292"></div>
+                                <div class="field-content">
+                                    <span id="deviceIp"></span>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" locale="LANG1298" tooltip="@LANG1297"></div>
+                                <div class="field-content">
+                                    <span id="deviceVersion"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="batch-container" style="display: none;">
+                        <div class="section-message" locale="LANG3889"></div>
+                        <div id="batch-list"></div>
+                    </div>
+                    <div id="option-container">
+                        <ul id="menu">
+                            <li id="menu-basic"><a locale="LANG3472">Basic</a></li>
+                            <li id="menu-advanced"><a locale="LANG3473">Advanced</a></li>
+                        </ul>
+                    </div>
+                    <div id="content-container" class="dev-advanced">
+                        <div id="template-pad">
+                            <div class="section-head">
+                                <span class="num">5</span>
+                                <span class="label" locale="LANG3476">Customize Device Settings</span>
+                            </div>
+                            <div class="section-content">
+                                <div class="single-model-pad">
+                                    <div id="btnEditCustomizeSettings" class="controlButton">
+                                        <span class="icon edit">&nbsp;</span>
+                                        <span class="label" locale="LANG3477"></span>
+                                    </div>
+                                </div>
+                                <div class="multiple-model-pad" style="text-align: center;">
+                                    <span class="warning" locale="LANG3888"></span>
+                                </div>
+                            </div>
+                            <div class="section-head">
+                                <span class="num">4</span>
+                                <span class="label" locale="LANG3445">Model Templates</span>
+                            </div>
+                            <div class="section-content">
+                                <div class="single-model-pad">
+                                    <div class="template-list">
+                                        <div class="cell label" locale="LANG110"></div>
+                                        <div class="cell content">
+                                            <select id="availModelTemplates" name="availModelTemplates" class="control"></select>
+                                        </div>
+                                        <div class="cell option">
+                                            <span id="btnModelTemplateAdd" class="control add"></span>
+                                        </div>
+                                    </div>
+                                    <div class="template-list">
+                                        <div class="cell label" locale="LANG3475"></div>
+                                        <div class="cell content">
+                                            <select id="selModelTemplates" name="selModelTemplates" size="4" class="control"></select>
+                                        </div>
+                                        <div class="cell option">
+                                            <span id="btnModelTemplateUp" class="control up"></span>
+                                            <span id="btnModelTemplateDown" class="control down"></span>
+                                            <span id="btnModelTemplateDelete" class="control delete"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="multiple-model-pad" style="text-align: center;">
+                                    <span class="warning" locale="LANG3888"></span>
+                                </div>
+                            </div>
+                            <div class="section-head">
+                                <span class="num">3</span>
+                                <span class="label" locale="LANG3462">Default Model Template</span>
+                            </div>
+                            <div class="section-content">
+                                <div class="single-model-pad">
+                                    <div id="contentDefaultModel">[ <span locale="LANG113" style="color: #808080;"></span> ]</div>
+                                </div>
+                                <div class="multiple-model-pad" style="text-align: center;">
+                                    <span class="warning" locale="LANG3888"></span>
+                                </div>
+                            </div>
+                            <div class="section-head">
+                                <span class="num">2</span>
+                                <span class="label" locale="LANG3444">Global Templates</span>
+                            </div>
+                            <div class="section-content">
+                                <div class="template-list">
+                                    <div class="cell label" locale="LANG110"></div>
+                                    <div class="cell content">
+                                        <select id="availGlobalTemplates" name="availGlobalTemplates" class="control"></select>
+                                    </div>
+                                    <div class="cell option">
+                                        <span id="btnGlobalTemplateAdd" class="control add"></span>
+                                    </div>
+                                </div>
+                                <div class="template-list">
+                                    <div class="cell label" locale="LANG3475"></div>
+                                    <div class="cell content">
+                                        <select id="selGlobalTemplates" name="selGlobalTemplates" size="4" class="control"></select>
+                                    </div>
+                                    <div class="cell option">
+                                        <span id="btnGlobalTemplateUp" class="control up disable"></span>
+                                        <span id="btnGlobalTemplateDown" class="control down"></span>
+                                        <span id="btnGlobalTemplateDelete" class="control delete"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-head">
+                                <span class="num">1</span>
+                                <span class="label" locale="LANG3169">Global Policy</span>
+                            </div>
+                            <div class="section-content">
+                                <div id="btnEditGlobalPolicy" class="controlButton">
+                                    <span class="icon edit">&nbsp;</span>
+                                    <span class="label" locale="LANG3478"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="separator-pad">&nbsp;</div>
+                        <div id="preview-pad">
+                            <div class="section-head">
+                                <span class="icon">&nbsp;</span>
+                                <span class="label" locale="LANG3479">Preview</span>
+                            </div>
+                            <div class="section-content">
+                                <div class="single-model-pad">
+                                    <div id="previewPrepareMsg" style="display:none; line-height: 18px; border: 1px solid #ccc; padding: 4px 4px 4px 8px;"></div>
+                                    <div id="loadingPad" style="width: 96%; display: table;">
+                                        <div style="display: table-cell; vertical-align: middle;">
+                                            <div style="text-align: center;">
+                                                <img src="../images/loading.gif" />
+                                            </div>
+                                            <div locale="LANG805" style="text-align: center;"></div>
+                                        </div>
+                                    </div>
+                                    <div id="previewContentPad" style="display: none;"></div>
+                                </div>
+                                <div class="multiple-model-pad" style="text-align: center;">
+                                    <span class="warning" locale="LANG3888"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-cell modal-commands dialogContainer-commands" style="width: 96%; display: none;">
+                        <hr style="width: 96%;" />
+                        <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog('*');" locale="LANG726"></button>
+                        <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/jquery.qtip.js"></script>
+    <script type="text/javascript" src="../js/zc-devices-modal-advanced.js"></script>
+    <script type="text/javascript" src="../js/subclass.js"></script>
+    <script type="text/javascript" src="../js/ucm-widgets.js"></script>
+</body>
+</html>

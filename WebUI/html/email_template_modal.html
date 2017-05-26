@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ueditor/ueditor.config.js" charset="utf-8" ></script>
+    <script type="text/javascript" src="../js/ueditor/ueditor.all.js" charset="utf-8" ></script>
+    <script type="text/javascript" src="../js/ueditor/lang/en/en.js"></script>
+    <style type="text/css">
+    .edui-toolbar {
+        line-height: 20px;
+    }
+
+    .more,
+    .more-hide {
+        color: #76A3E8;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .more:hover,
+    .more-hide:hover {
+        color: #1F6DE4;
+    }
+
+    .hidden,
+    .more-hide {
+        display: none;
+    }
+
+    #plainText {
+        width: 678px;
+        height: 150px;
+        resize: none;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <div id="editTemplate" style="width: 920px;">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1525"></div>
+                <div class="field-content" style="width: 680px;">
+                    <div class="variables account">
+                        <ul>
+                            <li>${ETH} : <span locale="LANG4706"></span></li>
+                            <li>${SERVR_ADDR} : <span locale="LANG4707"></span></li>
+                            <li>${PUB_ADDR} : <span locale="LANG4708"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${ACNT_NAME} : <span locale="LANG4709"></span></li>
+                            <li>${SIP_ID} : <span locale="LANG4710"></span></li>
+                            <li>${AUTH_ID} : <span locale="LANG4711"></span></li>
+                            <li>${AUTH_PWD} : <span locale="LANG4712"></span></li>
+                            <li>${USR_PWD} : <span locale="LANG4713"></span></li>
+                            <li>${SERVR_QR_IMG} : <span locale="LANG4714"></span></li>
+                            <li>${SERVR_PUB_ADDR_QR} : <span locale="LANG4715"></span></li>
+                            <li>${LDAP_PATH} : <span locale="LANG4716"></span></li>
+                            <li>${LDAP_SERVR_ADDR_QR} : <span locale="LANG4717"></span></li>
+                            <li>${LDAP_SERVR_PUB_ADDR_QR} : <span locale="LANG4718"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables sip_account">
+                        <ul>
+                            <li>${ETH} : <span locale="LANG4706"></span></li>
+                            <li>${SERVR_ADDR} : <span locale="LANG4707"></span></li>
+                            <li>${PUB_ADDR} : <span locale="LANG4708"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${ACNT_NAME} : <span locale="LANG4709"></span></li>
+                            <li>${SIP_ID} : <span locale="LANG4710"></span></li>
+                            <li>${AUTH_ID} : <span locale="LANG4711"></span></li>
+                            <li>${AUTH_PWD} : <span locale="LANG4712"></span></li>
+                            <li>${USR_PWD} : <span locale="LANG4713"></span></li>
+                            <li>${SERVR_QR_IMG} : <span locale="LANG4714"></span></li>
+                            <li>${SERVR_PUB_ADDR_QR} : <span locale="LANG4715"></span></li>
+                            <li>${LDAP_PATH} : <span locale="LANG4716"></span></li>
+                            <li>${LDAP_SERVR_ADDR_QR} : <span locale="LANG4717"></span></li>
+                            <li>${LDAP_SERVR_PUB_ADDR_QR} : <span locale="LANG4718"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables iax_account">
+                        <ul>
+                            <li>${ETH} : <span locale="LANG4706"></span></li>
+                            <li>${SERVR_ADDR} : <span locale="LANG4707"></span></li>
+                            <li>${PUB_ADDR} : <span locale="LANG4708"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${ACNT_NAME} : <span locale="LANG4709"></span></li>
+                            <li>${SIP_ID} : <span locale="LANG4710"></span></li>
+                            <li>${AUTH_ID} : <span locale="LANG4711"></span></li>
+                            <li>${AUTH_PWD} : <span locale="LANG4712"></span></li>
+                            <li>${USR_PWD} : <span locale="LANG4713"></span></li>
+                            <li>${SERVR_QR_IMG} : <span locale="LANG4714"></span></li>
+                            <li>${SERVR_PUB_ADDR_QR} : <span locale="LANG4715"></span></li>
+                            <li>${LDAP_PATH} : <span locale="LANG4716"></span></li>
+                            <li>${LDAP_SERVR_ADDR_QR} : <span locale="LANG4717"></span></li>
+                            <li>${LDAP_SERVR_PUB_ADDR_QR} : <span locale="LANG4718"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables fxs_account">
+                        <ul>
+                            <li>${ETH} : <span locale="LANG4706"></span></li>
+                            <li>${SERVR_ADDR} : <span locale="LANG4707"></span></li>
+                            <li>${PUB_ADDR} : <span locale="LANG4708"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${ACNT_NAME} : <span locale="LANG4709"></span></li>
+                            <li>${SIP_ID} : <span locale="LANG4710"></span></li>
+                            <li>${AUTH_ID} : <span locale="LANG4711"></span></li>
+                            <li>${AUTH_PWD} : <span locale="LANG4712"></span></li>
+                            <li>${USR_PWD} : <span locale="LANG4713"></span></li>
+                            <li>${SERVR_QR_IMG} : <span locale="LANG4714"></span></li>
+                            <li>${SERVR_PUB_ADDR_QR} : <span locale="LANG4715"></span></li>
+                            <li>${LDAP_PATH} : <span locale="LANG4716"></span></li>
+                            <li>${LDAP_SERVR_ADDR_QR} : <span locale="LANG4717"></span></li>
+                            <li>${LDAP_SERVR_PUB_ADDR_QR} : <span locale="LANG4718"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables cdr">
+                        <ul>
+                            <li>${CDR_NUMBERS} : <span locale="LANG4703"></span></li>
+                            <li>${START_TIME} : <span locale="LANG4704"></span></li>
+                            <li>${END_TIME} : <span locale="LANG4705"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables conference">
+                        <ul>
+                            <li>${CNF_ACTION} : <span locale="LANG4691"></span></li>
+                            <li>${CNF_THEME} : <span locale="LANG4692"></span></li>
+                            <li>${CNF_STARTTIME} : <span locale="LANG4693"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${CNF_ENDTIME} : <span locale="LANG4694"></span></li>
+                            <li>${CNF_ZONE} : <span locale="LANG2058"></span></li>
+                            <li>${HELLO} : <span locale="LANG4696"></span></li>
+                            <li>${CNFR_MSG} : <span locale="LANG4697"></span></li>
+                            <li>${CNFR_TOPIC} : <span locale="LANG4698"></span></li>
+                            <li>${CNFR_DESCRIPTION} : <span locale="LANG4699"></span></li>
+                            <li>${CNFR_PASSWORD} : <span locale="LANG4700"></span></li>
+                            <li>${CNFR_WHERE} : <span locale="LANG4701"></span></li>
+                            <li>${CNFR_WHEN} : <span locale="LANG4702"></span></li>
+                            <li>${CNFR_MEMBERS} : <span locale="LANG4695"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables alert">
+                        <ul>
+                            <li>${MAC} : <span locale="LANG154"></span></li>
+                            <li>${WARNING_MSG} : <span locale="LANG4690"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables fax">
+                        <ul>
+                            <li>${CALLERIDNUM} : <span locale="LANG2251"></span></li>
+                            <li>${CALLERIDNAME} : <span locale="LANG2272"></span></li>
+                            <li>${RECEIVEEXTEN} : <span locale="LANG2274"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${FILENAME} : <span locale="LANG4488"></span></li>
+                            <li>${FAXPAGES} : <span locale="LANG2243"></span></li>
+                            <li>${FAXDATE} : <span locale="LANG2269"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables password">
+                        <ul>
+                            <li>${USER} : <span locale="LANG2809"></span></li>
+                            <li>${PASSWORD} : <span locale="LANG2810"></span></li>
+                        </ul>
+                    </div>
+                    <div class="variables voicemail">
+                        <ul>
+                            <li>\t : TAB</li>
+                            <li>${VM_NAME} : <span locale="LANG1526"></span></li>
+                            <li>${VM_DUR} : <span locale="LANG1527"></span><span class="more" localeTitle="LANG4719">︾</span><span class="more-hide" localeTitle="LANG4721">︽</span></li>
+                        </ul>
+                        <ul class="hidden">
+                            <li>${VM_MAILBOX} : <span locale="LANG1528"></span></li>
+                            <li>${VM_CALLERID} : <span locale="LANG1529"></span></li>
+                            <li>${VM_MSGNUM} : <span locale="LANG1530"></span></li>
+                            <li>${VM_DATE} : <span locale="LANG1531"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="field-cell">
+                <div class="field-label" glabel="@LANG272"></div>
+                <div class="field-content">
+                    <select id='mail_context_mode' name='mail_context_mode'>
+                        <option value="html" locale="LANG5230"></option>
+                        <option value="txt" locale="LANG5229"></option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1524"></div>
+                <div class="field-content">
+                    <input type="text" id="emailsubject" name="emailsubject" style="width: 678px;" />
+                </div>
+            </div>
+            <div class="html-message">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5376"></div>
+                    <div class="field-content">
+                        <script type="text/plain" id="container" style="width: 680px; height: 300px;"></script>
+                    </div>
+                </div>
+                <div class="field-cell" style="padding: 12px 0 20px 0;">
+                    <div class="field-label">&nbsp;</div>
+                    <div class="field-content">
+                        <button type="button" class="btn btn-paging" id="preview" locale="LANG3479"></button>
+                        <button type="button" class="btn btn-paging restore" locale="LANG4749" mode="html"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-message">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5377"></div>
+                    <div class="field-content">
+                        <textarea id="plainText" name="plainText"></textarea>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label">&nbsp;</div>
+                    <div class="field-content">
+                        <button type="button" class="btn btn-paging restore" locale="LANG4749" mode="text"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/email-template-modal.js"></script>
+</body>
+
+</html>

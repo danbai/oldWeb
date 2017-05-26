@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG2640">Recording Files</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    .choose_buttons {
+        display: none;
+        margin-bottom: 10px;
+    }
+    
+    .choose-tips {
+        line-height: 24px;
+        color: #000000;
+        background-color: #ed9845;
+        display: inline-block;
+        position: relative;
+        top: 1px;
+    }
+    
+    .no-margin-top {
+        margin-top: 0;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG2641">File List</div>
+    <div class="top_buttons">
+        <button type="button" id="btnDeleteSelect" class="btn btn-update" locale="LANG3488"></button>
+        <button type="button" id="btnDeleteAll" class="btn btn-update" locale="LANG3439"></button>
+        <button type="button" id="btnDownloadBatch" class="btn btn-update" locale="LANG4761 LANG2640"></button>
+        <button type="button" id="btnDownloadAll" class="btn btn-update" locale="LANG741 LANG2640"></button>
+    </div>
+    <div class="choose_buttons">
+        <label class="choose-tips" border-color="#FF0000" ;></label>
+        <button type="button" id="btnChoose" class="btn btn-save no-margin-top" locale="LANG727"></button>
+    </div>
+    <table id="recording_file_list"></table>
+    <div id="recording_file_pager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/recording-file.js"></script>
+</body>
+
+</html>

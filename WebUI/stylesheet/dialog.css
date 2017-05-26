@@ -1,0 +1,504 @@
+/* New Styles for AA */
+
+button {
+    margin: 0;
+    font-size: 16px;
+    margin-left: 0;
+    line-height: normal;
+    vertical-align: middle;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    width: auto;
+    cursor: pointer;
+    blr: expression(this.Onfocus=this.blur());
+}
+
+.btn {
+    display: inline-block;
+    padding: 4px 14px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #333333;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    background-repeat: repeat-x;
+    border: 1px solid #bbbbbb;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-bottom-color: #a2a2a2;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover,
+.btn:active,
+.btn.active {
+    color: #333333;
+    background-color: #e6e6e6;
+}
+
+.btn:active,
+.btn.active {
+    background-color: #cccccc \9;
+}
+
+.btn:hover {
+    color: #333333;
+    text-decoration: none;
+    background-color: #e6e6e6;
+}
+
+.btn:focus {
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn.active,
+.btn:active {
+    background-color: #e6e6e6;
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn {
+    border-color: #c5c5c5;
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+
+.btn-cancel,
+.btn-delete,
+.dialogConfirm-option-cancel {
+    color: #ffffff;
+    background-color: #ACADAD;
+}
+
+.dialogConfirm-option-cancel,
+.dialogConfirm-option-update {
+    margin-right: 20px;
+}
+
+.btn-cancel:hover,
+.btn-delete:hover,
+.dialogConfirm-option-cancel:hover {
+    color: #ffffff;
+    background-color: #C8C8C8;
+}
+
+.btn-cancel:active,
+.btn-cancel.active,
+.btn-delete:active,
+.btn-delete.active,
+.dialogConfirm-option-cancel:active,
+.dialogConfirm-option-cancel.active {
+    color: #ffffff;
+    background-color: #939595;
+}
+
+.btn-cancel.disabled {
+    color: #ffffff;
+    background-color: #CDCECE;
+}
+
+.btn-update,
+.btn-create {
+    color: #ffffff;
+    background-color: #78CA68;
+}
+
+.btn-update:hover,
+.btn-create:hover {
+    color: #ffffff;
+    background-color: #68CAA4;
+}
+
+.btn-update:active,
+.btn-update.active,
+.btn-create:active,
+.btn-create.active {
+    color: #ffffff;
+    background-color: #51A693;
+}
+
+.btn-update.disabled {
+    color: #ffffff;
+    background-color: #ADDFA4;
+}
+
+.btn-save,
+.dialogConfirm-option-sure {
+    color: #ffffff;
+    background-color: #EE9844;
+}
+
+.btn-save:hover,
+.dialogConfirm-option-sure:hover {
+    color: #ffffff;
+    background-color: #FBA73A;
+}
+
+.btn-save:active,
+.btn-save.active,
+.dialogConfirm-option-sure:active,
+.dialogConfirm-option-sure.active {
+    color: #ffffff;
+    background-color: #E17615;
+}
+
+.btn-save.disabled {
+    color: #ffffff;
+    background-color: #F4C18F;
+}
+
+.section {
+    color: #4E5962;
+    padding: 4px 10px;
+    line-height: 10px;
+    background-color: #91C6E4;
+}
+
+.section:hover {
+    color: #4E5962;
+    background-color: #91C6E4;
+}
+
+.section:active,
+.section.active {
+    color: #4E5962;
+    background-color: #FFBA00;
+}
+
+.btn-paging,
+.dialogConfirm-option-update {
+    color: #ffffff;
+    background-color: #5690C1;
+}
+
+.btn-paging:hover,
+.dialogConfirm-option-update:hover {
+    color: #ffffff;
+    background-color: #62B4DA;
+}
+
+.btn-paging:active,
+.btn-paging.active,
+.dialogConfirm-option-update:active,
+.dialogConfirm-option-update.active {
+    color: #ffffff;
+    background-color: #3082A8;
+}
+
+.btn-paging.disabled {
+    color: #ffffff;
+    background-color: #9ABCDA;
+}
+/*shade div*/
+
+.shadeDiv {
+    display: none;
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    z-index: 1000;
+    background: #707070;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.dialog,
+.dialog-loading {
+    position: absolute;
+    z-index: 10001;
+    display: none;
+    width: 330px;
+    height: auto;
+    background: white;
+    color: #4e4e4e;
+    padding: 20px 0px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #162f43;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+}
+
+.dialogClose {
+    float: right;
+    position: relative;
+    height: 13px;
+    width: 13px;
+    top: -17px;
+    right: 3px;
+    cursor: pointer;
+    background: url(../images/dialog_close.png) no-repeat;
+}
+
+.dialogClose:hover {
+    background: url(../images/dialog_close_hover.png) no-repeat;
+}
+
+.dialog-title,
+.upload-title {
+    width: 330px;
+    display: none;
+    height: 27px;
+    text-align: center;
+}
+
+.dialog-title {
+    background-color: #225783;
+    color: white;
+}
+
+.upload-title {
+    color: #646464;
+}
+
+.dialog-loading {
+    padding: 0;
+}
+
+.dialog-icon {
+    width: 58px;
+}
+
+.dialog-icon img {
+    position: relative;
+    left: 16px;
+    padding-bottom: 1px;
+}
+
+.dialog-content {
+    float: right;
+    width: 245px;
+    color: #454545;
+    line-height: 25px;
+    white-space: normal;
+    display: block;
+    font-size: 15px;
+    text-align: left;
+    padding: 6px;
+    word-wrap: break-word;
+}
+
+.dialogContainer-commands {
+    text-align: center;
+    height: 50px;
+    display: none;
+}
+
+.dialogContainer-commands button {
+    margin-right: 10px;
+}
+
+.dialogContainer-commands hr {
+    background-color: #888;
+    color: #888;
+    height: 1px;
+    border: 0;
+}
+
+.dialog-content-loading {
+    padding-right: 20px;
+}
+
+.dialog-content p,
+.dialogConfirm-content p {
+    margin-top: 0;
+    -webkit-margin-before: 0;
+}
+
+.dialog-content code {
+    display: block;
+    font-family: Tahoma, Sans-Serif;
+    font-size: 0.75em;
+    word-wrap: break-word;
+}
+
+.dialogConfirm-content code {
+    display: block;
+    font-family: Tahoma, Sans-Serif;
+    font-size: 0.75em;
+    text-align: center;
+    color: #06266f;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.dialog-content span {
+    position: relative;
+    left: 5px;
+}
+
+.dialogContainer {
+    position: absolute;
+    z-index: 10001;
+    display: none;
+    height: auto;
+    background: white;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #162f43;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+}
+
+.dialogContainer-title {
+    padding-left: 12px;
+    line-height: 28px;
+    background-color: #225783;
+    color: white;
+    cursor: move;
+}
+
+.dialogContainer-title .dialogContainer-table {
+    width: 100%;
+}
+
+.dialogContainer-title-close {
+    text-align: right;
+    padding-right: 8px;
+    cursor: pointer;
+    width: 10px;
+}
+
+.dialogContainer-title-close:hover {
+    color: gray;
+}
+
+.dialogContainer-content {
+    padding: 12px;
+}
+
+.dialogConfirm {
+    position: absolute;
+    z-index: 10001;
+    display: none;
+    width: 380px;
+    height: auto;
+    background: white;
+    color: #4e4e4e;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #162f43;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8) inset, 0px 0px 1px rgba(200, 200, 200, 0.5);
+}
+
+.dialogConfirm-title {
+    text-align: center;
+    height: 27px;
+    background-color: #225783;
+    color: white;
+}
+
+.dialogConfirm-title-content {
+    font-size: 15px;
+    position: relative;
+    top: 4px;
+}
+
+.dialogConfirm-title-close {
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+    top: 1px;
+    right: 4px;
+    float: right;
+}
+
+.dialogConfirm-title-close:hover {
+    color: gray;
+}
+
+.dialogConfirm-content {
+    font-size: 14px;
+    line-height: 25px;
+    padding: 4px 12px;
+    word-wrap: break-word;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.dialogConfirm-content span {
+    width: 300px;
+    display: inline-block;
+}
+
+.dialogConfirm-content-center {
+    text-align: center;
+}
+
+.dialogConfirm-icon img {
+    position: relative;
+    padding-bottom: 1px;
+}
+
+.dialogConfirm-icon {
+    width: 58px;
+    text-align: center;
+}
+
+.dialogConfirm-option {
+    margin: 12px;
+    text-align: center;
+}
+
+.dialogConfirm-option input {
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+/* Dialog Page */
+.GSRTL .dialogContainer, .GSRTL .dialogConfirm, .GSRTL .dialog {
+    direction: rtl;
+}
+
+.GSRTL .dialogContainer .dialogContainer-title-content {
+    float: right;
+    padding-right: 8px;
+}
+
+.GSRTL .dialogContainer .dialogContainer-title-close {
+    float: left;
+}
+
+.GSRTL .dialogConfirm-option .dialogConfirm-option-sure {
+    margin-right: 20px;
+}
+
+.GSRTL .dialogConfirm .dialogConfirm-title-close {
+    float: left;
+    right: auto;
+    left: 4px;
+}
+
+.GSRTL .dialog .dialogClose {
+    float: left;
+    right: auto;
+    left: 3px;
+}
+
+.GSRTL .dialog .dialog-icon img {
+    left: auto;
+    right: 16px;
+}

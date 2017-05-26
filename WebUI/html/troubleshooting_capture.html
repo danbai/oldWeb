@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG665">Ethernet Capture</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/ui-lightness/styles.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .section-title {
+            margin-top: 12px;
+        }
+        .special {
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .special span {
+            position: relative;
+            top: -6px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG665"></div>
+    <div class="section-body">
+        <form id="form1">
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG1577" tooltip="@LANG1578"></div>
+            <div class="field-content">
+                <select name="capture">
+                    <option value="WAN" locale="LANG264"></option>
+                    <option value="LAN" locale="LANG265"></option>
+                    <option value="LAN 1" locale="LANG266"></option>
+                    <option value="LAN 2" locale="LANG267"></option>
+                    <option value="LOCAL" locale="LANG268"></option>
+                    <option value="NetHDLC 1" locale="LANG3572"></option>
+                </select>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG1644" tooltip="@LANG1650"></div>
+            <div class="field-content">
+                <input type='checkbox' id='useSftp' name='useSftp' />
+            </div>
+        </div>
+        <div class="field-cell" id="storage">
+            <div class="field-label" gLabel="@LANG2830" tooltip="@LANG2830"></div>
+            <div class="field-content">
+                <input type='checkbox' id='useSD' name='useSD' /><br />
+                <div class="special" id="usb_cell" style="display: none;">
+                    <input type="radio" id="usb" value="usb" name="device" disabled />
+                    <span locale="LANG263">USB Disk</span>
+                </div>
+                <div class="special" id="sd_cell" style="display: none;">
+                    <input type="radio" id="sd" value="sd" name="device" disabled />
+                    <span locale="LANG262">SD Card</span>
+                </div>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG1579" tooltip="@LANG1580"></div>
+            <div class="field-content">
+                <input name='capture-filter' type='text' maxlength="256" class="inputWidth232 dis_static" />
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="btnStart" onclick="javascript:btnStart_click();">
+                    <font locale="LANG724">Start</font>
+                </button>
+                <button type="button" id="btnStop" onclick="javascript:btnStop_click();">
+                    <font locale="LANG725">Stop</font>
+                </button>
+                <button type="button" id="btnDownload" onclick="javascript:btnDownload_click();">
+                    <font locale="LANG759">Download</font>
+                </button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class='section-title' locale="LANG666"></div>
+    <div class="section-body" style="font-size: 13px; height: 320px; padding: 5px;">
+        <div id='outputBody' style="height: 300px; overflow: auto;"></div>
+    </div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/troubleshooting-capture.js"></script>
+</body>
+</html>

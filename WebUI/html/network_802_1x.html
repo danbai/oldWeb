@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG708">802.1X Settings</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .uploadFileBtn, .deleteFileBtn {
+            top: 3px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG708">
+    </div>
+    <form id="form" autocomplete="off">
+        <div class='section-title' locale="LANG266" id="title-lan1" style="display: none;"></div>
+        <div class='section-title' locale="LANG264" id="title-wan" style="display: none;"></div>
+        <div class="field-cell">
+            <div class="field-label" gLabel="@LANG1933" tooltip="@LANG1934"></div>
+            <div class="field-content">
+                <select id="mode" name="mode" class="EAP" mLength="true">
+                    <option value="0" locale="LANG273"></option>
+                    <option value="1" locale="LANG1969">EAP-MD5</option>
+                    <option value="2" locale="LANG1970">EAP-TLS</option>
+                    <option value="3" selected="selected" locale="LANG1971">EAP-PEAPv0/MSCHAPv2</option>
+                </select>
+            </div>
+        </div>
+        <div id="divNvram" style="display: none;">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1927" tooltip="@LANG1928"></div>
+                <div class="field-content">
+                    <input type="text" id="identity" name='identity' type='text' maxlength="15" class="dis_static field"  autocomplete="off" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1929" tooltip="@LANG1930"></div>
+                <div class="field-content">
+                    <input type="password" style="display: none;" /> 
+                    <input type="password" id="md5_secret" name='md5_secret' maxlength="15" class="dis_static field"  autocomplete="off" /> 
+                </div>
+            </div>
+        </div>
+        <div id="divUfile" style="display: none;">
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1931" tooltip="@LANG1932"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="ca_cert_file" readonly="readonly" />
+                        <button type="button" id="ca_cert_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="ca_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="ca_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1925" tooltip="@LANG1926"></div>
+                <div class="field-content">
+                    <div class="field-content" style="display:inline-block;">
+                        <input type="text" id="client_cert_file" readonly="readonly" />
+                        <button type="button" id="client_cert_select" class="selectBtn"></button>
+                    </div>
+                    <div class="field-content" style="display:inline-block;">
+                        <button type="button" id="client_cert_upload" class="uploadFileBtn" locale="LANG782">Upload</button>
+                        <button type="button" id="client_cert_delete" class="deleteFileBtn" locale="LANG739">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="lan2" style="display:none;">
+            <div class='section-title' locale="LANG267" id="title-lan2"></div>
+            <div class='section-title' locale="LANG265" id="title-lan"></div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1933" tooltip="@LANG1934"></div>
+                <div class="field-content">
+                    <select id="lan2.802.1x.mode" name="lan2.802.1x.mode" class="EAP2">
+                        <option value="0" locale="LANG273"></option>
+                        <option value="1" locale="LANG1969">EAP-MD5</option>
+                        <option value="2" locale="LANG1970">EAP-TLS</option>
+                        <option value="3" selected="selected" locale="LANG1971">EAP-PEAPv0/MSCHAPv2</option>
+                    </select>
+                </div>
+            </div>
+            <div id="divNvram2" style="display: none;">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1927" tooltip="@LANG1928"></div>
+                    <div class="field-content">
+                        <input type='text' id="lan2.802.1x.identity" name='lan2.802.1x.identity' maxlength="15" autocomplete="off" class="dis_static field" /> 
+                    </div>
+                </div>
+                <div class="field-cell" style="display: none;">
+                    <div class="field-label" gLabel="@LANG1927" tooltip="@LANG1928"></div>
+                    <div class="field-content">
+                        <input type='text' name='lan2.802.1x.username' style="display: none;" /> 
+                        <input type='text' id="lan2.802.1x.username" name='lan2.802.1x.username' maxlength="15" class="dis_static field" /> 
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1929" tooltip="@LANG1930"></div>
+                    <div class="field-content">
+                        <input type="password" name='lan2.802.1x.password' style="display: none;" />
+                        <input type="password" id="lan2.802.1x.password" name='lan2.802.1x.password' maxlength="15"  autocomplete="off" class="input dis_static field" />
+                    </div>
+                </div>
+            </div>
+            <div id="divUfile2" style="display: none;">
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1931" tooltip="@LANG1932"></div>
+                    <div class="field-content">
+                        <div class="field-content" style="display:inline-block;">
+                            <input type="text" id="ca_cert_file2" readonly="readonly" />
+                            <button type="button" id="ca_cert_select2" class="selectBtn"></button>
+                        </div>
+                        <div class="field-content" style="display:inline-block;">
+                            <button type="button" id="ca_cert_upload2" class="uploadFileBtn" locale="LANG782">Upload</button>
+                            <button type="button" id="ca_cert_delete2" class="deleteFileBtn" locale="LANG739">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1925" tooltip="@LANG1926"></div>
+                    <div class="field-content">
+                        <div class="field-content" style="display:inline-block;">
+                            <input type="text" id="client_cert_file2" readonly="readonly" />
+                            <button type="button" id="client_cert_select2" class="selectBtn"></button>
+                        </div>
+                        <div class="field-content" style="display:inline-block;">
+                            <button type="button" id="client_cert_upload2" class="uploadFileBtn" locale="LANG782">Upload</button>
+                            <button type="button" id="client_cert_delete2" class="deleteFileBtn" locale="LANG739">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="div_save_btns" class="field-cell">
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <p>
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" type="button" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">Save</button>
+                    <!-- <button type="button" id="apply" class="btn btn-update" onclick="apply_changes()" locale="LANG1946" style="display: none">Apply</button> -->
+                </p>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajaxupload.3.5.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/network-802.1x.js"></script>
+</body>
+</html>

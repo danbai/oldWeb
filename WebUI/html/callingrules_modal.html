@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+
+<head>
+    <title>Manage Calling Rules</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+    #table_edit_template .label,
+    #table_edit_template_timecondition .label {
+        width: 100px;
+        text-align: left;
+    }
+    
+    .tableIcon {
+        margin-left: 3px;
+        margin-right: 3px;
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        cursor: pointer;
+    }
+    
+    .table-add-icon {
+        background: url(../images/add.png) no-repeat;
+    }
+    
+    .table-edit {
+        background: url(../images/edit_circle.png) no-repeat;
+    }
+    
+    .table-del {
+        background: url(../images/delete_circle.png);
+    }
+    
+    #table_failover tbody td .label:hover,
+    #table_timecondition tbody td .label:hover {
+        text-decoration: none;
+        cursor: auto;
+    }
+    
+    #table_failover .table-add:hover,
+    #table_timecondition .table-add:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    #new_crl_pattern {
+        border: 1px solid #D4D2CE;
+    }
+    
+    table.tableWidget {
+        border: 0 none;
+    }
+
+    table.tableWidget tbody td span,
+    table.tableWidget thead th span {
+        cursor: auto;
+        color: black;
+        margin-left: 0px;
+    }
+    
+    /* table.tableWidget tbody td {
+        text-align: left;
+    } */
+
+    td .field-content {
+        width: 360px;
+        text-align: left;
+    }
+
+    .selectDiv {
+        position: relative;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        margin-right: 12px;
+    }
+    
+    .special div span.label {
+        width: auto;
+    }
+    
+    .field-cell .field-content-special {
+        width: 500px;
+    }
+
+    #specificTime {
+        display: none;
+    }
+    
+    .timecondition-tips {
+        display: none;
+        margin: 0 33px;
+        text-align: left;
+        line-height: 18px;
+        color: #8E8E8E;
+    }
+    
+    .timecondition-container {
+        margin-top: 10px;
+    }
+
+    .radioDiv {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+    
+    #new_itrl_month_container div,
+    #new_itrl_week_container div {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        line-height: 30px;
+    }
+    
+    .boxLabel {
+        position: relative;
+        top: -5px;
+    }
+
+    .day_selected:hover {
+        background: #C77;
+    }
+    
+    .day_selected {
+        background: #78EE22;
+    }
+    
+    .day_unselected:hover {
+        background: #78DD55;
+    }
+    
+    .day_selected_pending:hover {
+        background: #C77;
+        cursor: col-resize;
+    }
+    
+    .day_selected_pending {
+        background: #78DD55;
+    }
+    
+    .day_unselected_pending {
+        background: #C77;
+    }
+    
+    .day_unselected_pending:hover {
+        background: #C77;
+        cursor: col-resize;
+    }
+
+    .failover-title {
+        min-height: 23px;
+    }
+
+    .failover-title div.glab {
+        padding: 1px 6px;
+    }
+
+    /* disable text selection */
+    #new_itrl_day_container td {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -moz-user-select: none;
+    }
+    
+    #new_itrl_day_container td:hover {
+        cursor: pointer;
+    }
+    
+    #patternTable {
+        margin: -3px 0 0 -3px;
+    }
+    
+    #patternTable td {
+        border-bottom: 0 none;
+        padding: 0;
+    }
+    
+    .btn_add {
+        background: url(../images/add.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+    
+    .btn_del {
+        background: url(../images/delete_circle.png) no-repeat;
+        position: relative;
+        border: none;
+        width: 13px;
+        height: 13px;
+    }
+    
+    #dynamicRoute,
+    #div_out_limitime {
+        display: none;
+        width: 100%;
+    }
+    
+    #leftSelect,
+    #rightSelect {
+        width: 240px;
+        height: 95px;
+    }
+    
+    #dynamicRoute table thead th,
+    #dynamicRoute table tbody td {
+        border-bottom: 0 none;
+        text-align: center;
+    }
+    
+    #dynamicRoute .disabled {
+        cursor: default;
+    }
+    </style>
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" name="editForm" style="width: 750px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1533" tooltip="@LANG1534"></div>
+                    <div class="field-content">
+                        <input type="text" id="outbound_rt_name" name="outbound_rt_name" field_name='Calling Rule Name' maxlength="25" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG246" tooltip="@LANG1560"></div>
+                    <div class="field-content">
+                        <!-- <table id="patternTable" border="0">
+                            <tr>
+                                <td><input type="text" position="left" class="inputWidth87" id="match0" name="match0" maxlength="100" /></td>
+                                <td><label>/</label></td>
+                                <td><input type="text" position="right" class="inputWidth87" id="allow0" name="allow0" maxlength="100" /></td>
+                                <td><button type="button" class="btn_add" id="btn0" onclick="addRow(this, 'patternTable');"></button></td>
+                            </tr>
+                        </table> -->
+                        <textarea id="match" name="match" field_name="Match" cols="19" rows="5"></textarea>
+                    </div>
+                </div>
+                <div id="div_out_of_service" class="field-cell">
+                    <div class="field-label" gLabel="@LANG5093" tooltip="@LANG5092"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id='out_of_service' />
+                    </div>
+                </div>
+                <div id="out_limitime" class="field-cell">
+                    <div class="field-label" glabel="@LANG3025" tooltip="@LANG3026"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="enable_out_limitime" name="enable_out_limitime" noSerialize=true />
+                    </div>
+                </div>
+                <div id="div_out_limitime" class="field-cell">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3017" tooltip="@LANG3018"></div>
+                        <div class="field-content">
+                            <input type="text" id="maximumTime" name="maximumTime" maxlength="14" dfalt="" noSerialize=true />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3019" tooltip="@LANG3020"></div>
+                        <div class="field-content">
+                            <input type="text" id="warningTime" name="warningTime" maxlength="14" dfalt="" noSerialize=true />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3021" tooltip="@LANG3022"></div>
+                        <div class="field-content">
+                            <input type="text" id="repeatTime" name="repeatTime" maxlength="14" dfalt="" noSerialize=true />
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4553" tooltip="@LANG4558"></div>
+                    <div class="field-content field-content-special">
+                        <select id="pin_sets_id" name="pin_sets_id"></select>
+                    </div>
+                </div>
+                <div class="pin-sets">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG73" tooltip="@LANG1540"></div>
+                        <div class="field-content">
+                            <input type="text" id="password" name="password" field_name='Calling Rule Name' maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1543" tooltip="@LANG1544"></div>
+                        <div class="field-content field-content-special">
+                            <select id="permission" name="permission">
+                                <option locale="LANG273" value="none" selected>None</option>
+                                <option locale="LANG1071" value="internal">Internal</option>
+                                <option locale="LANG1072" value="local">Local</option>
+                                <option locale="LANG1073" value="national">National</option>
+                                <option locale="LANG1074" value="international">International</option>
+                            </select>
+                            <span locale="LANG2535 LANG1071" class="levelTip internalTip"></span>
+                            <span locale="LANG3700" class="levelTip noneTip"></span>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2699" tooltip="@LANG2700"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="enable_wlist" name="enable_wlist" maxlength="10" />
+                        </div>
+                    </div>
+                    <div id="dynamicRoute">
+                        <div class="field-cell" style="width: 100%;">
+                            <table cellpadding="2" cellspacing="2" border="0" width="60%" align="center">
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <b locale="LANG2701"></b>
+                                    </td>
+                                    <td width="50" align="center"></td>
+                                    <td align="center" valign="top">
+                                        <b locale="LANG2702"></b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top">
+                                        <select id="leftSelect" name="leftSelect" noserialize="true" multiple size="8"></select>
+                                    </td>
+                                    <td width="80" align="center" valign="center">
+                                        <span class="selectIcon addAll" id="allToRight"></span>
+                                        <span class="selectIcon addRight" id="oneToRight"></span>
+                                        <span class="selectIcon addLeft" id="oneToLeft"></span>
+                                        <span class="selectIcon removeAll" id="allToLeft"></span>
+                                    </td>
+                                    <td align="right" valign="top">
+                                        <select id="rightSelect" name="rightSelect" noserialize="true" multiple size="8">
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2703" tooltip="@LANG4472"></div>
+                            <div class="field-content">
+                                <input type="text" id="custom_member" name="custom_member" maxlength="128" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: none;">
+                <div class='section-title field-cell'>
+                    <div class="field-content" style="padding-top: 4px;">
+                        <input type="checkbox" id="toLocalDest" name="toLocalDest" />
+                    </div>
+                    <div glabel="@LANG1545" tooltip="@LANG1546"></div>
+                </div>
+                <div class="section-body">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1535"></div>
+                        <div class="field-content">
+                            <select id="new_crl_localDest" name="new_crl_localDest"></select>
+                            <div id="new_crl_localDest_CUSTOM_container" name="new_crl_localDest_CUSTOM_container" style='margin-top: 3px; display: none'>
+                                <input type="text" id="new_crl_localDest_CUSTOM" name="new_crl_localDest_CUSTOM" />
+                                <br> Ex: Macro(someMacro,${EXTEN:1})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='STT_TR_OPTIONS'>
+                <div class='section-title' locale="LANG1553">Send this call through trunk</div>
+                <div class="section-body">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1551" tooltip="@LANG1552"></div>
+                        <div class="field-content field-content-special">
+                            <select id="default_trunk_index" name="default_trunk_index" mSelect="true"></select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG245" tooltip="@LANG1548"></div>
+                        <div class="field-content">
+                            <input id="strip" name="stripx" class="inputWidth30" maxlength="2" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1541" tooltip="@LANG1542"></div>
+                        <div class="field-content">
+                            <input id="prepend" name="prepend" maxlength="20" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='STT_TR_OPTIONS'>
+                <div class='section-title field-cell failover-title'>
+                    <div style="display: none;">
+                        <input type="checkbox" id="new_crl_foChkbx" name="new_crl_foChkbx" />
+                    </div>
+                    <div glabel="@LANG1549" tooltip="@LANG1550" class="special"></div>
+                </div>
+                <div class="section-body">
+                    <div>
+                        <table id='table_failover' cellpadding="0" cellspacing="0" border="0" class="tableWidget" style='clear: both; width: 100%;'></table>
+                    </div>
+                    <div id='table_template_placeholder' style="display: none;">
+                        <div id='table_edit_template'>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1536" tooltip="@LANG1550"></div>
+                                <div class="field-content field-content-special">
+                                    <select id="new_crl_fotrunk" name="new_crl_fotrunk" mSelect="true"></select>
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG245" tooltip="@LANG1548"></div>
+                                <div class="field-content">
+                                    <input id="new_crl_fotr_stripx" name="new_crl_fotr_stripx" class="inputWidth30" maxlength="2" />
+                                </div>
+                            </div>
+                            <div class="field-cell">
+                                <div class="field-label" glabel="@LANG1541" tooltip="@LANG1542"></div>
+                                <div class="field-content">
+                                    <input id="new_crl_fotr_prepend" name="new_crl_fotr_prepend" maxlength="20" />
+                                </div>
+                            </div>
+                            <div class="field-cell modal-commands">
+                                <button type="button" id="failover_cancel" name="cancel" class="btn btn-cancel" locale="LANG726"></button>
+                                <button type="submit" id="table-add-btn" class="btn btn-update" locale="LANG769"></button>
+                                <button type="submit" id="table-edit-btn" class="btn btn-update" locale="LANG770"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timecondition-container">
+                <div class='section-title' locale="LANG1557"></div>
+                <div class='STT_TR_OPTIONS'>
+                    <div class="section-body">
+                        <div>
+                            <table id='table_timecondition' cellpadding="0" cellspacing="0" border="0" class="tableWidget" style='clear: both; width: 100%;'></table>
+                        </div>
+                        <div id='table_template_timecondition' style="display: none">
+                            <div id='table_edit_template_timecondition'>
+                                <div class="field-cell">
+                                    <div class="timecondition-tips"></div>
+                                    <div class="field-cell">
+                                        <div class="field-label" glabel="@LANG1557"></div>
+                                        <div class="field-content">
+                                            <select id="office" name="office" dfalt="1" noSerialize='true'>
+                                                <option locale="LANG3271" value="1">Office Time</option>
+                                                <option locale="LANG3275" value="2">Out of Office Time</option>
+                                                <option locale="LANG3266" value="3">Holiday</option>
+                                                <option locale="LANG3286" value="4">Out of Holiday</option>
+                                                <option locale="LANG3287" value="5">Out of Office Time or Holiday</option>
+                                                <option locale="LANG3288" value="6">Specific Time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="specificTime">
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG169"></div>
+                                            <div class="field-content">
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_stime_hour" name="new_itrl_stime_hour" class="itrl_time"></select>
+                                                </div>
+                                                <div class="selectDiv">:</div>
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_stime_minute" name="new_itrl_stime_minute" class="itrl_time"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG184"></div>
+                                            <div class="field-content">
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_ftime_hour" name="new_itrl_ftime_hour" class="itrl_time"></select>
+                                                </div>
+                                                <div class="selectDiv">:</div>
+                                                <div class="selectDiv">
+                                                    <select id="new_itrl_ftime_minute" name="new_itrl_ftime_minute" class="itrl_time"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell local_week">
+                                            <div class="field-label" glabel="@LANG243"></div>
+                                            <div id="new_itrl_week_container" class="field-content">
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_sun" name="new_itrl_week_sun" class="chk_week" maxlength="2" value="sun" />
+                                                    <span locale="LANG250" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_mon" name="new_itrl_week_mon" class="chk_week" maxlength="2" value="mon" />
+                                                    <span locale="LANG251" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_tue" name="new_itrl_week_tue" class="chk_week" value="tue" />
+                                                    <span locale="LANG252" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_wed" name="new_itrl_week_wed" class="chk_week" value="wed" />
+                                                    <span locale="LANG253" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_thu" name="new_itrl_week_thu" class="chk_week" value="thu" />
+                                                    <span locale="LANG254" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_fri" name="new_itrl_week_fri" class="chk_week" value="fri" />
+                                                    <span locale="LANG255" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_sat" name="new_itrl_week_sat" class="chk_week" value="sat" />
+                                                    <span locale="LANG256" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_week_all" name="new_itrl_week_all" value="*" />
+                                                    <span locale="LANG104" class="boxLabel"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-label" glabel="@LANG542"></div>
+                                        <div id="new_itrl_date" class="field-content">
+                                            <input type="checkbox" id="mode" name="mode" />
+                                        </div>
+                                        <div class="field-cell local_month" style="display: none;">
+                                            <div class="field-label" glabel="@LANG244"></div>
+                                            <div id="new_itrl_month_container" class="field-content">
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_jan" name="new_itrl_month_jan" class="chk_month" value="jan" />
+                                                    <span locale="LANG204" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_feb" name="new_itrl_month_feb" class="chk_month" value="feb" />
+                                                    <span locale="LANG205" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_mar" name="new_itrl_month_mar" class="chk_month" value="mar" />
+                                                    <span locale="LANG206" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_apr" name="new_itrl_month_apr" class="chk_month" value="apr" />
+                                                    <span locale="LANG207" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_may" name="new_itrl_month_may" class="chk_month" value="may" />
+                                                    <span locale="LANG208" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_jun" name="new_itrl_month_jun" class="chk_month" value="jun" />
+                                                    <span locale="LANG209" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_jul" name="new_itrl_month_jul" class="chk_month" value="jul" />
+                                                    <span locale="LANG210" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_aug" name="new_itrl_month_aug" class="chk_month" value="aug" />
+                                                    <span locale="LANG211" class="boxLabel"></span>&nbsp;&nbsp;
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_sep" name="new_itrl_month_sep" class="chk_month" value="sep" />
+                                                    <span locale="LANG212" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_oct" name="new_itrl_month_oct" class="chk_month" value="oct" />
+                                                    <span locale="LANG213" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_nov" name="new_itrl_month_nov" class="chk_month" value="nov" />
+                                                    <span locale="LANG214" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_dec" name="new_itrl_month_dec" class="chk_month" value="dec" />
+                                                    <span locale="LANG215" class="boxLabel"></span>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" id="new_itrl_month_all" name="new_itrl_month_all" type="checkbox" value="*" />
+                                                    <span locale="LANG104" class="boxLabel"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell local_day" style="display: none;">
+                                            <div class="field-label" glabel="@LANG242"></div>
+                                            <div class="field-content">
+                                                <span id="new_itrl_day_container"></span>
+                                            </div>
+                                        </div>
+                                        <div class="field-cell">
+                                            <div class="field-label" glabel="@LANG3276"></div>
+                                            <div class="field-content">
+                                                <input type="checkbox" id="timetype" name="timetype" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field-cell modal-commands">
+                                        <button type="button" id="tm_cancel" name="cancel" class="btn btn-cancel" locale="LANG726"></button>
+                                        <button type="submit" id="tm_add" class="btn btn-update" locale="LANG769"></button>
+                                        <button type="submit" id="tm_edit" class="btn btn-update" locale="LANG770"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body">
+                <div id="modal_btn" class="field-cell modal-commands dialogContainer-commands" style="width: 750px; display: none;">
+                    <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/callingrules-modal.js"></script>
+</body>
+
+</html>

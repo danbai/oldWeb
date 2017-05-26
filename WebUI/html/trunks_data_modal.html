@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>Analog Trunks</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3556" tooltip="@LANG3557"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="hdlc0__enable" name="hdlc0__enable" noSerialize="true"/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3162" tooltip="@LANG3145"></div>
+                    <div class="field-content">
+                        <select id="group_index" name="group_index" noSerialize="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3558" tooltip="@LANG3559"></div>
+                    <div class="field-content">
+                        <select id="hdlc0__encapsulation" name="hdlc0__encapsulation">
+                            <option value="hdlc" locale="LANG3560">HDLC</option>
+                            <option value="hdlc-eth" locale="LANG3561">HDLC-ETH</option>
+                            <option value="cisco" locale="LANG3562">Cisco</option>
+                            <option value="fr" locale="LANG3563">Frame Relay</option>
+                            <option value="ppp" locale="LANG3564">PPP</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="frDiv">
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3892" tooltip="@LANG3893"></div>
+                        <div class="field-content">
+                            <select id="hdlc0__fr__lmitype" name="hdlc0__fr__lmitype">
+                                <option value="none">None</option>
+                                <option value="ansi" locale="LANG3898">ANSI</option>
+                                <option value="ccitt" locale="LANG3899">ITU-T Q.933</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3894" tooltip="@LANG3895"></div>
+                        <div class="field-content">
+                            <input type="text" id="hdlc0__fr__dlci" name="hdlc0__fr__dlci" />
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG3896" tooltip="@LANG3897"></div>
+                        <div class="field-content">
+                            <select id="hdlc0__fr__dce" name="hdlc0__fr__dce">
+                                <option value="0">DTE</option>
+                                <option value="1">DCE</option>
+                            </select>
+                        </div>
+                    </div>    
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3565" tooltip="@LANG3566"></div>
+                    <div class="field-content">
+                        <input type="text" id="hdlc0__localip" name="hdlc0__localip" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1902" tooltip="@LANG3567"></div>
+                    <div class="field-content">
+                        <input type="text" id="hdlc0__netmask" name="hdlc0__netmask" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3568" tooltip="@LANG3569"></div>
+                    <div class="field-content">
+                        <input type="text" id="hdlc0__remoteip" name="hdlc0__remoteip" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1904" tooltip="@LANG1905">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="hdlc0__dns1" name="hdlc0__dns1" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1906" tooltip="@LANG1907">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="hdlc0__dns2" name="hdlc0__dns2"/>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG3570" tooltip="@LANG3571"></div>
+                    <div class="field-content">
+                        <input type="checkbox" id="hdlc0__default" name="hdlc0__default" noSerialize="true"/>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/trunks-data-modal.js"></script>
+</body>
+</html>

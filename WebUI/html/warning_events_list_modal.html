@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title>Setting Event Parameters</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/table.css?modal" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #selectcycle_unit {
+            top: 4px;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" name="editForm" style="width: 600px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2568" tooltip="@LANG2569">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="cycle_time" name="cycle_time" field_name='Rule Name' maxlength="25" style="width: 80px;" />
+                        <select id="cycle_unit" name="cycle_unit" dfalt="" style="margin-left: 88px;" >
+                            <option value="s" locale="LANG2575"></option>
+                            <option value="m" locale="LANG2576"></option>
+                            <option value="h" locale="LANG2577"></option>
+                            <option value="d" locale="LANG2578"></option>
+                            <!-- <option value="month" locale="LANG2579"></option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2570" tooltip="@LANG2571">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="threshold_value" name="threshold_value" field_name='Rule Name' maxlength="25" style="width: 30px;" />&nbsp;%
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5348" tooltip="@LANG5349">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="send_delay" name="send_delay" maxlength="25" style="width: 80px;" />
+                        <span locale="LANG2576"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body">
+                <div id="modal_btn" class="field-cell modal-commands">
+                    <button type="button" id="cancel" name="cancel" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" id="save" name="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/warning-events-list-modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<!--
+* Copyright (C) 2012-2015 Doubango Telecom <http://www.doubango.org>
+* License: BSD
+* This file is part of Open Source sipML5 solution <http://www.sipml5.org>
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Advanced settings</title>
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        input[type="text"], input[type="password"] {
+            width: 185px;
+        }    
+    </style>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="./src/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 700px; height: 480px;">
+            <div class="section-body">
+                <div class="section-title" locale="LANG542"></div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4239" tooltip="@LANG4240">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id='cbVideoDisable' />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4241" tooltip="@LANG4242">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id='cbRTCWebBreaker' />
+                    </div>
+                </div>
+                <!--<div class="field-cell">
+                    <div class="field-label" glabel="@LANG4243" tooltip="@LANG4244">
+                    </div>
+                    <div class="field-content">
+                        <input type="text"  id="txtWebsocketServerUrl" value="" />
+                    </div>
+                </div>-->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4245" tooltip="@LANG4246">
+                    </div>
+                    <div class="field-content">
+                        <input type="text"  id="txtSIPOutboundProxyUrl" name="txtSIPOutboundProxyUrl" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG1575" tooltip="@LANG1576">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="txtStunServer" name="txtStunServer" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4419" tooltip="@LANG4420">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="txtTurnServerUri" name="txtTurnServerUri" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4415" tooltip="@LANG4416">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="txtTurnServerUsr" name="txtTurnServerUsr" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4417" tooltip="@LANG4418">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="txtTurnServerPws" name="txtTurnServerPws" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4249" tooltip="@LANG4250">
+                    </div>
+                    <div class="field-content">
+                        <input type="text"  id="txtBandwidth" name="txtBandwidth" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4251" tooltip="@LANG4252">
+                    </div>
+                    <div class="field-content">
+                        <input type="text" id="txtSizeVideo" name="txtSizeVideo" value="" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4253" tooltip="@LANG4254">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id='cbEarlyIMS' />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4255" tooltip="@LANG4256">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id='cbDebugMessages' />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4257" tooltip="@LANG4258">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id='cbCacheMediaStream' />
+                    </div>
+                </div>
+<!--                 <div class="field-cell">
+                    <div class="field-label" glabel="@LANG4259" tooltip="@LANG4260">
+                    </div>
+                    <div class="field-content">
+                        <input type='checkbox' id='cbCallButtonOptions' />
+                    </div>
+                </div> -->
+                <div class="field-cell modal-commands dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">Cancel</button>
+                    <button type="submit" id="btnSave" class="btn btn-save" locale="LANG728">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/webrtc-modal.js" > </script>
+</body>
+</html>
+ 

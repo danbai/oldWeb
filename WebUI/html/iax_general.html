@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG678">IAX General</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG678"></div>
+    <form id="form">
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1627" tooltip="@LANG1628">
+                </div>
+                <div class="field-content">
+                    <input type='text' id="bindport" name="bindport" dfalt='4569' class="inputWidth50"  maxlength="6" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1625" tooltip="@LANG1626">
+                </div>
+                <div class="field-content">
+                    <input type='text' dfalt='' id="bindaddr" name="bindaddr" maxlength="40" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG5123" tooltip="@LANG5124">
+                </div>
+                <div class="field-content">
+                    <input type='text' dfalt='' id="bindaddr6" name="bindaddr6" maxlength="44" class='IPv6Input' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1631" tooltip="@LANG1632">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="iaxcompat" name="iaxcompat" dfalt='n' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1638" tooltip="@LANG1639">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="nochecksums" name="nochecksums" dfalt='n' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1629" tooltip="@LANG1630">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' id="delayreject" name="delayreject" dfalt='n' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="ADSI:" tooltip="@LANG1622">
+                </div>
+                <div class="field-content">
+                    <input type='checkbox' dfalt='n' id="adsi" name="adsi" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1634" tooltip="@LANG1635">
+                </div>
+                <div class="field-content">
+                    <select id="mohinterpret" name="mohinterpret" dfalt="default" maxlength="20" noserialize="true"></select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1636" tooltip="@LANG1637">
+                </div>
+                <div class="field-content">
+                    <select id="mohsuggest" name="mohsuggest" dfalt="default" maxlength="20" noserialize="true"></select>
+                </div>
+            </div>
+            <div class="field-cell" style="display: none;">
+                <div class="field-label" glabel="@LANG1458" tooltip="@LANG1633">
+                </div>
+                <div class="field-content">
+                    <input type='text' dfalt='en' id="language" name="language" class="inputWidth50"  maxlength="3" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG1623" tooltip="@LANG1624">
+                </div>
+                <div class="field-content">
+                    <select id="bandwidth" name="bandwidth"  >
+                        <option value="low" locale="LANG1640"></option>
+                        <option value="medium" locale="LANG1641"></option>
+                        <option value="high" locale="LANG1642"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell last">
+                <div class="field-label">
+                    &nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" type="button" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/iax-general.js"></script>
+</body>
+</html>

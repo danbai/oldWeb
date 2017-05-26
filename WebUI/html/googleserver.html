@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+ -->
+<html>
+<head>
+<title locale="LANG3513">Google Service Settings</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css"/>
+<style>
+    #google_host {
+        margin-right: 10px;
+    }
+    .page input.dis_static {
+        width: 480px;
+    }
+    #author_prompt {
+        display: none;
+    }
+    .open_error {
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body class="page">
+    <form id="form_server" autocomplete="off">
+        <div class='lite_Heading' locale="LANG4390"></div>
+        <div class="section-body">
+            <p class="lite_desc" locale="LANG4391"></p>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3514" tooltip="@LANG4392"></div>
+                <div class="field-content">
+                    <input type='text' id="google_id" name='google_id' class="dis_static"/>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3515" tooltip="@LANG4392"></div>
+                <div class="field-content">
+                    <input type='text' id="google_pwd" name='google_pwd' class="dis_static"/>
+                </div>
+            </div>
+            <div class="field-cell last" id="options">
+                <div class="field-label">
+                    &nbsp;
+                </div>
+                <div class="field-content">
+                    <button type="button" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save1" class="btn btn-save" locale="LANG728"></button>
+                    <button type="button" id="reset_btn" class="btn btn-save" locale="LANG750"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <hr/>
+
+    <form id="form_author">
+        <div class="lite_Heading lite_heading_cursor" locale="LANG4386"></div>
+        <div class="section-body">
+            <div class="lite_desc" id="lite_desc_author">
+                <p locale="LANG4411"></p>
+                <p locale="LANG4412"></p>
+                <p locale="LANG4413"></p>
+                <p locale="LANG4414"></p>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3520" tooltip="@LANG4409">
+                </div>
+                <div class="field-content">
+                    <input type="text" id="google_code" name="google_code" class="inputWidth182">
+                </div>
+            </div>
+
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3517" tooltip="@LANG4410"></div>
+                <div class="field-content">
+                    <input type='text' id="google_host" name='google_host' class="inputWidth182" disabled/>
+                </div>
+            </div>
+                
+            <p class="lite_desc" id="author_prompt">
+                <span locale="LANG4388" class="open_error"></span>
+                <a href="" target="_blank" id="desc_href" locale="LANG4387"></a>
+            </p>
+
+            <div class="field-cell last" id="options">
+                <div class="field-label">
+                    &nbsp;
+                </div>
+                <div class="field-content">
+                    <button type="button" class="btn btn-paging" locale="LANG4387" id="get_author"></button>
+                    <button type="submit" id="save3" class="btn btn-paging" locale="LANG3518" id="empower"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <hr/>
+
+    <form id="form_calender">
+        <div class="lite_Heading" locale="LANG3516"></div>
+        <div class="section-body">
+            <div class="field-cell">
+                <div class="field-label" glabel="@LANG3794" tooltip="@LANG3797"></div>
+                <div class="field-content">
+                    <input type="text" size="2" maxlength="4" id="reflesh_time_input" name="reflesh_time_input" class="inputWidth182">
+                </div>
+            </div>
+
+            <div class="field-cell last" id="options">
+                <div class="field-label">
+                    &nbsp;
+                </div>
+                <div class="field-content">
+                    <button type="button" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save2" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/googleserver.js"></script>
+</body>
+</html>

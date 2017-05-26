@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+
+<head>
+    <title locale="LANG637">Manage Configuration Network Backups</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    .field-cell {
+        background-color: #EFEFEF;
+    }
+    
+    #auto_backup_module div {
+        display: inline-block;
+    }
+    
+    #auto_backup_module div span {
+        position: relative;
+        top: -6px;
+    }
+    </style>
+</head>
+
+<body class="page">
+    <div class='lite_Heading' locale="LANG637"></div>
+    <form id="form" autocomplete="off">
+        <div class="lite_desc" locale="LANG1419">Sync your voice records / voice mails / CDR / FAX everyday via SFTP protocol automatically.</div>
+        <div class="section-body">
+            <div class="section-title" locale="LANG4079">Data Sync Configuration</div>
+            <a href="#top" localeTitle="LANG3962" id="toTop"></a>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1420" tooltip="@LANG1421"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='Pen_auto_backup' />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4075"></div>
+                <div class="field-content" id="auto_backup_module">
+                    <div>
+                        <input type='checkbox' class='file-type' id='Psync_cdr' name="Psync_cdr" />
+                        <span locale="LANG4053" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' class='file-type' id='Psync_record' id='Psync_record' />
+                        <span locale="LANG2640" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' class='file-type' id='Psync_voicemail' id='Psync_voicemail' />
+                        <span locale="LANG3601" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' class='file-type' id='Psync_vfax' id='Psync_vfax' />
+                        <span locale="LANG2375" class="boxLabel"></span>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='select_all' name='select_all' />
+                        <span locale="LANG104" class="boxLabel"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1422" tooltip="@LANG1423"></div>
+                <div class="field-content">
+                    <input type="text" name="Psftp_account" style="display: none;" />
+                    <input type="text" id='Psftp_account' name="Psftp_account" maxlength="32" autocomplete="off" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1424" tooltip="@LANG1425"></div>
+                <div class="field-content">
+                    <input type="password" name="Psftp_pass" style="display: none;" /> 
+                    <span id="pwSpan">
+                        <input type="password" id='Psftp_pass' name="Psftp_pass" maxlength="32"  autocomplete="off" /> 
+                    </span>
+                    <button type="button" id="show_pwd" class="lightOffBtn" onclick="top.UCMGUI.show_password(this, 'pwSpan', timeoutID, 'Psftp_pass', document);" localeTitle="LANG799"></button>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG1426" tooltip="@LANG1427"></div>
+                <div class="field-content">
+                    <input type="text" id='Psftp_address' name="Psftp_address" maxlength="256" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4535" tooltip="@LANG4536"></div>
+                <div class="field-content">
+                    <input type="text" id='Psftp_directory' name="Psftp_directory" maxlength="256" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4077" tooltip="@LANG4078"></div>
+                <div class="field-content">
+                    <input type="text" id='Phour_backup' name="Phour_backup" class="inputWidth30" maxlength="2" />
+                </div>
+            </div>
+            <div id="buttons" class="field-cell last">
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="button" id="test" class="btn btn-paging" onclick="test_server();" locale="LANG761"></button>
+                    <button type="button" id="syncAll" class="btn btn-paging" onclick="sync_all();" locale="LANG3958"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728" onclick="save_changes()"></button>
+                </div>
+            </div>
+            <div class="section-title" locale="LANG638">Data Sync Log</div>
+            <div class="field-label">&nbsp;</div>
+            <div class="field-content">
+                <button type="button" id="clean" class="btn btn-paging" onclick="clean_log();" locale="LANG743"></button>
+            </div>
+            <div class="field-label">&nbsp;</div>
+            <div class="section-body" style="font-size: 13px; padding: 5px;">
+                <div id='backup_log'></div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/astman.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/backup-network.js"></script>
+</body>
+
+</html>

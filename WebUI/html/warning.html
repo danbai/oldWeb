@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG2581">Warning</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet/redmond/jquery-ui.css" media="all" rel="Stylesheet" type="text/css" />
+    <link href="../stylesheet/ui.jqgrid.css" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #ui-datepicker-div .ui-widget-content {
+            border: 1px solid #a6c9e2;
+        }
+        #widget_alertLog {
+            margin-top: 20px;
+        }
+        /* Interaction Cues */
+        #form .ui-state-highlight,
+        #form .ui-content .ui-state-highlight,
+        #form .ui-widget-header .ui-state-highlight {
+            border: 1px solid #EDC7C6;
+            background: #FFE6E7;
+            color: #363636;
+        }
+        #form .ui-state-highlight a,
+        #form .ui-content .ui-state-highlight a,
+        #form .ui-widget-header .ui-state-highlight a {
+            color: #363636;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class="lite_Heading" locale="LANG2581"></div>
+    <form id="form">
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG2549"></div>
+            <div class="field-content SelectDiv">
+                <select id="logid" name="logid">
+                    <option locale="LANG104" value="">None</option>
+                    <option locale="LANG2591" value="1">Disk Usage</option>
+                    <option locale="LANG4780" value="18">External Disk Usage</option>
+                    <option locale="LANG2592" value="2">Modify Super Admin Password</option>
+                    <option locale="LANG2593" value="3">Memory Usage</option>
+                    <option locale="LANG2594" value="4">System Reboot</option>
+                    <option locale="LANG2595" value="5">System Update</option>
+                    <option locale="LANG2681" value="6">System Crash</option>
+                    <option locale="LANG2758" value="7">Register SIP Failed</option>
+                    <option locale="LANG2759" value="8">Register SIP Trunk Failed</option>
+                    <option locale="LANG2760" value="9">Restore Config</option>
+                    <option locale="LANG2761" value="10">User Login Success</option>
+                    <option locale="LANG2762" value="11">User Login Failed</option>
+                    <option locale="LANG4779" value="17">User Login Banned</option>
+                    <option locale="LANG3183" value="12">SIP Internal Call Failure</option>
+                    <option locale="LANG3184" value="13">SIP Outgoing Call through Trunk Failure</option>
+                    <option locale="LANG3277" value="14">Fail2ban Blocking</option>
+                    <option locale="LANG3278" value="15">SIP Lost Registration</option>
+                    <option locale="LANG3504" value="16">SIP Peer Trunk Status</option>
+                </select>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG2550"></div>
+            <div class="field-content SelectDiv">
+                <select id="type" name="type">
+                    <option locale="LANG104" value="">None</option>
+                    <option locale="LANG2597" value="0">Restore to normal</option>
+                    <option locale="LANG2596" value="1">Generate Alert</option>
+                </select>
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG1048"></div>
+            <div class="field-content SelectDiv">
+                <input type='text' id="startfrom" name="startfrom" class="inputWidth130 special" />
+            </div>
+        </div>
+        <div class="field-cell">
+            <div class="field-label" glabel="@LANG1049"></div>
+            <div class="field-content SelectDiv">
+                <input type='text' id="startto" name="startto" class="inputWidth130 special" />
+            </div>
+        </div>
+        <div class="field-cell">
+            <div calss="field-cell">
+                <button type="submit" id="btnSubmit" class="btn btn-update" locale="LANG803">Search</button>
+                <button type="button" id="btnDeleteSearchResult" class="btn btn-update" locale="LANG4071">Delete Search Result(s)</button>
+                <button type="button" id="btnDeleteAll" class="btn btn-delete" locale="LANG740">Delete All</button>
+            </div>
+        </div>
+    </form>
+    <table id="alertLog"></table>
+    <div id="alertLogPager"></div>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/grid.locale-en.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/warning.js"></script>
+</body>
+</html>

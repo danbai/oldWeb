@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            padding:2px 0px;
+        }
+        .field-content{
+            width:210px;
+        }
+        .field-content select {
+            width:155px;
+        }
+        .field-content-special {
+            line-height: 28px
+        }
+        .field-content input[type=checkbox] {
+            position: relative;
+            top: 5px;
+        }
+        #form {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="edit_disa_div" style="width: 650px;">
+            <div class="section-body">
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG135" tooltip="@LANG2356"></div>
+                    <div class="field-content">
+                        <input type="text" id='display_name' name='display_name' maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG73" tooltip="@LANG2357"></div>
+                    <div class="field-content">
+                        <input type="text" id="password" name="password" maxlength="32" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" gLabel="@LANG1069" tooltip="@LANG1070"></div>
+                    <div class="field-content">
+                        <select id='permission' dfalt='internal'>
+                            <option value='internal' locale="LANG1071"></option>
+                            <option value='internal-local' locale="LANG1072"></option>
+                            <option value='internal-local-national' locale="LANG1073"></option>
+                            <option value='internal-local-national-international' locale="LANG1074"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2358" tooltip="@LANG2359"></div>
+                    <div class="field-content">
+                        <input type="text" id="response_timeout" name="response_timeout" dfalt="10" maxlength="3" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2360" tooltip="@LANG2361"></div>
+                    <div class="field-content">
+                        <input type="text" id="digit_timeout" name="digit_timeout" dfalt="5" maxlength="2" />
+                    </div>
+                </div>            
+                <!-- <div class="field-cell" style="display:none;">
+                    <div class="field-label" glabel="@LANG1359" tooltip="@LANG2362"></div>
+                    <div class="field-content">
+                        <input type="text" id="callerid" name="callerid" maxlength="32" />
+                    </div>
+                </div> -->
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG2363" tooltip="@LANG2364"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="hangup" />
+                    </div>
+                </div>
+                <div class="field-cell">
+                    <div class="field-label" glabel="@LANG5071" tooltip="@LANG5076"></div>
+                    <div class="field-content">
+                        <input type='checkbox' id="replace_caller_id" />
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="display: none;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726"></button>
+                    <button type="submit" class="btn btn-save" id="save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/disa-modal.js"></script>
+</body>
+</html>

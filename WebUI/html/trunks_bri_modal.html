@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ *
+-->
+<html>
+<head>
+    <title>BRI Trunks</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css?modal" media="all" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        #advanced .field-content {
+            width: 160px;
+        }
+        .special {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            margin-right: 8px;
+        }
+        .special label {
+            position: relative;
+            top: -6px;
+        }
+        #content, #bind-content {
+            display: none;
+        }
+    </style>
+</head>
+<body class="modal">
+    <form id="form">
+        <div id="editForm" style="width: 800px;">
+            <div class="section-body">
+                <div id='content'>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2837"></div>
+                        <div class="field-content">
+                            <span id='bri_ports_container'></span>
+                        </div>
+                    </div>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG1351" tooltip="@LANG1350"></div>
+                        <div class="field-content">
+                            <input type="text" id="trunk_name" name="trunk_name" class="inputWidth100" maxlength="16" />
+                        </div>
+                    </div>
+                    <div id='advanced'>
+                        <div class='section-title' locale="LANG229">Advanced Options</div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2838" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="signalling" name="signalling">
+                                    <option value="bri_cpe">BRI-CPE</option>
+                                    <option value="bri_cpe_ptmp">BRI-CPE-PTMP</option>
+                                    <option value="bri_net">BRI-NET</option>
+                                    <option value="bri_net_ptmp">BRI-NET-PTMP</option>
+                                </select>
+                            </div>
+                            <div class="field-label" glabel="@LANG2839" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="switchtype" name="switchtype">
+                                    <option value="national">national</option>
+                                    <option value="Ni1">Ni1</option>
+                                    <option value="Dms100">Dms100</option>
+                                    <option value="4ess">4ess</option>
+                                    <option value="5ess">5ess</option>
+                                    <option value="Euroisdn">Euroisdn</option>
+                                    <option value="Qsig">Qsig</option>
+                               </select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2840" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="pridialplan" name="pridialplan">
+                                    <option value="unknown">unknown</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Private">Private</option>
+                                    <option value="National">National</option>
+                                    <option value="International">International</option>
+                                </select>
+                            </div>
+                            <div class="field-label" glabel="@LANG2841" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="resetinterval" name="resetinterval">
+                                    <option value="never">never</option>
+                                    <option value="300">300</option>
+                                    <option value="1800">1800</option>
+                                    <option value="3600">3600</option>
+                                    <option value="7200">7200</option>
+                               </select>
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2842" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="prilocaldialplan" name="prilocaldialplan">
+                                    <option value="unknown">unknown</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Private">Private</option>
+                                    <option value="National">National</option>
+                                    <option value="International">International</option>
+                               </select>
+                            </div>
+                            <div class="field-label" glabel="@LANG2862" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="overlapdial" name="overlapdial" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2911" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="priindication" name="priindication">
+                                    <option value="inband">Inband</option>
+                                    <option value="Outofband">Out Of Band</option>
+                                </select>
+                            </div>
+                            <div class="field-label" glabel="@LANG2872" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="facilityenable" name="facilityenable" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2873" tooltip=""></div>
+                            <div class="field-content">
+                                <select id="nsf" name="nsf">
+                                    <option value="none">none</option>
+                                    <option value="Sdn">Sdn</option>
+                                    <option value="Megacom">Megacom</option>
+                                    <option value="Tollfreemegacom">Tollfreemegacom</option>
+                                    <option value="Accunet">Accunet</option>
+                                </select>
+                            </div>
+                            <div class="field-label" glabel="@LANG2874" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="hidecallerid" name="hidecallerid" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2875" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="usecallingpres" name="usecallingpres" checked='checked' />
+                            </div>
+                            <div class="field-label" glabel="@LANG2543" tooltip="@LANG2544"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="auto_recording" name="auto_recording" />
+                            </div>
+                        </div>
+                        <div class="field-cell">
+                            <div class="field-label" glabel="@LANG2318" tooltip="@LANG2319"></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="keepcid" name="keepcid" />
+                            </div>
+                            <!-- <div class="field-label" glabel="@LANG2876" tooltip=""></div>
+                            <div class="field-content">
+                                <input type="checkbox" id="enable_trunkgroup" name="enable_trunkgroup" disabled='disabled' />
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div id='bind-content'>
+                    <div class="field-cell">
+                        <div class="field-label" glabel="@LANG2543" tooltip="@LANG2544"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="auto_recording" name="auto_recording" />
+                        </div>
+                        <div class="field-label" glabel="@LANG2318" tooltip="@LANG2319" style="margin-left: 50px;"></div>
+                        <div class="field-content">
+                            <input type="checkbox" id="keepcid" name="keepcid" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field-cell modal-commands dialogContainer-commands" style="text-align: center;">
+                    <button type="button" class="btn btn-cancel" onclick="top.dialog.clearDialog();" locale="LANG726">Cancel</button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/trunks-bri-modal.js"></script>
+</body>
+</html>

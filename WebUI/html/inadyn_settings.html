@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+ * Description: UCM6100 WebGUI
+ * Copyright (C) 2014 Grandstream Networks, Inc.
+ * 
+ -->
+<html>
+<head>
+    <title locale="LANG4040">DDNS Setting</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="../stylesheet/schwing.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-cell {
+            background-color: #EFEFEF;
+        }
+        #Pen_auto_clean div {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            line-height: 30px;
+       }
+       .boxLabel {
+            position: relative;
+            top: -5px;
+        }
+    </style>
+</head>
+<body class="page">
+    <div class='lite_Heading' locale="LANG4040">DDNS Settings</div>
+    <form id="form">
+        <div class="lite_desc" locale="LANG4032">DDNS allows you to access your network using domain names instead of IP address.</div>
+        <div class="section-body">
+            <div class="section-title" locale="LANG4040">DDNS Settings</div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4030" tooltip="@LANG4031"></div>
+                <div class="field-content">
+                    <input type='checkbox' id='enable_inadyn' name="enable_inadyn" dfalt="no" /> 
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4041" tooltip="@LANG4042"></div>
+                <div class="field-content">
+                    <select id="dyndns_system" name="dyndns_system" dfalt="eth0">
+                        <option locale="dyndns.org" value="dyndns.org">dyndns.org</option>
+                        <option locale="freedns.afraid.org" value="freedns.afraid.org">freedns.afraid.org</option>
+                        <option locale="zoneedit.com" value="zoneedit.com">zoneedit.com</option>
+                        <option locale="no-ip.com" value="no-ip.com">no-ip.com</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG72" tooltip="@LANG4025"></div>
+                <div class="field-content">
+                    <input type="text" name="username" style="display: none;" />
+                    <input type="text" id='username' name="username" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG73" tooltip="@LANG4026"></div>
+                <div class="field-content">
+                    <input type="password" name="password" style="display: none;" />
+                    <input type="password" id='password' name="password" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell hash_class" style="display: none;">
+                <div class="field-label" gLabel="Hash" tooltip="@LANG4029"></div>
+                <div class="field-content">
+                    <input type="text" id='hash' name="hash" maxlength="64" />
+                </div>
+            </div>
+            <div class="field-cell">
+                <div class="field-label" gLabel="@LANG4027" tooltip="@LANG4028"></div>
+                <div class="field-content">
+                    <input type="text" id='alias' name="alias" maxlength="64" />
+                </div>
+            </div>
+            <div id="buttons" class="field-cell last" >
+                <div class="field-label">&nbsp;</div>
+                <div class="field-content">
+                    <button type="button" id="cancel" class="btn btn-cancel" onclick="window.location.reload();" locale="LANG726"></button>
+                    <button type="submit" id="save" class="btn btn-save" locale="LANG728"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/jquery.scrollToTop.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-validation-showMessage.js"></script>
+    <script type="text/javascript" src="../js/inadyn-settings.js"></script>
+</body>
+</html>
